@@ -2,11 +2,11 @@
 
 ## Introduction 
 
-**JS-Chip8** is a 3 month-long software development project in which five Computer Science undergrad students work together to deliver the follwing components:
+**JS-Chip8** is a 3 month-long software development project in which five Computer Science undergrad students work together to deliver the following components:
 
 1. Chip8 **Emulator** can run any Chip8 program.   
 2. Chip8 **Visualizer** shows a Chip8 program in action. For example, it displays memory, registers and instructions being executed. It let users to pause, step-forward or step-backwar one instruction at a time. 
-3. One Chip8 **Tool**: *to be announced*. The goal is to built a chip-8 program that is useful to intended users of the Chip8 emulator.  
+3. One Chip8 **Tool**: *to be announced*. The goal is to built a Chip-8 program that is useful to intended users of the Chip8 emulator.  
 4. Two Chip8 **Games**:  *to be announced*. The games are written in Chip8 language. They should be original and polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team. 
 
 The software whose core components are listed above is a single-page JavaScript applicaion, with no database component (*be more specific*), and can run in a modern web browser (*what browsers? what version? does it has moble support?*). 
