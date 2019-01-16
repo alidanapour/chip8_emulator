@@ -38,11 +38,22 @@ Minh, KP recently completed CMPT 295 so they can pick-up Chip8 language quickly 
 
 ## Risk analysis
 
-TODO. 
+- Conflicts between members (due to unbalanced workload) 
+- Last minute bugs and overlooking bugs 
+- Members don't have enough time to spend on the project 
+- Schefule conflict 
+- Not finish everything on time
 
 ## Hardware and software resource requirements
 
-TODO.
+Hardware: member should have their personal labtop for group meeting
+Software: HTML, CSS, JavaScript, chip8, octo (chip8 IDE), Chrome and Firefox, git and github
+Software methodology: Mixture of waterflow and agile
+Testing
+- Interfact : HTML and CSS
+- Functionality: JavaScript and other chip8 emulator to test the games
+- Unit test: Wrote JavaScipt script & Mocha & Chai 
+- System test: wrote JavaScipt script 
 
 ## Work breakdown
 
@@ -54,4 +65,6 @@ TODO.
 
 ## Monitoring and reporting mechanisms
 
-TODO. 
+- Git/Github for monitoring code changes 
+- project documentation and slack 
+
