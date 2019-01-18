@@ -1,0 +1,165 @@
+﻿#Space Game
+#Developed by Team 10, CMPT 276, SFU Spring 2019
+
+
+#TODO: Start screen sprites
+
+#Initialize Sprites
+
+: player 0x40 0x60 0xFC 0xFF 0x60 0x40
+: enemy 0x0E 0x02 0x3F 0xFF 0x02 0x0E
+: field 0xC8 0xEA 0x60 0x06 0x06 0xE2 0x60 0x06 0xE6 0xD0 0x33 0x21 0x25 0x88 0x61
+: laser 0x80
+: vborder 0xAA
+
+#Initialize register map (aliases used in octo)
+
+:alias playerXPos ve #Player x position
+:alias playerYPos vd #Player y position
+:alias playerLaserXPos vc #Player's laser x position
+:alias playerLaserYPos vb #Player's laser y position
+:alias playerLaser va #Used to track if laser has fired from the player
+
+:alias enemyXPos v9 #Enemy x position
+:alias enemyYPos v8 #Enemy y position
+:alias enemyLaserXPos v7 #Enemy laser x position
+:alias enemyLaserYPos v6 #Enemy laser y position
+:alias enemyLaser v5 #Used to track if laser has fired from the enemy
+#v0-v4 will be used as scratch registers. vf is used to detect collision
+
+################################################################
+#Define Functions:
+
+: movePlayer
+	#First we will copy the players x&y positions into v1 and v2
+  v1 := playerXPos
+  v2 := playerYPos
+  
+  #At this point we will use v0 to detect any 'move' keys
+  #Using chip-8 keypad: 7=left, 8=down, 5=up, 9=right
+  v0 := 5
+  if v0 key then v2 += -1
+  v0 := 7 
+  if v0 key then v1 += -1
+  v0 := 8
+  if v0 key then v2 += 1
+  v0 := 9
+  if v0 key then v1 += 1
+  
+  #Here we restrict the players movement so that it doesnt touch
+  #the top, bottom, and left borders.
+  if v1 == 0 then v1 := 1
+  if v1 == 27 then v1 := 26
+  if v2 == 0 then v2 := 1
+  if v2 == 26 then v2 := 25
+  
+  #Now we will redraw the player. This will be done by first deleting the old
+  #player and then redrawing the player in the new position
+	i := player
+  sprite playerXPos playerYPos 6
+  playerXPos := v1
+  playerYPos := v2
+  sprite playerXPos playerYPos 6
+  
+  #If player ship has collided then #TODO: End round
+  if vf != 0 then clear
+;
+
+: firePlayerLaser
+	#First detect if key is pressed. If it isnt, break out of firePlayerLaser
+	v0 := 6
+  if v0 -key then return
+  
+  #place laser infront of player
+  playerLaserXPos := playerXPos
+  playerLaserXPos += 8
+  playerLaserYPos := playerYPos
+  playerLaserYPos += 3
+  i := laser
+  sprite playerLaserXPos playerLaserYPos 1
+  
+  #set playerLaser to 1, indicating a laser is on the screen
+  playerLaser := 1
+;
+
+: movePlayerLaser
+	#Clear the laser at current position
+	i := laser
+  sprite playerLaserXPos playerLaserYPos 1
+  playerLaserXPos += 1  
+  
+  #Check if the laser is on the rightmost edge, if so set laser to 0 and return
+  if playerLaserXPos == 62 begin
+  	playerLaser := 0
+  	return
+  end
+  
+  #Draw a laser sprite to the new position
+  sprite playerLaserXPos playerLaserYPos 1
+    
+  #Detect if collision has occured using vf. If no collision, return.
+  if vf == 0 then return
+  
+  #If collision has occured then set laser to 0 (i.e. it has disappeared)
+  playerLaser := 0
+;
+  
+
+###########################################
+#Main
+
+: main
+	#Place multiple field sprites on screen
+	i := field
+  v0 := 28
+  v1 := 12
+  sprite v0 v1 15
+  v0 := 24
+  v1 := 2
+  sprite v0 v1 15
+  
+  #Set borders onto screen
+
+	#First we set the top border of the screen with a loop
+  v0 := 0
+  v1 := 0
+  loop
+    i := vborder
+    sprite v0 v1 1
+    v0 += 8
+  	if v0 != 64 then
+  again
+  
+  #Now we set the bottom border.
+  v0 := 0
+  v1 := 63 #bottom
+  loop
+  	i := vborder
+    sprite v0 v1 1
+    v0 += 8
+  	if v0 != 64 then
+  again
+  
+  
+  #Place initial player and enemy on screen
+  playerXPos := 5
+  playerYPos := 10
+  
+  enemyXPos := 51
+  enemyYPos := 10
+  
+  i := player
+  sprite playerXPos playerYPos 6
+  i := enemy
+  sprite enemyXPos enemyYPos 6
+  
+  #MAIN PROGRAM LOOP:
+  loop
+  	#call both move player and enemy
+  	movePlayer 
+    #call fire player laser
+    if playerLaser != 0 then movePlayerLaser
+    if playerLaser == 0 then firePlayerLaser
+  again
+  
+ ;
