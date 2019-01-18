@@ -2,18 +2,38 @@
 
 ## Introduction 
 
-**JS-Chip8** is a 3 month-long software development project in which five Computer Science undergrad students work together to deliver the following components:
+**JS-Chip8** is a single-page JavaScript web application. It supports two browsers (Chrome and Firefox) running on desktop only. **JS-Chip8** has the following components:
 
 1. Chip8 **Emulator** can run any Chip8 program.   
-2. Chip8 **Visualizer** shows a Chip8 program in action. For example, it displays memory, registers and instructions being executed. It let users to pause, step-forward or step-backwar one instruction at a time. 
+2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It let users to pause, step-forward or step-backward one instruction at a time. 
 3. One Chip8 **Tool**: *to be announced*. The goal is to built a Chip-8 program that is useful to intended users of the Chip8 emulator.  
 4. Two Chip8 **Games**:  *to be announced*. The games are written in Chip8 language. They should be original and polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team. 
 
-The software whose core components are listed above is a single-page JavaScript applicaion, with no database component (*be more specific*), and can run in a modern web browser (*what browsers? what version? does it has moble support?*). 
-
 ## Project organization
 
+The team has 6 ungergad CS students with the following roles. 
+
+1. Project manager: Minh Bui is responsible for scheduling team meetings, booking room and produce meeting memos. 
+2. Front-end programmer: Kyle and Jong Joon Lee work on the interface of the application, after they are done, they will join the back-end team.  
+3. Back-end programmer: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualier, the games and one tool. 
+4. Tester: For unit test, members are responsible for testing their own code. Once unit test is done, intergration test requires collaboration between all members.
+
+For Release 0, members has the following roles:
+
+- Minh Bui (Minh) consolidates members input to wrote and format project documentation and research on how to implement the chip8 emulator and visualizer 
+- Ali Danapour (Ali) and Karan Pathania (KP) create the prototype of Chip8 Game #1
+- Kyle Wu (Kyle) and Jong Joon Lee (JJ): code the Interface of the application 
+- Xinyue Ma has no role in release 0.  
+
+Note: The 6th member, Xinyue Ma is recently added on January 17, Minh has reached out to him/her on the same day and is still waiting for response. 
+
+For Release 1, members has the following roles:
+
+TODO
+
 ### Communication Plan 
+
+#### Semester meeting Schedule 
 
 |   MODE	|   TIME	|   TOOL|
 |:-:	|:-:	|:-:	|
@@ -23,18 +43,6 @@ The software whose core components are listed above is a single-page JavaScript 
 |  Urgent 	|   When needed	|   Phone call	|
 
 NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a member anticipats that he/she will show-up late or cannot show-up at all, a notification must be posted in the #meetings channel in the Slack workspace at least 15 minutes in advance. If no notification is sent, members will wait for the missing member(s) for 10 minute before starting the meeting. 
-
-### Members' Role
- 
-Release 0:  
-- Minh Bui (Minh): Chip8 Game 1 and project documentation
-- Ali Danapour (Ali): Emulator/Visualizer and assists JJ and Kyle on assembly related questions 
-- Jong Joon Lee (JJ): Emulator/Visualizer
-- Karan Pathania (KP): Chip8 Game 1
-- Kyle Wu (Kyle): Emulator/Visualizer
-- TODO: Chip8 Tool
-
-Minh, KP recently completed CMPT 295 so they can pick-up Chip8 language quickly since it's similar to the x86 assembly language. Since game 1 is written in Chip8, members with recent exposure to a similar language should work on it.  Ali took CMPT 295 before so he can help JJ and Kyle who haven't taken CMPT 295 before with question relating to low-level programming.  
 
 ## Risk analysis
 

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<link href="style/templatecss.css" rel="stylesheet" type="text/css" />
+
+<title>CHIP-8</title>
+
+<body>
+	<div id="top_bar">
+		CHIP-8 Emulator
+		</div>
+
+	<div id="instructions">
+		<div id="instructions_list">
+			<div id="instructions_title">Instructions:</div>
+			<div>0360| WQ DRW, byte</div>
+			<div>0370| AB ASD</div>
+			<div>0380| SE ASD, byte</div>
+			<div>0390| TR DRW, byte</div>
+			<div>040N| RE CS</div>
+			<div>041B| FG QWS</div>
+			<div>042E| JH HFG, byte</div>
+			<div>0430| DR REW, byte</div>
+			<div>044G| FS RE, byte</div>
+			<div>0450| FD FDS, byte</div>
+			<div>054A| DD DRW, byte</div>
+			<div>0360| WQ DRW, byte</div>
+			<div>0370| AB ASD</div>
+			<div>0380| SE ASD, byte</div>
+			<div>0390| TR DRW, byte</div>
+			<div>040N| RE CS</div>
+			<div>041B| FG QWS</div>
+			<div>042E| JH HFG, byte</div>
+			<div>0430| DR REW, byte</div>
+			<div>044G| FS RE, byte</div>
+			<div>0450| FD FDS, byte</div>
+			<div>054A| DD DRW, byte</div>
+			<div>042E| JH HFG, byte</div>
+			<div>0430| DR REW, byte</div>
+			<div>044G| FS RE, byte</div>
+			<div>0450| FD FDS, byte</div>
+			<div>054A| DD DRW, byte</div>
+		</div>
+		</div>
+
+	<div id="display">
+		<h7>CHIP-8</h7>
+		</div>
+
+
+
+	<div id="registers">
+		<div id="register_PC">PC: 000</div>
+		<div id="register_SP">SP: 000</div>
+		<div id="register_I">I: 000</div>
+		<div id="register_DT">DT: 000</div>
+		<div id="register_ST">ST: 000</div>
+		<div id="register_V0">V0: 000</div>
+		<div id="register_V1">V1: 000</div>
+		<div id="register_V2">V2: 000</div>
+		<div id="register_V3">V3: 000</div>
+		<div id="register_V4">V4: 000</div>
+		<div id="register_V5">V5: 000</div>
+		<div id="register_V6">V6: 000</div>
+		<div id="register_V7">V7: 000</div>
+		<div id="register_V8">V8: 000</div>
+		<div id="register_V9">V9: 000</div>
+		<div id="register_VA">VA: 000</div>
+		<div id="register_VB">VB: 000</div>
+		<div id="register_VC">VC: 000</div>
+		<div id="register_VD">VD: 000</div>
+		<div id="register_VE">VE: 000</div>
+		<div id="register_VF">VF: 000</div>
+		</div>
+
+
+<table id="bottomcontrols">
+	<tr id="controls">
+		<div class="control_cells">
+		<th id="controls_label">Control:</th>
+		<td><button id="button_reset">RESET</button></td>
+		<td><button id="button_pause">PAUSE</button></td>
+		<td><button id="button_stepback">Step back</button></td>
+		<td><button id="button_stepforward">Step forward</button></td>
+		<td><button id="button_continue">Continue</button></td>
+		<td><button id="button_continue">blank</button></td>
+			</div>
+		</tr>
+
+		<tr id="games">
+			<div class="control_cells">
+			<th id="games_label">Games:</th>
+			<td><button id="button_game1">Tetris</button></td>
+			<td><button id="button_game2">COD MW2</button></td>
+			<td><button id="button_game3">League of Legends</button></td>
+			<td><button id="button_game4">Smash Ultimate</button></td>
+			<td><button id="button_game5">Halo 3</button></td>
+			<td><button id="button_game6">Snake</button></td>
+				</div>
+			</tr>
+
+	</table>
+
+	<div id="game_description">
+		Game description
+		</div>
+
+<table class="keypad_table">
+	<div id="keypad">
+		<tr>
+			<td><button class="keypad_cell" id="button7">7</button></td>
+			<td><button class="keypad_cell" id="button8">8</button></td>
+			<td><button class="keypad_cell" id="button9">9</button></td>
+			<td><button class="keypad_cell" id="buttonA">A</button></td>
+			<td><button class="keypad_cell" id="buttonB">B</button></td>
+			</tr>
+		<tr>
+			<td><button class="keypad_cell" id="button4">4</button></td>
+			<td><button class="keypad_cell" id="button5">5</button></td>
+			<td><button class="keypad_cell" id="button6">6</button></td>
+			<td><button class="keypad_cell" id="buttonC">C</button></td>
+			<td><button class="keypad_cell" id="buttonD">D</button></td>
+			</tr>
+		<tr>
+			<td><button class="keypad_cell" id="button1">1</button></td>
+			<td><button class="keypad_cell" id="button2">2</button></td>
+			<td><button class="keypad_cell" id="button3">3</button></td>
+			<td><button class="keypad_cell" id="buttonE">E</button></td>
+			<td><button class="keypad_cell" id="buttonF">F</button></td>
+			</tr>
+		<tr>
+			<td><button class="keypad_cell" id="button0">1</button></td>
+			<td><button class="keypad_cell" id="buttonblank">&nbsp </button></td>
+			<td><button class="keypad_cell" id="buttonblank">&nbsp </button></td>
+			<td><button class="keypad_cell" id="buttonblank">&nbsp</button></td>
+			<td><button class="keypad_cell" id="buttonblank">&nbsp </button></td>
+			</tr>
+
+		</div>
+	</table>
+
+</body>
+</html>
