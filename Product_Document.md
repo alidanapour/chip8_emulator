@@ -18,19 +18,19 @@ The software whose core components are listed above is a single-page JavaScript 
 |   MODE	|   TIME	|   TOOL|
 |:-:	|:-:	|:-:	|
 | In Person 	|  Weekly Monday/Friday	|   Book room if needs whiteboard	|
-|  Voice Call 	|   Tentative (mostly weekend)	|   Discord	|
+|  Voice Call 	|   Tentative (mostly weekends)	|   Discord	|
 |  Messages 	|   Daily	|   Slack	|
 |  Urgent 	|   When needed	|   Phone call	|
 
-NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a member anticipats that he/she will show-up late or cannot show-up at all, a notification must be posted in the #meetings channel in the Slack workspace at least 15 minutes in advance. If no notification is sent, members will wait for the missing member(s) for 10 minute before starting the meeting. 
+NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a member anticipates that he/she will show-up late or cannot show-up at all, a notification must be posted in the #meetings channel in the Slack workspace at least 15 minutes in advance. If no notification is sent, members will wait for the missing member(s) for 10 minute before starting the meeting. 
 
 ### Members' Role
  
 Release 0:  
-- Minh Bui (Minh): Chip8 Game 1 and project documentation
-- Ali Danapour (Ali): Emulator/Visualizer and assists JJ and Kyle on assembly related questions 
+- Minh Bui (Minh): Emulator/Visualizer and project documentation
+- Ali Danapour (Ali): Chip8 Game 1
 - Jong Joon Lee (JJ): Emulator/Visualizer
-- Karan Pathania (KP): Chip8 Game 1
+- Karan Pathania (KP): Chip8 Game 2
 - Kyle Wu (Kyle): Emulator/Visualizer
 - TODO: Chip8 Tool
 
@@ -41,19 +41,19 @@ Minh, KP recently completed CMPT 295 so they can pick-up Chip8 language quickly 
 - Conflicts between members (due to unbalanced workload) 
 - Last minute bugs and overlooking bugs 
 - Members don't have enough time to spend on the project 
-- Schefule conflict 
-- Not finish everything on time
+- Schedule conflict 
+- Not finishing everything on time
 
 ## Hardware and software resource requirements
 
-Hardware: member should have their personal labtop for group meeting
+Hardware: Members should have their personal labtop for group meeting
 Software: HTML, CSS, JavaScript, chip8, octo (chip8 IDE), Chrome and Firefox, git and github
 Software methodology: Mixture of waterflow and agile
 Testing
 - Interfact : HTML and CSS
 - Functionality: JavaScript and other chip8 emulator to test the games
-- Unit test: Wrote JavaScipt script & Mocha & Chai 
-- System test: wrote JavaScipt script 
+- Unit test: Write JavaScipt script & Mocha & Chai 
+- System test: Write JavaScipt script 
 
 ## Work breakdown
 
@@ -66,5 +66,5 @@ TODO.
 ## Monitoring and reporting mechanisms
 
 - Git/Github for monitoring code changes 
-- project documentation and slack 
+- Project documentation and slack 
 
