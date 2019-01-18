@@ -13,7 +13,7 @@
 
 ### Software methodology 
 
-TODO 
+**TODO**
 
 ### Members' roles
 
@@ -35,7 +35,7 @@ Note: The 6th member, Xinyue Ma is recently added to the team on January 17, Min
 
 For Release 1, members has the following roles:
 
-TODO
+**TODO**
 
 ### Communication Plan 
 
@@ -61,14 +61,19 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 ## Hardware and software resource requirements
 
-Hardware: Members should have their personal labtop for group meeting
-Software: HTML, CSS, JavaScript, chip8, octo (chip8 IDE), Chrome and Firefox, git and github
-Software methodology: Mixture of waterflow and agile
-Testing
-- Interfact : HTML and CSS
-- Functionality: JavaScript and other chip8 emulator to test the games
-- Unit test: Write JavaScipt script & Mocha & Chai 
-- System test: Write JavaScipt script 
+|   Purpose	|   Related app components	|   Tool/Languages/Libraries name |
+|:-:	|:-:	|:-:	|
+|Front-End Programming	| Website interface 	| HTML, CSS 	|
+|Back-End Programming | Emulator, Visualizer, chip8 tool 	| JavaScript 	|
+|Game Programming | 2 chip8 games	| [Octo](https://github.com/JohnEarnest/Octo)  	|
+|Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Mocha, Chai, Chrome, Firefox|
+|Version control	| All components 	| Git, Github	|
+|Communication	| All components 	| Slack, Discord, Phone	|
+|Planning	| All components 	| Trello for Kanban Board 	|
+
+- Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
+
+- Testing methods: 
 
 ## Work breakdown
 
