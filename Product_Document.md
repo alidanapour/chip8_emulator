@@ -69,15 +69,27 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 |Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Mocha, Chai, Chrome, Firefox|
 |Version control	| All components 	| Git, Github	|
 |Communication	| All components 	| Slack, Discord, Phone	|
-|Planning	| All components 	| Trello for Kanban Board 	|
+|Planning	| All components 	| Trello for Kanban Board, Google Doc & Spreadsheet 	|
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
-- Testing methods: 
+- Testing methods: **TODO** 
 
 ## Work breakdown
 
-TODO.
+|   Deliverable	|   Estimated Efforts	|   Actual Efforts  | Planned Release |Deadline| 
+|:-:	|:-:	|:-:	|:-:	|:-:	|
+|[1.1] Interface|	|	|	|	|
+|[1.1.1] Mock-up version| 1 hour| 0.5 hour | 0	|Jan 11	|
+|[1.1.2] Implemented version|10 hours | 5 hours	|0	|Jan 11	|
+|[1.2] Emulator|:-:	|:-:	|:-:	|
+|[1.2.1] CPU set-up|:-:	|:-:	|:-:	|
+|[1.2.2] Opcode implementation|:-:	|:-:	|:-:	|
+|[1.2.3] Input/Output/Sound Implementation|:-:	|:-:	|:-:	|
+|[1.2.4] Final Testing|:-:	|:-:	|:-:	|
+|[1.3] One tool|:-:	|:-:	|:-:	|
+|[1.4] Game 1|:-:	|:-:	|:-:	|
+|[1.5] Game 2|:-:	|:-:	|:-:	|
 
 ## Project schedule
 
