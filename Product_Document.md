@@ -24,7 +24,7 @@ The team has 6 Computer Science undergrads with the following roles:
 1. Project manager: Minh Bui is responsible for scheduling team meetings, booking rooms and producing meeting memos. 
 2. Front-end programmers: Kyle and Jong Joon Lee work on the interface of the application, after they are done, they will join the back-end team.  
 3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualizer, the games and one tool. 
-4. Testers: For unit test, members are responsible for testing their own code. Once unit test is done, integration test requires collaboration between all members.
+4. Testers: For unit testing, members are responsible for testing their own code. Once unit testing is done, integration testing requires collaboration between all members.
 
 **For Release 0, members has the following roles**:
 
