@@ -28,7 +28,7 @@ The team has 6 Computer Science undergrads with the following roles:
 
 **For Release 0, members has the following roles**:
 
-- Minh Bui (Minh) consolidates members' input and is responsible for writing and formatting project documentation, and research on how to implement the Chip8 emulator and visualizer.
+- Minh Bui (Minh) consolidates members' input and is responsible for writing and formatting project documentation, and researching how to implement the Chip8 emulator and visualizer.
 - Ali Danapour (Ali) and Karan Pathania (KP) create the prototype of Chip8 Game #1.
 - Kyle Wu (Kyle) and Jong Joon Lee (JJ) code the interface of the application.
 - Xinyue Ma has no role in release 0.  
