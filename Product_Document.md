@@ -35,7 +35,7 @@ The team has 6 Computer Science undergrads with the following roles:
 
 Note: The 6th member, Xinyue Ma has been recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18.
 
-**For Release 1, these following use cases are schedule to be delivered**:
+**For Release 1, these following use cases are scheduled to be delivered**:
 
 - CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers should have some default values. 
 - Opcode from 1-13: any chip 8 programs/ROMs that only use these 13 opcodes can be run on the emulator for now.
@@ -129,20 +129,20 @@ The due dates of major deliverables are shown in the table above. Detailed sched
 
 ## Monitoring and reporting mechanisms
 
-We will use Git and GitHub to for version control. To minimize merging conflicts, members follow these following rules:
+We will use Git and GitHub for version control. To minimize merging conflicts, members follow these following rules:
 
 1. Fetch remote changes frequently to avoid big conflicts
 2. At most 3 members work off the same branch
 3. Instead of handling multiple feature branches, use feature flags
 
-Critical information is included in the project documentation and this documentation will be updated when more information is available. For detail release planning and progress tracking, we will Trello instead. For each task, member who is responsible for the task must track the hours he/she spend on it to improve effort estimation of tasks in the next release. With Trello, member can add note to his/her tasks. 
+Critical information is included in the project documentation and this documentation will be updated when more information is available. For detail release planning and progress tracking, we will Trello instead. For each task, member who is responsible for the task must track the number of hours he/she spend on it to improve effort estimation of tasks in the next release. With Trello, member can add notes to his/her tasks. 
 
-In the case of re-planning, if the re-plaining results in delays of critical features an in-person meeting must be held to discuss the following points:
+In the case of re-planning, if the re-plaining results in delays of critical features, an in-person meeting must be held as soon as possible to discuss the following points:
 
 1. What features are delayed to next release?
 2. What are the consequences of such delays? 
 3. Why the features are delayed? 
-4. Are there any member who can take ownership of the abandoned features? 
+4. Is there any member who can take ownership of the abandoned features? 
 5. Do the replanning if no one is available. 
 
 To minimize re-planning, each Friday, the project manager will check-in with owners of each story to see if they need/want assistance or if any forseeable events might cause delay to allow early detection of potential re-planning and take actions to prevent it.  
