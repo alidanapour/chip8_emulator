@@ -63,7 +63,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 ## Risk analysis
 
-|   Desciption	|   Likelihood	|   Impact | Risk Management Strategy|
+|   Description	|   Likelihood	|   Impact | Risk Management Strategy|
 |:-:	|:-:	|:-:	|:-:	|
 |Conflicts between members due to unbalanced workload | Medium	| High	| Let members pick their tasks so that everyone has the chance to work on something they like. For tasks that no one volunteers to take, members with the most relevant experience and availability will be assigned to them |
 |Limited time to work on the project during the end of the semester 	| High	|High	|Members carefully plan their last 3 weeks of the semester and share it with others. At the beginning of each release, each member will update their end-of-semester schedule if needed   	|
