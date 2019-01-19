@@ -35,7 +35,7 @@ The team has 6 Computer Science undergrads with the following roles:
 
 Note: The 6th member, Xinyue Ma has been recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18.
 
-**For Release 1, these following use cases are schedule to be delivered**:
+**For Release 1, these following use cases are scheduled to be delivered**:
 
 - CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers should have some default values. 
 - Opcode from 1-13: any chip 8 programs/ROMs that only use these 13 opcodes can be run on the emulator for now.
