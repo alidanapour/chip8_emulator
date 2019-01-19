@@ -5,15 +5,15 @@
 **JS-Chip8** is a single-page JavaScript web application. It supports two browsers (Google Chrome and Mozilla Firefox) running on desktop only. **JS-Chip8** has the following components:
 
 1. Chip8 **Emulator** can run any Chip8 program.
-2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It lets users pause, step-forward or step-backward one instruction at a time.
+2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It lets users pause and step-forward/step-backward one instruction at a time.
 3. One Chip8 **Tool**: *to be announced*. The goal is to build a Chip8 program that is useful to the intended users of the Chip8 emulator.  
-4. Two Chip8 **Games**:  *to be announced*. The games are written in Chip8 language. They should be original and polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
+4. Two Chip8 **Games**:  *to be announced*. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
 
 ## Project organization
 
 ### Software methodology 
 
-We follow Extreme Programming methodologies for this project. The project startup plan (release 0 product documentation) includes limited information about the work breakdown and project schedule. During development, for each release, an informal project plan and effort estimates are create with involvement from all team members (Sommerville, Software Engineering, 9th Edition). 
+We follow Extreme Programming methodologies for this project. The project startup plan (release 0 product documentation) includes limited information about the work breakdown and project schedule. During development, for each release, an informal project plan and effort estimates are created with involvement from all team members (Sommerville, Software Engineering, 9th Edition). 
 
 The team will meet weekly to create user stories. The stories are ranked by importance and each story is assigned some effort points to indicate how much effort it will take, relative to other stories. At the beginning of each release, the team decide what user stories to implement and more detailed tasks are created for those stories. After each release, team velocity (i.e., how many effort-points per working day the team got done) and use as input for planning of the next release. Members chose what stories they want to work on rather than being assigned some stories to ensure personal accountability and create motivation. 
 
@@ -24,7 +24,7 @@ The team has 6 Computer Science undergrads with the following roles:
 1. Project manager: Minh Bui is responsible for scheduling team meetings, booking rooms and producing meeting memos. 
 2. Front-end programmers: Kyle and Jong Joon Lee work on the interface of the application, after they are done, they will join the back-end team.  
 3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualizer, the games and one tool. 
-4. Testers: For unit test, members are responsible for testing their own code. Once unit test is done, integration test requires collaboration between all members.
+4. Testers: For unit testing, members are responsible for testing their own code. Once unit testing is done, integration testing requires collaboration between all members.
 
 **For Release 0, members has the following roles**:
 
