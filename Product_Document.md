@@ -13,11 +13,7 @@
 
 ### Software methodology 
 
-<<<<<<< HEAD
 We follow Extreme Programming methodologies for this project. The project startup plan (release 0 product documentation) includes limited information about the work breakdown and project schedule. During development, for each release, an informal project plan and effort estimates are create with involvement from all team members (Sommerville, Software Engineering, 9th Edition). 
-=======
-We follow **TODO**
->>>>>>> a2dcdabb99e1a36b14d5ccd375f9e4451feecdc7
 
 The team will meet weekly to create user stories. The stories are ranked by importance and each story is assigned some effort points to indicate how much effort it will take, relative to other stories. At the beginning of each release, the team decide what user stories to implement and more detailed tasks are created for those stories. After each release, team velocity (i.e., how many effort-points per working day the team got done) and use as input for planning of the next release. Members chose what stories they want to work on rather than being assigned some stories to ensure personal accountability and create motivation. 
 
@@ -27,13 +23,8 @@ The team has 6 Computer Science undergrads with the following roles:
 
 1. Project manager: Minh Bui is responsible for scheduling team meetings, booking rooms and producing meeting memos. 
 2. Front-end programmers: Kyle and Jong Joon Lee work on the interface of the application, after they are done, they will join the back-end team.  
-<<<<<<< HEAD
 3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualizer, the games and one tool. 
 4. Testers: For unit test, members are responsible for testing their own code. Once unit test is done, integration test requires collaboration between all members.
-=======
-3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualier, the games and one tool. 
-4. Testers: For unit testing, members are responsible for testing their own code. Once unit testing is completed, integrated testing requires collaboration between all members.
->>>>>>> a2dcdabb99e1a36b14d5ccd375f9e4451feecdc7
 
 **For Release 0, members has the following roles**:
 
