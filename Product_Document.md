@@ -86,13 +86,14 @@ The work breakdown and project schedule below are tentative and will be update a
 |   Deliverable	|   Estimated Efforts (hours)	|   Actual Efforts (hours)  | Planned Release |Owner(s)| Deadline|
 |:-	|:-:	|:-:	|:-:	|:-:	|:-:	|
 |**[1.1] Interface**|	|	|	|	|
-|[1.1.1] Mock-up version| 1 | 0.5  | 0	| All team	| Jan 11	|
+|[1.1.1] Mock-up version| 1 | 0.5  | 0	| Whole team	| Jan 11	|
 |[1.1.2] Implemented version|10  | 5 	|0	| Kyle, JJ	|Jan 19	|
 |**[1.2] Emulator**|    |	|	|  |
 |[1.2.1] CPU set-up| 20 	|tba	| 1	| Minh | Jan 25 | 
-|[1.2.2] Opcode implementation| 40 	|tba	| 1	|Minh, Kyle | Feb 3  | 
-|[1.2.3] Input/Output/Sound Implementation| 15	| tba	|1	| JJ | Feb 3 | 
-|[1.2.4] Final Testing| 30	| tba|1	|Minh, Kyle, JJ | Feb 5 | 
+|[1.2.2] Opcode implementation (1-13)| 40 	|tba	| 1	|Minh, Kyle, JJ, Xinyue | Feb 3  |
+|[1.2.3] Opcode implementation (14-36)| 40 	|tba	| 2	|Minh, Kyle, JJ, Xinyue | Feb 20  | 
+|[1.2.4] Input/Output/Sound Implementation| 15	| tba	|1	| Minh, JJ | Feb 3 | 
+|[1.2.5] Final Testing| 30	| tba|1	|Minh, Kyle, JJ, Xinyue | Feb 26 | 
 |**[1.3] Visualizer**|	|	|	|
 |[1.3] Display Register Values|20	|tba	|2	|tba | Feb 15 | 
 |[1.3.1] Display Memory| 25	|tba|2|tba | Feb 15 | 
