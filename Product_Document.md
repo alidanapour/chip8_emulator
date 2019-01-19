@@ -24,7 +24,7 @@ The team has 6 Computer Science undergrads with the following roles.
 3. Back-end programmer: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualier, the games and one tool. 
 4. Tester: For unit test, members are responsible for testing their own code. Once unit test is done, intergration test requires collaboration between all members.
 
-For Release 0, members has the following roles:
+**For Release 0, members has the following roles**:
 
 - Minh Bui (Minh) consolidates members input to wrote and format project documentation and research on how to implement the chip8 emulator and visualizer 
 - Ali Danapour (Ali) and Karan Pathania (KP) create the prototype of Chip8 Game #1
@@ -33,9 +33,11 @@ For Release 0, members has the following roles:
 
 Note: The 6th member, Xinyue Ma is recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18. 
 
-For Release 1, members has the following roles:
+**For Release 1**:
 
-**TODO**
+- **TODO: detailed use cases for all major features planned for the next release**
+
+- **TODO: Member roles**
 
 ### Communication Plan 
 
@@ -57,7 +59,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 |Conflicts between members due to unbalanced workload | Medium	| High	| Let members pick their tasks so that everyone has the chance to work on something they like. For tasks that no one volunteers to take, members with the most relevant experience and availability will be assigned to them |
 |Limited time to work on the project during the end of the semester 	| High	|High	|Members carefully plan their last 3 weeks of the semester and share it with others. At the beginning of each release, each member will update their end-of-semester schedule if needed   	|
 |Inaccurate estimation of time needed for a task |Medium	|High	|Let member(s) who are responsible for the task do the estimation then multiply that value by 3, and keep track of the number of hours actually spent to ensure more accurate estimation next time	|
-|Fail to deliver promised extra feature |Medium	| Medium	| Member must conduct sufficient research before proposing additional features for the tool and the two games and be realistic about their existing skills and availability. Core features must always be prioritized|
+|Fail to deliver promised extra feature |Medium	| Medium	| Member must conduct sufficient research before proposing additional features for the tool and the two games and be realistic about their existing skills and availability, core features must always be prioritized|
 
 ## Hardware and software resource requirements
 
@@ -69,33 +71,47 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 |Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Mocha, Chai, Chrome, Firefox|
 |Version control	| All components 	| Git, Github	|
 |Communication	| All components 	| Slack, Discord, Phone	|
-|Planning	| All components 	| Trello for Kanban Board, Google Doc & Spreadsheet 	|
+|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet 	|
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
 - Testing methods: **TODO** 
 
-## Work breakdown
+## Work breakdown & Project schedule
 
-|   Deliverable	|   Estimated Efforts	|   Actual Efforts  | Planned Release |Deadline| 
-|:-:	|:-:	|:-:	|:-:	|:-:	|
-|[1.1] Interface|	|	|	|	|
-|[1.1.1] Mock-up version| 1 hour| 0.5 hour | 0	|Jan 11	|
-|[1.1.2] Implemented version|10 hours | 5 hours	|0	|Jan 11	|
-|[1.2] Emulator|:-:	|:-:	|:-:	|
-|[1.2.1] CPU set-up|:-:	|:-:	|:-:	|
-|[1.2.2] Opcode implementation|:-:	|:-:	|:-:	|
-|[1.2.3] Input/Output/Sound Implementation|:-:	|:-:	|:-:	|
-|[1.2.4] Final Testing|:-:	|:-:	|:-:	|
-|[1.3] One tool|:-:	|:-:	|:-:	|
-|[1.4] Game 1|:-:	|:-:	|:-:	|
-|[1.5] Game 2|:-:	|:-:	|:-:	|
+The work breakdown and project schedule below are tentative and will be update after each iteration. 
 
-## Project schedule
-
-TODO.
+|   Deliverable	|   Estimated Efforts (hours)	|   Actual Efforts (hours)  | Planned Release |Owner(s)| Deadline|
+|:-	|:-:	|:-:	|:-:	|:-:	|:-:	|
+|**[1.1] Interface**|	|	|	|	|
+|[1.1.1] Mock-up version| 1 | 0.5  | 0	| All team	| Jan 11	|
+|[1.1.2] Implemented version|10  | 5 	|0	| Kyle, JJ	|Jan 19	|
+|**[1.2] Emulator**|    |	|	|  |
+|[1.2.1] CPU set-up| 20 	|tba	| 1	| Minh | Jan 25 | 
+|[1.2.2] Opcode implementation| 40 	|tba	| 1	|Minh, Kyle | Feb 3  | 
+|[1.2.3] Input/Output/Sound Implementation| 15	| tba	|1	| JJ | Feb 3 | 
+|[1.2.4] Final Testing| 30	| tba|1	|Minh, Kyle, JJ | Feb 5 | 
+|**[1.3] Visualizer**|	|	|	|
+|[1.3] Display Register Values|20	|tba	|2	|tba | Feb 15 | 
+|[1.3.1] Display Memory| 25	|tba|2|tba | Feb 15 | 
+|[1.3.2] Stop|10|tba|2|tba | Feb 15 | 
+|[1.3.2] Continue|10|tba|2|tba | Feb 15 | 
+|[1.3.4] Step forward|15|tba|2|tba | Feb 20 | 
+|[1.3.5] Step backward (max 10 steps)|30 |tba|2|tba | Feb 20 | 
+|[1.3.5] Final Testing|30 |tba|2| tba | Feb 25 | 
+|**[1.4] One chip8 tool**| 	|	|	| 
+|[1.4.1] Prototype| 50 	|tba	|2	| Kyle, JJ | Feb 26
+|[1.4.2] Completed| 60 	|tba	|3	| Kyle, JJ | Mar 12
+|**[1.5] Game #1**| 	|	|	|
+|[1.5.1] Prototype| 40 	|tba	|1	| Karan, Ali | Feb 5
+|[1.5.1] Completed| 50 	|tba	|2	| Karan, Ali | Feb 26
+|**[1.6] Game #2**| 	|	|	|
+|[1.6.1] Prototype| 50 	|tba	|2	| Karan, Ali | Feb 26
+|[1.5.1] Completed| 50 	|tba	|3	| Karan, Ali | Mar 12
 
 ## Monitoring and reporting mechanisms
+
+**TODO** 
 
 - Git/Github for monitoring code changes 
 - Project documentation and slack 
