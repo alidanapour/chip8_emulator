@@ -13,11 +13,7 @@
 
 ### Software methodology 
 
-<<<<<<< HEAD
 We follow Extreme Programming methodologies for this project. The project startup plan (release 0 product documentation) includes limited information about the work breakdown and project schedule. During development, for each release, an informal project plan and effort estimates are create with involvement from all team members (Sommerville, Software Engineering, 9th Edition). 
-=======
-We follow **TODO**
->>>>>>> a2dcdabb99e1a36b14d5ccd375f9e4451feecdc7
 
 The team will meet weekly to create user stories. The stories are ranked by importance and each story is assigned some effort points to indicate how much effort it will take, relative to other stories. At the beginning of each release, the team decide what user stories to implement and more detailed tasks are created for those stories. After each release, team velocity (i.e., how many effort-points per working day the team got done) and use as input for planning of the next release. Members chose what stories they want to work on rather than being assigned some stories to ensure personal accountability and create motivation. 
 
@@ -27,13 +23,8 @@ The team has 6 Computer Science undergrads with the following roles:
 
 1. Project manager: Minh Bui is responsible for scheduling team meetings, booking rooms and producing meeting memos. 
 2. Front-end programmers: Kyle and Jong Joon Lee work on the interface of the application, after they are done, they will join the back-end team.  
-<<<<<<< HEAD
 3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualizer, the games and one tool. 
 4. Testers: For unit test, members are responsible for testing their own code. Once unit test is done, integration test requires collaboration between all members.
-=======
-3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualier, the games and one tool. 
-4. Testers: For unit testing, members are responsible for testing their own code. Once unit testing is completed, integrated testing requires collaboration between all members.
->>>>>>> a2dcdabb99e1a36b14d5ccd375f9e4451feecdc7
 
 **For Release 0, members has the following roles**:
 
@@ -79,14 +70,14 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 |Front-End Programming	| Website interface 	| HTML, CSS 	|
 |Back-End Programming | Emulator, Visualizer, chip8 tool 	| JavaScript 	|
 |Game Programming | 2 Chip8 games	| [Octo](https://github.com/JohnEarnest/Octo)  	|
-|Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Mocha, Chai, Chrome, Firefox|
+|Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Jest, Chrome, Firefox|
 |Version control	| All components 	| Git, Github	|
 |Communication	| All components 	| Slack, Discord, Phone	|
 |Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet 	|
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
-- Testing methods: **TODO** 
+- Testing methods: Our team will aim for test-driven development. Developers will write unit testing friendly code and try to eliminate most bugs at early stages of development. Apart from manually testing code at each stage (by individual developers), we will perform a code review on all parts of the product before every release. For unit testing, every developer is encouraged to rigorously unit-test their code at each stage of development and no later than each subsequent release. We plan to use Jest to automate unit testing. For integrated and functional testing, our team will perform integrated testing before every release to make sure no bugs are overlooked and passed on to next releases. When the final product is +75% ready, manual functional testing will be performed using Google Chrome and Mozilla Firefox to ensure cross browser functionalities.
 
 ## Work breakdown 
 
