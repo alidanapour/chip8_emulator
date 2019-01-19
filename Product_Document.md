@@ -13,16 +13,18 @@
 
 ### Software methodology 
 
-**TODO**
+We follow 
+
+**TODO** 
 
 ### Members' roles
 
 The team has 6 Computer Science undergrads with the following roles.
 
-1. Project manager: Minh Bui is responsible for scheduling team meetings, booking room and produce meeting memos. 
-2. Front-end programmer: Kyle and Jong Joon Lee work on the interface of the application, after they are done, they will join the back-end team.  
-3. Back-end programmer: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualier, the games and one tool. 
-4. Tester: For unit test, members are responsible for testing their own code. Once unit test is done, intergration test requires collaboration between all members.
+1. Project manager: Minh Bui is responsible for scheduling team meetings, booking room and producing meeting memos. 
+2. Front-end programmers: Kyle and Jong Joon Lee work on the interface of the application, after they are done, they will join the back-end team.  
+3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualier, the games and one tool. 
+4. Testers: For unit test, members are responsible for testing their own code. Once unit test is done, intergration test requires collaboration between all members.
 
 **For Release 0, members has the following roles**:
 
@@ -45,7 +47,7 @@ Note: The 6th member, Xinyue Ma is recently added to the team on January 17, Min
 
 |   MODE	|   TIME	|   TOOL|
 |:-:	|:-:	|:-:	|
-| In Person 	|  Weekly Monday/Friday, 12:30 PM-2:30PM	|   Book room if needs whiteboard	|
+| In Person 	|  Weekly Monday/Friday, 12:30PM-2:30PM	|   Book room if needs whiteboard	|
 |  Voice Call 	|   Tentative (mostly weekends)	|   Discord	|
 |  Messages 	|   Daily	|   Slack	|
 |  Urgent 	|   When needed	|   Phone call	|
@@ -77,9 +79,9 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Testing methods: **TODO** 
 
-## Work breakdown & Project schedule
+## Work breakdown 
 
-The work breakdown and project schedule below are tentative and will be update after each iteration. 
+The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
 
 |   Deliverable	|   Estimated Efforts (hours)	|   Actual Efforts (hours)  | Planned Release |Owner(s)| Deadline|
 |:-	|:-:	|:-:	|:-:	|:-:	|:-:	|
@@ -109,10 +111,15 @@ The work breakdown and project schedule below are tentative and will be update a
 |[1.6.1] Prototype| 50 	|tba	|2	| Karan, Ali | Feb 26
 |[1.5.1] Completed| 50 	|tba	|3	| Karan, Ali | Mar 12
 
+## Project schedule
+
+The due dates of major deliverables are shown in the table above. Detailed scheduling and progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). An example for release 0 is shown below:
+
+![Trello example](trello_example.PNG)
+
 ## Monitoring and reporting mechanisms
 
 **TODO** 
 
 - Git/Github for monitoring code changes 
 - Project documentation and slack 
-
