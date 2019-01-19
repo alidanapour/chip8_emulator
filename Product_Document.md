@@ -35,11 +35,18 @@ The team has 6 Computer Science undergrads with the following roles:
 
 Note: The 6th member, Xinyue Ma has been recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18.
 
-**For Release 1**:
+**For Release 1, these following use cases are schedule to be delivered**:
 
-- **TODO: detailed use cases for all major features planned for the next release**
+- CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers should have some default values. 
+- Opcode from 1-13: any chip 8 programs/ROMs that only use these 13 opcodes can be run on the emulator for now.
+- Input/Output/Sound Implementation: The system gives buzzer sounds whenever the sound timer reaches zero. The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
 
-- **TODO: Member roles**
+    1	2	3	C  ------>		1	2	3	4 <br>
+    4	5	6	D  ------>	    Q	W	E	R <br>
+    7	8	9	E  ------>		A	S	D	F <br>
+    A	0	B	F  ------>		Z	X	C	V <br>
+
+- Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
 
 ### Communication Plan 
 
@@ -93,7 +100,7 @@ The work breakdown and project schedule below are tentative and will be update a
 |[1.2.2] Opcode implementation (1-13)| 40 	|tba	| 1	|Minh, Kyle, JJ, Xinyue | Feb 3  |
 |[1.2.3] Opcode implementation (14-36)| 40 	|tba	| 2	|Minh, Kyle, JJ, Xinyue | Feb 20  | 
 |[1.2.4] Input/Output/Sound Implementation| 15	| tba	|1	| Minh, JJ | Feb 3 | 
-|[1.2.5] Final Testing| 30	| tba|1	|Minh, Kyle, JJ, Xinyue | Feb 26 | 
+|[1.2.5] Final Testing| 30	| tba|2	|Minh, Kyle, JJ, Xinyue | Feb 26 | 
 |**[1.3] Visualizer**|	|	|	|
 |[1.3] Display Register Values|20	|tba	|2	|tba | Feb 15 | 
 |[1.3.1] Display Memory| 25	|tba|2|tba | Feb 15 | 
@@ -120,7 +127,20 @@ The due dates of major deliverables are shown in the table above. Detailed sched
 
 ## Monitoring and reporting mechanisms
 
-**TODO** 
+We will use Git and GitHub to for version control. To minimize merging conflicts, members follow these following rules:
 
-- Git/Github for monitoring code changes 
-- Project documentation and slack 
+1. Fetch remote changes frequently to avoid big conflicts
+2. At most 3 members work off the same branch
+3. Instead of handling multiple feature branches, use feature flags
+
+Critical information is included in the project documentation and this documentation will be updated when more information is available. For detail release planning and progress tracking, we will Trello instead. For each task, member who is responsible for the task must track the hours he/she spend on it to improve effort estimation of tasks in the next release. With Trello, member can add note to his/her tasks. 
+
+In the case of re-planning, if the re-plaining results in delays of critical features an in-person meeting must be held to discuss the following points:
+
+1. What features are delayed to next release?
+2. What are the consequences of such delays? 
+3. Why the features are delayed? 
+4. Are there any member who can take ownership of the abandoned features? 
+5. Do the replanning if no one is available. 
+
+To minimize re-planning, each Friday, the project manager will check-in with owners of each story to see if they need/want assistance or if any forseeable events might cause delay to allow early detection of potential re-planning and take actions to prevent it.  
