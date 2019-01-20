@@ -72,15 +72,15 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 ## Hardware and software resource requirements
 
-|   Purpose	|   Related app components	|   Tool/Languages/Libraries name |
+|   Purpose	|   Related app components	|   Tools/Languages/Libraries |
 |:-:	|:-:	|:-:	|
 |Front-End Programming	| Website interface 	| HTML, CSS 	|
-|Back-End Programming | Emulator, Visualizer, chip8 tool 	| JavaScript 	|
+|Back-End Programming | Emulator, Visualizer, Chip8 tool 	| JavaScript 	|
 |Game Programming | 2 Chip8 games	| [Octo](https://github.com/JohnEarnest/Octo)  	|
-|Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Jest, Chrome, Firefox|
-|Version control	| All components 	| Git, Github	|
+|Automated Tests |Emulator, Visualizer, chip8 tool |  JavaScript, Jest, Chrome, Firefox|
+|Version Control	| All components 	| Git, GitHub	|
 |Communication	| All components 	| Slack, Discord, Phone	|
-|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet 	|
+|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Docs & Spreadsheet 	|
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
@@ -90,7 +90,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 [Member availability](https://docs.google.com/spreadsheets/d/1HqADerMmskoAKjknKuDWZFQrG6OZgpwF0acj79XQYGA/edit?usp=sharing)
 
-The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
+The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (Informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
 
 |   Deliverable	|   Estimated Efforts (hours)	|   Actual Efforts (hours)  | Planned Release |Owner(s)| Deadline|
 |:-	|:-:	|:-:	|:-:	|:-:	|:-:	|
@@ -129,20 +129,20 @@ The due dates of major deliverables are shown in the table above. Detailed sched
 
 ## Monitoring and reporting mechanisms
 
-We will use Git and GitHub for version control. To minimize merging conflicts, members follow these following rules:
+We will use Git and GitHub for version control. To minimize merging conflicts, members follow the following rules:
 
-1. Fetch remote changes frequently to avoid big conflicts
-2. At most 3 members work off the same branch
-3. Instead of handling multiple feature branches, use feature flags
+1. Fetch remote changes frequently to avoid big conflicts.
+2. At most 3 members work off the same branch.
+3. Instead of handling multiple feature branches, use feature flags.
 
-Critical information is included in the project documentation and this documentation will be updated when more information is available. For detail release planning and progress tracking, we will Trello instead. For each task, member who is responsible for the task must track the number of hours he/she spend on it to improve effort estimation of tasks in the next release. With Trello, member can add notes to his/her tasks. 
+Critical information is included in the project documentation and this documentation will be updated when more information is available. For detailed release planning and progress tracking, we will use Trello instead. For each task, the member who is responsible for the task must track the number of hours he/she spends on it to improve effort estimation of tasks in the next release. With Trello, members can add notes to thier tasks. 
 
-In the case of re-planning, if the re-plaining results in delays of critical features, an in-person meeting must be held as soon as possible to discuss the following points:
+In the case of re-planning, if the re-planning results in delay of critical features, an in-person meeting must be held as soon as possible to discuss the following points:
 
-1. What features are delayed to next release?
-2. What are the consequences of such delays? 
-3. Why the features are delayed? 
+1. Which features are delayed to the next release?
+2. What are the consequences of the delay(s)? 
+3. Why have the features been delayed?
 4. Is there any member who can take ownership of the abandoned features? 
-5. Do the replanning if no one is available. 
+5. Do the replanning if no one is available.
 
 To minimize re-planning, each Friday, the project manager will check-in with owners of each story to see if they need/want assistance or if any forseeable events might cause delay to allow early detection of potential re-planning and take actions to prevent it.  
