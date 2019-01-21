@@ -72,15 +72,15 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 ## Hardware and software resource requirements
 
-|   Purpose	|   Related app components	|   Tools/Languages/Libraries |
+|   Purpose	|   Related App Components	|   Tools/Languages/Libraries |
 |:-:	|:-:	|:-:	|
-|Front-End Programming	| Website interface 	| HTML, CSS 	|
-|Back-End Programming | Emulator, Visualizer, Chip8 tool 	| JavaScript 	|
-|Game Programming | 2 Chip8 games	| [Octo](https://github.com/JohnEarnest/Octo)  	|
-|Automated Tests |Emulator, Visualizer, chip8 tool |  JavaScript, Jest, Chrome, Firefox|
-|Version Control	| All components 	| Git, GitHub	|
-|Communication	| All components 	| Slack, Discord, Phone	|
-|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Docs & Spreadsheet 	|
+|Front-End Programming	| Website Interface 	| HTML, CSS 	|
+|Back-End Programming | Emulator, Visualizer, Chip8 Tool 	| JavaScript 	|
+|Game Programming | 2 Chip8 Games	| [Octo](https://github.com/JohnEarnest/Octo)  	|
+|Automated Tests |Emulator, Visualizer,Chip8 Tool |  JavaScript, Jest, Chrome, Firefox|
+|Version Control	| All Components 	| Git, GitHub	|
+|Communication	| All Components 	| Slack, Discord, Phone	|
+|Planning	| All Components 	| [Trello](https://trello.com) for Kanban Board, Google Docs & Spreadsheet 	|
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
