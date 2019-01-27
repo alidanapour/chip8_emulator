@@ -1,0 +1,725 @@
+// include math library
+
+class CPU {
+    let registers :number[];		// V0 to Vf
+    let register_i :number;			// Special 16-bit address register I
+    let ram :number[];				// 4096 bytes
+    let pc :number;					// Program counter (16-bit) (programs start at 0x200)
+
+    let display :number = [			// Display buffer starts at 0xf00
+    	[0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00],
+    	[0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00],
+    	[0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00],
+    	[0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00],
+    ];
+
+    let stack :number[];			// Array of 16 16-bit values
+    let stackPointer :number;
+    
+    let keys :number[];
+    let keyPressed :number;			// Key pressed
+    
+    let delay :number;				// Delay timer
+    let sound :number;				// Sound timer
+}
+
+function CPU_init () {
+	let c8 = new CPU;
+
+	c8.pc = 0x200;
+	c8.stackPointer = -1;
+	c8.delay = 0;
+	c8.sound = 0;
+}
+
+function c8_disassembler (opcode) {
+	let code = opcode;		// 1111-2222-3333-4444
+
+	switch (code >>> 12) {
+		case 0x0:
+			
+			switch (opcode & 0x0fff) {
+
+				case 0x0e0:
+
+					// 00E0 - CLS
+
+					break;
+			
+				case 0x0ee:
+
+					// 00EE - RET
+					CPU.pc = CPU.stack[CPU.stackPointer];
+					CPU.stack.pop();
+					CPU.stackPointer--;
+
+					break;
+
+				default:
+
+					// 0nnn - SYS addr
+					CPU.pc = code & 0xfff;
+
+					break;
+				}
+
+				break;
+
+		case 0x1:
+
+			// 1nnn - JP addr
+			CPU.pc = (code & 0x0fff)
+
+			break;
+
+		case 0x2:
+
+			// 2nnn - CALL addr
+			CPU.stack.push(pc + 2);
+			CPU.stackPointer++;
+			CPU.pc = (code & 0x0fff);
+
+			break;
+
+		case 0x3:
+
+			// 3xkk - SE Vx, byte
+			let x = code >>> 8;
+			x = x & 0x0f;
+			if (CPU.registers[x] === (code & 0x00ff))
+				CPU.pc += 4;
+			else
+				CPU.pc += 2;
+
+			break;
+
+		case 0x4:
+
+			// 4xkk - SNE Vx, byte
+			let x = (code >>> 8) & 0x0f;
+			if (CPU.registers[x] !== (code & 0x00ff))
+				CPU.pc += 4;
+			else
+				CPU.pc += 2;
+
+			break;
+
+		case 0x5:
+			
+			// 5xy0 - SE Vx, Vy
+			let x = (code >>> 8) & 0x0f;
+			let y = (code >>> 4) & 0x00f;
+			if (CPU.registers[x] === CPU.registers[y])
+				CPU.pc += 4;
+			else
+				CPU.pc += 2;
+
+			break;
+
+		case 0x6:
+
+			// 6xkk - LD Vx, byte
+			let x = (code >>> 8) & 0x0f;
+			let kk = code & 0x00ff;
+			CPU.registers[x] = kk;
+			CPU.pc += 2;
+
+			break;
+
+		case 0x7:
+			
+			// 7xkk - ADD Vx, byte
+			let x = (code >>> 8) & 0x0f;
+			let kk = code & 0x00ff;
+			CPU.registers[x] += kk;
+			CPU.pc += 2;
+
+			break;
+
+		case 0x8:
+
+			switch (code & 0x000f) {
+
+				case 0x0:
+
+					// 8xy0 - LD Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					CPU.registers[x] = CPU.registers[y];
+					CPU.pc += 2;
+
+					break;
+			
+				case 0x1:
+
+					// 8xy1 - OR Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					CPU.registers[x] = CPU.registers[x] | CPU.registers[y];
+					CPU.pc += 2;
+
+					break;
+			
+				case 0x2:
+
+					// 8xy2 - AND Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					CPU.registers[x] = CPU.registers[x] & CPU.registers[y];
+					CPU.pc += 2;
+
+					break;
+			
+				case 0x3:
+
+					// 8xy3 - XOR Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					CPU.registers[x] = CPU.registers[x] ^ CPU.registers[y];
+					CPU.pc += 2;
+
+					break;
+			
+				case 0x4:
+
+					// 8xy4 - ADD Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					CPU.registers[x] += CPU.registers[y];
+					if (CPU.registers[x] > 255) {
+						CPU.registers[15] = 1;		// Vf = Carry
+						CPU.registers[x] = CPU.registers[x] & 0x0f; // CHECKKKKKKKKK
+					}
+					CPU.pc += 2;
+
+					break;
+			
+				case 0x5:
+
+					// 8xy5 - SUB Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					CPU.registers[x] -= CPU.registers[y];
+					if (CPU.registers[x] > CPU.registers[y])	// Vf = Not Borrow
+						CPU.registers[15] = 1;
+					CPU.pc += 2;
+
+					break;
+			
+				case 0x6:
+
+					// 8xy6 - SHR Vx {, Vy}
+			
+				case 0x7:
+
+					// 8xy7 - SUBN Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					CPU.registers[x] = CPU.registers[y] - CPU.registers[x];
+					if (CPU.registers[y] > CPU.registers[x])	// Vf = Not Borrow
+						CPU.registers[15] = 1;
+					CPU.pc += 2;
+
+					break;
+			
+				case 0xe:
+
+					// 8xyE - SHL Vx {, Vy}
+
+			}
+
+		case 0x9:
+			
+			// 9xy0 - SNE Vx, Vy
+			let x = (code >>> 8) & 0x0f;
+			let y = (code >>> 4) & 0x00f;
+			if (CPU.registers[x] !== CPU.registers[y])
+				CPU.pc += 4;
+			else
+				CPU.pc += 2;
+
+			break;
+
+		case 0xa:
+
+			// Annn - LD I, addr
+			CPU.register_i = code & 0x0fff;
+			CPU.pc += 2;
+
+			break;
+
+		case 0xb:
+			
+			// Bnnn - JP V0, addr
+			let nnn = 0x0fff;
+			CPU.pc = CPU.registers[0] + nnn;
+
+			break;
+
+		case 0xc:
+			
+			// Cxkk - RND Vx, byte
+			let x = (code >>> 8) & 0x0f;
+			let random_byte = Math.floor(Math.random() * 256);		// 0 to 255
+			CPU.registers[x] = random_byte;
+			CPU.pc += 2;
+
+			break;
+
+		case 0xd:
+			
+			// Dxyn - DRW Vx, Vy, nibble
+
+			break;
+
+		case 0xe:
+			
+			switch (code & 0x00ff) {
+
+				case 0x009e:
+
+					// Ex9E - SKP Vx
+
+					let x = (code >>> 8) & 0x0f;
+					if (CPU.keyPressed === CPU.registers[x])
+						CPU.pc += 4;
+					else
+						CPU.pc += 2;
+
+					break;
+
+				case 0x00a1:
+
+					// ExA1 - SKNP Vx
+
+					let x = (code >>> 8) & 0x0f;
+					if (CPU.keyPressed !== CPU.registers[x])
+						CPU.pc += 4;
+					else
+						CPU.pc += 2;
+
+					break;
+
+			break;
+			}
+
+		case 0xf:
+
+			switch (code & 0x00ff) {
+
+				case 0x0007:
+
+					// Fx07 - LD Vx, DT
+
+					let x = (code >>> 8) & 0x0f;
+					CPU.registers[x] = CPU.delay;
+					CPU.pc += 2;
+
+					break;
+
+				case 0x000a:
+
+					// Fx0A - LD Vx, K
+
+					let x = (code >>> 8) & 0x0f;
+					CPU.registers[x] = CPU.keyPressed;
+					CPU.pc += 2;
+
+					break;
+
+				case 0x0015:
+
+					// Fx15 - LD DT, Vx
+
+					let x = (code >>> 8) & 0x0f;
+					CPU.delay = CPU.registers[x];
+
+					break;
+
+				case 0x0018:
+
+					// Fx18 - LD ST, Vx
+
+					let x = (code >>> 8) & 0x0f;
+					CPU.sound = CPU.registers[x];
+
+					break;
+
+				case 0x001e:
+
+					// Fx1E - ADD I, Vx
+
+					break;
+
+				case 0x0029:
+
+					// Fx29 - LD F, Vx
+					
+					break;
+
+				case 0x0033:
+
+					// Fx33 - LD B, Vx
+				
+					break;
+
+				case 0x0055:
+
+					// Fx55 - LD [I], Vx
+
+					break;
+
+				case 0x0065:
+
+					// Fx65 - LD Vx, [I]
+
+					break;
+
+			}
+
+			break;
+	}
+}
+
+function emulateOpcode (c8, opcode) {
+	let code = opcode;		// 1111-2222-3333-4444
+
+	switch (code >>> 12) {
+		case 0x0:
+			
+			switch (opcode & 0x0fff) {
+
+				case 0x0e0:
+
+					// 00E0 - CLS
+
+					break;
+			
+				case 0x0ee:
+
+					// 00EE - RET
+					c8.pc = c8.stack[c8.stackPointer];
+					c8.stack.pop();
+					c8.stackPointer--;
+
+					break;
+
+				default:
+
+					// 0nnn - SYS addr
+					c8.pc = code & 0x0fff;
+
+					break;
+				}
+
+				break;
+
+		case 0x1:
+
+			// 1nnn - JP addr
+			c8.pc = (code & 0x0fff)
+
+			break;
+
+		case 0x2:
+
+			// 2nnn - CALL addr
+			c8.stack.push(pc + 2);
+			c8.stackPointer++;
+			c8.pc = (code & 0x0fff);
+
+			break;
+
+		case 0x3:
+
+			// 3xkk - SE Vx, byte
+			let x = code >>> 8;
+			x = x & 0x0f;
+			if (c8.registers[x] === (code & 0x00ff))
+				c8.pc += 2;
+			c8.pc += 2;
+
+			break;
+
+		case 0x4:
+
+			// 4xkk - SNE Vx, byte
+			let x = (code >>> 8) & 0x0f;
+			if (c8.registers[x] !== (code & 0x00ff))
+				c8.pc += 2;
+			c8.pc += 2;
+
+			break;
+
+		case 0x5:
+			
+			// 5xy0 - SE Vx, Vy
+			let x = (code >>> 8) & 0x0f;
+			let y = (code >>> 4) & 0x00f;
+			if (c8.registers[x] === c8.registers[y])
+				c8.pc += 2;
+			c8.pc += 2;
+
+			break;
+
+		case 0x6:
+
+			// 6xkk - LD Vx, byte
+			let x = (code >>> 8) & 0x0f;
+			let kk = code & 0x00ff;
+			c8.registers[x] = kk;
+			c8.pc += 2;
+
+			break;
+
+		case 0x7:
+			
+			// 7xkk - ADD Vx, byte
+			let x = (code >>> 8) & 0x0f;
+			let kk = code & 0x00ff;
+			c8.registers[x] += kk;
+			c8.pc += 2;
+
+			break;
+
+		case 0x8:
+
+			switch (code & 0x000f) {
+
+				case 0x0:
+
+					// 8xy0 - LD Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					c8.registers[x] = c8.registers[y];
+					c8.pc += 2;
+
+					break;
+			
+				case 0x1:
+
+					// 8xy1 - OR Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					c8.registers[x] = c8.registers[x] | c8.registers[y];
+					c8.pc += 2;
+
+					break;
+			
+				case 0x2:
+
+					// 8xy2 - AND Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					c8.registers[x] = c8.registers[x] & c8.registers[y];
+					c8.pc += 2;
+
+					break;
+			
+				case 0x3:
+
+					// 8xy3 - XOR Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					c8.registers[x] = c8.registers[x] ^ c8.registers[y];
+					c8.pc += 2;
+
+					break;
+			
+				case 0x4:
+
+					// 8xy4 - ADD Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					c8.registers[x] += c8.registers[y];
+					if (c8.registers[x] > 255) {
+						c8.registers[15] = 1;		// Vf = Carry
+						c8.registers[x] = c8.registers[x] & 0x0f; // CHECKKKKKKKKK
+					}
+					c8.pc += 2;
+
+					break;
+			
+				case 0x5:
+
+					// 8xy5 - SUB Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					c8.registers[x] -= c8.registers[y];
+					if (c8.registers[x] > c8.registers[y])	// Vf = Not Borrow
+						c8.registers[15] = 1;
+					c8.pc += 2;
+
+					break;
+			
+				case 0x6:
+
+					// 8xy6 - SHR Vx {, Vy}
+			
+				case 0x7:
+
+					// 8xy7 - SUBN Vx, Vy
+					let x = (code >>> 8) & 0x0f;
+					let y = (code >>> 4) & 0x00f;
+					c8.registers[x] = c8.registers[y] - c8.registers[x];
+					if (c8.registers[y] > c8.registers[x])	// Vf = Not Borrow
+						c8.registers[15] = 1;
+					c8.pc += 2;
+
+					break;
+			
+				case 0xe:
+
+					// 8xyE - SHL Vx {, Vy}
+
+			}
+
+		case 0x9:
+			
+			// 9xy0 - SNE Vx, Vy
+			let x = (code >>> 8) & 0x0f;
+			let y = (code >>> 4) & 0x00f;
+			if (c8.registers[x] !== c8.registers[y])
+				c8.pc += 2;
+			c8.pc += 2;
+
+			break;
+
+		case 0xa:
+
+			// Annn - LD I, addr
+			c8.register_i = code & 0x0fff;
+			c8.pc += 2;
+
+			break;
+
+		case 0xb:
+			
+			// Bnnn - JP V0, addr
+			let nnn = 0x0fff;
+			c8.pc = c8.registers[0] + nnn;
+
+			break;
+
+		case 0xc:
+			
+			// Cxkk - RND Vx, byte
+			let x = (code >>> 8) & 0x0f;
+			let random_byte = Math.floor(Math.random() * 256);		// 0 to 255
+			c8.registers[x] = random_byte;
+			c8.pc += 2;
+
+			break;
+
+		case 0xd:
+			
+			// Dxyn - DRW Vx, Vy, nibble
+
+			break;
+
+		case 0xe:
+			
+			switch (code & 0x00ff) {
+
+				case 0x009e:
+
+					// Ex9E - SKP Vx
+
+					let x = (code >>> 8) & 0x0f;
+					if (c8.keyPressed === c8.registers[x])
+						c8.pc += 2;
+					c8.pc += 2;
+
+					break;
+
+				case 0x00a1:
+
+					// ExA1 - SKNP Vx
+
+					let x = (code >>> 8) & 0x0f;
+					if (c8.keyPressed !== c8.registers[x])
+						c8.pc += 2;
+					c8.pc += 2;
+
+					break;
+
+			break;
+			}
+
+		case 0xf:
+
+			switch (code & 0x00ff) {
+
+				case 0x0007:
+
+					// Fx07 - LD Vx, DT
+
+					let x = (code >>> 8) & 0x0f;
+					c8.registers[x] = c8.delay;
+					c8.pc += 2;
+
+					break;
+
+				case 0x000a:
+
+					// Fx0A - LD Vx, K
+
+					let x = (code >>> 8) & 0x0f;
+					c8.registers[x] = c8.keyPressed;
+					c8.pc += 2;
+
+					break;
+
+				case 0x0015:
+
+					// Fx15 - LD DT, Vx
+
+					let x = (code >>> 8) & 0x0f;
+					c8.delay = c8.registers[x];
+
+					break;
+
+				case 0x0018:
+
+					// Fx18 - LD ST, Vx
+
+					let x = (code >>> 8) & 0x0f;
+					c8.sound = c8.registers[x];
+
+					break;
+
+				case 0x001e:
+
+					// Fx1E - ADD I, Vx
+
+					break;
+
+				case 0x0029:
+
+					// Fx29 - LD F, Vx
+					
+					break;
+
+				case 0x0033:
+
+					// Fx33 - LD B, Vx
+				
+					break;
+
+				case 0x0055:
+
+					// Fx55 - LD [I], Vx
+
+					break;
+
+				case 0x0065:
+
+					// Fx65 - LD Vx, [I]
+
+					break;
+
+			}
+
+			break;
+	}
+}
