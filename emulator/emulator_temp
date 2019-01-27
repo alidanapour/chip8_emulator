@@ -27,8 +27,8 @@ function CPU_init () {
 }
 
 
-function emulateOpcode (c8 :any, opcode :number) {
-	let code :number = opcode;		                // 1111-2222-3333-4444
+function emulateOpcode (c8 :any) {
+	let code :number = (c8.memory[c8.pc] << 8) | (c8.memory[c8.pc + 1]);        // 1111-2222-3333-4444
     let x :number = (code >>> 8) & 0x0f;            // 0x00
     let y :number = (code >>> 4) & 0x00f;           // 00y0
     let kk :number = code & 0x00ff;                 // 00kk
