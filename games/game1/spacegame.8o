@@ -2,15 +2,32 @@
 #Developed by Team 10, CMPT 276, SFU Spring 2019
 
 
-#TODO: Start screen sprites
+#Start SpaceGame screen sprites
+: space1Sprite 0x77 0x84 0x84 0x67 0x14 0x14 0xE4
+: space2Sprite 0x18 0xA4 0xA5 0x3D 0x25 0x24 0x24
+: space3Sprite 0x6F 0x88 0x08 0x0E 0x08 0x88 0x6F
+: space4Sprite 0x89 0x8A 0x8A 0xAB 0xAA 0xAA 0x52
+: space5Sprite 0x8C 0x52 0x52 0xDC 0x54 0x52 0x52
+: space6Sprite 0xF0 0x80 0x40 0x40 0x20 0x10 0xF0
+: bigShip1 0x30 0x30 0x3C 0x3C 0x3C 0xFF 0xFF 0xFF 0xFF 0xFF 0x3C 0x3C 0x3C 0x30 0x30
 
 #Initialize Sprites
-
 : player 0x40 0x60 0xFC 0xFF 0x60 0x40
 : enemy 0x0E 0x02 0x3F 0xFF 0x02 0x0E
-: field 0xC8 0xEA 0x60 0x06 0x06 0xE2 0x60 0x06 0xE6 0xD0 0x33 0x21 0x25 0x88 0x61
+: field 0x00 0x18 0x1E 0x0E 0x00 0xC0 0xC6 0x0F 0x0F 0x06 0x02 0x00 0x70 0xF0 0x60
 : laser 0x80
-: vborder 0xAA
+: vborder 0xff
+
+#Initialize explosion sprites
+: expl1 0xA0 0x40 0xA0
+: expl2 0x88 0x50 0x20 0x50 0x88
+: expl3 0x82 0x54 0x38 0x7C 0x38 0x54 0x82
+
+#Initialize Score Sprites
+: zeroScore 0x3C 0x3C 0xC3 0xC3 0xC3 0xC3 0xC3 0xC3 0xC3 0x3C 0x3C
+: oneScore 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18
+: twoScore 0xFF 0xFF 0x03 0x03 0xFF 0xFF 0xC0 0xC0 0xC0 0xFF 0xFF 
+: dash 0x00 0x00 0x00 0x00 0x3C 0x3C
 
 #Initialize register map (aliases used in octo)
 
@@ -25,7 +42,10 @@
 :alias enemyLaserXPos v7 #Enemy laser x position
 :alias enemyLaserYPos v6 #Enemy laser y position
 :alias enemyLaser v5 #Used to track if laser has fired from the enemy
-#v0-v4 will be used as scratch registers. vf is used to detect collision
+
+:alias playerScore v3
+:alias enemyScore v4
+#v0-v2 will be used as scratch registers. vf is used to detect collision
 
 ################################################################
 #Define Functions:
@@ -51,7 +71,9 @@
   if v1 == 0 then v1 := 1
   if v1 == 27 then v1 := 26
   if v2 == 0 then v2 := 1
-  if v2 == 26 then v2 := 25
+  if v2 == 22 then v2 := 21
+  
+
   
   #Now we will redraw the player. This will be done by first deleting the old
   #player and then redrawing the player in the new position
@@ -60,9 +82,20 @@
   playerXPos := v1
   playerYPos := v2
   sprite playerXPos playerYPos 6
-  
-  #If player ship has collided then #TODO: End round
-  if vf != 0 then clear
+;
+
+: moveEnemy
+	#First we will copy the players x&y positions into v1 and v2
+  v1 := enemyXPos
+  v2 := enemyYPos
+    
+  #Now we will redraw the player. This will be done by first deleting the old
+  #player and then redrawing the player in the new position
+	i := enemy
+  sprite enemyXPos enemyYPos 6
+  enemyXPos := v1
+  enemyYPos := v2
+  sprite enemyXPos enemyYPos 6
 ;
 
 : firePlayerLaser
@@ -72,7 +105,7 @@
   
   #place laser infront of player
   playerLaserXPos := playerXPos
-  playerLaserXPos += 8
+  playerLaserXPos += 9
   playerLaserYPos := playerYPos
   playerLaserYPos += 3
   i := laser
@@ -88,9 +121,10 @@
   sprite playerLaserXPos playerLaserYPos 1
   playerLaserXPos += 1  
   
-  #Check if the laser is on the rightmost edge, if so set laser to 0 and return
-  if playerLaserXPos == 62 begin
+  #Check if the laser is on the rightmost edge, if so set laser to 0, reset flag and return
+  if playerLaserXPos == 63 begin
   	playerLaser := 0
+    vf := 0
   	return
   end
   
@@ -100,17 +134,67 @@
   #Detect if collision has occured using vf. If no collision, return.
   if vf == 0 then return
   
-  #If collision has occured then set laser to 0 (i.e. it has disappeared)
+  #If collision has occured then set laser to 0 (i.e. it has disappeared) and reset vf flag
   playerLaser := 0
+  vf := 0
 ;
+ 
+: startScreen
+	clear
+	i := space1Sprite
+  v0 := 2
+  v1 := 2
+  sprite v0 v1 7
+  i := space2Sprite
+  v0 := 10
+  v1 := 2
+  sprite v0 v1 7
+  i := space3Sprite
+  v0 := 18
+  v1 := 2
+  sprite v0 v1 7
+  i := space4Sprite
+  v0 := 27
+  v1 := 6
+  sprite v0 v1 7
+  i := space5Sprite
+  v0 := 35
+  v1 := 6
+  sprite v0 v1 7
+  i := space6Sprite
+  v0 := 43
+  v1 := 6
+  sprite v0 v1 7
   
+  #Draw big ship
+  i := bigShip1
+  v0 := 0
+  v1 := 16
+  sprite v0 v1 15
+  #Set delay to 200 and call delayTimer
+  v0 := 200
+  delayTimer
+  clear
+;
 
-###########################################
-#Main
+#This function is used to create a delay (start screen/round screens)
+# MUST PASS v0 REGISTER FOR DELAY TIME
+: delayTimer
+	delay := v0
+	loop
+		vf := delay
+		if vf != 0 then
+	again
+	#vf := 100 #This may be required
+	#delay := vf
+;
 
-: main
+#Initiates a new round. Clears the screen and sets the field and players
+: newRound
+	clear
+  displayScore
 	#Place multiple field sprites on screen
-	i := field
+  i := field
   v0 := 28
   v1 := 12
   sprite v0 v1 15
@@ -118,45 +202,166 @@
   v1 := 2
   sprite v0 v1 15
   
-  #Set borders onto screen
-
-	#First we set the top border of the screen with a loop
+  #Set the bottom border.
   v0 := 0
-  v1 := 0
-  loop
-    i := vborder
-    sprite v0 v1 1
-    v0 += 8
-  	if v0 != 64 then
-  again
-  
-  #Now we set the bottom border.
-  v0 := 0
-  v1 := 63 #bottom
+  v1 := 59 #bottom
   loop
   	i := vborder
     sprite v0 v1 1
     v0 += 8
   	if v0 != 64 then
   again
-  
-  
+   
   #Place initial player and enemy on screen
   playerXPos := 5
   playerYPos := 10
   
   enemyXPos := 51
   enemyYPos := 10
-  
+	 
   i := player
   sprite playerXPos playerYPos 6
   i := enemy
   sprite enemyXPos enemyYPos 6
+;
+
+#This function will write the score to the screen v3 = player, v4 = enemy
+: displayScore
+	#Draw player score first
+	if v3 == 0 then i := zeroScore
+  if v3 == 1 then i := oneScore
+  if v3 == 2 then i := twoScore
+  
+  v0 := 17
+  v1 := 10
+  sprite v0 v1 11
+  
+  #Draw dash
+  i := dash
+  v0 := 27
+  sprite v0 v1 6 
+  
+  #Now the same process for enemy score
+ 	if v4 == 0 then i := zeroScore
+  if v4 == 1 then i := oneScore
+  if v4 == 2 then i := twoScore
+  
+  v0 := 37
+  v1 := 10
+  sprite v0 v1 11
+  
+  #Set a delay and then clear the screen
+	v0 := 100
+  delayTimer
+  clear
+;
+
+# Create a detonation animation and write a lose screen
+: playerLose
+	#Add 1 to enemy score
+  v4 += 1
+
+	#Set v1,v2 to x,y of player and remove player sprite
+  v1 := playerXPos
+  v2 := playerYPos
+  i := player
+  sprite playerXPos playerYPos 6
+  
+  #Now center x,y for the explosion sprites and set delay to 10
+  v1 += 1
+  v2 += 2
+  v0 := 10
+   
+  i := expl1
+  sprite v1 v2 3 
+  delayTimer
+  sprite v1 v2 3
+  
+  v1 += -1
+  v2 += -1
+  i := expl2
+  sprite v1 v2 5 
+  delayTimer
+  sprite v1 v2 5
+  
+  v1 += -1
+  v2 += -1
+  i := expl3
+  sprite v1 v2 7 
+  delayTimer
+  sprite v1 v2 7  
+;
+
+: enemyLose
+	#Add one to player score
+  v3 += 1
+
+	#Set v1,v2 to x,y of player and remove player sprite
+  v1 := enemyXPos
+  v2 := enemyYPos
+  i := enemy
+  sprite enemyXPos enemyYPos 6
+  
+  #Now center x,y for the explosion sprites and set delay to 10
+  v1 += 1
+  v2 += 2
+  v0 := 10
+   
+  i := expl1
+  sprite v1 v2 3 
+  delayTimer
+  sprite v1 v2 3
+  
+  v1 += -1
+  v2 += -1
+  i := expl2
+  sprite v1 v2 5 
+  delayTimer
+  sprite v1 v2 5
+  
+  v1 += -1
+  v2 += -1
+  i := expl3
+  sprite v1 v2 7 
+  delayTimer
+  sprite v1 v2 7  
+;
+
+
+#TODOs:
+: checkScore
+;
+
+: gameOver
+;
+
+
+###########################################
+#Main
+: main
+  startScreen
+	newRound
   
   #MAIN PROGRAM LOOP:
   loop
+		#call checkScore
+    checkScore
+  
   	#call both move player and enemy
-  	movePlayer 
+    movePlayer 
+     #If player ship has collided or shot down then call playerlose and begin a new round
+     if vf != 0 begin
+ 			 playerLose
+			 newRound
+		 end
+		
+    moveEnemy
+    	#If enemy ship is shot down call enemylose and begin a new round
+       if vf != 0 begin
+ 			 enemyLose
+			 newRound
+		 end
+     
     #call fire player laser
     if playerLaser != 0 then movePlayerLaser
     if playerLaser == 0 then firePlayerLaser
