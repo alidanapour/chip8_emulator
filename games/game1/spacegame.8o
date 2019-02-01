@@ -2,7 +2,7 @@
 #Developed by Team 10, CMPT 276, SFU Spring 2019
 
 
-#Start SpaceGame screen sprites
+#Initialize start screen sprites
 : space1Sprite 0x77 0x84 0x84 0x67 0x14 0x14 0xE4
 : space2Sprite 0x18 0xA4 0xA5 0x3D 0x25 0x24 0x24
 : space3Sprite 0x6F 0x88 0x08 0x0E 0x08 0x88 0x6F
@@ -10,6 +10,7 @@
 : space5Sprite 0x8C 0x52 0x52 0xDC 0x54 0x52 0x52
 : space6Sprite 0xF0 0x80 0x40 0x40 0x20 0x10 0xF0
 : bigShip1 0x30 0x30 0x3C 0x3C 0x3C 0xFF 0xFF 0xFF 0xFF 0xFF 0x3C 0x3C 0x3C 0x30 0x30
+: bigShip2 0x00 0x00 0x00 0x00 0x00 0xF0 0xF0 0xFF 0xFF 0xFF 0x00 0x00 0x00 0x00 0x00
 
 #Initialize Sprites
 : player 0x40 0x60 0xFC 0xFF 0x60 0x40
@@ -50,6 +51,8 @@
 ################################################################
 #Define Functions:
 
+##### M O V E M E N T ####
+
 : movePlayer
 	#First we will copy the players x&y positions into v1 and v2
   v1 := playerXPos
@@ -73,8 +76,6 @@
   if v2 == 0 then v2 := 1
   if v2 == 22 then v2 := 21
   
-
-  
   #Now we will redraw the player. This will be done by first deleting the old
   #player and then redrawing the player in the new position
 	i := player
@@ -97,6 +98,10 @@
   enemyYPos := v2
   sprite enemyXPos enemyYPos 6
 ;
+
+
+
+#### L A S E R  - F U N C T I O N S ####
 
 : firePlayerLaser
 	#First detect if key is pressed. If it isnt, break out of firePlayerLaser
@@ -138,8 +143,51 @@
   playerLaser := 0
   vf := 0
 ;
+
+: fireEnemyLaser
+  #place laser infront of player
+  enemyLaserXPos := enemyXPos
+  v0 := 2
+  enemyLaserXPos -= v0
+  enemyLaserYPos := enemyYPos
+  enemyLaserYPos += 3
+  i := laser
+  sprite enemyLaserXPos enemyLaserYPos 1
+  
+  #set playerLaser to 1, indicating a laser is on the screen
+  enemyLaser := 1
+;
+
+: moveEnemyLaser
+	#Clear the laser at current position
+	i := laser
+  sprite enemyLaserXPos enemyLaserYPos 1
+  v0 := 1
+  enemyLaserXPos -= v0  
+  
+  #Check if the laser is on the leftmost edge, if so set laser to 0, reset flag and return
+  if enemyLaserXPos == 1 begin
+  	enemyLaser := 0
+    vf := 0
+  	return
+  end
+  
+  #Draw a laser sprite to the new position
+  sprite enemyLaserXPos enemyLaserYPos 1
+    
+  #Detect if collision has occured using vf. If no collision, return.
+  if vf == 0 then return
+  
+  #If collision has occured then set laser to 0 (i.e. it has disappeared) and reset vf flag
+  enemyLaser := 0
+  vf := 0
+;
  
+ 
+#### G A M E - C O N T R O L ####
+
 : startScreen
+	#Draw Title
 	clear
 	i := space1Sprite
   v0 := 2
@@ -167,14 +215,51 @@
   sprite v0 v1 7
   
   #Draw big ship
+  #Here we are going to use the player x&y pos. Since the start screen is used only once,
+  #this shouldnt interfere with the game.
+   
   i := bigShip1
-  v0 := 0
-  v1 := 16
-  sprite v0 v1 15
-  #Set delay to 200 and call delayTimer
-  v0 := 200
+  playerXPos := 1
+  playerYPos := 16
+  sprite playerXPos playerYPos 15
+  
+  i := bigShip2
+  playerXPos := 9
+  playerYPos := 16
+  sprite playerXPos playerYPos 15
+  
+  #Reset playerXPos and playerYPos to the first sprite (to aid in moving in moveBigShip)
+  playerXPos := 1
+  playerYPos := 16
+;
+
+: moveBigShip
+	#Clear first sprite, set X pos to +8 and clear the second sprite
+	i := bigShip1
+  sprite playerXPos playerYPos 15
+  playerXPos += 8
+  i := bigShip2
+  sprite playerXPos playerYPos 15
+  
+  #Now reset the X Pos but offset by one
+  v0 := 7
+  playerXPos -= v0
+  
+  #Redraw big ship using method above
+  i := bigShip1
+  sprite playerXPos playerYPos 15
+  playerXPos += 8
+  i := bigShip2
+  sprite playerXPos playerYPos 15
+  
+  #Reset player XPos but no offset
+  v0 := 8
+  playerXPos -= v0
+  
+  #Delay timer so ship doesnt zoom
+  v0 := 20
   delayTimer
-  clear
+
 ;
 
 #This function is used to create a delay (start screen/round screens)
@@ -185,12 +270,15 @@
 		vf := delay
 		if vf != 0 then
 	again
-	#vf := 100 #This may be required
-	#delay := vf
 ;
 
 #Initiates a new round. Clears the screen and sets the field and players
 : newRound
+
+	#Reset player and enemy lasers
+	playerLaser := 0
+  enemyLaser := 0
+  
 	clear
   displayScore
 	#Place multiple field sprites on screen
@@ -223,6 +311,7 @@
   sprite playerXPos playerYPos 6
   i := enemy
   sprite enemyXPos enemyYPos 6
+   
 ;
 
 #This function will write the score to the screen v3 = player, v4 = enemy
@@ -340,6 +429,12 @@
 #Main
 : main
   startScreen
+  #Create a loop for the startscreen
+ 	loop
+  	moveBigShip
+  	v0 := 6
+ 		if v0 -key then 
+  again
 	newRound
   
   #MAIN PROGRAM LOOP:
@@ -347,7 +442,7 @@
 		#call checkScore
     checkScore
   
-  	#call both move player and enemy
+  	#call move player
     movePlayer 
      #If player ship has collided or shot down then call playerlose and begin a new round
      if vf != 0 begin
@@ -355,6 +450,7 @@
 			 newRound
 		 end
 		
+    #Call move enemy
     moveEnemy
     	#If enemy ship is shot down call enemylose and begin a new round
        if vf != 0 begin
@@ -365,6 +461,11 @@
     #call fire player laser
     if playerLaser != 0 then movePlayerLaser
     if playerLaser == 0 then firePlayerLaser
+    
+    #call fire enemy laser
+    if enemyLaser != 0 then moveEnemyLaser
+    if enemyLaser == 0 then fireEnemyLaser
+    
   again
   
  ;
