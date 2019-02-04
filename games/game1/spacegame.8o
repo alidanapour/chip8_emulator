@@ -17,7 +17,7 @@
 : enemy 0x0E 0x02 0x3F 0xFF 0x02 0x0E
 : field 0x00 0x18 0x1E 0x0E 0x00 0xC0 0xC6 0x0F 0x0F 0x06 0x02 0x00 0x70 0xF0 0x60
 : laser 0x80
-: vborder 0xff
+: vborder 0xAA
 
 #Initialize explosion sprites
 : expl1 0xA0 0x40 0xA0
@@ -28,7 +28,26 @@
 : zeroScore 0x3C 0x3C 0xC3 0xC3 0xC3 0xC3 0xC3 0xC3 0xC3 0x3C 0x3C
 : oneScore 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18
 : twoScore 0xFF 0xFF 0x03 0x03 0xFF 0xFF 0xC0 0xC0 0xC0 0xFF 0xFF 
-: dash 0x00 0x00 0x00 0x00 0x3C 0x3C
+: threeScore 0xFF 0xFF 0x03 0x03 0x03 0xFF 0xFF 0x03 0x03 0xFF 0xFF
+: bigDash 0x00 0x00 0x00 0x00 0x3C 0x3C
+: smallDash 0x38
+
+#Initialize Win/Lose Sprites
+: you1 0x89 0x8A 0x8A 0x72 0x22 0x22 0x22 0x22 0x21
+: you2 0xC8 0x28 0x28 0x28 0x28 0x28 0x28 0x28 0xC7
+: you3 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x00
+: win1 0x8B 0x88 0x88 0x88 0xA8 0xA8 0xA8 0xA8 0x53
+: win2 0xE8 0x8C 0x8A 0x8A 0x8A 0x8A 0x8A 0x89 0xE8
+: win3 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80
+: lose1 0x81 0x82 0x82 0x82 0x82 0x82 0x82 0x82 0xF9
+: lose2 0xC7 0x28 0x28 0x28 0x27 0x20 0x20 0x20 0xCF
+: lose3 0xBE 0x20 0x20 0x20 0x3C 0xA0 0xA0 0xA0 0x3E
+: again1 0xF7 0x94 0x94 0xF5 0x94 0x97
+: again2 0xBD 0x24 0x3C 0xA4 0xA4 0xA5
+: again3 0xE9 0x8D 0x8D 0x8B 0x8B 0xE9
+: again4 0x70 0x50 0x10 0x27 0x00 0x20
+: again5 0xC2 0x22 0x10 0xF0 0x20 0xC0
+: again6 0xF4 0x84 0x80 0xF0 0x80 0xF0
 
 #Initialize register map (aliases used in octo)
 
@@ -72,9 +91,9 @@
   #Here we restrict the players movement so that it doesnt touch
   #the top, bottom, and left borders.
   if v1 == 0 then v1 := 1
-  if v1 == 27 then v1 := 26
+  if v1 == 36 then v1 := 35
   if v2 == 0 then v2 := 1
-  if v2 == 22 then v2 := 21
+  if v2 == 21 then v2 := 20
   
   #Now we will redraw the player. This will be done by first deleting the old
   #player and then redrawing the player in the new position
@@ -279,26 +298,44 @@
 	playerLaser := 0
   enemyLaser := 0
   
+  #Clear and display the big score
 	clear
   displayScore
+  
 	#Place multiple field sprites on screen
   i := field
   v0 := 28
-  v1 := 12
+  v1 := 11
   sprite v0 v1 15
   v0 := 24
-  v1 := 2
+  v1 := 1
   sprite v0 v1 15
   
-  #Set the bottom border.
+  #Set the bottom border and the score 'dash'
   v0 := 0
-  v1 := 59 #bottom
+  v1 := 58 #bottom
   loop
   	i := vborder
     sprite v0 v1 1
     v0 += 8
   	if v0 != 64 then
   again
+  
+  v0 := 0
+  v1 := 0
+   loop
+  	i := vborder
+    sprite v0 v1 1
+    v0 += 8
+  	if v0 != 64 then
+  again
+  
+  i := smallDash
+  v0 := 28
+  v1 := 61
+  sprite v0 v1 1
+  #Update small score by calling updatescore
+  updateScore
    
   #Place initial player and enemy on screen
   playerXPos := 5
@@ -314,19 +351,33 @@
    
 ;
 
+#Places a small score on the bottom of the screen for the player using the BUILT IN chip-8 characters
+: updateScore
+	v0 := 24
+  v1 := 27
+	i  := hex playerScore 
+	sprite v0 v1 5
+    
+  v0 := 35
+  v1 := 27
+	i  := hex enemyScore 
+	sprite v0 v1 5
+;
+
 #This function will write the score to the screen v3 = player, v4 = enemy
 : displayScore
 	#Draw player score first
 	if v3 == 0 then i := zeroScore
   if v3 == 1 then i := oneScore
   if v3 == 2 then i := twoScore
+  if v3 == 3 then i := threeScore
   
   v0 := 17
   v1 := 10
   sprite v0 v1 11
   
   #Draw dash
-  i := dash
+  i := bigDash
   v0 := 27
   sprite v0 v1 6 
   
@@ -334,14 +385,16 @@
  	if v4 == 0 then i := zeroScore
   if v4 == 1 then i := oneScore
   if v4 == 2 then i := twoScore
+  if v4 == 3 then i := threeScore
   
   v0 := 37
   v1 := 10
   sprite v0 v1 11
   
-  #Set a delay and then clear the screen
+  #Set a delay and check score, if no win condition then clear and continue
 	v0 := 100
   delayTimer
+  checkScore
   clear
 ;
 
@@ -417,19 +470,163 @@
 ;
 
 
-#TODOs:
+# This function checks the score and calls the appropriate win/lose function if applicable
 : checkScore
+if playerScore == 3 then gameOverWin
+if enemyScore == 3 then gameOverLose
 ;
 
-: gameOver
+#This function displays the game win screen. It also prompts the user for another new game
+: gameOverWin
+v0 := 9
+v1 := 56
+
+i := again1
+sprite v0 v1 6
+
+i := again2
+v0 += 8
+sprite v0 v1 6
+
+i := again3
+v0 += 8
+sprite v0 v1 6
+
+i := again4
+v0 += 8
+sprite v0 v1 6
+
+i := again5
+v0 += 8
+sprite v0 v1 6
+
+i := again6
+v0 += 8
+sprite v0 v1 6
+
+#This loop flashes the "YOU WIN" on the screen, it also checks if the player wants to play again at the end of the loop
+loop
+
+	v0 := 1
+	v1 := 0
+
+	i := you1
+	sprite v0 v1 9
+
+	i := you2
+	v0 += 8
+	sprite v0 v1 9
+
+	i := you3
+	v0 += 8
+	sprite v0 v1 9
+
+	i := win1
+	v0 += 29
+	sprite v0 v1 9
+
+	i := win2
+	v0 += 8
+	sprite v0 v1 9
+
+	i := win3
+	v0 += 8
+	sprite v0 v1 9
+
+	v0 := 7
+	delayTimer
+
+#Check if player wants to play again (i.e. if they have pressed E)
+	v2 := 6
+	if v2 -key then 
+again
+
+#Once player chooses to play again we call reset score
+resetScore
 ;
+
+#Same as function above, except for lose condition 
+: gameOverLose
+v0 := 9
+v1 := 56
+
+i := again1
+sprite v0 v1 6
+
+i := again2
+v0 += 8
+sprite v0 v1 6
+
+i := again3
+v0 += 8
+sprite v0 v1 6
+
+i := again4
+v0 += 8
+sprite v0 v1 6
+
+i := again5
+v0 += 8
+sprite v0 v1 6
+
+i := again6
+v0 += 8
+sprite v0 v1 6
+
+#This loop flashes the "YOU LOSE" on the screen, it also checks if the player wants to play again at the end of the loop
+loop
+
+	v0 := 1
+	v1 := 0
+
+	i := you1
+	sprite v0 v1 9
+
+	i := you2
+	v0 += 8
+	sprite v0 v1 9
+
+	i := you3
+	v0 += 8
+	sprite v0 v1 9
+
+	i := lose1
+	v0 += 23
+	sprite v0 v1 9
+
+	i := lose2
+	v0 += 8
+	sprite v0 v1 9
+
+	i := lose3
+	v0 += 8
+	sprite v0 v1 9
+
+	v0 := 7
+	delayTimer
+
+#Check if player wants to play again (i.e. if they have pressed E)
+	v2 := 6
+	if v2 -key then 
+again
+
+#Once player chooses to play again we reset score
+resetScore
+;
+
+#WARNING: IT IS CRUCIAL FOR THIS FUNCTION TO BE RIGHT BEFORE MAIN, IT RESETS THE SCORE TO ZERO AND THEN BEGINS A NEW
+# GAME BY HAVING THE NEXT INSTRUCTION START AT MAIN (below). NOTE HOW THERE IS NO ';'
+: resetScore
+	v3 := 0
+	v4 := 0
+  clear
 
 
 ###########################################
 #Main
 : main
   startScreen
-  #Create a loop for the startscreen
+  #Create a loop for the startscreen. Game wont start until 'E' is pressed.
  	loop
   	moveBigShip
   	v0 := 6
@@ -439,8 +636,6 @@
   
   #MAIN PROGRAM LOOP:
   loop
-		#call checkScore
-    checkScore
   
   	#call move player
     movePlayer 
