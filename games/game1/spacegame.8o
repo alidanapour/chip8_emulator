@@ -105,11 +105,21 @@
 ;
 
 : moveEnemy
-	#First we will copy the players x&y positions into v1 and v2
+	#First we will copy the enemy x&y positions into v1 and v2
   v1 := enemyXPos
   v2 := enemyYPos
     
-  #Now we will redraw the player. This will be done by first deleting the old
+  #Call enemyAi, will produce a random directon for the enemy
+  enemyAi
+  v0 := 0
+  #Here we restrict the enemy movement so that it doesnt touch
+  #the top, bottom, and left borders.
+  if v1 == 56 then v1 := 55
+  if v1 == 35 then v1 := 36
+  if v2 == 0 then v2 := 1
+  if v2 == 21 then v2 := 20 
+   
+  #Now we will redraw the enemy. This will be done by first deleting the old
   #player and then redrawing the player in the new position
 	i := enemy
   sprite enemyXPos enemyYPos 6
@@ -117,6 +127,28 @@
   enemyYPos := v2
   sprite enemyXPos enemyYPos 6
 ;
+
+
+#### E N E M Y - A I ####
+#This next segment is a modified portion of code based on John Earnest Octo project.
+#EnemyAi sets a random integer for v0 performs an AND operation using 0b11100.
+#Using v0, we then perform a random jump to aiRandomizer which produces a random v1/v2 direction
+#0b11100 is used because it ensures v0 is a multiple of 4 (a instruction with a return instruction is 4 bytes)
+
+: enemyAi
+	v0 := random 0b11100
+	jump0 aiRandomizer
+;
+
+: aiRandomizer
+	v1 += 1           return
+	v1 += -1 					return
+	return 						return
+	return           	return
+	v2 += 1           return
+	v2 += -1          return
+;
+
 
 
 
