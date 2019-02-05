@@ -92,6 +92,8 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
 
+**UPDATE**: **Febuary 4, 2018**: Implementing all 36 opcodes instead of split them between Release 1 and 2. Add [1.2.3] Screen implementation as a subtask for deliverable [1.2] Emulator. Update owners for subtask [1.2.2] and [1.2.3]. 
+
 |   Deliverable	|   Estimated Efforts (hours)	|   Actual Efforts (hours)  | Planned Release |Owner(s)| Deadline|
 |:-	|:-:	|:-:	|:-:	|:-:	|:-:	|
 |**[1.1] Interface**|	|	|	|	|
@@ -99,9 +101,10 @@ The work breakdown and project schedule below are tentative and will be update a
 |[1.1.2] Implemented version|10  | 5 	|0	| Kyle, JJ	|Jan 19	|
 |**[1.2] Emulator**|    |	|	|  |
 |[1.2.1] CPU set-up| 20 	|tba	| 1	| Minh | Jan 25 | 
-|[1.2.2] Opcode implementation (1-13)| 40 	|tba	| 1	|Karan | Feb 3  | 
-|[1.2.3] Input/Output/Sound Implementation| 15	| tba	|1	| Minh, JJ | Feb 3 | 
-|[1.2.4] Final Testing| 30	| tba|2	|Minh, Kyle, JJ, Xinyue | Feb 26 | 
+|[1.2.2] Opcode implementation| 30 	|tba	| 1	|Karan | Feb 6  | 
+|[1.2.3] Screen implementation| 40 	|tba	| 1	|Karan, Kyle | Feb 6  |
+|[1.2.4] Input/Output/Sound implementation| 15	| tba	|1	| Minh, JJ | Feb 6 | 
+|[1.2.5] Final Testing| 30	| tba|2	|Minh, Kyle, Karan| Feb 26 | 
 |**[1.3] Visualizer**|	|	|	|
 |[1.3] Display Register Values|20	|tba	|2	|tba | Feb 15 | 
 |[1.3.1] Display Memory| 25	|tba|2|tba | Feb 15 | 
