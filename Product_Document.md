@@ -80,7 +80,8 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 |Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Jest, Chrome, Firefox|
 |Version control	| All components 	| Git, Github	|
 |Communication	| All components 	| Slack, Discord, Phone	|
-|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet 	|
+|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet 
+**UPDATE**: **Febuary 4, 2018** Migrating to [Wrike](https://www.wrike.com/) for centralization|
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
@@ -125,7 +126,7 @@ The work breakdown and project schedule below are tentative and will be update a
 
 ## Project schedule
 
-**UPDATE**: **Febuary 4, 2018**: After using Trello for tracking progression for Release 0 and 1, we have decided to switch to [Wrike](https://www.wrike.com/) starting from Release 2 to centralize work breakdown and project schedule and tracking in one place, thus marking re-planning easier. *Wrike* has student program which includes all functionalities that we need such as: Kanban Board, Gantt Chart, Time tracking and team collaboration. The project manager has sent a request to Wrike and received a 2-year student plan for a team of up to 15 people, only one member need to submit the request and once approved, can send inviations to other teammates. 
+**UPDATE**: **Febuary 4, 2018**: After using Trello to track project progression for Release 0 and 1, we have decided to switch to [Wrike](https://www.wrike.com/) starting from Release 2 to centralize work breakdown and project schedule and tracking in one place, thus marking re-planning easier. *Wrike* has student program which includes all functionalities that we need (for free) such as: Kanban Board, Gantt Chart, Time tracking and team collaboration. The project manager has sent a request to Wrike and received a 2-year student plan for a team of up to 15 people, only one member need to submit the request and once approved, can send inviations to other teammates. 
 
 The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). An example for release 0 is shown below:
 
