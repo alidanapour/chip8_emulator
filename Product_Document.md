@@ -80,8 +80,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 |Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Jest, Chrome, Firefox|
 |Version control	| All components 	| Git, Github	|
 |Communication	| All components 	| Slack, Discord, Phone	|
-|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet 
-**UPDATE**: **Febuary 4, 2018** Migrating to [Wrike](https://www.wrike.com/) for centralization|
+|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet **UPDATE**: **Febuary 4, 2018** Migrating to [Wrike](https://www.wrike.com/) for centralization|
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
