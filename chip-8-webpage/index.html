@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Karla|Merriweather" rel="stylesheet">   <!--Load fonts from Google-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <!--Load jQuery from Google-->
         <script type="text/javascript" src="scripts/disassembleOpcode.js"></script>
-        <script type="text/javascript" src="scripts/myScreen.js"></script>
+        <script type="text/javascript" src="scripts/screen.js"></script>
     </head>
     <body>
         <h1>Chip-8 Emulator</h1>
@@ -16,7 +16,7 @@
 
         <p>
             This is a <a href="https://en.wikipedia.org/wiki/Chip-8">Chip-8</a> emulator created entirely in JavaScript (TypeScript) by
-            6 students at Simon Fraser University for their project for CMPT 276 - Introduction to Software Engineering.
+            5 students at Simon Fraser University for their project for CMPT 276 - Introduction to Software Engineering.
         </p>
         <p>
             This project consists of 4 main components:
@@ -30,7 +30,7 @@
         <p>
             This is a semester long project and we will have 4 different releases. We aim to have the project completed by the third release.
         </p>
-        <ul id="here"></ul>
+        <ul id="decode-opcode-here"></ul>
 		
 		<input type="text" id="type-opcode-here"/>
 		<input type="button" value="Submit" onclick="disassembleOpcode(document.getElementById('type-opcode-here').value);"/>
@@ -49,7 +49,7 @@
         </div></br>
 
         <div class="display">
-            <canvas id="myScreen" width="640" height="320" style="border: 5px solid;"></canvas>
+            <canvas id="screen-area" width="640" height="320" style="border: 5px solid;"></canvas>
         </div></br>
 
         <div class="keyboard">
@@ -95,12 +95,9 @@
             <div id="ST"></div></br>
         </div> -->
         
-        <!-- <input type='submit' onclick='disassembleOpcode("00E0");' id="btn"/> -->
-
         <script>
-            let canvas = document.getElementById("myScreen");
-            let screen = canvas.getContext("2d");
             setInterval(renderScreen, 100);
+            // requestAnimationFrame(renderScreen); //Comment out the above line and include this one for extra fast frame rate, see screen.js too
         </script>
     </body>
 </html>
