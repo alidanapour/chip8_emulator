@@ -123,7 +123,7 @@ The work breakdown and project schedule below are tentative and will be update a
 
 ## Project schedule
 
-UPDATE: **Febuary 4, 2018**: After using Trello for tracking progression for Release 0 and 1, we have decided to switch to !Wrike[https://www.wrike.com/] starting from Release 2 to centralize work breakdown and project schedule and tracking in one place.  Wrike has student program which includes all functionalities that we need such as: Kanban Board, Gantt Chart, Time tracking and team collaboration. The project manager has sent a request to Wrike and is waiting their response. 
+**UPDATE**: **Febuary 4, 2018**: After using Trello for tracking progression for Release 0 and 1, we have decided to switch to !Wrike(https://www.wrike.com/) starting from Release 2 to centralize work breakdown and project schedule and tracking in one place, thus marking re-planning easier.  Wrike has student program which includes all functionalities that we need such as: Kanban Board, Gantt Chart, Time tracking and team collaboration. The project manager has sent a request to Wrike and is waiting their response. 
 
 The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). An example for release 0 is shown below:
 
