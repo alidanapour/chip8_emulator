@@ -35,10 +35,10 @@ The team has 6 Computer Science undergrads with the following roles:
 
 Note: The 6th member, Xinyue Ma has been recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18.
 
-**For Release 1, these following use cases are scheduled to be delivered**:
+**UPDATED: For Release 1, these following use cases are scheduled to be delivered**:
 
 - CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers should have some default values. 
-- Opcode from 1-13: any chip 8 programs/ROMs that only use these 13 opcodes can be run on the emulator for now.
+- 36 Opcodes: any chip 8 programs/ROMs can be run on the emulator.
 - Input/Output/Sound Implementation: The system gives buzzer sounds whenever the sound timer reaches zero. The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
 
     1	2	3	C  ------>		1	2	3	4 <br>
@@ -48,9 +48,7 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
 
 - Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
 
-**UPDATED**
-
-**For Release 2, these following use cases are scheduled to be delivered**:
+**UPDATED: For Release 2, these following use cases are scheduled to be delivered**:
 
 ### Communication Plan 
 
@@ -92,11 +90,17 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 ## Work breakdown 
 
-[Member availability](https://docs.google.com/spreadsheets/d/1HqADerMmskoAKjknKuDWZFQrG6OZgpwF0acj79XQYGA/edit?usp=sharing)
-
 The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
 
 **UPDATED**: **Febuary 4, 2018**: Implementing all 36 opcodes instead of split them between Release 1 and 2. Add [1.2.3] Screen implementation as a subtask for deliverable [1.2] Emulator. Update owners for subtask [1.2.2] and [1.2.3]. 
+
+**UPDATED**: **Febuary 5, 2018**: Started using Google Spreadsheet for Work Breakdown which allows easier replainning. 
+
+[Link to Work Breakdown Spreadsheet](https://docs.google.com/spreadsheets/d/1HqADerMmskoAKjknKuDWZFQrG6OZgpwF0acj79XQYGA/edit?usp=sharing) 
+
+Bellow is a snapshoot of out current Work Breakdown Spreadsheet:
+
+![WBS example](WBS.PNG)
 
 |   Deliverable	|   Estimated Efforts (hours)	|   Actual Efforts (hours)  | Planned Release |Owner(s)| Deadline|
 |:-	|:-:	|:-:	|:-:	|:-:	|:-:	|
