@@ -16,4 +16,4 @@ SpaceWars is a shoot-out style game that puts you up against an Ai opponent in a
 ## Future Releases
 The team is currently in the planning phase for what is to come next for SpaceWars. The following is being considered: Special abilities accessable by the player, randomized (or near random) playing field, and alternative movement which would make the ships glide more.
 
-![SpaceWars Title Screen](https://raw.githubusercontent.com/hyperL1ght/cmpt276_chip8/blob/dev/games/game1/titlescreen.PNG)
+![SpaceWars Title Screen](titlescreen.PNG)
