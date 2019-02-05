@@ -78,5 +78,5 @@ function renderScreen() {
     }
 
     display = xorArrays(display, tempArray);
-	// window.requestAnimationFrame(renderScreen);
+	// window.requestAnimationFrame(renderScreen); //include this line if you included the one from index.html
 }
