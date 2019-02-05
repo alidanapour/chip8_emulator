@@ -7,7 +7,7 @@
 1. Chip8 **Emulator** can run any Chip8 program.
 2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It lets users pause and step-forward/step-backward one instruction at a time.
 3. One Chip8 **Tool**: *to be announced*. The goal is to build a Chip8 program that is useful to the intended users of the Chip8 emulator.  
-4. Two Chip8 **Games**:  *to be announced*. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
+4. Two Chip8 **Games**:  Game 1: Space War; Game 2: *to be announced*. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
 
 ## Project organization
 
@@ -48,6 +48,10 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
 
 - Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
 
+**UPDATED**
+
+**For Release 2, these following use cases are scheduled to be delivered**:
+
 ### Communication Plan 
 
 #### Semester meeting Schedule with communication tools and techniques
@@ -80,7 +84,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 |Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Jest, Chrome, Firefox|
 |Version control	| All components 	| Git, Github	|
 |Communication	| All components 	| Slack, Discord, Phone	|
-|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet **UPDATE**: **Febuary 4, 2018** Migrating to [Wrike](https://www.wrike.com/) for centralization|
+|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet (**UPDATED**: Migrating to [Wrike](https://www.wrike.com/) for centralization)|
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
@@ -92,7 +96,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
 
-**UPDATE**: **Febuary 4, 2018**: Implementing all 36 opcodes instead of split them between Release 1 and 2. Add [1.2.3] Screen implementation as a subtask for deliverable [1.2] Emulator. Update owners for subtask [1.2.2] and [1.2.3]. 
+**UPDATED**: **Febuary 4, 2018**: Implementing all 36 opcodes instead of split them between Release 1 and 2. Add [1.2.3] Screen implementation as a subtask for deliverable [1.2] Emulator. Update owners for subtask [1.2.2] and [1.2.3]. 
 
 |   Deliverable	|   Estimated Efforts (hours)	|   Actual Efforts (hours)  | Planned Release |Owner(s)| Deadline|
 |:-	|:-:	|:-:	|:-:	|:-:	|:-:	|
@@ -125,7 +129,7 @@ The work breakdown and project schedule below are tentative and will be update a
 
 ## Project schedule
 
-**UPDATE**: **Febuary 4, 2018**: After using Trello to track project progression for Release 0 and 1, we have decided to switch to [Wrike](https://www.wrike.com/) starting from Release 2 to centralize work breakdown and project schedule and tracking in one place, thus marking re-planning easier. *Wrike* has student program which includes all functionalities that we need (for free) such as: Kanban Board, Gantt Chart, Time tracking and team collaboration. The project manager has sent a request to Wrike and received a 2-year student plan for a team of up to 15 people, only one member need to submit the request and once approved, can send inviations to other teammates. 
+**UPDATED**: **Febuary 4, 2018**: After using Trello to track project progression for Release 0 and 1, we have decided to switch to [Wrike](https://www.wrike.com/) starting from Release 2 to centralize work breakdown and project schedule and tracking in one place, thus marking re-planning easier. *Wrike* has student program which includes all functionalities that we need (for free) such as: Kanban Board, Gantt Chart, Time tracking and team collaboration. The project manager has sent a request to Wrike and received a 2-year student plan for a team of up to 15 people, only one member need to submit the request and once approved, can send inviations to other teammates. 
 
 The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). An example for release 0 is shown below:
 
