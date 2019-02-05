@@ -65,7 +65,13 @@
 
 :alias playerScore v3
 :alias enemyScore v4
+
 #v0-v2 will be used as scratch registers. vf is used to detect collision
+
+#We set an alias of compare-temp for v0. This is because Octo uses vf and one other defined temp register to be able
+#to do pseudo ops like '<','<=','>','=>'
+:alias compare-temp v0
+
 
 ################################################################
 #Define Functions:
@@ -111,6 +117,7 @@
     
   #Call enemyAi, will produce a random directon for the enemy
   enemyAi
+  #followPlayer
   v0 := 0
   #Here we restrict the enemy movement so that it doesnt touch
   #the top, bottom, and left borders.
@@ -140,15 +147,26 @@
 	jump0 aiRandomizer
 ;
 
+#Here the enemyAi has the possibility of jumping to a v1 modification, return, or call followPlayer
+#Modifying this table will modify how the enemyAi acts.
 : aiRandomizer
 	v1 += 1           return
 	v1 += -1 					return
-	return 						return
-	return           	return
-	v2 += 1           return
-	v2 += -1          return
+	return						return
+	followPlayer    	return
+	followPlayer      return
+	return       	    return
+  return						return
 ;
 
+#followPlayer sets v2 to the direction of where the player is.
+: followPlayer
+if playerYPos < enemyYPos begin
+	v2 += -1
+else
+	v2 += 1
+end
+;
 
 
 
