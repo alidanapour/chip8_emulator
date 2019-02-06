@@ -5,8 +5,9 @@
         <title>CHIP-8 JavaScript</title>
         <link href="styles/style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Karla|Merriweather" rel="stylesheet">   <!--Load fonts from Google-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <!--Load jQuery from Google-->
         <script type="text/javascript" src="scripts/disassembleOpcode.js"></script>
-        <script type="text/javascript" src="scripts/screen.js"></script>
+		<script type="text/javascript" src="scripts/chipCpu.js"></script>
     </head>
     <body>
         <h1>Chip-8 Emulator</h1>
@@ -29,13 +30,16 @@
         <p>
             This is a semester long project and we will have 4 different releases. We aim to have the project completed by the third release.
         </p>
-        <ul id="decode-opcode-here"></ul>
 		
-		<input type="text" id="type-opcode-here"/>
-		<input type="button" value="Submit" onclick="disassembleOpcode(document.getElementById('type-opcode-here').value);"/>
+		<p>
+            Decode opcode: <input type="text" id="type-opcode-here"/>
+            <input type="button" value="Submit" onclick="disassembleOpcode(document.getElementById('type-opcode-here').value);"/>
+        </p>
+        
+        <ul id="decode-opcode-here"></ul><br/>
         
         <div class="options">
-            <select id="roms">
+            <select id="games">
                 <option value="SPACE GAME">SPACE GAME</option>
                 <option value="TETRIS">TETRIS</option>
                 <option value="COD MW2">COD MW2</option>
@@ -51,7 +55,7 @@
             <canvas id="screen-area" width="640" height="320" style="border: 5px solid;"></canvas>
         </div></br>
 
-        <div class="keyboard">
+        <!-- <div class="keyboard">
             <button id="button-1">1</button>
             <button id="button-2">2</button>
             <button id="button-3">3</button>
@@ -68,7 +72,7 @@
             <button id="button-0">0</button>
             <button id="button-B">B</button>
             <button id="button-F">F</button>
-        </div></br>
+        </div></br> -->
 
         <!-- <div class="registers" style="border: 5px solid;">
             <div id="PC"></div></br>
@@ -94,9 +98,20 @@
             <div id="ST"></div></br>
         </div> -->
         
+        <p>Select a ROM: <input type="file" id="rom"/></p>
+
         <script>
-            setInterval(renderScreen, 100);
-            // requestAnimationFrame(renderScreen); //Comment out the above line and include this one for extra fast frame rate, see screen.js too
+            reset();
+            CHIP8.V[1] = 5;
+            CHIP8.V[2] = 5;
+            CHIP8.I = 0;
+            emulateOpcode(0xD125); // Draw 0
+            renderScreen();
+
+            let node = document.createElement("li");
+            let text_node = document.createTextNode(CHIP8.PC);
+            node.appendChild(text_node);
+            document.getElementById("decode-opcode-here").appendChild(node);       
         </script>
     </body>
 </html>
