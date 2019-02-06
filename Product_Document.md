@@ -115,7 +115,7 @@ The work breakdown and project schedule below are tentative and will be update a
 |[1.4.1] Prototype| 50 	|tba	|2	| Kyle, JJ | Feb 26
 |[1.4.2] Completed| 60 	|tba	|3	| Kyle, JJ | Mar 12
 |**[1.5] Game #1**| 	|	|	|
-|[1.5.1] Prototype| 40 	|tba	|1	| Karan, Ali | Feb 5
+|[1.5.1] Prototype| 40 	|30	|1	| Ali | Feb 5
 |[1.5.1] Completed| 50 	|tba	|2	| Karan, Ali | Feb 26
 |**[1.6] Game #2**| 	|	|	|
 |[1.6.1] Prototype| 50 	|tba	|2	| Karan, Ali | Feb 26
