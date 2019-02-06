@@ -21,6 +21,10 @@ let CHIP8 = {
 	display: new Uint8Array(64*32),	// Video memory, used to draw frames
 	drawFlag: false,				// Tells whether to draw
 	upT: null,						// Interval for updating timers
+
+	////////
+	// INTERVALS: null,
+	///////
 	
 	// Load font set to memory
     loadFonts: function() {
@@ -40,9 +44,8 @@ let CHIP8 = {
             0xF0, 0x80, 0x80, 0x80, 0xF0, // C
             0xE0, 0x90, 0x90, 0x90, 0xE0, // D
             0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
-			0xF0, 0x80, 0xF0, 0x80, 0x80,  // F
-			0x30, 0x30, 0x3C, 0x3C, 0x3C, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C, 0x30, 0x30 // Sprite
-        ];
+			0xF0, 0x80, 0xF0, 0x80, 0x80  // F
+		];
         
         let length = fontsToStore.length;
         for (let i = 0; i < length; i++) {
@@ -68,6 +71,50 @@ function reset() {
 	CHIP8.keyPressed = false;	// Set key pressed to false
 	CHIP8.drawFlag = false;		// Don't draw anything
 	this.upT = setInterval(this.updateTimers, 100);
+
+
+	// //
+	// document.onkeyup = document.onkeydown = CHIP8.OnKey;
+	// if(CHIP8.INTERVAL != null)
+	// 	clearInterval(CHIP8.INTERVAL);
+	// 	CHIP8.INTERVAL = setInterval(CHIP8.updateTimers, 16);
+	// //
+}
+
+//////////////////////////////
+// function OnKey(evt)
+// {
+//   let charStr = String.fromCharCode(evt.which);
+//   let value   = (evt.type == 'keydown') ? true : false;
+
+//   idx =
+//   {
+//     '1': 0x1,'2': 0x2,'3': 0x3,'4': 0x4,
+//     'Q': 0x4,'W':0x5,'E': 0x6,'R': 0xD,
+//     'A': 0x7,'S':0x8,'D': 0x9,'F': 0xE,
+//     'Z': 0xA,'X':0x0,'C': 0xB, 'V':0xF,
+//   }[charStr];
+
+//   if(idx !== undefined)
+//   {
+//     CHIP8.keys[idx] = value;
+//   }
+
+//   CHIP8.keyPressed = CHIP8.keys.reduce( ((prevValue,currentValue) => (prevValue | currentValue)) )
+
+// }
+//////////////////////////////
+
+// Convert to HEX string (base - 16)
+function convertToHexString (opcode)
+{
+	let hexArray = (opcode).toString(16).toUpperCase();
+	let addLength = 4 - hexArray.length;
+	let padding = "";
+	for (let i = 0; i < addLength; i++)
+		padding += "0";
+	let finalString = "0x" + padding + hexArray;
+  	return finalString;
 }
 
 // Opcode implementations
@@ -111,7 +158,7 @@ function emulateOpcode (opcode) {
 		case 0x2000:
 
 			// 2nnn - CALL addr
-			CHIP8.stack[CHIP8.stackPointer] = CHIP8.PC;
+			CHIP8.stack[CHIP8.stackPointer] = CHIP8.PC + 2;
 			CHIP8.stackPointer++;
 			CHIP8.PC = nnn;
 			break;
@@ -415,15 +462,57 @@ function renderScreen() {
 	
 	const canvas = document.getElementById("screen-area")
 	const screen = canvas.getContext("2d");
+
 	let length = CHIP8.display.length;
-	
+
 	for (let i = 0; i < length; i++) {
 		if (CHIP8.display[i] === 1) {
 			let y = i/64 | 0;
 			let x = i - (y*64);
 			screen.fillRect(x*10, y*10, 10, 10);
 		}
+		else if (CHIP8.display[i] === 0) {
+			let y = i/64 | 0;
+			let x = i - (y*64);
+			screen.clearRect(x*10, y*10, 10, 10);
+		}
 	}
 	
 	CHIP8.drawFlag = false;
+	// requestAnimationFrame(renderScreen);
 }
+
+// Load a custom ROM to run on the emulator
+// function loadProgramFile (file) {
+// 	let fr = new FileReader();
+// 	fr.onloadend(function() {
+// 		let programArray = new Uint8Array(fr.result);
+// 		CHIP8.PC = 0x200;
+// 		for (let i = 0; i < programArray.length; i++) {
+//             CHIP8.memory[CHIP8.PC + i] = programArray[i];
+//         }
+// 		CHIP8.programLoaded = true;
+// 	});
+// 	fr.readAsArrayBuffer(file);
+// }
+
+///////////////////////////////////////
+// function loadProgramFile (filename)
+// {
+//   let reader = new FileReader();
+//   reader.addEventListener("loadend", function()
+//   {
+//     let buffer = new Uint8Array(reader.result);
+//     loadProgramFileBuffer(buffer);
+//   });
+
+//   reader.readAsArrayBuffer(filename);
+// }
+
+// function loadProgramFileBuffer (buffer)
+// {
+//     buffer.map((val,idx)=> CHIP8.memory[idx + 512] = buffer[idx] );
+//     CHIP8.PC = 512;
+//     CHIP8.programLoaded = true;
+// }
+///////////////////////////////////////
