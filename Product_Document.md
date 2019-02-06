@@ -82,7 +82,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 |Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Jest, Chrome, Firefox|
 |Version control	| All components 	| Git, Github	|
 |Communication	| All components 	| Slack, Discord, Phone	|
-|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet (**UPDATED**: Migrating to [Wrike](https://www.wrike.com/) for centralization)|
+|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet|
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
@@ -92,50 +92,17 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
 
-**UPDATED**: **Febuary 4, 2018**: Implementing all 36 opcodes instead of split them between Release 1 and 2. Add [1.2.3] Screen implementation as a subtask for deliverable [1.2] Emulator. Update owners for subtask [1.2.2] and [1.2.3]. 
-
-**UPDATED**: **Febuary 5, 2018**: Started using Google Spreadsheet for Work Breakdown which allows easier replainning. 
+**UPDATED**: **Febuary 5, 2018**: Started using Google Spreadsheet for Work Breakdown which allows easier replainning for future releases. 
 
 [Link to Work Breakdown Spreadsheet](https://docs.google.com/spreadsheets/d/1HqADerMmskoAKjknKuDWZFQrG6OZgpwF0acj79XQYGA/edit?usp=sharing) 
 
-Bellow is a snapshoot of out current Work Breakdown Spreadsheet:
+Bellow is a snapshoot of out current Work Breakdown Spreadsheet, taken on Febuary 5, 2018:
 
 ![WBS example](WBS.PNG)
 
-|   Deliverable	|   Estimated Efforts (hours)	|   Actual Efforts (hours)  | Planned Release |Owner(s)| Deadline|
-|:-	|:-:	|:-:	|:-:	|:-:	|:-:	|
-|**[1.1] Interface**|	|	|	|	|
-|[1.1.1] Mock-up version| 1 | 0.5  | 0	| Whole team	| Jan 11	|
-|[1.1.2] Implemented version|10  | 5 	|0	| Kyle, JJ	|Jan 19	|
-|**[1.2] Emulator**|    |	|	|  |
-|[1.2.1] CPU set-up| 20 	|tba	| 1	| Minh | Jan 25 | 
-|[1.2.2] Opcode implementation| 30 	|tba	| 1	|Karan | Feb 6  | 
-|[1.2.3] Screen implementation| 40 	|tba	| 1	|Karan, Kyle | Feb 6  |
-|[1.2.4] Input/Output/Sound implementation| 15	| tba	|1	| Minh, JJ | Feb 6 | 
-|[1.2.5] Final Testing| 30	| tba|2	|Minh, Kyle, Karan| Feb 26 | 
-|**[1.3] Visualizer**|	|	|	|
-|[1.3] Display Register Values|20	|tba	|2	|tba | Feb 15 | 
-|[1.3.1] Display Memory| 25	|tba|2|tba | Feb 15 | 
-|[1.3.2] Stop|10|tba|2|tba | Feb 15 | 
-|[1.3.2] Continue|10|tba|2|tba | Feb 15 | 
-|[1.3.4] Step forward|15|tba|2|tba | Feb 20 | 
-|[1.3.5] Step backward (max 10 steps)|30 |tba|2|tba | Feb 20 | 
-|[1.3.5] Final Testing|30 |tba|2| tba | Feb 25 | 
-|**[1.4] One chip8 tool**| 	|	|	| 
-|[1.4.1] Prototype| 50 	|tba	|2	| Kyle, JJ | Feb 26
-|[1.4.2] Completed| 60 	|tba	|3	| Kyle, JJ | Mar 12
-|**[1.5] Game #1**| 	|	|	|
-|[1.5.1] Prototype| 40 	|tba	|1	| Karan, Ali | Feb 5
-|[1.5.1] Completed| 50 	|tba	|2	| Karan, Ali | Feb 26
-|**[1.6] Game #2**| 	|	|	|
-|[1.6.1] Prototype| 50 	|tba	|2	| Karan, Ali | Feb 26
-|[1.5.1] Completed| 50 	|tba	|3	| Karan, Ali | Mar 12
-
 ## Project schedule
 
-**UPDATED**: **Febuary 4, 2018**: After using Trello to track project progression for Release 0 and 1, we have decided to switch to [Wrike](https://www.wrike.com/) starting from Release 2 to centralize work breakdown and project schedule and tracking in one place, thus marking re-planning easier. *Wrike* has student program which includes all functionalities that we need (for free) such as: Kanban Board, Gantt Chart, Time tracking and team collaboration. The project manager has sent a request to Wrike and received a 2-year student plan for a team of up to 15 people, only one member need to submit the request and once approved, can send inviations to other teammates. 
-
-The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). An example for release 0 is shown below:
+The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). **UPDATED Febuary 5**: An example for release 1 is shown below:
 
 ![Trello example](trello_example.PNG)
 
