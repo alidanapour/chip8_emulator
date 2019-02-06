@@ -38,7 +38,7 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
 **UPDATED: For Release 1, these following use cases are scheduled to be delivered**:
 
 - CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers should have some default values. 
-- 36 Opcodes: any chip 8 programs/ROMs can be run on the emulator.
+- 36 Opcodes: correctly implement 36 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM).
 - Input/Output/Sound Implementation: The system gives buzzer sounds whenever the sound timer reaches zero. The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
 
     1	2	3	C  ------>		1	2	3	4 <br>
@@ -69,6 +69,8 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
         - 9A. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system.
 
 **UPDATED: For Release 2, these following use cases are scheduled to be delivered**:
+
+- **TODO**
 
 ### Communication Plan 
 
