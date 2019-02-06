@@ -37,15 +37,10 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
 
 **UPDATED: For Release 1, these following use cases are scheduled to be delivered**:
 
-- CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers should have some default values. 
-- 36 Opcodes: correctly implement 36 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM).
-- Input/Output/Sound Implementation: The system gives buzzer sounds whenever the sound timer reaches zero. The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
-
-    1	2	3	C  ------>		1	2	3	4 <br>
-    4	5	6	D  ------>	    Q	W	E	R <br>
-    7	8	9	E  ------>		A	S	D	F <br>
-    A	0	B	F  ------>		Z	X	C	V <br>
-
+- CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers will have some default values. 
+- 35 Opcodes: correctly implement 35 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM), according to Cowgod, opcode `0nnn` is only used on old computers and is ignored by modern interpreters so we don't implement it.
+- Decode opcode: **TODO**
+- Screen: **TODO** 
 - Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
     - Actors:
         - User
@@ -70,7 +65,17 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
 
 **UPDATED: For Release 2, these following use cases are scheduled to be delivered**:
 
-- **TODO**
+- Emulator: ROM loading, Keyboard input and Sound/Delay timer 
+- Visualizer: Stop, Continue, Step forward, Step Backward, Display of register, memory, and instructions while a program is being executed. 
+- Game 1 Complete: Fully functioning game 
+- Game 2 Prototype: Helibird
+
+- Input/Output/Sound Implementation: The system gives buzzer sounds whenever the sound timer reaches zero. The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
+
+    1	2	3	C  ------>		1	2	3	4 <br>
+    4	5	6	D  ------>	    Q	W	E	R <br>
+    7	8	9	E  ------>		A	S	D	F <br>
+    A	0	B	F  ------>		Z	X	C	V <br>
 
 ### Communication Plan 
 
