@@ -47,29 +47,26 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
     A	0	B	F  ------>		Z	X	C	V <br>
 
 - Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
+    - Actors:
+        - User
+        - Input/Output interface (may be used on alternative emulator)
+        - Chip-8 Emulator (may be used on alternative emulator)
+    - Preconditions:
+        - User has loaded the game onto a compatible chip-8 emulator
+    - Normal Flow:
+        1. The user will load SpaceWars onto a compatible chip-8 emulator
+        2. The system will proceed to execute SpaceWars code
+        3. The system will display game information (score)
+        4. The game will initialize
+        5. Throughout the duration of the game, the user will provide directional and fire inputs using their keyboard
+        6. Throughout the duration of the game, the system will show updated game state in real time
+        7. Throughout the duration of the game, the system will provide automatic movement and fire for enemy (AI) player.
+        8. At the completion of the game (either user or enemy reaches a score of 3), the game will terminate
+        9. A screen indicating a win or loss condition will be displayed along with a prompt for a new game
+        10. If the user chooses to replay the game, the system will reset all values to default and a new game is played
 
-Use Case Name: Game 1 (SpaceWars)
-Actors:
-User
-    - Input/Output interface (may be used on alternative emulator)
-    - Chip-8 Emulator (may be used on alternative emulator)
-Preconditions:
-    - User has loaded the game onto a compatible chip-8 emulator
-Normal Flow:
-    1. The user will load SpaceWars onto a compatible chip-8 emulator
-    2. The system will proceed to execute SpaceWars code
-    3. The system will display game information (score)
-    4. The game will initialize
-    5. Throughout the duration of the game, the user will provide directional and fire inputs using their keyboard
-    6. Throughout the duration of the game, the system will show updated game state in real time
-    7. Throughout the duration of the game, the system will provide automatic movement and fire for enemy (AI) player.
-    8. At the completion of the game (either user or enemy reaches a score of 3), the game will terminate
-    9. A screen indicating a win or loss condition will be displayed along with a prompt for a new game
-    10. If the user chooses to replay the game, the system will reset all values to default and a new game is played
-
-Alternate Flow:
-    9A. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system.
-
+    - Alternate Flow:
+        - 9A. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system.
 
 **UPDATED: For Release 2, these following use cases are scheduled to be delivered**:
 
