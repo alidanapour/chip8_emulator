@@ -7,7 +7,7 @@
 1. Chip8 **Emulator** can run any Chip8 program.
 2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It lets users pause and step-forward/step-backward one instruction at a time.
 3. One Chip8 **Tool**: *to be announced*. The goal is to build a Chip8 program that is useful to the intended users of the Chip8 emulator.  
-4. Two Chip8 **Games**:  Game 1: Space War; Game 2: *to be announced*. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
+4. Two Chip8 **Games**:  Game 1: `Space War`; Game 2: `Helibird`. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
 
 ## Project organization
 
@@ -39,8 +39,8 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
 
 - CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers will have some default values. 
 - 35 Opcodes: correctly implement 35 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM), according to Cowgod, opcode `0nnn` is only used on old computers and is ignored by modern interpreters so we don't implement it.
-- Decode opcode: **TODO**
-- Screen: **TODO** 
+- Decode opcode: **KARAN TODO**
+- Screen: **KARAN TODO** 
 - Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
     - Actors:
         - User
@@ -65,17 +65,18 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
 
 **UPDATED: For Release 2, these following use cases are scheduled to be delivered**:
 
-- Emulator: ROM loading, Keyboard input and Sound/Delay timer 
-- Visualizer: Stop, Continue, Step forward, Step Backward, Display of register, memory, and instructions while a program is being executed. 
-- Game 1 Complete: Fully functioning game 
-- Game 2 Prototype: Helibird
-
-- Input/Output/Sound Implementation: The system gives buzzer sounds whenever the sound timer reaches zero. The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
+- Emulator 
+    - ROM loading: 
+    - Keyboard input: The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
 
     1	2	3	C  ------>		1	2	3	4 <br>
     4	5	6	D  ------>	    Q	W	E	R <br>
     7	8	9	E  ------>		A	S	D	F <br>
     A	0	B	F  ------>		Z	X	C	V <br>
+    - Sound/Delay timer:  
+- Visualizer: Stop, Continue, Step forward, Step Backward, Display of register, memory, and instructions while a program is being executed. 
+- Game 1 Complete: Fully functioning game 
+- Game 2 Prototype: Helibird
 
 ### Communication Plan 
 
@@ -119,17 +120,21 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
 
-**UPDATED**: **Febuary 5, 2018**: Started using Google Spreadsheet for Work Breakdown which allows easier replainning for future releases. 
+**UPDATED**: **February 5, 2018**: Started using Google Spreadsheet for Work Breakdown which allows easier replanning for future releases. 
 
 [Link to Work Breakdown Spreadsheet](https://docs.google.com/spreadsheets/d/1HqADerMmskoAKjknKuDWZFQrG6OZgpwF0acj79XQYGA/edit?usp=sharing) 
 
-Bellow is a snapshoot of out current Work Breakdown Spreadsheet, taken on Febuary 5, 2018:
+**UPDATED**: **February 6, 2018**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on February 6, 2018.  
 
 ![WBS example](WBS.PNG)
 
+For Release 1, we underestimated the number of hours needed for some deliverables and overestimated the number of hours needed for other deliverables, the net effect is a underestimation of 9.5 hours (6%). We increased the estimated effort hours for all remaining deliverable by 6% and ask members to track their hours more carefully in future releases. 
+
+As we implementing the emulator, we also adding new deliverables and modify existing deliverables. For example, instead of splitting the opcodes into between 2 releases, we decided to implement all of them in release 1 so that we can test any chip 8 program on our emulator. We also divided the emulator into more concrete subtasks such as: screen implementation and automate the room loading. We will continue updating this Work Breakdown for upcoming releases. 
+
 ## Project schedule
 
-The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). **UPDATED Febuary 5**: An example for release 1 is shown below:
+The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). **UPDATED February 5**: An example for release 1 is shown below:
 
 ![Trello example](trello_example.PNG)
 
