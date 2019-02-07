@@ -51,7 +51,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Implemented all 35 opcodes instead of splitting them between release 1 and 2.
     - Added use case for the screen.
     - Added use case for the decode opcode.
-    - Moved keyboad/sound/delay implementation to release 2 due to underestimation of time needed to implement the screen and game 1 prototype. 
+    - Moved keyboard/sound/delay implementation to release 2 due to underestimation of time needed to implement the screen and game 1 prototype. 
 - Release 2:
     - Added use cases for remaining features of the emulator: Keyboard, Sound & Delay timer, ROM loading.
     - Added use cases to the visualizer.
