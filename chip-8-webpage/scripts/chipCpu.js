@@ -40,10 +40,6 @@ let CHIP8 = {
 		0xF0, 0x80, 0xF0, 0x80, 0x80  // F
 	],
 
-	////////
-	// INTERVALS: null,
-	///////
-
 	// Load font set to memory
 	loadFonts: function () {
 		let length = this.fontsToStore.length;
@@ -70,49 +66,6 @@ function reset() {
 	CHIP8.keyPressed = false;	// Set key pressed to false
 	CHIP8.drawFlag = false;		// Don't draw anything
 	CHIP8.upT = setInterval(this.updateTimers, 100);
-
-
-	// //
-	// document.onkeyup = document.onkeydown = CHIP8.OnKey;
-	// if(CHIP8.INTERVAL != null)
-	// 	clearInterval(CHIP8.INTERVAL);
-	// 	CHIP8.INTERVAL = setInterval(CHIP8.updateTimers, 16);
-	// //
-}
-
-//////////////////////////////
-// function OnKey(evt)
-// {
-//   let charStr = String.fromCharCode(evt.which);
-//   let value   = (evt.type == 'keydown') ? true : false;
-
-//   idx =
-//   {
-//     '1': 0x1,'2': 0x2,'3': 0x3,'4': 0x4,
-//     'Q': 0x4,'W':0x5,'E': 0x6,'R': 0xD,
-//     'A': 0x7,'S':0x8,'D': 0x9,'F': 0xE,
-//     'Z': 0xA,'X':0x0,'C': 0xB, 'V':0xF,
-//   }[charStr];
-
-//   if(idx !== undefined)
-//   {
-//     CHIP8.keys[idx] = value;
-//   }
-
-//   CHIP8.keyPressed = CHIP8.keys.reduce( ((prevValue,currentValue) => (prevValue | currentValue)) )
-
-// }
-//////////////////////////////
-
-// Convert to HEX string (base - 16)
-function convertToHexString(opcode) {
-	let hexArray = (opcode).toString(16).toUpperCase();
-	let addLength = 4 - hexArray.length;
-	let padding = "";
-	for (let i = 0; i < addLength; i++)
-		padding += "0";
-	let finalString = "0x" + padding + hexArray;
-	return finalString;
 }
 
 // Opcode implementations
@@ -246,7 +199,7 @@ function emulateOpcode(opcode) {
 
 					// 8xy5 - SUB Vx, Vy
 					if (CHIP8.V[x] > CHIP8.V[y])
-						CHIP8.V[15] = 1;           // Vf = Not Borrow
+						CHIP8.V[15] = 1;           		// Vf = Not Borrow
 					else
 						CHIP8.V[15] = 0;
 					CHIP8.V[x] -= CHIP8.V[y];
@@ -260,7 +213,7 @@ function emulateOpcode(opcode) {
 						CHIP8.V[15] = 1;
 					else
 						CHIP8.V[15] = 0;
-					CHIP8.V[x] = CHIP8.V[x] >>> 1;    // >> or >>>
+					CHIP8.V[x] = CHIP8.V[x] >>> 1;    	// >> or >>>
 					CHIP8.PC += 2;
 					break;
 
@@ -476,40 +429,4 @@ function renderScreen() {
 	}
 
 	CHIP8.drawFlag = false;
-	// requestAnimationFrame(renderScreen);
 }
-
-// Load a custom ROM to run on the emulator
-// function loadProgramFile (file) {
-// 	let fr = new FileReader();
-// 	fr.onloadend(function() {
-// 		let programArray = new Uint8Array(fr.result);
-// 		CHIP8.PC = 0x200;
-// 		for (let i = 0; i < programArray.length; i++) {
-//             CHIP8.memory[CHIP8.PC + i] = programArray[i];
-//         }
-// 		CHIP8.programLoaded = true;
-// 	});
-// 	fr.readAsArrayBuffer(file);
-// }
-
-///////////////////////////////////////
-// function loadProgramFile (filename)
-// {
-//   let reader = new FileReader();
-//   reader.addEventListener("loadend", function()
-//   {
-//     let buffer = new Uint8Array(reader.result);
-//     loadProgramFileBuffer(buffer);
-//   });
-
-//   reader.readAsArrayBuffer(filename);
-// }
-
-// function loadProgramFileBuffer (buffer)
-// {
-//     buffer.map((val,idx)=> CHIP8.memory[idx + 512] = buffer[idx] );
-//     CHIP8.PC = 512;
-//     CHIP8.programLoaded = true;
-// }
-///////////////////////////////////////

@@ -253,7 +253,7 @@ let TESTS = {
             && this.SoundTimerIsEmpty() && this.DrawFlagIsFalse());
     },
 
-    //AllOpcodes: {
+    // AllOpcodes
         Opcode_00E0: function() {
             reset();
             emulateOpcode(0x00E0);
@@ -637,5 +637,4 @@ let TESTS = {
 
             return (CHIP8.I == 0x100 + 3 + 1);
         }
-    //}
 };
