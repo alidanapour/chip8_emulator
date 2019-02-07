@@ -64,7 +64,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 ![WBS example](product_document_imgs/interface_mockup.JPG)
 
-- Interface Implementation: implemented the interface based on the mockup version. We will be working with a simpler interface in release 1 and 2, and integrate this interface into existing source code in release 3. 
+- Interface Implementation: implemented the interface based on the mockup version. **We will be working with a simpler interface in release 1 and 2, and integrate this interface into existing source code in release 3**. 
 
 **Release 1**
 
@@ -97,17 +97,18 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 **Release 2**
 
 - Emulator 
-    - ROM loading: 
+    - ROM loading: **KARAN TODO** 
     - Keyboard input: The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
 
     1	2	3	C  ------>		1	2	3	4 <br>
     4	5	6	D  ------>	    Q	W	E	R <br>
     7	8	9	E  ------>		A	S	D	F <br>
     A	0	B	F  ------>		Z	X	C	V <br>
-    - Sound/Delay timer:  
-- Visualizer: Stop, Continue, Step forward, Step Backward, Display of register, memory, and instructions while a program is being executed. 
-- Game 1 Complete: Fully functioning game 
-- Game 2 Prototype: Helibird
+    - Sound/Delay timer: **KARAN TODO** 
+
+- Visualizer: While a chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, step forward or step backward one instruction at a time, and continue running the program. 
+- Game 1 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist. 
+- Game 2 Prototype: `Helibird` 
 
 ## Risk analysis
 
@@ -138,7 +139,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
 
-**UPDATED**: **February 5, 2018**: Started using Google Spreadsheet for Work Breakdown which allows easier replanning for future releases. 
+**UPDATED**: **January 25, 2018**: Started using Google Spreadsheet for Work Breakdown which allows easier replanning for future releases. 
 
 [Link to Work Breakdown Spreadsheet](https://docs.google.com/spreadsheets/d/1HqADerMmskoAKjknKuDWZFQrG6OZgpwF0acj79XQYGA/edit?usp=sharing) 
 
