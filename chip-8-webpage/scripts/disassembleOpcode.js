@@ -1,10 +1,11 @@
 function disassembleOpcode (opcode) {
-    let code = parseInt(opcode, 16);
+	let code = parseInt(opcode, 16);
+	// let code = opcode;
   
-    let x = ((code & 0x0F00) >>> 8).toString(16);   // 0x00
-    let y = ((code & 0x00F0) >>> 4).toString(16);   // 00y0
-    let kk = (code & 0x00FF).toString(16);          // 00kk
-	let nnn = (code & 0x0FFF).toString(16);		    // 0nnn
+    let x = ((code & 0x0F00) >>> 8).toString(16).toUpperCase();   // 0x00
+    let y = ((code & 0x00F0) >>> 4).toString(16).toUpperCase();   // 00y0
+    let kk = (code & 0x00FF).toString(16).toUpperCase();          // 00kk
+	let nnn = (code & 0x0FFF).toString(16).toUpperCase();		  // 0nnn
 	
 	let str;    // opcodeString to display
 
@@ -143,7 +144,7 @@ function disassembleOpcode (opcode) {
 			str = `A${nnn} LD I, ${nnn}`;
 			break;
 
-		case 0xb000:
+		case 0xB000:
 
 			// Bnnn - JP V0, addr
 			str = `B${nnn} JP V0, ${nnn}`;
@@ -158,7 +159,7 @@ function disassembleOpcode (opcode) {
 		case 0xD000:
 
 			// Dxyn - DRW Vx, Vy, nibble
-			let n = code & 0x000F;
+			let n = (code & 0x000F).toString(16).toUpperCase();
 			str = `D${x}${y}${n} DRW V${x}, V${y}, ${n}`;
 			break;
 
