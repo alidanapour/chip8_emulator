@@ -6,6 +6,7 @@ function printTestResults (str) {
 }
 
 function runAllTests() {
+    document.getElementById("test-results").innerHTML = "";
     let str = "";
     
     str = "V Is An Array of 16 Registers: ";
@@ -195,6 +196,7 @@ let TESTS = {
     },
 
     PCSetTo0x200: function() {
+        reset();
         return (CHIP8.PC === 0x200);
     },
 
