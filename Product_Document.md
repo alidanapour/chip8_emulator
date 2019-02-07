@@ -35,7 +35,20 @@ The team has 6 Computer Science undergrads with the following roles:
 
 Note: The 6th member, Xinyue Ma has been recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18.
 
-**UPDATED: For Release 1, these following use cases are scheduled to be delivered**:
+**UPDATED February 6, 2018**: 
+- Release 1: 
+    - Added more details use case for game 1 prototype
+    - Implemented all 35 opcodes instead of splitting them between release 1 and 2.
+    - Added use case for the screen.
+    - Added use case for the decode opcode.
+    - Moved keyboad/sound/delay implementation to release 2 due to underestimation of time needed to implement the screen and game 1 prototype. 
+- Release 2:
+    - Added use cases for remaining features of the emulator: Keyboard, Sound & Delay timer, ROM loading.
+    - Added use cases to the visualizer.
+    - Added use cases to the game 2 prototype and game 1 completed.
+    - Moved chip8 tool prototype to release 3. 
+
+**For Release 1, these following use cases are scheduled to be delivered**:
 
 - CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers will have some default values. 
 - 35 Opcodes: correctly implement 35 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM), according to Cowgod, opcode `0nnn` is only used on old computers and is ignored by modern interpreters so we don't implement it.
@@ -63,7 +76,7 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
     - Alternate Flow:
         - 9A. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system.
 
-**UPDATED: For Release 2, these following use cases are scheduled to be delivered**:
+**For Release 2, these following use cases are scheduled to be delivered**:
 
 - Emulator 
     - ROM loading: 
