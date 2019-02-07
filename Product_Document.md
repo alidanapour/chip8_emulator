@@ -19,6 +19,8 @@ The team will meet weekly to create user stories. The stories are ranked by impo
 
 ### Members' roles
 
+**UPDATED January 20, 2018**: Add Xinyue Ma as a front-end programmer. 
+
 The team has 6 Computer Science undergrads with the following roles:
 
 1. Project manager: Minh Bui is responsible for scheduling team meetings, booking rooms and producing meeting memos. 
@@ -26,18 +28,13 @@ The team has 6 Computer Science undergrads with the following roles:
 3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualizer, the games and one tool. 
 4. Testers: For unit testing, members are responsible for testing their own code. Once unit testing is done, integration testing requires collaboration between all members.
 
-**For Release 0, members has the following roles**:
-
-- Minh Bui (Minh) consolidates members' input and is responsible for writing and formatting project documentation, and researching how to implement the Chip8 emulator and visualizer.
-- Ali Danapour (Ali) and Karan Pathania (KP) create the prototype of Chip8 Game #1.
-- Kyle Wu (Kyle) and Jong Joon Lee (JJ) code the interface of the application.
-- Xinyue Ma has no role in release 0.  
-
 Note: The 6th member, Xinyue Ma has been recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18.
+
+## Use Cases For Major Features
 
 **UPDATED February 6, 2018**: 
 - Release 1: 
-    - Added more details use case for game 1 prototype
+    - Added more detailed use case for game 1 prototype.
     - Implemented all 35 opcodes instead of splitting them between release 1 and 2.
     - Added use case for the screen.
     - Added use case for the decode opcode.
@@ -46,9 +43,16 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
     - Added use cases for remaining features of the emulator: Keyboard, Sound & Delay timer, ROM loading.
     - Added use cases to the visualizer.
     - Added use cases to the game 2 prototype and game 1 completed.
-    - Moved chip8 tool prototype to release 3. 
+    - Moved chip8 tool prototype to release 3.
 
-**For Release 1, these following use cases are scheduled to be delivered**:
+**Release 0**:
+
+- Minh Bui (Minh) consolidates members' input and is responsible for writing and formatting project documentation, and researching how to implement the Chip8 emulator and visualizer.
+- Ali Danapour (Ali) and Karan Pathania (KP) create the prototype of Chip8 Game #1.
+- Kyle Wu (Kyle) and Jong Joon Lee (JJ) code the interface of the application.
+- Xinyue Ma has no role in release 0. 
+
+**Release 1**
 
 - CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers will have some default values. 
 - 35 Opcodes: correctly implement 35 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM), according to Cowgod, opcode `0nnn` is only used on old computers and is ignored by modern interpreters so we don't implement it.
@@ -76,7 +80,7 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
     - Alternate Flow:
         - 9A. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system.
 
-**For Release 2, these following use cases are scheduled to be delivered**:
+**Release 2**
 
 - Emulator 
     - ROM loading: 
@@ -141,7 +145,7 @@ The work breakdown and project schedule below are tentative and will be update a
 
 ![WBS example](WBS.PNG)
 
-For Release 1, we underestimated the number of hours needed for some deliverables and overestimated the number of hours needed for other deliverables, the net effect is a underestimation of 9.5 hours (6%). We increased the estimated effort hours for all remaining deliverable by 6% and ask members to track their hours more carefully in future releases. 
+For Release 1, we underestimated the number of hours needed for some deliverables and overestimated the number of hours needed for other deliverables, the net effect is an underestimation of 9.5 hours (6%). We increased the estimated effort hours for all remaining deliverable by 6% and ask members to track their hours more carefully in future releases. 
 
 As we implementing the emulator, we also adding new deliverables and modify existing deliverables. For example, instead of splitting the opcodes into between 2 releases, we decided to implement all of them in release 1 so that we can test any chip 8 program on our emulator. We also divided the emulator into more concrete subtasks such as: screen implementation and automate the room loading. We will continue updating this Work Breakdown for upcoming releases. 
 
