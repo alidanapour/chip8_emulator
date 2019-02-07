@@ -30,6 +30,19 @@ The team has 6 Computer Science undergrads with the following roles:
 
 Note: The 6th member, Xinyue Ma has been recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18.
 
+### Communication Plan 
+
+#### Semester meeting Schedule with communication tools and techniques
+
+|   MODE	|   TIME	|   TOOL|
+|:-:	|:-:	|:-:	|
+| In Person 	|  Weekly Monday/Friday, 12:30PM-2:30PM	|   Book room if needs whiteboard	|
+|  Voice Call 	|   Tentative (mostly weekends)	|   Discord	|
+|  Messages 	|   Daily	|   Slack	|
+|  Urgent 	|   When needed	|   Phone call	|
+
+NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a member anticipates that he/she will show up late or cannot show up at all, a notification must be posted in the #meetings channel in the Slack workspace at least 15 minutes in advance. If no notification is sent, members will wait for the missing member(s) for 10 minute before starting the meeting. 
+
 ## Use Cases For Major Features
 
 **UPDATED February 6, 2018**: 
@@ -47,10 +60,11 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
 
 **Release 0**:
 
-- Minh Bui (Minh) consolidates members' input and is responsible for writing and formatting project documentation, and researching how to implement the Chip8 emulator and visualizer.
-- Ali Danapour (Ali) and Karan Pathania (KP) create the prototype of Chip8 Game #1.
-- Kyle Wu (Kyle) and Jong Joon Lee (JJ) code the interface of the application.
-- Xinyue Ma has no role in release 0. 
+- Interface Mockup
+
+![WBS example](product_document_imgs/interface_mockup.JPG)
+
+- Interface Implementation: implemented the interface based on the mockup version. We will be working with a simpler interface in release 1 and 2, and integrate this interface into existing source code in release 3. 
 
 **Release 1**
 
@@ -95,19 +109,6 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
 - Game 1 Complete: Fully functioning game 
 - Game 2 Prototype: Helibird
 
-### Communication Plan 
-
-#### Semester meeting Schedule with communication tools and techniques
-
-|   MODE	|   TIME	|   TOOL|
-|:-:	|:-:	|:-:	|
-| In Person 	|  Weekly Monday/Friday, 12:30PM-2:30PM	|   Book room if needs whiteboard	|
-|  Voice Call 	|   Tentative (mostly weekends)	|   Discord	|
-|  Messages 	|   Daily	|   Slack	|
-|  Urgent 	|   When needed	|   Phone call	|
-
-NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a member anticipates that he/she will show up late or cannot show up at all, a notification must be posted in the #meetings channel in the Slack workspace at least 15 minutes in advance. If no notification is sent, members will wait for the missing member(s) for 10 minute before starting the meeting. 
-
 ## Risk analysis
 
 |   Description	|   Likelihood	|   Impact | Risk Management Strategy|
@@ -143,7 +144,7 @@ The work breakdown and project schedule below are tentative and will be update a
 
 **UPDATED**: **February 6, 2018**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on February 6, 2018.  
 
-![WBS example](WBS.PNG)
+![WBS example](product_document_imgs/WBS.PNG)
 
 For Release 1, we underestimated the number of hours needed for some deliverables and overestimated the number of hours needed for other deliverables, the net effect is an underestimation of 9.5 hours (6%). We increased the estimated effort hours for all remaining deliverable by 6% and ask members to track their hours more carefully in future releases. 
 
@@ -153,7 +154,7 @@ As we implementing the emulator, we also adding new deliverables and modify exis
 
 The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). **UPDATED February 5**: An example for release 1 is shown below:
 
-![Trello example](trello_example.PNG)
+![Trello example](product_document_imgs/trello_example.PNG)
 
 ## Monitoring and reporting mechanisms
 
