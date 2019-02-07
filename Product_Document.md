@@ -7,7 +7,7 @@
 1. Chip8 **Emulator** can run any Chip8 program.
 2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It lets users pause and step-forward/step-backward one instruction at a time.
 3. One Chip8 **Tool**: *to be announced*. The goal is to build a Chip8 program that is useful to the intended users of the Chip8 emulator.  
-4. Two Chip8 **Games**:  *to be announced*. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
+4. Two Chip8 **Games**:  Game 1: `Space War`; Game 2: `Helibird`. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
 
 ## Project organization
 
@@ -19,34 +19,16 @@ The team will meet weekly to create user stories. The stories are ranked by impo
 
 ### Members' roles
 
+**UPDATED January 20, 2019**: Add Xinyue Ma as a front-end programmer. 
+
 The team has 6 Computer Science undergrads with the following roles:
 
 1. Project manager: Minh Bui is responsible for scheduling team meetings, booking rooms and producing meeting memos. 
-2. Front-end programmers: Kyle and Jong Joon Lee work on the interface of the application, after they are done, they will join the back-end team.  
+2. Front-end programmers: Kyle and Jong Joon Lee and Xinyue Ma work on the interface of the application, after they are done, they will join the back-end team. 
 3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualizer, the games and one tool. 
 4. Testers: For unit testing, members are responsible for testing their own code. Once unit testing is done, integration testing requires collaboration between all members.
 
-**For Release 0, members has the following roles**:
-
-- Minh Bui (Minh) consolidates members' input and is responsible for writing and formatting project documentation, and researching how to implement the Chip8 emulator and visualizer.
-- Ali Danapour (Ali) and Karan Pathania (KP) create the prototype of Chip8 Game #1.
-- Kyle Wu (Kyle) and Jong Joon Lee (JJ) code the interface of the application.
-- Xinyue Ma has no role in release 0.  
-
 Note: The 6th member, Xinyue Ma has been recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18.
-
-**For Release 1, these following use cases are scheduled to be delivered**:
-
-- CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers should have some default values. 
-- Opcode from 1-13: any chip 8 programs/ROMs that only use these 13 opcodes can be run on the emulator for now.
-- Input/Output/Sound Implementation: The system gives buzzer sounds whenever the sound timer reaches zero. The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
-
-    1	2	3	C  ------>		1	2	3	4 <br>
-    4	5	6	D  ------>	    Q	W	E	R <br>
-    7	8	9	E  ------>		A	S	D	F <br>
-    A	0	B	F  ------>		Z	X	C	V <br>
-
-- Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
 
 ### Communication Plan 
 
@@ -61,6 +43,73 @@ Note: The 6th member, Xinyue Ma has been recently added to the team on January 1
 
 NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a member anticipates that he/she will show up late or cannot show up at all, a notification must be posted in the #meetings channel in the Slack workspace at least 15 minutes in advance. If no notification is sent, members will wait for the missing member(s) for 10 minute before starting the meeting. 
 
+## Use Cases For Major Features
+
+**UPDATED February 6, 2019**: 
+- Release 1: 
+    - Added more detailed use case for game 1 prototype.
+    - Implemented all 35 opcodes instead of splitting them between release 1 and 2.
+    - Added use case for the screen.
+    - Added use case for the decode opcode.
+    - Moved keyboad/sound/delay implementation to release 2 due to underestimation of time needed to implement the screen and game 1 prototype. 
+- Release 2:
+    - Added use cases for remaining features of the emulator: Keyboard, Sound & Delay timer, ROM loading.
+    - Added use cases to the visualizer.
+    - Added use cases to the game 2 prototype and game 1 completed.
+    - Moved chip8 tool prototype to release 3.
+
+**Release 0**:
+
+- Interface Mockup
+
+![WBS example](product_document_imgs/interface_mockup.JPG)
+
+- Interface Implementation: implemented the interface based on the mockup version. **We will be working with a simpler interface in release 1 and 2, and integrate this interface into existing source code in release 3**. 
+
+**Release 1**
+
+- CPU set-up: At the beginning or when the emulator resets, the memory, stack, registers will have some default values. 
+- 35 Opcodes: Correctly implement 35 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM), according to Cowgod, opcode `0nnn` is only used on old computers and is ignored by modern interpreters so we don't implement it.
+- Decode opcode: This feature is a part of the visualizer's instruction display deliverable and has been developed ahead of time. For now, users can simply enter any opcode (say 00E0) and click `Submit` which will print the corresponding instruction onto the page.
+- Screen: The screen is 640x320 pixels and each pixel is rendered by a factor of 10. Only the welcome screen is shown for programs that require user interactions via the keyboard. 
+- Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
+    - Actors:
+        - User
+        - Input/Output interface (may be used on alternative emulator)
+        - Chip-8 Emulator (may be used on alternative emulator)
+    - Preconditions:
+        - User has loaded the game onto a compatible chip-8 emulator
+    - Normal Flow:
+        1. The user will load SpaceWars onto a compatible chip-8 emulator
+        2. The system will proceed to execute SpaceWars code
+        3. The system will display game information (score)
+        4. The game will initialize
+        5. Throughout the duration of the game, the user will provide directional and fire inputs using their keyboard
+        6. Throughout the duration of the game, the system will show updated game state in real time
+        7. Throughout the duration of the game, the system will provide automatic movement and fire for enemy (AI) player.
+        8. At the completion of the game (either user or enemy reaches a score of 3), the game will terminate
+        9. A screen indicating a win or loss condition will be displayed along with a prompt for a new game
+        10. If the user chooses to replay the game, the system will reset all values to default and a new game is played
+
+    - Alternate Flow:
+        - 9A. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system.
+
+**Release 2**
+
+- Emulator 
+    - ROM loading: In release 1, the ROMs are pre-loaded into the memory. We will allow user to load any valid Chip8 ROM into the memory in release 2. 
+    - Keyboard input: The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
+
+        1	2	3	C  ------>		1	2	3	4 <br>
+        4	5	6	D  ------>	    Q	W	E	R <br>
+        7	8	9	E  ------>		A	S	D	F <br>
+        A	0	B	F  ------>		Z	X	C	V <br>
+    - Sound/Delay timer: The `CHIP8` object already contains `delayTimer` and `soundTimer`. We will add sound (played when the sound timer reaches 0) in this release and calibrate the delay timer with our emulator's frame rate.
+
+- Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, step forward or step backward one instruction at a time, and continue running the program. 
+- Game 1 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist. 
+- Game 2 Prototype: `Helibird` : A game inspired by the viral game *Flappy Bird*. We are planning to replace the bird with a tiny helicopter which behaves like a bird, hence the name *Helibird*!
+
 ## Risk analysis
 
 |   Description	|   Likelihood	|   Impact | Risk Management Strategy|
@@ -74,13 +123,13 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 |   Purpose	|   Related App Components	|   Tools/Languages/Libraries |
 |:-:	|:-:	|:-:	|
-|Front-End Programming	| Website Interface 	| HTML, CSS 	|
-|Back-End Programming | Emulator, Visualizer, Chip8 Tool 	| JavaScript 	|
-|Game Programming | 2 Chip8 Games	| [Octo](https://github.com/JohnEarnest/Octo)  	|
-|Automated Tests |Emulator, Visualizer,Chip8 Tool |  JavaScript, Jest, Chrome, Firefox|
-|Version Control	| All Components 	| Git, GitHub	|
-|Communication	| All Components 	| Slack, Discord, Phone	|
-|Planning	| All Components 	| [Trello](https://trello.com) for Kanban Board, Google Docs & Spreadsheet 	|
+|Front-End Programming	| Website interface 	| HTML, CSS 	|
+|Back-End Programming | Emulator, Visualizer, chip8 tool 	| JavaScript 	|
+|Game Programming | 2 Chip8 games	| [Octo](https://github.com/JohnEarnest/Octo)  	|
+|Automated tests |Emulator, Visualizer, chip8 tool |  JavaScript, Jest, Chrome, Firefox|
+|Version control	| All components 	| Git, Github	|
+|Communication	| All components 	| Slack, Discord, Phone	|
+|Planning	| All components 	| [Trello](https://trello.com) for Kanban Board, Google Doc & Spreadsheet|
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
@@ -88,44 +137,25 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 ## Work breakdown 
 
-[Member availability](https://docs.google.com/spreadsheets/d/1HqADerMmskoAKjknKuDWZFQrG6OZgpwF0acj79XQYGA/edit?usp=sharing)
+The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
 
-The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (Informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
+**UPDATED**: **January 25, 2019**: Started using Google Spreadsheet for Work Breakdown which allows easier replanning for future releases. 
 
-|   Deliverable	|   Estimated Efforts (hours)	|   Actual Efforts (hours)  | Planned Release |Owner(s)| Deadline|
-|:-	|:-:	|:-:	|:-:	|:-:	|:-:	|
-|**[1.1] Interface**|	|	|	|	|
-|[1.1.1] Mock-up version| 1 | 0.5  | 0	| Whole team	| Jan 11	|
-|[1.1.2] Implemented version|10  | 5 	|0	| Kyle, JJ	|Jan 19	|
-|**[1.2] Emulator**|    |	|	|  |
-|[1.2.1] CPU set-up| 20 	|tba	| 1	| Minh | Jan 25 | 
-|[1.2.2] Opcode implementation (1-13)| 40 	|tba	| 1	|Minh, Kyle, JJ, Xinyue | Feb 3  |
-|[1.2.3] Opcode implementation (14-36)| 40 	|tba	| 2	|Minh, Kyle, JJ, Xinyue | Feb 20  | 
-|[1.2.4] Input/Output/Sound Implementation| 15	| tba	|1	| Minh, JJ | Feb 3 | 
-|[1.2.5] Final Testing| 30	| tba|2	|Minh, Kyle, JJ, Xinyue | Feb 26 | 
-|**[1.3] Visualizer**|	|	|	|
-|[1.3] Display Register Values|20	|tba	|2	|tba | Feb 15 | 
-|[1.3.1] Display Memory| 25	|tba|2|tba | Feb 15 | 
-|[1.3.2] Stop|10|tba|2|tba | Feb 15 | 
-|[1.3.2] Continue|10|tba|2|tba | Feb 15 | 
-|[1.3.4] Step forward|15|tba|2|tba | Feb 20 | 
-|[1.3.5] Step backward (max 10 steps)|30 |tba|2|tba | Feb 20 | 
-|[1.3.5] Final Testing|30 |tba|2| tba | Feb 25 | 
-|**[1.4] One chip8 tool**| 	|	|	| 
-|[1.4.1] Prototype| 50 	|tba	|2	| Kyle, JJ | Feb 26
-|[1.4.2] Completed| 60 	|tba	|3	| Kyle, JJ | Mar 12
-|**[1.5] Game #1**| 	|	|	|
-|[1.5.1] Prototype| 40 	|30	|1	| Ali | Feb 5
-|[1.5.1] Completed| 50 	|tba	|2	| Karan, Ali | Feb 26
-|**[1.6] Game #2**| 	|	|	|
-|[1.6.1] Prototype| 50 	|tba	|2	| Karan, Ali | Feb 26
-|[1.5.1] Completed| 50 	|tba	|3	| Karan, Ali | Mar 12
+[Link to Work Breakdown Spreadsheet](https://docs.google.com/spreadsheets/d/1HqADerMmskoAKjknKuDWZFQrG6OZgpwF0acj79XQYGA/edit?usp=sharing) 
+
+**UPDATED**: **February 6, 2019**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on February 6, 2018.  
+
+![WBS example](product_document_imgs/WBS.PNG)
+
+For Release 1, we underestimated the number of hours needed for some deliverables and overestimated the number of hours needed for other deliverables, the net effect is an underestimation of 9.5 hours (6%). We increased the estimated effort hours for all remaining deliverable by 6% and ask members to track their hours more carefully in future releases. 
+
+As we implementing the emulator, we also adding new deliverables and modify existing deliverables. For example, instead of splitting the opcodes into between 2 releases, we decided to implement all of them in release 1 so that we can test any chip 8 program on our emulator. We also divided the emulator into more concrete subtasks such as: screen implementation and automate the room loading. We will continue updating this Work Breakdown for upcoming releases. 
 
 ## Project schedule
 
-The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). An example for release 0 is shown below:
+The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). **UPDATED February 5, 2019**: An example for release 1 is shown below:
 
-![Trello example](trello_example.PNG)
+![Trello example](product_document_imgs/trello_example.PNG)
 
 ## Monitoring and reporting mechanisms
 

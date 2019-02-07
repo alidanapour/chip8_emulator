@@ -27,11 +27,9 @@ body{
 	margin-bottom: 7%;
 }
 
-#display{
-	background-color: #2758ad;
+.display{
 	margin-top: 1%;
 	margin-left: 1%;
-	border: 3px solid #2758ad;
 	width: 55%;;
 	height: 50%;
 	text-align: center;
