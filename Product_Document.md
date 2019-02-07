@@ -100,10 +100,10 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - ROM loading: In release 1, the ROMs are pre-loaded into the memory. We will allow user to load any valid Chip8 ROM into the memory in release 2. 
     - Keyboard input: The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
 
-    1	2	3	C  ------>		1	2	3	4 <br>
-    4	5	6	D  ------>	    Q	W	E	R <br>
-    7	8	9	E  ------>		A	S	D	F <br>
-    A	0	B	F  ------>		Z	X	C	V <br>
+        1	2	3	C  ------>		1	2	3	4 <br>
+        4	5	6	D  ------>	    Q	W	E	R <br>
+        7	8	9	E  ------>		A	S	D	F <br>
+        A	0	B	F  ------>		Z	X	C	V <br>
     - Sound/Delay timer: The `CHIP8` object already contains `delayTimer` and `soundTimer`. We will add sound (played when the sound timer reaches 0) in this release and calibrate the delay timer with our emulator's frame rate.
 
 - Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, step forward or step backward one instruction at a time, and continue running the program. 
