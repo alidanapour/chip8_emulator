@@ -1,2 +1,3 @@
-# cmpt276_chip8
-Private Repo for CMPT 276 group project. 
+# Team 10 JS-Chip 8 Program
+
+Instructions 
