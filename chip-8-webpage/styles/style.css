@@ -28,3 +28,11 @@ body {
 #screen-area {
     background-color: lightslategray;
 }
+
+div.tests-scroll {
+    background-color:lightslategray;
+    height: 400px;
+    padding: 1%;
+    border: 5px solid;
+    overflow: scroll;
+}
