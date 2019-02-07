@@ -19,7 +19,7 @@ The team will meet weekly to create user stories. The stories are ranked by impo
 
 ### Members' roles
 
-**UPDATED January 20, 2018**: Add Xinyue Ma as a front-end programmer. 
+**UPDATED January 20, 2019**: Add Xinyue Ma as a front-end programmer. 
 
 The team has 6 Computer Science undergrads with the following roles:
 
@@ -45,7 +45,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 ## Use Cases For Major Features
 
-**UPDATED February 6, 2018**: 
+**UPDATED February 6, 2019**: 
 - Release 1: 
     - Added more detailed use case for game 1 prototype.
     - Implemented all 35 opcodes instead of splitting them between release 1 and 2.
@@ -68,10 +68,10 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 **Release 1**
 
-- CPU set-up: at the beginning or when the emulator resets, the memory, stack, registers will have some default values. 
-- 35 Opcodes: correctly implement 35 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM), according to Cowgod, opcode `0nnn` is only used on old computers and is ignored by modern interpreters so we don't implement it.
-- Decode opcode: **KARAN TODO**
-- Screen: **KARAN TODO** 
+- CPU set-up: At the beginning or when the emulator resets, the memory, stack, registers will have some default values. 
+- 35 Opcodes: Correctly implement 35 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM), according to Cowgod, opcode `0nnn` is only used on old computers and is ignored by modern interpreters so we don't implement it.
+- Decode opcode: This feature is a part of the visualizer's instruction display deliverable and has been developed ahead of time. For now, users can simply enter any opcode (say 00E0) and click `Submit` which will print the corresponding instruction onto the page.
+- Screen: The screen is 640x320 pixels and each pixel is rendered by a factor of 10. Only the welcome screen is shown for programs that require user interactions via the keyboard. 
 - Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
     - Actors:
         - User
@@ -97,18 +97,18 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 **Release 2**
 
 - Emulator 
-    - ROM loading: **KARAN TODO** 
+    - ROM loading: In release 1, the ROMs are pre-loaded into the memory. We will allow user to load any valid Chip8 ROM into the memory in release 2. 
     - Keyboard input: The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
 
     1	2	3	C  ------>		1	2	3	4 <br>
     4	5	6	D  ------>	    Q	W	E	R <br>
     7	8	9	E  ------>		A	S	D	F <br>
     A	0	B	F  ------>		Z	X	C	V <br>
-    - Sound/Delay timer: **KARAN TODO** 
+    - Sound/Delay timer: The `CHIP8` object already contains `delayTimer` and `soundTimer`. We will add sound (played when the sound timer reaches 0) in this release and calibrate the delay timer with our emulator's frame rate.
 
-- Visualizer: While a chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, step forward or step backward one instruction at a time, and continue running the program. 
+- Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, step forward or step backward one instruction at a time, and continue running the program. 
 - Game 1 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist. 
-- Game 2 Prototype: `Helibird` 
+- Game 2 Prototype: `Helibird` : A game inspired by the viral game *Flappy Bird*. We are planning to replace the bird with a tiny helicopter which behaves like a bird, hence the name *Helibird*!
 
 ## Risk analysis
 
@@ -139,11 +139,11 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 The work breakdown and project schedule below are tentative and will be update after each iteration. We used the rule of thumb introduced in class: (informal estimate of time) * 3 to calculate the Estimated Efforts (hours). 
 
-**UPDATED**: **January 25, 2018**: Started using Google Spreadsheet for Work Breakdown which allows easier replanning for future releases. 
+**UPDATED**: **January 25, 2019**: Started using Google Spreadsheet for Work Breakdown which allows easier replanning for future releases. 
 
 [Link to Work Breakdown Spreadsheet](https://docs.google.com/spreadsheets/d/1HqADerMmskoAKjknKuDWZFQrG6OZgpwF0acj79XQYGA/edit?usp=sharing) 
 
-**UPDATED**: **February 6, 2018**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on February 6, 2018.  
+**UPDATED**: **February 6, 2019**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on February 6, 2018.  
 
 ![WBS example](product_document_imgs/WBS.PNG)
 
@@ -153,7 +153,7 @@ As we implementing the emulator, we also adding new deliverables and modify exis
 
 ## Project schedule
 
-The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). **UPDATED February 5**: An example for release 1 is shown below:
+The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). **UPDATED February 5, 2019**: An example for release 1 is shown below:
 
 ![Trello example](product_document_imgs/trello_example.PNG)
 
