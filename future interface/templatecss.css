@@ -1,0 +1,99 @@
+body{
+	background-color: #384356;
+	font-size: 115%;
+	color: #bfbfbf;
+	font-family: monospace;
+}
+
+#top_bar{
+	width: 70%;
+	text-align: center;
+	border: 3px solid #2758ad;
+	margin-left: 15%;
+
+}
+
+#instructions{
+	width: 14%;
+	margin-top: 1%;
+	margin-left: 5.8%; /*change this number to center everything*/
+	text-align: inherit;
+	border: 3px solid #2758ad;
+	float: left;
+	padding-left: 0.25%;
+	line-height: normal;
+} #instructions_title{
+	font-weight: bold;
+	margin-bottom: 7%;
+}
+
+.display{
+	margin-top: 1%;
+	margin-left: 1%;
+	width: 55%;;
+	height: 50%;
+	text-align: center;
+	float: left;
+}
+
+#registers{
+	width: 14%;
+	margin-top: 1%;
+	margin-left: 1%;
+	padding-left: 0.25%;
+	text-align: inherit;
+	border: 3px solid #2758ad;
+	float: left;
+	column-count:2;
+	padding-bottom: 7.5%;
+}
+
+#bottomcontrols{
+	float: left;
+	margin-left: 1%;
+}
+
+#bottomcontrols button{
+	background-color: #384356;
+	border: 1px solid #2758ad;
+	color: #bfbfbf;
+	font-family: monospace;
+	transition-duration: 0.2s;
+	font-size: 100%;
+	width:100%;
+}#bottomcontrols button:hover{
+	background-color: #2758ad; /* Green */
+  color: white;
+}
+
+#game_description{
+	margin-top: 1%;
+	margin-left: 1%;
+	border: 3px solid #2758ad;
+	width: 45%;;
+	height: 20%;
+	text-align: left;
+	float: left;
+}
+
+.keypad_table{
+	margin-top: 26%;
+	margin-left: 70%;
+
+}
+.keypad_table button{
+	background-color: #384356;
+	border: 1px solid #2758ad;
+	color: #bfbfbf;
+	font-family: monospace;
+	transition-duration: 0.2s;
+	font-size: 200%;
+	width:100%;
+}.keypad_table button:hover{
+	background-color: #2758ad; /* Green */
+  color: white;
+}
+
+table.keypad_table{
+	width: 20%;
+}
