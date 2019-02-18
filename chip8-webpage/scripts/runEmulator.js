@@ -88,6 +88,7 @@ function run(obj) {
 
 } // End of run()
 
+// Select a ROM to run
 function runEmulator(menu) {
     CHIP8.reset();
 
@@ -117,6 +118,7 @@ function runEmulator(menu) {
     }
 }
 
+// Load ROM into memory
 window.onload = function() {
     var fileInput = document.getElementById('rom');
 
@@ -135,4 +137,5 @@ window.onload = function() {
     });
 }
 
+// Run Emulator 
 setInterval(function(){ run(CHIP8) }, 1);

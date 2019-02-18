@@ -23,6 +23,7 @@ class CPU {
         this.keys = new Uint8Array(16);         // Stores the status of the keys
         this.keyPressed = false;                // True when a key is pressed
 
+        // Is these two properties used any where? 
         this.isRunning = false;                 // CPU run status
         this.programLoaded = false;		        // True when the program has been loaded into memory
 
@@ -69,7 +70,8 @@ class CPU {
 	    this.stackPointer = 0;		                    // Clear stack pointer
 	    this.delayTimer = 0;		                    // Clear delay timer
 	    this.soundTimer = 0;		                    // Clear sound timer
-	    this.isRunning = false;	                        // Set CPU run status to false
+        this.isRunning = false;	                        // Set CPU run status to false
+        this.programLoaded = false;	                    // Set program Loaded to false
 	    this.keys.fill(0);			                    // Clear keys
 	    this.keyPressed = false;	                    // Set key pressed to false
 	    this.drawFlag = false;		                    // Don't draw anything
