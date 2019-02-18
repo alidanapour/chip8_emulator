@@ -1099,4 +1099,7 @@ module.exports = {};
 module.exports.VIsEmpty = function VIsEmpty() {
   return (CHIP8_TEST.V.every(x=>x===0));
 }
-    
+
+module.exports.lengthOfArrayV = function lengthOfArrayV(){
+    return (CHIP8_TEST.V.length);
+}
