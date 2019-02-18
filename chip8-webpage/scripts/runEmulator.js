@@ -119,10 +119,19 @@ function runEmulator(menu) {
 
 window.onload = function() {
     var fileInput = document.getElementById('rom');
+
     fileInput.addEventListener('change', function(e) {
-      var file = fileInput.files[0];
-      CHIP8.reset();
-      CHIP8.loadProgram(file);
+        
+        // load new ROM if user select a file 
+        if(fileInput.files.length === 1) { 
+
+            var file = fileInput.files[0];
+
+            CHIP8.reset();
+            CHIP8.loadProgram(file);
+        
+        }
+        
     });
 }
 
