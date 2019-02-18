@@ -117,4 +117,13 @@ function runEmulator(menu) {
     }
 }
 
+window.onload = function() {
+    var fileInput = document.getElementById('rom');
+    fileInput.addEventListener('change', function(e) {
+      var file = fileInput.files[0];
+      CHIP8.reset();
+      CHIP8.loadProgram(file);
+    });
+}
+
 setInterval(function(){ run(CHIP8) }, 1);

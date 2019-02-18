@@ -114,16 +114,22 @@ class CPU {
         this.drawFlag = false;
     } // End of renderScreen()
 
-    // Main run cycle
-    // run() {
-        
-    //     console.log(this.memory);
-    //     let opcode = this.memory[this.PC] << 8 | this.memory[this.PC + 1];
-    //     this.setTimer();
-    //     this.emulateOpcode(opcode);
-    //     this.renderScreen();
+    loadProgram(rom){
 
-    // } // End of run()
+        let reader = new FileReader();
+
+        reader.addEventListener("loadend", function(){
+            let buffer = new Uint8Array(reader.result);
+            
+            for (let i = 0; i < buffer.length; i++) {
+                CHIP8.memory[CHIP8.PC + i] = buffer[i];
+            }
+
+        });
+
+        reader.readAsArrayBuffer(rom);
+
+    } // End of loadProgram()
 
     // Opcode implementations
     emulateOpcode(opcode) {
