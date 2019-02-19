@@ -171,3 +171,21 @@ function runEmulator(menu) {
     }, 1);
 }
 
+// Load ROM into memory
+window.onload = function() {
+    var fileInput = document.getElementById('rom');
+
+    fileInput.addEventListener('change', function(e) {
+        
+        // load new ROM if user select a file 
+        if(fileInput.files.length === 1) { 
+
+            var file = fileInput.files[0];
+
+            CHIP8.reset();
+            CHIP8.loadProgram(file);
+        
+        }
+        
+    });
+}
