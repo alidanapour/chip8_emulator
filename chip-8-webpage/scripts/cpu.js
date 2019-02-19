@@ -121,6 +121,23 @@ class CPU {
         this.keys[key] = false;
     }   // End of setKeyUp(key)
 
+    loadProgram(rom){
+
+        let reader = new FileReader();
+
+        reader.addEventListener("loadend", function(){
+            let buffer = new Uint8Array(reader.result);
+            
+            for (let i = 0; i < buffer.length; i++) {
+                CHIP8.memory[CHIP8.PC + i] = buffer[i];
+            }
+
+        });
+
+        reader.readAsArrayBuffer(rom);
+
+    } // End of loadProgram()
+
     // Opcode implementations
     emulateOpcode(opcode) {
         let code = opcode; 						// 1111-2222-3333-4444
