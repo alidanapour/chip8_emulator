@@ -373,20 +373,19 @@ end
   v1 := 1
   sprite v0 v1 12
   
-  #Set the bottom border and the score 'dash'
+  #Set the top and bottom borders and the score 'dash'
   v0 := 0
-  v1 := 58 #bottom
+  v1 := 0 #bottom
+  i := vborder
   loop
-  	i := vborder
     sprite v0 v1 1
     v0 += 8
   	if v0 != 64 then
   again
   
   v0 := 0
-  v1 := 0
+  v1 := 26
    loop
-  	i := vborder
     sprite v0 v1 1
     v0 += 8
   	if v0 != 64 then
@@ -394,7 +393,7 @@ end
   
   i := smallDash
   v0 := 28
-  v1 := 61
+  v1 := 29
   sprite v0 v1 1
   #Update small score by calling updatescore
   updateScore
@@ -569,7 +568,7 @@ if enemyScore == 3 then gameOverLose
 #This function displays the game win screen. It also prompts the user for another new game
 : gameOverWin
 v0 := 9
-v1 := 56
+v1 := 24
 
 i := again1
 sprite v0 v1 6
@@ -638,7 +637,7 @@ resetScore
 #Same as function above, except for lose condition 
 : gameOverLose
 v0 := 9
-v1 := 56
+v1 := 24
 
 i := again1
 sprite v0 v1 6
