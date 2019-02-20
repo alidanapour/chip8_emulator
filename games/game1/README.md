@@ -18,4 +18,5 @@ SpaceWars is a shoot-out style game that puts you up against an Ai opponent in a
 - Fixed major game-breaking bug (stack overflow)
 - Added randomized playing field
 - Added buzzer noise to destruction animation.
+- Player choice to play a new game no longer shows initial title screen, instead just a new score of 0 - 0.
 ![SpaceWars Title Screen](titlescreen.PNG)
