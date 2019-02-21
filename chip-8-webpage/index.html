@@ -39,7 +39,7 @@
     </p>
 
     <p>
-        Decode opcode: <input type="text" id="type-opcode-here" />
+        Decode opcode: <input type="text" id="type-opcode-here" maxlength="4" placeholder="XXXX"/>
         <input type="button" value="Submit" onclick="disassembleOpcode(document.getElementById('type-opcode-here').value);"/>
         <button onclick="document.getElementById('decode-opcode-here').innerHTML = ''">Clear Opcodes</button>
     </p>
@@ -48,17 +48,48 @@
 
     <div class="options">
         <select id="games" onchange="runEmulator(this)">
-            <option value="NOTHING">Please select a ROM</option>
-            <option value="CGG">Computer Grenade Graphic</option>
-            <option value="SWARS">Space Game</option>
-            <option value="SFACES">Smiley Faces :)</option>
-            <option value="15PUZZLE">15Puzzle</option>
+            <option value="" selected disabled hidden>Choose a ROM</option>
+            <option value="15PUZZLE">15PUZZLE</option>
+            <option value="BLINKY">BLINKY</option>
+            <option value="BLITZ">BLITZ</option>
+            <option value="BRIX">BRIX</option>
+            <option value="CGG">COMPUTER GRENADE GRAPHIC</option>
+            <option value="CONNECT4">CONNECT4</option>
+            <option value="GUESS">GUESS</option>
+            <option value="HIDDEN">HIDDEN</option>
+            <option value="INVADERS">INVADERS</option>
+            <option value="KALEID">KALEIDOSCOPE</option>
+            <option value="MAZE">MAZE</option>
+            <option value="MERLIN">MERLIN</option>
+            <option value="MISSILE">MISSILE</option>
+            <option value="PONG">PONG</option>
+            <option value="PONG2">PONG2</option>
+            <option value="PUZZLE">PUZZLE</option>
+            <option value="SFACES">SMILEY FACES</option>
+            <option value="SPACEWARS">SPACEWARS</option>
+            <option value="SYZYGY">SYZYGY</option>
+            <option value="TANK">TANK</option>
+            <option value="TETRIS">TETRIS</option>
+            <option value="TICTAC">TICTAC</option>
+            <option value="UFO">UFO</option>
+            <option value="VBRIX">VBRIX</option>
+            <option value="VERS">VERS</option>
+            <option value="WIPEOFF">WIPEOFF</option>
         </select>
-        <button id="start">Start</button>
-        <button id="pause">Pause</button>
+        <select id="speed" onchange="setEmulatorSpeed(this)">
+            <option value="5">5 cycles/frame</option>
+            <option value="10">10 cycles/frame</option>
+            <option value="15">15 cycles/frame</option>
+            <option value="20">20 cycles/frame</option>
+            <option value="30">30 cycles/frame</option>
+            <option value="50">50 cycles/frame</option>
+            <option value="100">100 cycles/frame</option>
+        </select>
+        <button id="start" onclick="startPressed()">Start</button>
+        <button id="pause" onclick="pausePressed()">Pause</button>
         <button id="step-forward">Step Forward</button>
         <button id="step-backward">Step Backward</button>
-        <button id="reset">Reset</button>
+        <button id="reset" onclick="resetPressed()">Reset</button>
     </div></br>
 
     <div class="display">
