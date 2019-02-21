@@ -144,7 +144,7 @@ class CPU {
         let x = (code & 0x0F00) >>> 8;          // 0x00
         let y = (code & 0x00F0) >>> 4;          // 00y0
         let kk = code & 0x00FF;                 // 00kk
-        let nnn = code & 0xFFF;					// 0nnn
+        let nnn = code & 0x0FFF;				// 0nnn
 
         switch (code & 0xF000) {
             case 0x0000:
@@ -167,8 +167,9 @@ class CPU {
                         this.stackPointer--;
                         this.PC = this.stack[this.stackPointer];
                         break;
-                }
 
+                }
+                
                 break;
 
             case 0x1000:
@@ -298,7 +299,7 @@ class CPU {
                             this.V[0xF] = 1;
                         else
                             this.V[0xF] = 0;
-                        this.V[x] = this.V[x] >> 1;    	    // >> or >>>
+                        this.V[x] /= 2;    	    // >> or >>>
                         this.PC += 2;
                         break;
 
@@ -322,7 +323,7 @@ class CPU {
                             this.V[0xF] = 1;
                         else
                             this.V[0xF] = 0;
-                        this.V[x] = this.V[x] << 1;
+                        this.V[x] *= 2;
                         break;
                 }
                 break;
@@ -369,9 +370,9 @@ class CPU {
                 for (let i = 0; i < n; i++) {
                     let bitToDraw = this.memory[this.I + i];
                     for (let j = 0; j < 8; j++) {
-                        if ((bitToDraw & (0x80 >> j)) !== 0) {
-                            if (this.display[(this.V[x] + j) + ((this.V[y] + i) * 64)] === 1)
-                                this.V[15] = 1;
+                        if ((bitToDraw & (0x80 >> j)) != 0) {
+                            if (this.display[(this.V[x] + j) + ((this.V[y] + i) * 64)] == 1)
+                                this.V[0xF] = 1;
                             this.display[(this.V[x] + j) + ((this.V[y] + i) * 64)] ^= 1;
                         }
                     }
