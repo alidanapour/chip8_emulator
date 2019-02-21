@@ -901,7 +901,7 @@ runProcess = null;          // Tracks the main run cycle
 timerProcess = null;        // Tracks the D/S timer cycle
 
 let notPaused = true;
-let emulatorSpeed = 20;     // Default speed is 20 cycles/frame
+let emulatorSpeed = 8;     // Default speed is 8 cycles/frame
 let CHIP8 = new CPU();
 
 
@@ -996,6 +996,7 @@ window.onload = function() {
 
             CHIP8.reset();
             CHIP8.loadProgram(file);
+            CHIP8.isRunning = true;
         }
     });
 
