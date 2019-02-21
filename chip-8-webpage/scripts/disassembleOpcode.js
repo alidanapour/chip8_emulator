@@ -1,4 +1,7 @@
 function disassembleOpcode (opcode) {
+	if (opcode.length != 4)
+		return;
+
 	let code = parseInt(opcode, 16);
 	// let code = opcode;
   
@@ -243,6 +246,11 @@ function disassembleOpcode (opcode) {
             break;
 	}
 	
+	if (str == null) {
+		alert('Bad opcode!');
+		return;
+	}
+
 	let node = document.createElement("li");
 	let text_node = document.createTextNode(str);
 	node.appendChild(text_node);
