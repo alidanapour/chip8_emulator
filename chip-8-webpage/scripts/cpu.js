@@ -92,21 +92,14 @@ class CPU {
         if (this.drawFlag === false)
             return;
 
-        const canvas = document.getElementById("screen-area");  // TODO: to param
-        const screen = canvas.getContext("2d");                 // TODO: tp param
+        const canvas = document.getElementById("screen-area");
+        const screen = canvas.getContext("2d");
+        screen.clearRect(0, 0, this.screenWidth * 10, this.screenHeight * 10);
 
-        let length = this.display.length;
-
-        for (let i = 0; i < length; i++) {
-            if (this.display[i] === 1) {
-                let y = i / 64 | 0;
-                let x = i - (y * 64);
-                screen.fillRect(x * 10, y * 10, 10, 10);
-            }
-            else if (this.display[i] === 0) {
-                let y = i / 64 | 0;
-                let x = i - (y * 64);
-                screen.clearRect(x * 10, y * 10, 10, 10);
+        for (let y = 0; y < this.screenHeight; y++) {
+            for (let x = 0; x < this.screenWidth; x++) {
+                if (this.display[x + (y * this.screenWidth)])
+                    screen.fillRect(x * 10, y * 10, 10, 10);
             }
         }
 
@@ -368,9 +361,9 @@ class CPU {
                 this.V[0xF] = 0;
                 let n = code & 0x000F;
                 for (let i = 0; i < n; i++) {
-                    let bitToDraw = this.memory[this.I + i];
+                    let byteToDraw = this.memory[this.I + i];
                     for (let j = 0; j < 8; j++) {
-                        if ((bitToDraw & (0x80 >> j)) != 0) {
+                        if ((byteToDraw & (0x80 >> j)) != 0) {
                             if (this.display[(this.V[x] + j) + ((this.V[y] + i) * 64)] == 1)
                                 this.V[0xF] = 1;
                             this.display[(this.V[x] + j) + ((this.V[y] + i) * 64)] ^= 1;
@@ -389,7 +382,7 @@ class CPU {
 
                         // Ex9E - SKP Vx
                         // Skip next instruction if key with the value of Vx is pressed
-                        if (this.keys[this.V[x]])
+                        if (this.keys[this.V[x]] == true)
                             this.PC += 2;
                         this.PC += 2;
                         break;
@@ -398,7 +391,7 @@ class CPU {
 
                         // ExA1 - SKNP Vx
                         // Skip next instruction if key with the value of Vx is not pressed
-                        if (!this.keys[this.V[x]])
+                        if (this.keys[this.V[x]] == false)
                             this.PC += 2;
                         this.PC += 2;
                         break;
