@@ -959,16 +959,18 @@ function setEmulatorSpeed(menu) {
     emulatorSpeed = menu.value;
 }
 
-function startPressed() {
-    let tempMemory = CHIP8.memory;
-    CHIP8.reset();
-    CHIP8.isRunning = true;
-    CHIP8.memory = tempMemory;
+// function restartPressed() {
+//     let tempMemory = new Uint8Array(4096);
+//     for (let i = 512; i < 4096; i++)
+//         tempMemory[i] = CHIP8.memory[i];
 
-    // CHIP8.emulateOpcode(0x00E0);
-    // CHIP8.renderScreen();
-    
-}
+//     CHIP8.reset();
+
+//     for (let i = 512; i < 4096; i++)
+//         CHIP8.memory[i] = tempMemory[i];
+
+//     CHIP8.isRunning = true;
+// }
 
 function pausePressed() {
     CHIP8.isRunning = false;
