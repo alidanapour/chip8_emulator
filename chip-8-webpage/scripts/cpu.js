@@ -20,10 +20,13 @@ class CPU {
         this.drawFlag = false;                  // Tells whether to draw
 
         this.keys = new Uint8Array(16);         // Stores the status of the keys
-        this.keyPressed = null;                 // Value of the most recent key pressed
+        // this.keyPressed = null;                 // Value of the most recent key pressed
 
         this.isRunning = false;                 // CPU run status
-        this.programLoaded = false;		        // True when the program has been loaded into memory
+        // this.programLoaded = false;		        // True when the program has been loaded into memory
+
+        this.newShiftQuirk = true;              // Use new shift definitions (affects 8XY6 & 8XYE) by default
+        this.newLoadStoreQuirk = true;          // Use new load/store definitions (affects FX55 & FX65) by default
 
         this.fontsToStore = [                   
             0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
@@ -70,7 +73,7 @@ class CPU {
 	    this.soundTimer = 0;		                    // Clear sound timer
 	    this.isRunning = false;	                        // Set CPU run status to false
         this.keys.fill(0);			                    // Clear keys
-        this.keyPressed = null;                         // No key pressed
+        // this.keyPressed = null;                         // No key pressed
         this.drawFlag = false;		                    // Don't draw anything
 
     } // End of reset()
@@ -276,7 +279,7 @@ class CPU {
 
                         // 8xy5 - SUB Vx, Vy
                         // Set Vx = Vx - Vy, set VF = NOT borrow
-                        if (this.V[x] > this.V[y])
+                        if (this.V[x] >= this.V[y])
                             this.V[0xF] = 1;           		// Vf = Not Borrow
                         else
                             this.V[0xF] = 0;
@@ -288,11 +291,12 @@ class CPU {
 
                         // 8xy6 - SHR Vx {, Vy}
                         // Set Vx = Vx SHR 1
-                        if (this.V[x] & 0x01)
-                            this.V[0xF] = 1;
-                        else
+                        let registerToShift1 = this.newShiftQuirk ? this.V[x] : this.V[y];
+                        if ((registerToShift1 & 0x01) === 0x00)
                             this.V[0xF] = 0;
-                        this.V[x] /= 2;    	    // >> or >>>
+                        else
+                            this.V[0xF] = 1;
+                        this.V[x] = (registerToShift1 / 2);
                         this.PC += 2;
                         break;
 
@@ -300,7 +304,7 @@ class CPU {
 
                         // 8xy7 - SUBN Vx, Vy
                         // Set Vx = Vy - Vx, set VF = NOT borrow
-                        if (this.V[y] > this.V[x])	        // Vf = Not Borrow
+                        if (this.V[y] >= this.V[x])	        // Vf = Not Borrow
                             this.V[0xF] = 1;
                         else
                             this.V[0xF] = 0;
@@ -312,11 +316,13 @@ class CPU {
 
                         // 8xyE - SHL Vx {, Vy}
                         // Set Vx = Vx SHL 1
-                        if (this.V[x] & 0x80)
-                            this.V[0xF] = 1;
-                        else
+                        let registerToShift2 = this.newShiftQuirk ? this.V[x] : this.V[y];
+                        if ((registerToShift2 & 0x80) === 0x00)
                             this.V[0xF] = 0;
-                        this.V[x] *= 2;
+                        else
+                            this.V[0xF] = 1;
+                        this.V[x] = (this.V[x] * 2);
+                        this.PC += 2;
                         break;
                 }
                 break;
@@ -472,7 +478,8 @@ class CPU {
                         for (let i = 0; i <= x; i++) {
                             this.memory[this.I + i] = this.V[i];
                         }
-                        this.I += x + 1;
+                        if (!this.newLoadStoreQuirk)
+                            this.I += x + 1;
                         this.PC += 2;
                         break;
 
@@ -483,7 +490,8 @@ class CPU {
                         for (let i = 0; i <= x; i++) {
                             this.V[i] = this.memory[this.I + i];
                         }
-                        this.I += x + 1;
+                        if (!this.newLoadStoreQuirk)
+                            this.I += x + 1;
                         this.PC += 2;
                         break;
 
