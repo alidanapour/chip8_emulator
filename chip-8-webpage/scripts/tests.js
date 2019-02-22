@@ -619,8 +619,11 @@ let TESTS = {
                 if (CHIP8_TEST.memory[0x100 + i] != CHIP8_TEST.V[i])
                     return false;
             }
-
-            return (CHIP8_TEST.I == 0x100 + 3 + 1);
+            
+            if (CHIP8_TEST.newLoadStoreQuirk)
+                return (CHIP8_TEST.I == 0x100);    
+            else
+                return (CHIP8_TEST.I == 0x100 + 3 + 1);
         },
 
         Opcode_FX65: function() {
@@ -637,6 +640,9 @@ let TESTS = {
                     return false;
             }
 
-            return (CHIP8_TEST.I == 0x100 + 3 + 1);
+            if (CHIP8_TEST.newLoadStoreQuirk)
+                return (CHIP8_TEST.I == 0x100);    
+            else
+                return (CHIP8_TEST.I == 0x100 + 3 + 1);
         }
 };
