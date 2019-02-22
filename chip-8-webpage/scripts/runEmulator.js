@@ -897,8 +897,8 @@ let romList = {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-runProcess = null;          // Tracks the main run cycle
-timerProcess = null;        // Tracks the D/S timer cycle
+let runProcess = null;          // Tracks the main run cycle
+let timerProcess = null;        // Tracks the D/S timer cycle
 
 let notPaused = true;
 let emulatorSpeed = 8;     // Default speed is 8 cycles/frame
@@ -952,6 +952,7 @@ function runEmulator(menu) {
             CHIP8.memory[CHIP8.PC + i] = romChosen[i];
     }
 
+    document.getElementById('rom').value = "";
 }
 
 function setEmulatorSpeed(menu) {
@@ -959,17 +960,42 @@ function setEmulatorSpeed(menu) {
 }
 
 function startPressed() {
+    let tempMemory = CHIP8.memory;
+    CHIP8.reset();
     CHIP8.isRunning = true;
+    CHIP8.memory = tempMemory;
+
+    // CHIP8.emulateOpcode(0x00E0);
+    // CHIP8.renderScreen();
+    
 }
 
 function pausePressed() {
     CHIP8.isRunning = false;
 }
 
+function continuePressed() {
+    CHIP8.isRunning = true;
+}
+
 function resetPressed() {
     CHIP8.emulateOpcode(0x00E0);
     CHIP8.renderScreen();
     CHIP8.reset();
+    document.getElementById('rom').value = "";
+    document.getElementById('games').value = "";
+}
+
+function checkShiftQuirks() {
+    resetPressed();
+    let checkbox1 = document.getElementById('squirk');
+    CHIP8.newShiftQuirk = checkbox1.checked ? true : false;
+}
+
+function checkLoadStoreQuirks() {
+    resetPressed();
+    let checkbox2 = document.getElementById('lsquirk');
+    CHIP8.newLoadStoreQuirk = checkbox2.checked ? true : false;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -997,6 +1023,8 @@ window.onload = function() {
             CHIP8.reset();
             CHIP8.loadProgram(file);
             CHIP8.isRunning = true;
+
+            document.getElementById('games').value = "";
         }
     });
 
