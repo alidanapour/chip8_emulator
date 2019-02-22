@@ -563,9 +563,9 @@ let TESTS = {
         Opcode_FX0A: function() {
             CHIP8_TEST.reset();
             CHIP8_TEST.V[5] = 4;
-            CHIP8_TEST.keyPressed = 0xA;
+            CHIP8_TEST.keys[0x4] = true;
             CHIP8_TEST.emulateOpcode(0xF50A);
-            return (CHIP8_TEST.V[5] == CHIP8_TEST.keyPressed);
+            return (CHIP8_TEST.keys[CHIP8_TEST.V[5]]);
         },
         
         Opcode_FX15: function() {
@@ -619,8 +619,11 @@ let TESTS = {
                 if (CHIP8_TEST.memory[0x100 + i] != CHIP8_TEST.V[i])
                     return false;
             }
-
-            return (CHIP8_TEST.I == 0x100 + 3 + 1);
+            
+            if (CHIP8_TEST.newLoadStoreQuirk)
+                return (CHIP8_TEST.I == 0x100);    
+            else
+                return (CHIP8_TEST.I == 0x100 + 3 + 1);
         },
 
         Opcode_FX65: function() {
@@ -637,6 +640,9 @@ let TESTS = {
                     return false;
             }
 
-            return (CHIP8_TEST.I == 0x100 + 3 + 1);
+            if (CHIP8_TEST.newLoadStoreQuirk)
+                return (CHIP8_TEST.I == 0x100);    
+            else
+                return (CHIP8_TEST.I == 0x100 + 3 + 1);
         }
 };
