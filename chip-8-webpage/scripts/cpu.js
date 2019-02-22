@@ -273,6 +273,7 @@ class CPU {
                         else
                             this.V[0xF] = 0;
                         this.V[x] = sum & 0xFF;
+                        this.PC += 2;
                         break;
 
                     case 0x0005:
@@ -321,7 +322,7 @@ class CPU {
                             this.V[0xF] = 0;
                         else
                             this.V[0xF] = 1;
-                        this.V[x] = (this.V[x] * 2);
+                        this.V[x] = (registerToShift2 * 2);
                         this.PC += 2;
                         break;
                 }
@@ -469,6 +470,7 @@ class CPU {
                         this.memory[this.I] = this.V[x] / 100;
                         this.memory[this.I + 1] = (this.V[x] / 10) % 10;
                         this.memory[this.I + 2] = (this.V[x] % 100) % 10;
+                        this.PC += 2;
                         break;
 
                     case 0x0055:
