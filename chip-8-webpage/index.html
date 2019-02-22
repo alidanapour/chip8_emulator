@@ -86,17 +86,20 @@
             <option value="100">100 cycles/frame</option>
         </select>
         <button id="start" onclick="startPressed()">Start</button>
+        <button id="continue" onclick="continuePressed()">Continue</button>
         <button id="pause" onclick="pausePressed()">Pause</button>
         <button id="step-forward">Step Forward</button>
         <button id="step-backward">Step Backward</button>
-        <button id="reset" onclick="resetPressed()">Reset</button>
+        <button id="reset" onclick="resetPressed()">Reset</button> </br>
+        Use new shift opcodes? <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
+        Use new load/store opcodes? <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
     </div></br>
 
     <div class="display">
         <canvas id="screen-area" width="640" height="320" style="border: 5px solid;"></canvas>
     </div></br>
 
-    <p>Select a ROM: <input type="file" id="rom" /></p><br/>
+    <p>Select a ROM: <input type="file" id="rom"/></p><br/>
 
     <p>Test Outputs: <button onclick="runAllTests()">Start Test</button></p>
     <div class="tests-scroll">
