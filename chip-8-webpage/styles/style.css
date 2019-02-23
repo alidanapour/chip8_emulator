@@ -19,6 +19,8 @@ p, li {
 body {
     width: 1000px;
     margin: 0 auto;
+    border: 5px solid;
+    padding-bottom: 5px;
 }
 
 .display, .options, .keyboard {
@@ -42,3 +44,30 @@ div.tests-scroll {
     margin-left: auto;
     margin-right: auto;
 }
+
+.visualizer{
+    overflow: hidden; /* prevent instructions and registers outside of body*/
+}
+
+.instructions{
+    border: 5px solid;
+    float:left;
+    width: 80%;
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+}
+
+.registers{
+    border: 5px solid;
+    float:right;
+    width: 15%;
+}
+
+.registers_inner{
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+}
+
+.current-instruction {
+    background-color: greenyellow;
+  }
