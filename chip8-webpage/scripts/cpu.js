@@ -521,14 +521,16 @@ module.exports.cpuLoadFonts = function cpuLoadFonts() {
 module.exports.cpuOpcode_00E0 = function cpuOpcode_00E0() {
     CHIP8_TEST.reset();
     CHIP8_TEST.emulateOpcode(0x00E0);
-    return (CHIP8_TEST.PC == 514);
+    return (CHIP8_TEST.PC== 514);
 }
 
 module.exports.cpuOpcode_00EE = function cpuOpcode_00EE() {
     CHIP8_TEST.reset();
     CHIP8_TEST.stack[CHIP8_TEST.stackPointer++] = 0xFF;
     CHIP8_TEST.emulateOpcode(0x00EE);
-    return ((CHIP8_TEST.stackPointer == 0) && (CHIP8_TEST.PC) == 0xFF);
+    if((CHIP8_TEST.stackPointer == 0)){
+        return (CHIP8_TEST.PC == 0xFF);
+    }
 }
 
 module.exports.cpuOpcode_1NNN = function cpuOpcode_1NNN() {
@@ -879,7 +881,10 @@ module.exports.cpuOpcode_FX55 = function cpuOpcode_FX55() {
             return false;
     }
 
-    return (CHIP8_TEST.I == 0x100 + 3 + 1);
+    if (CHIP8_TEST.newLoadStoreQuirk)
+        return (CHIP8_TEST.I == 0x100);
+    else
+        return (CHIP8_TEST.I == 0x100 + 3 + 1);
 }
 
 module.exports.cpuOpcode_FX65 = function cpuOpcode_FX65() {
@@ -896,5 +901,8 @@ module.exports.cpuOpcode_FX65 = function cpuOpcode_FX65() {
             return false;
     }
 
-    return (CHIP8_TEST.I == 0x100 + 3 + 1);
+    if (CHIP8_TEST.newLoadStoreQuirk)
+        return (CHIP8_TEST.I == 0x100);
+    else
+        return (CHIP8_TEST.I == 0x100 + 3 + 1);
 }
