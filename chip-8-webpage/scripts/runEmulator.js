@@ -263,14 +263,14 @@ window.onload = function() {
                 let currentPC = CHIP8.PC;
                 let lastPCDiff = currentPC - lastPC;
 
-                // If currentPC is 18 opcodes away or lastPCDiff is behind lastPC
+                // If currentPC is 19 opcodes away or lastPCDiff is behind lastPC
                 // ---> then update lastPC
-                if (lastPCDiff > 18 * 2 || lastPCDiff < 0)
+                if (lastPCDiff > 19 * 2 || lastPCDiff < 0)
                     lastPC = currentPC;
 
                 let pc = Math.max( (lastPC-2) , 0);
 
-                for (let i = 0; i < 20; i++) {
+                for (let i = 0; i < 21; i++) {
 
                     const el = document.createElement('div');
                     let opcode = (CHIP8.memory[pc] << 8) | CHIP8.memory[pc + 1];
