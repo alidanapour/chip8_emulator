@@ -178,7 +178,7 @@ As we implementing the emulator, we also adding new deliverables and modify exis
 
 ![WBS example](product_document_imgs/WBS_R2.PNG)
 
-For Release 2, we are making good progress,the Emulator and Game 1 is essentially completed and just need more testing. The visualizer and game 2 will be completed by the release 3. Even though we have reduced the errors in our time estimation, we still made some mistakes, one example is the unexpected increases in opcode implementations to support old ROMs. 
+For Release 2, we are making good progress, the Emulator and Game 1 is essentially completed and just need more testing. The visualizer and game 2 will be completed by the release 3. Even though we have reduced the errors in our time estimation, we still made some mistakes, one example is the unexpected increases in opcode implementations to support old ROMs. 
 
 As our code base expands, we have attempted to improve our code quality. For example, we have experienced with loading rom directly from file, however since the file is on a local machine we must either (1) turn the local machine into a Web server  (2) change security for local files in a browser (access local file as `file:///example`). Both options require user to perform initial set-up on their machine to run our code so we decided to convert roms (in binary) into hex values for loading into memory later. For roms that are actively developed (game 1, game 2), user must use `load rom` rather than `dropdown menu` so that we don't have to update the `dropdown menu` 
 every time a new version comes out more on this topic, please visit: [link1](https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally)
