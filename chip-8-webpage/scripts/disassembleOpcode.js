@@ -1,9 +1,8 @@
 function disassembleOpcode (opcode) {
 	if (opcode.length != 4)
-		return;
+		return `Illegal opcode: ${opcode.toString(16)}`;
 
 	let code = parseInt(opcode, 16);
-	// let code = opcode;
   
     let x = ((code & 0x0F00) >>> 8).toString(16).toUpperCase();   // 0x00
     let y = ((code & 0x00F0) >>> 4).toString(16).toUpperCase();   // 00y0
@@ -246,13 +245,13 @@ function disassembleOpcode (opcode) {
             break;
 	}
 	
-	if (str == null) {
-		alert('Bad opcode!');
-		return;
-	}
+	if (str == null)
+		return `Illegal opcode: ${opcode.toString(16)}`;
 
-	let node = document.createElement("li");
-	let text_node = document.createTextNode(str);
-	node.appendChild(text_node);
-	document.getElementById("decode-opcode-here").appendChild(node);
+	return str;
+
+	// let node = document.createElement("li");
+	// let text_node = document.createTextNode(str);
+	// node.appendChild(text_node);
+	// document.getElementById("decode-opcode-here").appendChild(node);
 }
