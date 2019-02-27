@@ -367,13 +367,13 @@ class CPU {
                 // Display n-byte sprite starting at memory location I at (Vx, Vy), set VF = collision
                 this.V[0xF] = 0;
                 let n = code & 0x000F;
-                for (let i = 0; i < n; i++) {
+                for (let i = 0; i < n; i++) {                           // Draw n bytes
                     let byteToDraw = this.memory[this.I + i];
-                    for (let j = 0; j < 8; j++) {
+                    for (let j = 0; j < 8; j++) {                       // Draw each bit for that byte
                         if ((byteToDraw & (0x80 >> j)) != 0) {
-                            if (this.display[(this.V[x] + j) + ((this.V[y] + i) * 64)] == 1)
-                                this.V[0xF] = 1;
-                            this.display[(this.V[x] + j) + ((this.V[y] + i) * 64)] ^= 1;
+                            if (this.display[((this.V[x] + j) % 64) + (((this.V[y] + i) % 32) * 64)] == 1)
+                                this.V[0xF] = 1;                        // Collision detection
+                            this.display[((this.V[x] + j) % 64) + (((this.V[y] + i) % 32) * 64)] ^= 1;
                         }
                     }
                 }

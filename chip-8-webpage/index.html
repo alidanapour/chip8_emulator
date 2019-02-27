@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
+
     <meta charset="utf-8">
     <title>CHIP-8 JavaScript</title>
     <link href="styles/style.css" rel="stylesheet" type="text/css">
@@ -10,12 +12,15 @@
     <script type="text/javascript" src="scripts/disassembleOpcode.js"></script>
     <script type="text/javascript" src="scripts/cpu.js"></script>
     <script type="text/javascript" src="scripts/tests.js"></script>
+    <script type="text/javascript" src="scripts/preloadRoms.js"></script>
     <script type="text/javascript" src="scripts/runEmulator.js"></script>
+
 </head>
 
 <body>
-    <h1>Chip-8 Emulator</h1>
 
+    <h1>Chip-8 Emulator</h1>
+    
     <img src="images/chip-8-logo.png" alt="Chip-8 Logo" class="center"><br/>
 
     <p>
@@ -38,15 +43,17 @@
         the third release.
     </p>
 
-    <p>
+    <!-- <p>
         Decode opcode: <input type="text" id="type-opcode-here" maxlength="4" placeholder="XXXX"/>
         <input type="button" value="Submit" onclick="disassembleOpcode(document.getElementById('type-opcode-here').value);"/>
-        <button onclick="document.getElementById('decode-opcode-here').innerHTML = ''">Clear Opcodes</button>
-    </p>
+        <button onclick="document.getElementById('decode-opcode-here').textContent = ''">Clear Opcodes</button>
+    </p> -->
 
-    <ul id="decode-opcode-here"></ul><br/>
+    <!-- <ul id="decode-opcode-here"></ul><br/> -->
 
     <div class="options">
+
+        <!-- Drop-down Games Menu -->
         <select id="games" onchange="runEmulator(this)">
             <option value="" selected disabled hidden>Choose a ROM</option>
             <option value="15PUZZLE">15PUZZLE</option>
@@ -66,7 +73,6 @@
             <option value="PONG2">PONG2</option>
             <option value="PUZZLE">PUZZLE</option>
             <option value="SFACES">SMILEY FACES</option>
-            <option value="SPACEWARS">SPACEWARS</option>
             <option value="SYZYGY">SYZYGY</option>
             <option value="TANK">TANK</option>
             <option value="TETRIS">TETRIS</option>
@@ -76,8 +82,10 @@
             <option value="VERS">VERS</option>
             <option value="WIPEOFF">WIPEOFF</option>
         </select>
+
+        <!-- Speed Controls -->
         <select id="speed" onchange="setEmulatorSpeed(this)">
-            <option value="5">5 cycles/frame</option>
+            <option value="8">8 cycles/frame</option>
             <option value="10">10 cycles/frame</option>
             <option value="15">15 cycles/frame</option>
             <option value="20">20 cycles/frame</option>
@@ -85,27 +93,62 @@
             <option value="50">50 cycles/frame</option>
             <option value="100">100 cycles/frame</option>
         </select>
+
+        <!-- Buttons -->
         <!-- <button id="restart" onclick="restartPressed()">Restart</button> -->
         <button id="continue" onclick="continuePressed()">Continue</button>
         <button id="pause" onclick="pausePressed()">Pause</button>
-        <button id="step-forward">Step Forward</button>
+        <button id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
         <button id="step-backward">Step Backward</button>
         <button id="reset" onclick="resetPressed()">Reset</button> </br>
+
+        <!-- Quirk Checkboxes -->
         Use new shift opcodes? <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
         Use new load/store opcodes? <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
+
     </div></br>
 
+    <!-- Emulator Screen -->
     <div class="display">
-        <canvas id="screen-area" width="640" height="320" style="border: 5px solid;"></canvas>
+        <canvas id="screen-area" width="640" height="320"></canvas>
     </div></br>
 
     <p>Select a ROM: <input type="file" id="rom"/></p><br/>
 
-    <p>Test Outputs: <button onclick="runAllTests()">Start Test</button></p>
+    <!-- <p>Test Outputs: <button onclick="runAllTests()">Start Test</button></p>
     <div class="tests-scroll">
         <ul id="test-results"></ul>
+    </div> -->
+
+    <div class="visualizer-grid">
+
+        <div class="instructions">Instructions</div>
+
+        <div class="registers">  
+                <div class="registers_inner" id="PC">PC: 0x0000</div>
+                <div class="registers_inner" id="I">  I: 0x0000</div>
+                <div class="registers_inner" id="SP">SP: 0x00</div>
+                <div class="registers_inner" id="DT">DT: 0x00</div>
+                <div class="registers_inner" id="ST">ST: 0x00</div>
+                <div class="registers_inner" id="V0">V0: 0x00</div>
+                <div class="registers_inner" id="V1">V1: 0x00</div>
+                <div class="registers_inner" id="V2">V2: 0x00</div>
+                <div class="registers_inner" id="V3">V3: 0x00</div>
+                <div class="registers_inner" id="V4">V4: 0x00</div>
+                <div class="registers_inner" id="V5">V5: 0x00</div>
+                <div class="registers_inner" id="V6">V6: 0x00</div>
+                <div class="registers_inner" id="V7">V7: 0x00</div>
+                <div class="registers_inner" id="V8">V8: 0x00</div>
+                <div class="registers_inner" id="V9">V9: 0x00</div>
+                <div class="registers_inner" id="VA">VA: 0x00</div>
+                <div class="registers_inner" id="VB">VB: 0x00</div>
+                <div class="registers_inner" id="VC">VC: 0x00</div>
+                <div class="registers_inner" id="VD">VD: 0x00</div>
+                <div class="registers_inner" id="VE">VE: 0x00</div>
+                <div class="registers_inner" id="VF">VF: 0x00</div>
+        </div>
+        
     </div>
     
 </body>
 </html>
-
