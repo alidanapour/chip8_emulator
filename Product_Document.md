@@ -62,13 +62,14 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 - Release 2:
     - Added [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
     - Updated user case for game 1 complete.
-    - Added user case for game 2 prototype. 
-    - Migrated to Jest for automated test.  
+    - Added user case for game 2 prototype.  
     - Added program descriptions and instructions on how to play games to the visualizer.
     - Moved visualizer step forward and step backward to release 3.
+    - Added test cases to `test.js`.  
 - Release 3:
     - Added user case for chip8 tool prototype.
-    - Added user case for game 2 complete.   
+    - Added user case for game 2 complete.
+    - Migrated to [Jest](https://jestjs.io/) for automated test.   
     
 **Release 0**:
 
@@ -132,6 +133,8 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 - Game 2 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist.
 
 - Chip8 Tool: **TODO**
+
+- Automated test with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
 
 ## Risk analysis
 
