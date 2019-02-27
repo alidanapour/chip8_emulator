@@ -120,7 +120,8 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, and continue running the program. User can click the `Description and How To Play` button for more details on any program in the drop-down menu. 
 - Game 1 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist. 
-- Game 2 Prototype: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. We are planning to replace the T-Rex with a rabbit, hence the name *Jumpy Rabbit*!
+- Game 2 Prototype: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. We are planning to replace the T-Rex with a rabbit, hence the name *Jumpy Rabbit*! 
+    - User case: **TO DO**
 
 **Release 3**
 
@@ -128,7 +129,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Visualizer: User can step forward or step backward one instruction at a time.
 
-- Game 2 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist. 
+- Game 2 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist.
 
 - Chip8 Tool: **TODO**
 
@@ -176,6 +177,12 @@ As we implementing the emulator, we also adding new deliverables and modify exis
 **UPDATED**: **January 27, 2019**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on February 27, 2019.
 
 ![WBS example](product_document_imgs/WBS_R2.PNG)
+
+For Release 2, we are making good progress,the Emulator and Game 1 is essentially completed and just need more testing. The visualizer and game 2 will be completed by the release 3. Even though we have reduced the errors in our time estimation, we still made some mistakes, one example is the unexpected increases in opcode implementations to support old ROMs. 
+
+As our code base expands, we have attempted to improve our code quality. For example, we have experienced with loading rom directly from file, however since the file is on a local machine we must either (1) turn the local machine into a Web server  (2) change security for local files in a browser (access local file as `file:///example`). Both options require user to perform initial set-up on their machine to run our code so we decided to convert roms (in binary) into hex values for loading into memory later. For roms that are actively developed (game 1, game 2), user must use `load rom` rather than `dropdown menu` so that we don't have to update the `dropdown menu` 
+every time a new version comes out more on this topic, please visit: [link1](https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally)
+or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local). We will continue to improve our code quality based on our own judgments and the TA's feedbacks. We will continue updating this Work Breakdown for upcoming releases. 
 
 ## Project schedule
 
