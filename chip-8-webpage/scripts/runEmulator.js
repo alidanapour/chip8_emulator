@@ -16,7 +16,6 @@ let romList = {
     "PONG2": pong2,
     "PUZZLE": puzzle,
     "SFACES": smileyfaces,
-    // "SPACEWARS": spacewars,
     "SYZYGY": syzygy,
     "TANK": tank,
     "TETRIS": tetris,
