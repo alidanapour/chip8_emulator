@@ -142,6 +142,8 @@ function resetPressed() {
     CHIP8.reset();
     document.getElementById('rom').value = "";
     document.getElementById('games').value = "";
+    document.getElementById('speed').value = 8;
+    emulatorSpeed = 8;
     resetVisualizer();
 }
 
