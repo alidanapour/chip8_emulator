@@ -111,18 +111,18 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Preconditions:
         - User has loaded the game onto a compatible chip-8 emulator
     - Normal Flow:
-        1. The system will proceed to execute SpaceWars code.
-        2. The system will display game information (score).
-        3. The game will initialize.
-        4. The game will place random objects (asteroids) on the field.
-        5. Throughout the duration of the game, the user will provide directional inputs using their keyboard.
-        6. Throughout the duration of the game, the user will provide fire and special ability inputs using their keyboard.
-        7. Throughout the duration of the game, the system will show updated game state in real time.
-        8. Throughout the duration of the game, the system will provide automatic movement and fire for enemy (AI) player.
-        9. The enemy AI’s automatic movement will adjust to a harder difficulty depending on the score of the user.
-        10. At the completion of the game (either user or enemy reaches a score of 3), the game will terminate.
-        11. A screen indicating a win or loss condition will be displayed along with a prompt for a new game.
-        12. If the user chooses to replay the game, the system will reset all values to default and a new game is played.
+    1. The system will proceed to execute SpaceWars code.
+    2. The system will display game information (score).
+    3. The game will initialize.
+    4. The game will place random objects (asteroids) on the field.
+    5. Throughout the duration of the game, the user will provide directional inputs using their keyboard.
+    6. Throughout the duration of the game, the user will provide fire and special ability inputs using their keyboard.
+    7. Throughout the duration of the game, the system will show updated game state in real time.
+    8. Throughout the duration of the game, the system will provide automatic movement and fire for enemy (AI) player.
+    9. The enemy AI’s automatic movement will adjust to a harder difficulty depending on the score of the user.
+    10. At the completion of the game (either user or enemy reaches a score of 3), the game will terminate.
+    11. A screen indicating a win or loss condition will be displayed along with a prompt for a new game.
+    12. If the user chooses to replay the game, the system will reset all values to default and a new game is played.
 
     - Alternate Flow:
         - 4A/5A. User may choose to use on-screen keyboard to provide inputs
@@ -137,16 +137,16 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
         - User has loaded the game onto a compatible chip-8 emulator  
         - User has set the emulator speed to 30-40 cycles per second. 
     - Normal Flow:
-        1. The system will proceed to execute Jumpy Rabbit code.
-        2. User will select difficulty level and begin game.
-        3. The game will initialize.
-        4. The game will draw level, the player (rabbit), and level/score information.
-        5. Throughout the duration of the game, the user will provide jump instructions for the rabbit using their keyboard.
-        6. Throughout the duration of the game, the system will spawn random enemies based on difficulty level.
-        7. Throughout the duration of the game, the system will move the enemies to the left each frame.
-        8. Throughout the duration of the game, the system will draw the rabbit in the appropriate place depending on if the rabbit is falling or jumping (via user input for the latter).
-        9. Throughout the duration of the game, the system will update the score (+1 each time an enemy is avoided).
-        10. The game will terminate once the player fails to avoid an enemy displaying a blank screen due to prototype phase.
+    1. The system will proceed to execute Jumpy Rabbit code.
+    2. User will select difficulty level and begin game.
+    3. The game will initialize.
+    4. The game will draw level, the player (rabbit), and level/score information.
+    5. Throughout the duration of the game, the user will provide jump instructions for the rabbit using their keyboard.
+    6. Throughout the duration of the game, the system will spawn random enemies based on difficulty level.
+    7. Throughout the duration of the game, the system will move the enemies to the left each frame.
+    8. Throughout the duration of the game, the system will draw the rabbit in the appropriate place depending on if the rabbit is falling or jumping (via user input for the latter).
+    9. Throughout the duration of the game, the system will update the score (+1 each time an enemy is avoided).
+    10. The game will terminate once the player fails to avoid an enemy displaying a blank screen due to prototype phase.
     - Known bugs to be fixed in the next release:
         - Some artifacts may appear when jumping (very rare)
         - Game ends prematurely due to said artifacts
