@@ -5,7 +5,7 @@ Instructions:
 To run the webpage: 
 
 1. Go to the `chip-8-webpage` folder, and open `index.HTML` in Chrome.
-2. Select one of the ROMs from the drop-down menu to run. 
+2. Select one of the ROMs from the drop-down menu to run. **Please click anywhere within the screen area before playing**.
 3. Load any chip8 rom vis the `Load ROM` button. We put legacy chip8 roms not written by us in a folder called `rom` and the roms written by us in the `games` folder.
 4. While a program is running, the values of 21  registers will be displayed. A list of the latest 21 instructions is shown, and the current instruction highlighted in green. 
 5. The user can click the `Pause` button to pause the program and click `Continue` button to resume the program. 
