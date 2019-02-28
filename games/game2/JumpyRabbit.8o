@@ -1,0 +1,472 @@
+﻿#Jumpy Rabbit
+#Developed by Team 10, CMPT 276, SFU Spring 2019
+
+
+##TODO:
+# Make enemy sprites
+# Make enemies spawn depending on difficulty
+# Vary speed (FPS LOCK) depending on difficulty
+# Make game over, play again screen
+# Possible TODO: Make 'pit' enemy rabbit can fall into
+# Possible TODO: Make death animation for bunny
+
+
+#### S P R I T E S ####
+#Title Sprites
+: JR1 0xF8 0x22 0x22 0xA2 0xE2 0x01
+: JR2 0x07 0x2A 0x2A 0x28 0x28 0xC0
+: JR3 0x01 0xB9 0xA4 0xA4 0xB8 0x20
+: JR4 0x10 0x10 0xA0 0x40 0x40 0x00
+: JR5 0xE0 0x93 0xE4 0xA7 0x94 0x04
+: JR6 0x1C 0x92 0x5C 0xD2 0x5C 0x40
+: JR7 0x07 0xE1 0x91 0xE1 0x97 0xE0
+: JR8 0xC0 0x1F 0x04 0x04 0xC4 0x04
+: level1 0x8E 0x88 0x8C 0x88 0xEE
+: level2 0xAE 0xA8 0xAC 0xA8 0x4E
+: level3 0x80 0x88 0x80 0x88 0xE0
+: lvl1 0x8A 0x8A 0x8A 0x8A 0xE4
+: lvl2 0x80 0x80 0x80 0x80 0xE0
+:	arrow 0x20 0x60 0xFC 0x60 0x20
+
+#Main Sprites
+: floor 0x80 0x80
+: playerSprite 0x80 0x40 0x60 0x70 0xC0 0x70
+: playerSpriteJump 0x80 0x40 0x60 0xF0 0x20 0xC0
+: groundEnemy 0x88 0x70 0xA8 0xF8 0x50 0x50
+: groundEnemy2
+: airEnemy 0xD8 0x70 0xA8 0x88 0x50 0x50 0x00 0x00 0x00 0x00 0x00 0x00
+
+#Score Sprite
+: score 0 0 0
+
+
+
+
+#### R E G I S T E R - M A P ####
+:alias playerYPos ve #Player Y Position
+:alias playerFall vd #Player fall condition (0 - false, 1 true)
+:alias enemy1XPos vc #Enemy1 x Position
+:alias enemy2XPos vb
+:alias enemy3XPos va
+:alias scoreCount v9 #Score count
+:alias levelSelected v8 #Level selected
+
+#V3 and V4 Used as screatch registers for certain function (MUST MAKE SURE THEY DONT CONFLICT):
+# - Used in displayScore
+# - Used in titleScreen
+
+#v0-v2 Will be used as Scratch Registers. Vf is used for Collision detection.
+
+
+#### G A M E - C O N T R O L ####
+
+#This function is used to create a delay
+# MUST PASS v0 REGISTER FOR DELAY TIME
+: delayTimer
+	delay := v0
+	loop
+		vf := delay
+		if vf != 0 then
+	again
+;
+
+#This will fix the FPS/game speed depending on difficulty level 1 or 2 (3 remains at max fps)
+: fixFPS
+	if levelSelected == 1 begin
+  	v0 := 2
+    delayTimer
+  end
+  
+  if levelSelected == 2 begin
+  	v0 := 1
+    delayTimer
+  end
+;
+
+#Scorekeeping code used from John Earnest Octo project on github
+#Must pass in scoreCount
+: displayScore
+	i := score
+  #bcd splits a number into hundreds, tens, and ones into seq. memory
+  bcd scoreCount
+  
+  #v3 and v4 set x & y positions
+  v3 := 49
+  v4 := 1
+  i := score
+  load v2 #load v0-v2 numbers
+  
+  i := hex v0 
+  sprite v3 v4 5
+  v3 += 5
+  
+  i := hex v1
+  sprite v3 v4 5
+  v3 += 5
+  
+  i := hex v2
+  sprite v3 v4 5
+;
+
+#This checks if the bunny has passed an enemy obstacle if so
+#It calls displayScore (to clear score) add 1 to scoreCount and then
+#Re-call displayScore to update new score
+: keepScore
+	if enemy1XPos == 7 
+  begin
+  	displayScore
+  	scoreCount += 1
+    displayScore
+  end
+  
+  if enemy2XPos == 7
+  begin
+  	displayScore
+  	scoreCount += 1
+    displayScore
+  end
+  
+  if enemy3XPos == 7
+    begin
+  	displayScore
+  	scoreCount += 1
+    displayScore
+  end
+;
+
+
+#Title Screen
+: titleScreen
+	#Display "Jumpy Rabbit"
+	i := JR1
+	v0 := 1
+  v1 := 1
+  sprite v0 v1 6
+  
+  v0 += 8
+  i := JR2
+  sprite v0 v1 6
+  
+  v0 += 8
+  i := JR3
+  sprite v0 v1 6
+  
+  v0 += 8
+  i := JR4
+  sprite v0 v1 6
+  
+  v1 := 3  #Offset Y position for 'Rabbit'
+  
+  v0 += 6
+  i := JR5
+  sprite v0 v1 6
+  
+  v0 += 8
+  i := JR6
+  sprite v0 v1 6
+  
+  v0 += 8
+  i := JR7
+  sprite v0 v1 6
+  
+  v0 += 8
+  i := JR8
+  sprite v0 v1 6
+  
+	#Display "Level:"  
+	v0 := 3
+  v1 := 12
+  
+  i := level1
+  sprite v0 v1 5
+  
+ 	v0 += 8
+  i := level2
+  sprite v0 v1 5
+  
+  v0 += 8
+  i := level3
+  sprite v0 v1 5
+  
+  #Display Numbers
+  #v0/v1 = x/y positions
+  v2 := 1 #Number to be displayed
+  i := hex v2
+  
+  v0 := 27
+  v1 := 12
+  sprite v0 v1 5
+   
+  v2 := 2
+  i := hex v2
+  v1 += 7
+  sprite v0 v1 5
+  
+  v2 := 3
+  i := hex v2
+  v1 += 7
+  sprite v0 v1 5
+  
+ ######### THIS PART DEALS WITH selectLevel 
+  # v3 and v4 will be used as a scratch registers for selectLevel. 
+  # NOTE: Read warning on v3/v4 registers at top of document.
+  
+  v1 := 1 #Default level selection of Arrow
+  v3 := 33 #Default arrow x Position
+  v4 := 12 #Arrow y Position (will change upon input)
+	i := arrow
+  sprite v3 v4 5
+  
+  loop
+  #Call selectLevel. 
+		selectLevel
+  
+    #This part checks if player has pressed 'E' to select level
+  	v0 := 6
+    if v0 -key then
+  again
+  
+  #Enter the selected level into levelSelected
+  levelSelected := v1
+  
+  clear
+;
+
+: selectLevel
+    
+    #If up ('W') is pressed
+    v2 := 5
+    if v2 key begin
+        
+      #If arrow is at level 2
+      if v1 == 2 begin
+      	#Clear arrow, set new level and y position to be drawn again
+        sprite v3 v4 5
+        v1 := 1
+        v4 := 12
+    		sprite v3 v4 5
+      end
+      
+    	#If arrow is at level 3
+      if v1 == 3 begin
+      	#Clear arrow, set new level and y position to be drawn again
+        sprite v3 v4 5
+        v1 := 2
+        v4 := 19
+    		sprite v3 v4 5
+      end
+
+      #This delayTimer is used so that the arrow doesnt jump immediately (allows a buffer
+      #from when the player presses and releases the arrow)
+      v0 := 15
+      delayTimer
+    
+    end  
+    
+       
+    #If down ('S') is pressed
+    v2 := 8
+    if v2 key begin
+    
+      #If arrow is at level 2
+    	if v1 == 2 begin
+      	#Clear arrow, set new level and y position to be drawn again
+        sprite v3 v4 5 
+        v1 := 3
+        v4 := 26
+        sprite v3 v4 5 
+        
+      end
+    
+    
+    	#If arrow is at level 1
+    	if v1 == 1 begin
+      	#Clear arrow, set new level and y position to be drawn again
+        sprite v3 v4 5 
+        v1 := 2
+        v4 := 19
+        sprite v3 v4 5 
+        
+      end
+    	
+      #This delayTimer is used so that the arrow doesnt jump immediately (allows a buffer
+      #from when the player presses and releases the arrow)
+      v0 := 15
+      delayTimer
+       
+    end   
+	
+;
+
+#Initializes a new round
+: newRound
+
+	#Set score to zero, and call keepScore to initialize score (of zero)
+  scoreCount := 0
+  displayScore
+  
+  #Draw 'LVL #"
+  v0 := 1
+  v1 := 1
+  i := lvl1
+  sprite v0 v1 5
+  
+  v0 += 8
+  i := lvl2
+  sprite v0 v1 5
+  
+  v0 += 5
+  i := hex levelSelected
+  sprite v0 v1 5
+  
+	#Draw the floor
+  v0 := 0
+  v1 := 30
+  i := floor
+  loop
+  	sprite v0 v1 2
+    v0 += 1
+    if v0 != 64 then
+  again
+   
+	#Set player position and draw
+  v0 := 10
+  playerYPos := 24
+  i := playerSprite
+  sprite v0 playerYPos 6
+
+	#Since this is a new round, set fall to FALSE
+  playerFall := 0
+;
+
+#This checks if the player has hit the height of the jump, if so 
+#Set playerFall to 1 and call clearSpriteJump
+: checkPlayerFall
+	if playerYPos == 12 
+  begin
+    playerFall := 1
+    clearSpriteJump
+  end
+;
+
+#This makes the player fall to the ground
+: makePlayerFall
+	#Store positions in temp registers
+	v1 := playerYPos
+  v1 += 1
+  v2 := 10
+  
+  #Check that the player is not on the ground, if so redraw sprite
+  if playerYPos != 24 begin
+    i := playerSprite
+    sprite v2 playerYPos 6
+    playerYPos := v1
+    sprite v2 playerYPos 6
+  end
+  
+  #If the player has touched the ground, set playerFall to zero
+  if playerYPos == 24 then playerFall := 0
+;
+
+#This is used to clear the spritejump animation (used in edge cases)
+: clearSpriteJump
+  	if playerYPos != 24 
+    begin
+    	v2 := 10
+ 			i := playerSpriteJump
+      sprite v2 playerYPos 6
+      i := playerSprite
+      sprite v2 playerYPos 6
+    end
+;
+
+#This detects many conditions and initiates a jump if conditions are met
+: playerJump
+	
+	#Store playerYPos, and the x position in v2
+	v1 := playerYPos
+  v2 := 10
+  
+  #Detect up key. 5 = up (W on most emulators)
+  v0  := 5
+  if v0 key then v1 += -1
+  
+  #Detect if up key is not being held -> then call clearSpriteJump and set playerFall to true and return out
+  if v0 -key 
+  begin 
+		clearSpriteJump
+   	playerFall := 1
+    return
+ 	end
+  
+  #Redraw sprite by deleting old one and redrawing in new position
+  i := playerSprite
+  
+  #If the player is on the ground then delete nonjumping sprite, set i to next frame
+  if playerYPos == 24 
+  begin
+  	sprite v2 playerYPos 6
+  	i := playerSpriteJump
+  end
+  
+  #If the player is not on the ground set sprite to jump sprite and delete old sprite.
+  if playerYPos != 24
+  begin
+  	i := playerSpriteJump
+    sprite v2 playerYPos 6
+  end
+  
+  #Draw the sprite in the new position
+  playerYPos := v1
+  sprite v2 playerYPos 6
+;
+
+: spawnEnemies
+	i := groundEnemy
+	enemy1XPos := 59
+  v1 := 24
+  sprite enemy1XPos v1 6
+  
+;
+
+: moveEnemies
+	i := groundEnemy
+	v1 := enemy1XPos
+  v1 += -1
+  v2 := 24
+  
+  sprite enemy1XPos v2 6
+  sprite v1 v2 6
+  enemy1XPos := v1
+;
+
+#Main Function
+: main
+	titleScreen
+	newRound
+  
+    spawnEnemies ################## TEMPORARRYYYY
+  loop
+  	#Next 3 lines refer to player jumping or falling
+  	checkPlayerFall
+    if playerFall == 0 then playerJump  
+    if playerFall == 1 then makePlayerFall
+    
+    #Call keepscore
+    keepScore
+    
+    #Move all enemies
+    moveEnemies
+    if vf != 0 
+    begin
+    	v0 := 255
+      clear
+      delayTimer ## TODO: GAME OVER SCREEN
+    end
+    
+    
+    #Call fixFPS
+    fixFPS
+  again
+
+;

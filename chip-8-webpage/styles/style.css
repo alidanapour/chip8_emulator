@@ -31,13 +31,13 @@ body {
     border: 5px solid;
 }
 
-/* div.tests-scroll {
+div.tests-scroll {
     background-color:lightslategray;
     height: 400px;
     padding: 1%;
     border: 5px solid;
     overflow: scroll;
-} */
+}
 
 .center {
     display: block;
@@ -47,6 +47,7 @@ body {
 
 .visualizer{
     overflow: hidden; /* prevent instructions and registers outside of body*/
+	padding-top: 1%;
 }
 
 .instructions{
@@ -72,4 +73,29 @@ body {
 
 .current-instruction {
     background-color: greenyellow;
+}
+
+.descriptionButton{
+	background-color: #D9D9D9;
+    color: black;
+    cursor: pointer;
+    padding: 5px;
+    border: solid;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active, #descriptionButton:hover {
+	background-color: gray;
+}
+
+#description {
+    padding: 0 10px;
+    background-color: whitesmoke;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+	font-family: 'Karla', sans-serif;
+	font-size: 15px;
 }

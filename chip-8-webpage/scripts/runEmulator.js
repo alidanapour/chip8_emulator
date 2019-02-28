@@ -104,7 +104,7 @@ function runEmulator(menu) {
 
     if (menu.value == "NOTHING") {
         CHIP8.reset();
-        CHIP8.emulateOpcode(0x00E0);              // Clear the screen
+        CHIP8.emulateOpcode(0x00E0);       // Clear the screen
     }
 
     else {
@@ -112,6 +112,8 @@ function runEmulator(menu) {
         let len = romChosen.length;
         for (let i = 0; i < len; i++)
             CHIP8.memory[CHIP8.PC + i] = romChosen[i];
+		
+		description(menu.value);			// For updating description based on ROM selected
     }
 
     document.getElementById('rom').value = "";
@@ -211,10 +213,12 @@ window.onload = function() {
     }, 1000/60);
 
     timerProcess = setInterval(function() {
-        if (CHIP8.isRunning) {
-            if (CHIP8.soundTimer > 0)
-                beepSound.play();
-            CHIP8.setTimer();
+        for (let i = 0; i < emulatorSpeed/parseFloat(8); i++) {
+            if (CHIP8.isRunning) {
+                if (CHIP8.soundTimer > 0)
+                    beepSound.play();
+                CHIP8.setTimer();
+            }
         }
     }, 1000/60);
 
@@ -222,7 +226,6 @@ window.onload = function() {
     
     displayRegister = setInterval(function() {
         if (CHIP8.isRunning) {
-            for (let k = 0; k < emulatorSpeed; k++) {
                 let registers = document.getElementsByClassName('registers_inner');
                 let specialRegisters = [CHIP8.PC, CHIP8.I, CHIP8.stackPointer,
                                         CHIP8.delayTimer, CHIP8.soundTimer];
@@ -246,15 +249,11 @@ window.onload = function() {
                     let j = i + numSpecialRegisters;        // Skip 5 special registers
                     registers[j].innerHTML = registers[j].id + ": 0x" + hex_display(CHIP8.V[i], 2);
                 }
-            }
         }
     }, 1000/60)     // End of displayRegister
 
     displayInstructions = setInterval(function() {
-        if (CHIP8.isRunning) {
-
-            for (let k = 0; k < emulatorSpeed; k++) {
-                
+        if (CHIP8.isRunning) {                
                 let instructionsDiv = document.querySelector('.instructions');
 
                 // Remove old instruction list
@@ -286,7 +285,6 @@ window.onload = function() {
                     pc += 2;
 
                 }
-            }
         }
     }, 1000/60)     // End of displayInstructions()
 
