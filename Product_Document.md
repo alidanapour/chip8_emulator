@@ -132,7 +132,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Game 2 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist.
 
-- Chip8 Tool: **TODO**
+- Chip8 Tool: `Sprite Editor` **TO DO**
 
 - Automated test with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
 

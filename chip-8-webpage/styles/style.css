@@ -31,13 +31,13 @@ body {
     border: 5px solid;
 }
 
-/* div.tests-scroll {
+div.tests-scroll {
     background-color:lightslategray;
     height: 400px;
     padding: 1%;
     border: 5px solid;
     overflow: scroll;
-} */
+}
 
 .center {
     display: block;
