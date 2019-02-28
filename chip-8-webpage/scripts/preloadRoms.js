@@ -1,14 +1,20 @@
+/*
+We implemented loading ROMs directly from the disk, however, since the file is on a local machine, we must either:
+    (1) Turn the local machine into a web server and run files from there, or,
+    (2) Change security for local files in the browser (access local file as file:///example).
+Both these options would require the user to perform an initial set-up on their machines
+before running the emulator, which we believe adds an extra layer of complexity and deteriorates
+user experience. Hence, we decided to convert ROMs from binary into hex code, and adding them to
+a file (this file) for the emulator to load them into memory later. However, for ROMs (CHIP8 games)
+that are being actively developed (Game 1 and 2), the user must manually load the ROM rather than
+access them from the drop-down menu so we don't have to update the hex code for these ROMs every time 
+changes are made.
 
-// we have experienced with loading rom directly from file, however since the file is on a local machine
-// we must either (1) turn the local machine into a Web server 
-// (2) change security for local files in a browser (access local file as file:///example)
-// both options require user to perform initial set-up on their machine to run our code 
-// so we have decided to convert rom (in binary) into hex values for loading into memory latter 
-// for roms that are actively developed (game 1, game 2), 
-// user must use load rom rather than dropdown menu so that we don't have to update this file 
-// every time new version comes out 
-// more on this topic, please visit: https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally
-// https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local
+For more on this topic, please visit:
+    (1) https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally
+    (2) https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local
+*/
+
 
 let computer_grenade_graphic = [
     0x60, 0x10, 0x61, 0x04, 0xA2, 0xA2, 0xD0, 0x1B, 0x70, 0x08, 0xA2, 0xB8, 0xD0, 0x13, 0x70, 0x08, 0xD0, 0x13,

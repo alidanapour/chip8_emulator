@@ -250,4 +250,4 @@ In the case of re-planning, if the re-planning results in delay of critical feat
 4. Is there any member who can take ownership of the abandoned features? 
 5. Do the replanning if no one is available.
 
-To minimize re-planning, each Friday, the project manager will check-in with owners of each story to see if they need/want assistance or if any forseeable events might cause delay to allow early detection of potential re-planning and take actions to prevent it.  
+To minimize re-planning, each Friday, the project manager will check-in with owners of each story to see if they need/want assistance or if any forseeable events might cause delay to allow early detection of potential re-planning and take actions to prevent it.
