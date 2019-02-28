@@ -12,25 +12,35 @@
 : bigShip1 0x30 0x30 0x3C 0x3C 0x3C 0xFF 0xFF 0xFF 0xFF 0xFF 0x3C 0x3C 0x3C 0x30 0x30
 : bigShip2 0x00 0x00 0x00 0x00 0x00 0xF0 0xF0 0xFF 0xFF 0xFF 0x00 0x00 0x00 0x00 0x00
 
-#Initialize Sprites
+#Initialize player/enemy sprites
 : player 0x40 0x60 0xFC 0xFF 0x60 0x40
 : enemy 0x0E 0x02 0x3F 0xFF 0x02 0x0E
-: field 0x00 0x18 0x1E 0x0E 0x00 0xC0 0xC6 0x0F 0x0F 0x06 0x02 0x00 0x70 0xF0 0x60
 : laser 0x80
-: vborder 0xAA
+
+#Initialize field/border sprites.
+
+: field1 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF
+: field2 0x42 0xE0 0x64 0x0C 0x60 0x46 0x0C 0x1F 0x16 0x00 0x4C 0x91
+: field3 0xFF 0x91 0x91 0x9F 0x91 0x91 0xFF 0x89 0xF9 0x89 0x89 0xFF
+: field4 0x18 0x3C 0x3E 0x1E 0x0C 0x00 0x20 0x70 0xF8 0xF9 0xF3 0x63
+: field5 0x4A 0x84 0x22 0x89 0x14 0x40 0xA5 0x00 0x95 0x00 0x24 0x91
+: field6 0xFF 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0xFF
+: field7 0x7E 0x3C 0x18 0x18 0x18 0x18 0x3C 0x3C 0x7E 0x7E 0x7E 0x3C
+
 
 #Initialize explosion sprites
 : expl1 0xA0 0x40 0xA0
 : expl2 0x88 0x50 0x20 0x50 0x88
 : expl3 0x82 0x54 0x38 0x7C 0x38 0x54 0x82
 
-#Initialize Score Sprites
+#Initialize Score Sprites and borders
 : zeroScore 0x3C 0x3C 0xC3 0xC3 0xC3 0xC3 0xC3 0xC3 0xC3 0x3C 0x3C
 : oneScore 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18 0x18
 : twoScore 0xFF 0xFF 0x03 0x03 0xFF 0xFF 0xC0 0xC0 0xC0 0xFF 0xFF 
 : threeScore 0xFF 0xFF 0x03 0x03 0x03 0xFF 0xFF 0x03 0x03 0xFF 0xFF
 : bigDash 0x00 0x00 0x00 0x00 0x3C 0x3C
 : smallDash 0x38
+: vborder 0xAA
 
 #Initialize Win/Lose Sprites
 : you1 0x89 0x8A 0x8A 0x72 0x22 0x22 0x22 0x22 0x21
@@ -300,6 +310,7 @@ end
   #Reset playerXPos and playerYPos to the first sprite (to aid in moving in moveBigShip)
   playerXPos := 1
   playerYPos := 16
+  return
 ;
 
 : moveBigShip
@@ -352,29 +363,29 @@ end
 	clear
   displayScore
   
-	#Place multiple field sprites on screen
-  i := field
+	#Place multiple random field sprites on screen
+  pickField
   v0 := 28
-  v1 := 11
-  sprite v0 v1 15
-  v0 := 24
+  v1 := 13
+  sprite v0 v1 12
+  pickField
+  v0 := 28
   v1 := 1
-  sprite v0 v1 15
+  sprite v0 v1 12
   
-  #Set the bottom border and the score 'dash'
+  #Set the top and bottom borders and the score 'dash'
   v0 := 0
-  v1 := 58 #bottom
+  v1 := 0 #bottom
+  i := vborder
   loop
-  	i := vborder
     sprite v0 v1 1
     v0 += 8
   	if v0 != 64 then
   again
   
   v0 := 0
-  v1 := 0
+  v1 := 26
    loop
-  	i := vborder
     sprite v0 v1 1
     v0 += 8
   	if v0 != 64 then
@@ -382,7 +393,7 @@ end
   
   i := smallDash
   v0 := 28
-  v1 := 61
+  v1 := 29
   sprite v0 v1 1
   #Update small score by calling updatescore
   updateScore
@@ -398,7 +409,28 @@ end
   sprite playerXPos playerYPos 6
   i := enemy
   sprite enemyXPos enemyYPos 6
-   
+;
+
+
+#This function picks a 'field' by random. Same concept used as enemyAi, refer to that method for explanation of randomizer.
+: pickField
+	v0 := random 0b11100
+	jump0 fieldTable
+  return
+;
+
+#Here is a table of random fields to be chosen.
+: fieldTable
+	i := field1           return
+	i := field2						return
+	i := field3						return
+	i := field4  			  	return
+	i := field5   		    return
+	i := field6   	 	    return
+	i := field7						return
+  i := field5   		    return
+	i := field6   	 	    return
+	i := field7						return
 ;
 
 #Places a small score on the bottom of the screen for the player using the BUILT IN chip-8 characters
@@ -466,13 +498,15 @@ end
    
   i := expl1
   sprite v1 v2 3 
+  buzzer := v0
   delayTimer
   sprite v1 v2 3
   
   v1 += -1
   v2 += -1
   i := expl2
-  sprite v1 v2 5 
+  sprite v1 v2 5
+  buzzer := v0
   delayTimer
   sprite v1 v2 5
   
@@ -480,6 +514,7 @@ end
   v2 += -1
   i := expl3
   sprite v1 v2 7 
+  buzzer := v0
   delayTimer
   sprite v1 v2 7  
 ;
@@ -495,12 +530,14 @@ end
   sprite enemyXPos enemyYPos 6
   
   #Now center x,y for the explosion sprites and set delay to 10
+  #Also set buzzer to v0 (which is the delay) and sound the buzzer
   v1 += 1
   v2 += 2
   v0 := 10
    
   i := expl1
   sprite v1 v2 3 
+  buzzer := v0
   delayTimer
   sprite v1 v2 3
   
@@ -508,6 +545,7 @@ end
   v2 += -1
   i := expl2
   sprite v1 v2 5 
+  buzzer := v0
   delayTimer
   sprite v1 v2 5
   
@@ -515,6 +553,7 @@ end
   v2 += -1
   i := expl3
   sprite v1 v2 7 
+  buzzer := v0
   delayTimer
   sprite v1 v2 7  
 ;
@@ -529,7 +568,7 @@ if enemyScore == 3 then gameOverLose
 #This function displays the game win screen. It also prompts the user for another new game
 : gameOverWin
 v0 := 9
-v1 := 56
+v1 := 24
 
 i := again1
 sprite v0 v1 6
@@ -598,7 +637,7 @@ resetScore
 #Same as function above, except for lose condition 
 : gameOverLose
 v0 := 9
-v1 := 56
+v1 := 24
 
 i := again1
 sprite v0 v1 6
@@ -664,13 +703,13 @@ again
 resetScore
 ;
 
-#WARNING: IT IS CRUCIAL FOR THIS FUNCTION TO BE RIGHT BEFORE MAIN, IT RESETS THE SCORE TO ZERO AND THEN BEGINS A NEW
-# GAME BY HAVING THE NEXT INSTRUCTION START AT MAIN (below). NOTE HOW THERE IS NO ';'
+#Resets the score
 : resetScore
 	v3 := 0
 	v4 := 0
   clear
-
+	displayScore
+; 
 
 ###########################################
 #Main
@@ -682,7 +721,8 @@ resetScore
   	v0 := 6
  		if v0 -key then 
   again
-	newRound
+  
+  newRound
   
   #MAIN PROGRAM LOOP:
   loop

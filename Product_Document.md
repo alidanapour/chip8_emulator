@@ -7,7 +7,7 @@
 1. Chip8 **Emulator** can run any Chip8 program.
 2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It lets users pause and step-forward/step-backward one instruction at a time.
 3. One Chip8 **Tool**: *to be announced*. The goal is to build a Chip8 program that is useful to the intended users of the Chip8 emulator.  
-4. Two Chip8 **Games**:  Game 1: `Space War`; Game 2: `Helibird`. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
+4. Two Chip8 **Games**:  Game 1: `Space War`; Game 2: `Jumpy Rabbit`. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
 
 ## Project organization
 
@@ -58,6 +58,19 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Added use cases to the game 2 prototype and game 1 completed.
     - Moved chip8 tool prototype to release 3.
 
+**UPDATED February 26, 2019**:
+- Release 2:
+    - Added [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
+    - Updated user case for game 1 complete.
+    - Added user case for game 2 prototype.  
+    - Moved visualizer step forward and step backward to release 3.
+    - Added test cases to `test.js`.  
+- Release 3:
+    - Added user case for chip8 tool prototype.
+    - Added user case for game 2 complete.
+    - Migrated to [Jest](https://jestjs.io/) for automated test.
+    - Added program descriptions and instructions on how to play games to the visualizer.   
+    
 **Release 0**:
 
 - Interface Mockup
@@ -71,7 +84,9 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 - CPU set-up: At the beginning or when the emulator resets, the memory, stack, registers will have some default values. 
 - 35 Opcodes: Correctly implement 35 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM), according to Cowgod, opcode `0nnn` is only used on old computers and is ignored by modern interpreters so we don't implement it.
 - Decode opcode: This feature is a part of the visualizer's instruction display deliverable and has been developed ahead of time. For now, users can simply enter any opcode (say 00E0) and click `Submit` which will print the corresponding instruction onto the page.
-- Screen: The screen is 640x320 pixels and each pixel is rendered by a factor of 10. Only the welcome screen is shown for programs that require user interactions via the keyboard. 
+
+- Screen: The screen is 640x320 pixels and each pixel is rendered by a factor of 10. Only the welcome screen is shown for programs that require user interactions via the keyboard.
+
 - Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
     - Actors:
         - User
@@ -106,9 +121,46 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
         A	0	B	F  ------>		Z	X	C	V <br>
     - Sound/Delay timer: The `CHIP8` object already contains `delayTimer` and `soundTimer`. We will add sound (played when the sound timer reaches 0) in this release and calibrate the delay timer with our emulator's frame rate.
 
-- Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, step forward or step backward one instruction at a time, and continue running the program. 
+- Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, and continue running the program. 
 - Game 1 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist. 
-- Game 2 Prototype: `Helibird` : A game inspired by the viral game *Flappy Bird*. We are planning to replace the bird with a tiny helicopter which behaves like a bird, hence the name *Helibird*!
+- Game 2 Prototype: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score!
+    - Actors:
+        - User
+        - Input/Output interface (may be used on alternative emulator)
+        - Chip-8 Emulator (may be used on alternative emulator)
+    - Preconditions:
+        - User has loaded the game onto a compatible chip-8 emulator and set the emulator speed to 30-40 cycles per second. 
+    - Normal Flow:
+        1. The user will set the emulator speed to 30-40 cycles per second. 
+        2. The user will load Jumpy Rabbit onto a compatible chip-8 emulator
+        3. The system will proceed to execute Jumpy Rabbit code
+        4. The system will display game information (score)
+        5. The game will initialize
+        6. Throughout the duration of the game, the user will provide directional and fire inputs using their keyboard
+        7. Throughout the duration of the game, the system will show updated game state in real time
+        8. Throughout the duration of the game, the system will provide automatic movement for the obstacle.
+        9. *TBD*
+    - Known bugs to be fixed in the next release:
+        - Some artifacts may appear when jumping (very rare)
+        - Game ends prematurely due to said artifacts
+        - Score count is incorrect after first point (wrapping issue, will be fixed when enemies properly implemented)
+        - Game ends with a blank screen when you lose
+
+**Release 3**
+
+- Emulator: Perform more rigorous automated testings.
+
+- Visualizer: User can step forward or step backward one instruction at a time. User can click the `Description and How To Play` button for more details on any program in the drop-down menu. 
+
+- Game 2 Complete:
+    - Fix existing bugs
+    - Randomized enemies appearing based on difficulty level selected
+    - Visual improvements (Animation, etc).
+    - Game over/Play again screen
+
+- Chip8 Tool: `Sprite Editor` provide a visual interface to create sprites. Chip8 developers can turn pixels on/off in the editor and it will produce the corresponding hexcode for that sprites, thus making it easier to create sprites by letting developer visualize them. 
+
+- Automated test with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
 
 ## Risk analysis
 
@@ -143,7 +195,7 @@ The work breakdown and project schedule below are tentative and will be update a
 
 [Link to Work Breakdown Spreadsheet](https://docs.google.com/spreadsheets/d/1HqADerMmskoAKjknKuDWZFQrG6OZgpwF0acj79XQYGA/edit?usp=sharing) 
 
-**UPDATED**: **February 6, 2019**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on February 6, 2018.  
+**UPDATED**: **February 6, 2019**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on February 6, 2019.  
 
 ![WBS example](product_document_imgs/WBS.PNG)
 
@@ -151,11 +203,27 @@ For Release 1, we underestimated the number of hours needed for some deliverable
 
 As we implementing the emulator, we also adding new deliverables and modify existing deliverables. For example, instead of splitting the opcodes into between 2 releases, we decided to implement all of them in release 1 so that we can test any chip 8 program on our emulator. We also divided the emulator into more concrete subtasks such as: screen implementation and automate the room loading. We will continue updating this Work Breakdown for upcoming releases. 
 
+**UPDATED**: **January 27, 2019**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on February 27, 2019.
+
+![WBS example](product_document_imgs/WBS_R2.PNG)
+
+For Release 2, we are making good progress, the Emulator and Game 1 is essentially completed and just need more testing. The visualizer and game 2 will be completed by the release 3. Even though we have reduced the errors in our time estimation, we still made some mistakes, one example is the unexpected increases in opcode implementations to support old ROMs. 
+
+As our code base expands, we have attempted to improve our code quality. For example, we have experienced with loading rom directly from file, however since the file is on a local machine we must either (1) turn the local machine into a Web server  (2) change security for local files in a browser (access local file as `file:///example`). Both options require user to perform initial set-up on their machine to run our code so we decided to convert roms (in binary) into hex values for loading into memory later. For roms that are actively developed (game 1, game 2), user must use `load rom` rather than `dropdown menu` so that we don't have to update the `dropdown menu` 
+every time a new version comes out more on this topic, please visit: [link1](https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally)
+or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local). We will continue to improve our code quality based on our own judgments and the TA's feedbacks. We will continue updating this Work Breakdown for upcoming releases. 
+
 ## Project schedule
 
-The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). **UPDATED February 5, 2019**: An example for release 1 is shown below:
+The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). 
+
+**UPDATED February 5, 2019**: An example for release 1 is shown below:
 
 ![Trello example](product_document_imgs/trello_example.PNG)
+
+**UPDATED February 27, 2019**: An example for release 2 is shown below:
+
+![Trello example](product_document_imgs/trello_example_R2.PNG)
 
 ## Monitoring and reporting mechanisms
 
