@@ -87,28 +87,8 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Screen: The screen is 640x320 pixels and each pixel is rendered by a factor of 10. Only the welcome screen is shown for programs that require user interactions via the keyboard.
 
-- Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
-    - Actors:
-        - User
-        - Input/Output interface (may be used on alternative emulator)
-        - Chip-8 Emulator (may be used on alternative emulator)
-    - Preconditions:
-        - User has loaded the game onto a compatible chip-8 emulator
-    - Normal Flow:
-        1. The user will load SpaceWars onto a compatible chip-8 emulator
-        2. The system will proceed to execute SpaceWars code
-        3. The system will display game information (score)
-        4. The game will initialize
-        5. Throughout the duration of the game, the user will provide directional and fire inputs using their keyboard
-        6. Throughout the duration of the game, the system will show updated game state in real time
-        7. Throughout the duration of the game, the system will provide automatic movement and fire for enemy (AI) player.
-        8. At the completion of the game (either user or enemy reaches a score of 3), the game will terminate
-        9. A screen indicating a win or loss condition will be displayed along with a prompt for a new game
-        10. If the user chooses to replay the game, the system will reset all values to default and a new game is played
-
-    - Alternate Flow:
-        - 9A. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system.
-
+- Prototype of game 1: `Space War` a shooting game based on the classic game ‘Outlaw’.  
+    
 **Release 2**
 
 - Emulator 
@@ -122,24 +102,51 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Sound/Delay timer: The `CHIP8` object already contains `delayTimer` and `soundTimer`. We will add sound (played when the sound timer reaches 0) in this release and calibrate the delay timer with our emulator's frame rate.
 
 - Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, and continue running the program. 
-- Game 1 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist. 
+
+- Game 1 Complete: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
+    - Actors:
+        - User
+        - Input/Output interface 
+        - Chip-8 Emulator 
+    - Preconditions:
+        - User has loaded the game onto a compatible chip-8 emulator
+    - Normal Flow:
+        1. The system will proceed to execute SpaceWars code.
+        2. The system will display game information (score).
+        3. The game will initialize.
+        4. The game will place random objects (asteroids) on the field.
+        5. Throughout the duration of the game, the user will provide directional inputs using their keyboard.
+        6. Throughout the duration of the game, the user will provide fire and special ability inputs using their keyboard.
+        7. Throughout the duration of the game, the system will show updated game state in real time.
+        Throughout the duration of the game, the system will provide automatic movement and fire for enemy (AI) player.
+        8. The enemy AI’s automatic movement will adjust to a harder difficulty depending on the score of the user.
+        9. At the completion of the game (either user or enemy reaches a score of 3), the game will terminate.
+        10. A screen indicating a win or loss condition will be displayed along with a prompt for a new game.
+        11. If the user chooses to replay the game, the system will reset all values to default and a new game is played.
+
+    - Alternate Flow:
+        - 4A/5A. User may choose to use on-screen keyboard to provide inputs
+        - 9A. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system or to load another program.
+
 - Game 2 Prototype: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score!
     - Actors:
         - User
-        - Input/Output interface (may be used on alternative emulator)
-        - Chip-8 Emulator (may be used on alternative emulator)
+        - Input/Output interface 
+        - Chip-8 Emulator 
     - Preconditions:
-        - User has loaded the game onto a compatible chip-8 emulator and set the emulator speed to 30-40 cycles per second. 
+        - User has loaded the game onto a compatible chip-8 emulator  
+        - User has set the emulator speed to 30-40 cycles per second. 
     - Normal Flow:
-        1. The user will set the emulator speed to 30-40 cycles per second. 
-        2. The user will load Jumpy Rabbit onto a compatible chip-8 emulator
-        3. The system will proceed to execute Jumpy Rabbit code
-        4. The system will display game information (score)
-        5. The game will initialize
-        6. Throughout the duration of the game, the user will provide directional and fire inputs using their keyboard
-        7. Throughout the duration of the game, the system will show updated game state in real time
-        8. Throughout the duration of the game, the system will provide automatic movement for the obstacle.
-        9. *TBD*
+        1. The system will proceed to execute Jumpy Rabbit code.
+        2.User will select difficulty level and begin game.
+        3.The game will initialize.
+        4.The game will draw level, the player (rabbit), and level/score information.
+        5.Throughout the duration of the game, the user will provide jump instructions for the rabbit using their keyboard.
+        6.Throughout the duration of the game, the system will spawn random enemies based on difficulty level.
+        7.Throughout the duration of the game, the system will move the enemies to the left each frame.
+        8.Throughout the duration of the game, the system will draw the rabbit in the appropriate place depending on if the rabbit is falling or jumping (via user input for the latter).
+        9.Throughout the duration of the game, the system will update the score (+1 each time an enemy is avoided).
+        10.The game will terminate once the player fails to avoid an enemy displaying a blank screen due to prototype phase.
     - Known bugs to be fixed in the next release:
         - Some artifacts may appear when jumping (very rare)
         - Game ends prematurely due to said artifacts
