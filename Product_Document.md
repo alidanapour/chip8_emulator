@@ -63,13 +63,13 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Added [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
     - Updated user case for game 1 complete.
     - Added user case for game 2 prototype.  
-    - Added program descriptions and instructions on how to play games to the visualizer.
     - Moved visualizer step forward and step backward to release 3.
     - Added test cases to `test.js`.  
 - Release 3:
     - Added user case for chip8 tool prototype.
     - Added user case for game 2 complete.
-    - Migrated to [Jest](https://jestjs.io/) for automated test.   
+    - Migrated to [Jest](https://jestjs.io/) for automated test.
+    - Added program descriptions and instructions on how to play games to the visualizer.   
     
 **Release 0**:
 
@@ -84,7 +84,9 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 - CPU set-up: At the beginning or when the emulator resets, the memory, stack, registers will have some default values. 
 - 35 Opcodes: Correctly implement 35 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM), according to Cowgod, opcode `0nnn` is only used on old computers and is ignored by modern interpreters so we don't implement it.
 - Decode opcode: This feature is a part of the visualizer's instruction display deliverable and has been developed ahead of time. For now, users can simply enter any opcode (say 00E0) and click `Submit` which will print the corresponding instruction onto the page.
-- Screen: The screen is 640x320 pixels and each pixel is rendered by a factor of 10. Only the welcome screen is shown for programs that require user interactions via the keyboard. 
+
+- Screen: The screen is 640x320 pixels and each pixel is rendered by a factor of 10. Only the welcome screen is shown for programs that require user interactions via the keyboard.
+
 - Prototype of game 1: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
     - Actors:
         - User
@@ -119,18 +121,42 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
         A	0	B	F  ------>		Z	X	C	V <br>
     - Sound/Delay timer: The `CHIP8` object already contains `delayTimer` and `soundTimer`. We will add sound (played when the sound timer reaches 0) in this release and calibrate the delay timer with our emulator's frame rate.
 
-- Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, and continue running the program. User can click the `Description and How To Play` button for more details on any program in the drop-down menu. 
+- Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, and continue running the program. 
 - Game 1 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist. 
-- Game 2 Prototype: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. We are planning to replace the T-Rex with a rabbit, hence the name *Jumpy Rabbit*! 
-    - User case: **TO DO**
+- Game 2 Prototype: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score!
+    - Actors:
+        - User
+        - Input/Output interface (may be used on alternative emulator)
+        - Chip-8 Emulator (may be used on alternative emulator)
+    - Preconditions:
+        - User has loaded the game onto a compatible chip-8 emulator and set the emulator speed to 30-40 cycles per second. 
+    - Normal Flow:
+        1. The user will set the emulator speed to 30-40 cycles per second. 
+        2. The user will load Jumpy Rabbit onto a compatible chip-8 emulator
+        3. The system will proceed to execute Jumpy Rabbit code
+        4. The system will display game information (score)
+        5. The game will initialize
+        6. Throughout the duration of the game, the user will provide directional and fire inputs using their keyboard
+        7. Throughout the duration of the game, the system will show updated game state in real time
+        8. Throughout the duration of the game, the system will provide automatic movement for the obstacle.
+        9. *TBD*
+    - Known bugs to be fixed in the next release:
+        - Some artifacts may appear when jumping (very rare)
+        - Game ends prematurely due to said artifacts
+        - Score count is incorrect after first point (wrapping issue, will be fixed when enemies properly implemented)
+        - Game ends with a blank screen when you lose
 
 **Release 3**
 
 - Emulator: Perform more rigorous automated testings.
 
-- Visualizer: User can step forward or step backward one instruction at a time.
+- Visualizer: User can step forward or step backward one instruction at a time. User can click the `Description and How To Play` button for more details on any program in the drop-down menu. 
 
-- Game 2 Complete: Polish the interface and perform rigorous testing to ensure no unexpected bug exist.
+- Game 2 Complete:
+    - Fix existing bugs
+    - Randomized enemies appearing based on difficulty level selected
+    - Visual improvements (Animation, etc).
+    - Game over/Play again screen
 
 - Chip8 Tool: `Sprite Editor` provide a visual interface to create sprites. Chip8 developers can turn pixels on/off in the editor and it will produce the corresponding hexcode for that sprites, thus making it easier to create sprites by letting developer visualize them. 
 
