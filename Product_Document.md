@@ -101,7 +101,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
         A	0	B	F  ------>		Z	X	C	V <br>
     - Sound/Delay timer: The `CHIP8` object already contains `delayTimer` and `soundTimer`. We will add sound (played when the sound timer reaches 0) in this release and calibrate the delay timer with our emulator's frame rate.
 
-- Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, and continue running the program. 
+- Visualizer: While a Chip 8 program is executing, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, and continue running the program. User can click the `Description and How To Play` button for more details on any program in the drop-down menu. 
 
 - Game 1 Complete: User playing against a computer AI. Two spaceships shooting at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
     - Actors:
@@ -157,7 +157,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Emulator: Perform more rigorous automated testings.
 
-- Visualizer: User can step forward or step backward one instruction at a time. User can click the `Description and How To Play` button for more details on any program in the drop-down menu. 
+- Visualizer: User can step forward or step backward one instruction at a time.
 
 - Game 2 Complete:
     - Fix existing bugs
