@@ -506,3 +506,5 @@ class CPU {
     } // End of  emulateOpcode(opcode)
 
 } // End of CPU class
+
+module.exports = CPU;
