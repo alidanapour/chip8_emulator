@@ -50,4 +50,5 @@ Common commands:
     - `git reset --soft [commit]`: move the branch that HEAD points to a specific commit (while `git checkout` only changes where HEAD points to)
     - `git reset --mixed [commit]`: (default) undoes all commits after [commit], preserving changes locally
     - `git reset --hard [commit]`: discards all history and changes back to the specified commit
+- `git revert`: undo public commits with revert and alter the existing commit history so `git revert` should be used to undo changes on a public branch, and `git reset` should be reserved for undoing changes on a private branch. 
 - `git log --all --decorate --oneline --graph` = display log info nicely
