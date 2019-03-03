@@ -4,7 +4,7 @@ Core concepts:
 - a **branch** = a pointer pointing to a commit. A branch is not a copy of a repo, just a pointer to a snapshot (i.e., saved state) of the repo. 
 - **HEAD** = special pointer pointing to something (branch or commit) you `checkout`
      - **Detached HEAD**: when the HEAD points to a commit instead of a branch. Just checkout a branch to resolve Detached HEAD. 
-        - Be careful to checkout a commit that no branch is pointing to and start adding commits from that commit cause unreachable commits that are unreachable. 
+        - Be careful to checkout a commit that no branch is pointing to and start adding commits from that commit cause unreachable commits will be garbage collected. 
 - **local repo**: a copy of the repo on your local machine, only you made changes to your local repos
 - **remote repo**: a copy of the repo on GitHub, changes to remote repo are not only made by you and but may be by other people as well.
     - remote repo can on other server beside GitHub, or another person machine, or even another folder on your own machine but use GitHub to keep it simple.
