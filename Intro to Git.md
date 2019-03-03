@@ -24,6 +24,8 @@ Core concepts:
 
 - [References](https://git-scm.com/docs)
 
+- [Cheatsheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
+
 - [Git playground](http://git-school.github.io/visualizing-git/)
 
 Common commands:
