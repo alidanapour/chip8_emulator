@@ -33,8 +33,8 @@
 : playerSprite 0x80 0x40 0x60 0x70 0xC0 0x70
 : playerSpriteJump 0x80 0x40 0x60 0xF0 0x20 0xC0
 : groundEnemy 0x88 0x70 0xA8 0xF8 0x50 0x50
-: groundEnemy2
-: airEnemy 0xD8 0x70 0xA8 0x88 0x50 0x50 0x00 0x00 0x00 0x00 0x00 0x00
+: groundEnemy2 0x60 0xDE 0x3F 0x63 0x0E 0xFE
+: airEnemy 0xD8 0x70 0xA8 0x88 0x50 0x50
 
 #Score Sprite
 : score 0 0 0
@@ -44,18 +44,25 @@
 
 #### R E G I S T E R - M A P ####
 :alias playerYPos ve #Player Y Position
-:alias playerFall vd #Player fall condition (0 - false, 1 true)
-:alias enemy1XPos vc #Enemy1 x Position
-:alias enemy2XPos vb
+:alias playerFall vd #Player fall condition (0 - false, 1 - true)
+:alias enemy1XPos vc #Enemy x Position
+:alias enemy2XPos vb 
 :alias enemy3XPos va
-:alias scoreCount v9 #Score count
-:alias levelSelected v8 #Level selected
+:alias enemy1Exist v9 #Enemy exist variable (0 - false, 1 - true)
+:alias enemy2Exist v8
+:alias enemy3Exist v7
+:alias scoreCount v6 #Score count
+:alias levelSelected v5 #Level selected
 
-#V3 and V4 Used as screatch registers for certain function (MUST MAKE SURE THEY DONT CONFLICT):
+#V3 and V4 Used as screatch registers for certain functions:
 # - Used in displayScore
 # - Used in titleScreen
 
-#v0-v2 Will be used as Scratch Registers. Vf is used for Collision detection.
+#v0-v2 Will also be used as Scratch Registers. Vf is used for Collision detection.
+#We set an alias of compare-temp for v0. This is because Octo uses vf and one other defined temp register to be able
+#to do pseudo ops like '<','<=','>','=>'
+:alias compare-temp v0
+
 
 
 #### G A M E - C O N T R O L ####
@@ -305,6 +312,11 @@
   scoreCount := 0
   displayScore
   
+  #Reset all enemies:
+  enemy1Exist := 0
+  enemy2Exist := 0
+  enemy3Exist := 0
+  
   #Draw 'LVL #"
   v0 := 1
   v1 := 1
@@ -338,6 +350,17 @@
 	#Since this is a new round, set fall to FALSE
   playerFall := 0
 ;
+
+: checkClip
+    if vf != 0  ############################################################################################ TO DOOOOOOOOOOO
+    begin
+    	v0 := 255
+      clear
+      delayTimer ## TODO: GAME OVER SCREEN
+    end
+;
+
+#### P L A Y E R - M O V E M E N T ####
 
 #This checks if the player has hit the height of the jump, if so 
 #Set playerFall to 1 and call clearSpriteJump
@@ -421,32 +444,149 @@
   sprite v2 playerYPos 6
 ;
 
+
+
+#### E N E M Y - S P A W N / C O N T R O L ####
+
+#This first calls checkspawn, if theres no enemy it will make a random jump to spawnTable
 : spawnEnemies
-	i := groundEnemy
-	enemy1XPos := 59
-  v1 := 24
-  sprite enemy1XPos v1 6
+	v3 := 0 #Scratch Register, pass to checkSpawn (0 = no enemy, 1 = enemy exists at spawn)
+  checkSpawn
+	if v3 == 1 then return
+  
+  v0 := random 0b11100
+	jump0 spawnTable
   
 ;
 
+#This randomly spawns enemies depending on what difficulty level is selected
+: spawnTable
+	spawnEnemy1   return
+	spawnEnemy2 	return
+	spawnEnemy3		return
+	return  		 	return
+  return  	    return
+	return        return
+	return        return
+;
+
+
+#Spawning of the enemies
+: spawnEnemy1
+		if enemy1Exist == 0 begin
+      i := groundEnemy
+      enemy1XPos := 59
+      v1 := 24
+      sprite enemy1XPos v1 6
+      enemy1Exist := 1
+    end
+;
+
+: spawnEnemy2
+		#Level 2 enemies dont spawn at level 1
+		if levelSelected == 1 then return
+    
+    if enemy2Exist == 0 begin
+      i := groundEnemy2
+      enemy2XPos := 56
+      v1 := 24
+      sprite enemy2XPos v1 6
+      enemy2Exist := 1
+    end
+;
+
+: spawnEnemy3
+	return
+;
+
+# This moves all enemies
 : moveEnemies
-	i := groundEnemy
-	v1 := enemy1XPos
-  v1 += -1
-  v2 := 24
+	#Set flag to false, move the enemy if it exists, and then checkClip (if player hit the enemy)
   
-  sprite enemy1XPos v2 6
-  sprite v1 v2 6
-  enemy1XPos := v1
+  
+	vf := 0
+	#This moves enemy 1 if it exists
+  if enemy1Exist == 1 begin
+    i := groundEnemy
+    v1 := enemy1XPos
+    v1 += -1
+    v2 := 24
+
+    sprite enemy1XPos v2 6
+    sprite v1 v2 6
+    enemy1XPos := v1
+  end
+  checkClip
+  
+  vf := 0
+  if enemy2Exist == 1 begin
+    i := groundEnemy2
+    v1 := enemy2XPos
+    v1 += -1
+    v2 := 24
+
+    sprite enemy2XPos v2 6
+    sprite v1 v2 6
+    enemy2XPos := v1
+  end
+  checkClip 
+  
+  
+  
+  #DESPAWN Enemies
+  if enemy1Exist == 1 begin
+  	if enemy1XPos == 255 begin
+    	i := groundEnemy
+      v2 := 24
+      sprite enemy1XPos v2 6
+      enemy1Exist := 0
+      vf := 0
+    end
+  end  
+  
+  if enemy2Exist == 1 begin
+  	if enemy2XPos == 255 begin
+    	i := groundEnemy2
+      v2 := 24
+      sprite enemy2XPos v2 6
+      enemy2Exist := 0
+      vf := 0
+    end
+  end  
 ;
 
-#Main Function
+
+
+#This checks if the spawn is occupied by an enemy, must return v3 (0 = no enemy, 1 = enemy exists)
+: checkSpawn
+	if enemy1Exist == 1 begin
+  	if enemy1XPos >= 40 begin
+    	v3 := 1
+      return
+ 		end
+  end
+  
+  if enemy2Exist == 1 begin
+  	if enemy2XPos >= 40 begin
+    	v3 := 1
+      return
+    end
+  end
+;
+
+
+
+
+#### M A I N ####
 : main
 	titleScreen
 	newRound
   
-    spawnEnemies ################## TEMPORARRYYYY
+
   loop
+  
+    spawnEnemies
+    
   	#Next 3 lines refer to player jumping or falling
   	checkPlayerFall
     if playerFall == 0 then playerJump  
@@ -457,13 +597,9 @@
     
     #Move all enemies
     moveEnemies
-    if vf != 0 
-    begin
-    	v0 := 255
-      clear
-      delayTimer ## TODO: GAME OVER SCREEN
-    end
-    
+		
+    #Check if player has hit an enemy ############### PUT THIS IN ENEMY MOVEMENT
+    #checkClip
     
     #Call fixFPS
     fixFPS
