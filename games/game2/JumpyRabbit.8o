@@ -68,6 +68,11 @@
 : youWin2 0xA4 0xA4 0xA5 0xA5 0xE7
 : youWin3 0x5D 0x49 0x49 0x49 0xDD
 : youWin4 0xD0 0x50 0x50 0x40 0x50 
+
+: fireWorksDot 0x80
+: expl1 0xA0 0x40 0xA0
+: expl2 0x88 0x50 0x20 0x50 0x88
+: expl3 0x92 0x44 0x28 0x92 0x28 0x44 0x92
 #Score Sprite
 : score 0 0 0
 
@@ -179,37 +184,52 @@
 #This also checks if the game is over by win condition (score 255) and calls gameWin if required
 : keepScore
 
-	if enemy1XPos == 7 
+	if enemy1XPos == 4 
   begin
   	displayScore
   	scoreCount += 1
     displayScore
-    if scoreCount == 255 then jump gameWin
+    checkWin
   end
   
-  if enemy2XPos == 7
+  if enemy2XPos == 4
   begin
   	displayScore
   	scoreCount += 1
     displayScore
-    if scoreCount == 255 then jump gameWin
+    checkWin
   end
   
-  #Since the flying enemy gives two points, the checking for max score will be different 
-  if enemy3XPos == 7
+  #Since the flying enemy gives two points normally, a condition is made to 
+  #award 1 point only if score is 254 (255 being max)
+  if enemy3XPos == 4
     begin
   	displayScore
     
     if scoreCount == 254 begin
-    	scoreCount := 255
+    	scoreCount += 1
       displayScore
       jump gameWin
     end
     
   	scoreCount += 2
     displayScore
-    if scoreCount == 255 then jump gameWin
+    checkWin
   end
+;
+
+# This checks the game win condition
+: checkWin
+	if scoreCount == 255 then jump gameWin
+  
+  if levelSelected == 1 begin
+  	if scoreCount == 30 then jump gameWin
+  end
+  
+  if levelSelected == 2 begin
+  	if scoreCount == 100 then jump gameWin
+  end
+
 ;
 
 
@@ -232,9 +252,7 @@
   v0 += 8
   i := JR4
   sprite v0 v1 6
-  
-  v1 := 3  #Offset Y position for 'Rabbit'
-  
+ 
   v0 += 6
   i := JR5
   sprite v0 v1 6
@@ -253,7 +271,7 @@
   
 	#Display "Level:"  
 	v0 := 3
-  v1 := 12
+  v1 := 10
   
   i := level1
   sprite v0 v1 5
@@ -272,7 +290,7 @@
   i := hex v2
   
   v0 := 27
-  v1 := 12
+  v1 := 10
   sprite v0 v1 5
    
   v2 := 2
@@ -285,13 +303,30 @@
   v1 += 7
   sprite v0 v1 5
   
+  #Draw the floor
+  v0 := 0
+  v1 := 30
+  i := floor
+  loop
+  	sprite v0 v1 2
+    v0 += 1
+    if v0 != 64 then
+  again
+   
+	#Set player position and draw
+  v0 := 10
+  playerYPos := 24
+  i := playerSprite
+  sprite v0 playerYPos 6
+
+  
  ######### THIS PART DEALS WITH selectLevel 
   # v3 and v4 will be used as a scratch registers for selectLevel. 
   # NOTE: Read warning on v3/v4 registers at top of document.
   
   v1 := 1 #Default level selection of Arrow
   v3 := 33 #Default arrow x Position
-  v4 := 12 #Arrow y Position (will change upon input)
+  v4 := 10 #Arrow y Position (will change upon input)
 	i := arrow
   sprite v3 v4 5
   
@@ -321,7 +356,7 @@
       	#Clear arrow, set new level and y position to be drawn again
         sprite v3 v4 5
         v1 := 1
-        v4 := 12
+        v4 := 10
     		sprite v3 v4 5
       end
       
@@ -330,7 +365,7 @@
       	#Clear arrow, set new level and y position to be drawn again
         sprite v3 v4 5
         v1 := 2
-        v4 := 19
+        v4 := 17
     		sprite v3 v4 5
       end
 
@@ -351,7 +386,7 @@
       	#Clear arrow, set new level and y position to be drawn again
         sprite v3 v4 5 
         v1 := 3
-        v4 := 26
+        v4 := 24
         sprite v3 v4 5 
         
       end
@@ -362,7 +397,7 @@
       	#Clear arrow, set new level and y position to be drawn again
         sprite v3 v4 5 
         v1 := 2
-        v4 := 19
+        v4 := 17
         sprite v3 v4 5 
         
       end
@@ -380,7 +415,7 @@
 : newRound
 
 	#Set score to zero, and call keepScore to initialize score (of zero)
-  scoreCount := 254
+  scoreCount := 80
   displayScore
   
   #Reset all enemies:
@@ -436,7 +471,7 @@
 #This checks if the player has hit the height of the jump, if so 
 #Set playerFall to 1 and call clearSpriteJump
 : checkPlayerFall
-	if playerYPos == 12 
+	if playerYPos == 14 
   begin
     playerFall := 1
     clearSpriteJump
@@ -572,7 +607,7 @@
     if enemy3Exist == 0 begin
     	i := airEnemy
       enemy3XPos := 56
-      v1 := 14 #This Y Position is different (Air enemy not ground)
+      v1 := 16 #This Y Position is different (Air enemy not ground)
       sprite enemy3XPos v1 6
       enemy3Exist := 1
      end
@@ -618,7 +653,7 @@
     i := airEnemy
     v1 := enemy3XPos
     v1 += -1
-    v2 := 14 #This Y Position is different (Air enemy not ground)
+    v2 := 16 #This Y Position is different (Air enemy not ground)
 
     sprite enemy3XPos v2 6
     sprite v1 v2 6
@@ -652,7 +687,7 @@
   if enemy3Exist == 1 begin
   	if enemy3XPos == 0 begin
     	i := airEnemy
-      v2 := 14 #This Y Position is different (Air enemy not ground)
+      v2 := 16 #This Y Position is different (Air enemy not ground)
       sprite enemy3XPos v2 6
       enemy3Exist := 0
       vf := 0
@@ -679,7 +714,7 @@
   end
   
   if enemy3Exist == 1 begin
-  	if enemy3XPos >= 40 begin
+  	if enemy3XPos >= 44 begin
     	v3 := 1
       return
     end
@@ -962,13 +997,248 @@
   v1 += 8
   sprite v1 v2 5
   
-
-	v0 := 255
-  delayTimer
+	i := finalScore1
+  v1 := 3
+  v2 := 8
+  sprite v1 v2 5
   
+  i := finalScore2
+  v1 += 8
+  sprite v1 v2 5
+  
+  i := finalScore3
+  v1 += 8
+  sprite v1 v2 5
+  
+  #This part displays the score, we dont use other score display functions
+  #Because of the positioning
+    i := score
+    #bcd splits a number into hundreds, tens, and ones into seq. memory
+    bcd scoreCount
+
+    #v3 and v4 set x & y positions
+    v3 := 28
+    v4 := 8
+    i := score
+    load v2 #load v0-v2 numbers
+
+    i := hex v0 
+    sprite v3 v4 5
+    v3 += 5
+
+    i := hex v1
+    sprite v3 v4 5
+    v3 += 5
+
+    i := hex v2
+    sprite v3 v4 5
+
+	i := playAgainEBox
+  v1 := 21
+  v2 := 16
+  sprite v1 v2 9
+
+	# Display the 'E', must pass v0 and v1 as x and y
+  v0 := 23
+  v1 := 18
+  displayE
+  
+  #Here we will loop a sequence where the E is being flashed and 
+  #Fireworks appear. Once the player hits E, the game restarts
+  #v2 will be used as as timer 
+  #v3 will be used to keep track of the fireworks Sequence
+  #We are going to use v4 and v5 as fireworks coordinates
+  #NOTE: v5 is levelSelected, this should not interfere with new games
+  v2 := 0
+  v3 := 1
+  
+	loop
+  
+    v2 += 1
+    
+    if v2 == 60 begin
+      v0 := 23
+      v1 := 18
+      displayE
+      fireWorksSeq
+      v2 := 0
+    end
+  
+   
+    
+		v0 := 6
+    if v0 -key then 
+	again
+
+	levelSelected := 0
+	clear
+  
+  v0 := 30
+  delayTimer
   jump main
 ;
 
+
+#Fireworks Sequence, requires v3 to keep track of sequence 
+# 1 - 6 : firework going up
+# 7 - 10 : explosion
+: fireWorksSeq
+    i := fireWorksDot
+    
+		if v3 == 1 begin
+      v4 := 10
+      v5 := 29
+      sprite v4 v5 1
+      
+      v4 += 28
+      sprite v4 v5 1
+      v4 += -28
+    end
+
+		if v3 == 2 begin
+    	#delete
+    	sprite v4 v5 1
+      v4 += 28 
+      sprite v4 v5 1
+      v4 += -28
+      
+      #draw
+      v5 += -2
+   		sprite v4 v5 1   
+      v4 += 28
+      sprite v4 v5 1
+      v4 += -28
+    end 
+     
+    if v3 == 3 begin
+    	#delete
+    	sprite v4 v5 1
+      v4 += 28 
+      sprite v4 v5 1
+      v4 += -28      
+      
+      #draw
+      v5 += -2
+   		sprite v4 v5 1   
+      v4 += 28
+      sprite v4 v5 1
+      v4 += -28
+    end
+
+    if v3 == 4 begin
+    	#delete
+    	sprite v4 v5 1
+      v4 += 28
+      sprite v4 v5 1
+      v4 += -28 
+      
+      #draw
+      v5 += -2    
+    	sprite v4 v5 1
+      v4 += 28
+      sprite v4 v5 1
+      v4 += -28
+    end
+
+		if v3 == 5 begin
+    	#delete
+    	sprite v4 v5 1
+      v4 += 28
+      sprite v4 v5 1
+      v4 += -28
+      
+      #draw
+    	v5 += -2
+    	sprite v4 v5 1     
+      v4 += 28
+      sprite v4 v5 1
+      v4 += -28
+    end
+
+		if v3 == 6 begin
+    	#delete
+    	sprite v4 v5 1
+      v4 += 28
+      sprite v4 v5 1
+      v4 += -28
+      
+      #draw
+    	v5 += -1
+      sprite v4 v5 1     
+      v4 += 28
+      sprite v4 v5 1
+      v4 += -28
+    end
+
+		if v3 == 7 begin
+    	#delete
+    	sprite v4 v5 1
+      v4 += 28
+      sprite v4 v5 1
+      v4 += -28
+      
+      #draw
+      i := expl1 
+      v4 += -1
+      v5 += -1
+      sprite v4 v5 3      
+      v4 += 28
+      sprite v4 v5 3
+      v4 += -28
+    end
+    
+    if v3 == 8 begin
+    	#delete
+    	i := expl1
+      sprite v4 v5 3
+      v4 += 28
+      sprite v4 v5 3
+      v4 += -28
+      
+      #draw
+      i := expl2
+      v4 += -1
+      v5 += -1
+      sprite v4 v5 5       
+      v4 += 28
+      sprite v4 v5 5
+      v4 += -28
+      
+    end
+    
+    if v3 == 9 begin
+    	#delete
+      i := expl2
+      sprite v4 v5 5
+      v4 += 28
+      sprite v4 v5 5
+      v4 += -28
+      
+      #draw
+      i := expl3
+      v4 += -1
+      v5 += -1
+      sprite v4 v5 7      
+      v4 += 28
+      sprite v4 v5 7
+      v4 += -28
+      
+    end 
+    
+    if v3 == 10 begin
+    	#delete only
+    	i := expl3
+      sprite v4 v5 7   
+      v4 += 28
+      sprite v4 v5 7
+      v4 += -28
+      
+      v3 := 0 # reset v3 sequence counter
+    end
+    
+		#v3 gets iterated here
+		v3 += 1
+;
 
 #This makes the bunny jump at the game win screen
 #Must pass in v1 as x position
@@ -988,7 +1258,7 @@
       v0 := 2
       delayTimer
      
-     if playerYPos != 12 then #If the bunny is not at max height, keep looping
+     if playerYPos != 16 then #If the bunny is not at max height, keep looping
     again
    end
    
@@ -1011,7 +1281,7 @@
    
  v4 += 1
  
- if v4 != 3 then # Want 4 happy jumps
+ if v4 != 3 then # Want 3 happy jumps
  again
    	
 
