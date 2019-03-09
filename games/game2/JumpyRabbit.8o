@@ -415,7 +415,7 @@
 : newRound
 
 	#Set score to zero, and call keepScore to initialize score (of zero)
-  scoreCount := 80
+  scoreCount := 0
   displayScore
   
   #Reset all enemies:
