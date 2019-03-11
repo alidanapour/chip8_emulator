@@ -33,7 +33,7 @@ let timerProcess = null;            // Tracks the D/S timer cycle
 
 let notPaused = true;
 let emulatorSpeed = 8;              // Default speed is 8 cycles/frame
-let isTimerFixed = false;           // Fix the timer to 1 cycle/frame
+let isTimerFixed = false;           // Fix the delay timer to 1 cycle/frame
 let CHIP8 = new CPU();
 let prevCachedPC = 0;               // To update instruction list
 
