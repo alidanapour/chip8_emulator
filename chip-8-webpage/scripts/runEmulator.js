@@ -33,6 +33,7 @@ let timerProcess = null;            // Tracks the D/S timer cycle
 
 let notPaused = true;
 let emulatorSpeed = 8;              // Default speed is 8 cycles/frame
+let isTimerFixed = false;           // Fix the timer to 1 cycle/frame
 let CHIP8 = new CPU();
 let prevCachedPC = 0;               // To update instruction list
 
@@ -172,9 +173,6 @@ function continuePressed() {
 
 function stepForwardPressed() {
 
-    // Ignore
-    console.log("Previous: " +  hex_display(cpuCacheStack[cpuCacheStack.length - 1].PC_cache, 4));
-
     pushCpuStateToStack(CHIP8);
 
     let opcode = CHIP8.memory[CHIP8.PC] << 8 | CHIP8.memory[CHIP8.PC + 1];
@@ -189,9 +187,6 @@ function stepForwardPressed() {
 
     updateVisualizerRegisters();
     updateVisualizerInstructions();
-
-    // Ignore
-    console.log("Now pushed: " + hex_display(cpuCacheStack[cpuCacheStack.length - 1].PC_cache, 4));
 
 } // End of stepForwardPressed()
 
@@ -223,9 +218,6 @@ function stepBackwardPressed() {
         beepSound.play();
     CHIP8.setTimer();           // 1:1 ratio when manually stepping through instructions
 
-    // Ignore
-    console.log("Step back to: " + hex_display(cpuCacheStack[cpuCacheStack.length - 1].PC_cache, 4));
-
 } // End of stepBackwardPressed()
 
 
@@ -253,6 +245,12 @@ function checkLoadStoreQuirks() {
     resetPressed();
     let checkbox2 = document.getElementById('lsquirk');
     CHIP8.newLoadStoreQuirk = checkbox2.checked ? true : false;
+}
+
+
+function checkTimerQuirk() {
+    let checkbox3 = document.getElementById('fixtimer');
+    isTimerFixed = checkbox3.checked ? true : false;
 }
 
 
@@ -390,7 +388,8 @@ window.onload = function() {
 
 
     timerProcess = setInterval(function() {
-        for (let i = 0; i < emulatorSpeed/parseFloat(8); i++) {
+        let k = isTimerFixed ? 1 : emulatorSpeed/parseFloat(8);
+        for (let i = 0; i < k; i++) {
             if (CHIP8.isRunning) {
                 if (CHIP8.soundTimer > 0)
                     beepSound.play();
