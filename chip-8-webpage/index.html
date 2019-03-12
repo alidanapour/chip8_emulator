@@ -43,14 +43,6 @@
         the third release.
     </p>
 
-    <!-- Decode Opcode Feature (For Testing) -->
-    <!-- <p>
-        Decode opcode: <input type="text" id="type-opcode-here" maxlength="4" placeholder="XXXX"/>
-        <input type="button" value="Submit" onclick="disassembleOpcode(document.getElementById('type-opcode-here').value);"/>
-        <button onclick="document.getElementById('decode-opcode-here').textContent = ''">Clear Opcodes</button>
-    </p> -->
-    <!-- <ul id="decode-opcode-here"></ul><br/> -->
-
     <div class="options">
 
         <!-- Drop-down Games Menu -->
@@ -105,13 +97,45 @@
 
     </div></br>
 
-    <!-- Emulator Screen -->
-    <div class="display">
-        <canvas id="screen-area" width="640" height="320"></canvas>
-    </div></br>
+    <!-- Visualizer Area -->
+    <div class="visualizer">
 
-	<!-- Select ROM Button -->
-    <p>Select a ROM: <input type="file" id="rom"/></p><br/>
+        <!-- Instruction area -->
+        <div class="instructions">Instructions</div>
+
+        <div class="display">
+            <!-- Emulator Screen -->
+            <canvas id="screen-area" width="640" height="320"></canvas>
+
+            <!-- Load ROM buttom -->
+            <p>Select a ROM: <input type="file" id="rom"/></p><br/>
+        </div>
+
+        <!-- Register area -->
+        <div class="registers">
+                <div class="registers_inner" id="PC">PC: 0x0000</div>
+                <div class="registers_inner" id="I">  I: 0x0000</div>
+                <div class="registers_inner" id="SP">SP: 0x00</div>
+                <div class="registers_inner" id="DT">DT: 0x00</div>
+                <div class="registers_inner" id="ST">ST: 0x00</div>
+                <div class="registers_inner" id="V0">V0: 0x00</div>
+                <div class="registers_inner" id="V1">V1: 0x00</div>
+                <div class="registers_inner" id="V2">V2: 0x00</div>
+                <div class="registers_inner" id="V3">V3: 0x00</div>
+                <div class="registers_inner" id="V4">V4: 0x00</div>
+                <div class="registers_inner" id="V5">V5: 0x00</div>
+                <div class="registers_inner" id="V6">V6: 0x00</div>
+                <div class="registers_inner" id="V7">V7: 0x00</div>
+                <div class="registers_inner" id="V8">V8: 0x00</div>
+                <div class="registers_inner" id="V9">V9: 0x00</div>
+                <div class="registers_inner" id="VA">VA: 0x00</div>
+                <div class="registers_inner" id="VB">VB: 0x00</div>
+                <div class="registers_inner" id="VC">VC: 0x00</div>
+                <div class="registers_inner" id="VD">VD: 0x00</div>
+                <div class="registers_inner" id="VE">VE: 0x00</div>
+                <div class="registers_inner" id="VF">VF: 0x00</div>
+        </div>
+    </div><br/>
 
 	<!-- Descriptions and How To Play -->
     <button type="button" class="descriptionButton">Description and How To Play</button>
@@ -151,34 +175,6 @@
 
     </div>
 
-	<!-- Visualizer Area -->
-    <div class="visualizer">
-        <div class="instructions">Instructions</div>
-        <div class="registers">
-                <div class="registers_inner" id="PC">PC: 0x0000</div>
-                <div class="registers_inner" id="I">  I: 0x0000</div>
-                <div class="registers_inner" id="SP">SP: 0x00</div>
-                <div class="registers_inner" id="DT">DT: 0x00</div>
-                <div class="registers_inner" id="ST">ST: 0x00</div>
-                <div class="registers_inner" id="V0">V0: 0x00</div>
-                <div class="registers_inner" id="V1">V1: 0x00</div>
-                <div class="registers_inner" id="V2">V2: 0x00</div>
-                <div class="registers_inner" id="V3">V3: 0x00</div>
-                <div class="registers_inner" id="V4">V4: 0x00</div>
-                <div class="registers_inner" id="V5">V5: 0x00</div>
-                <div class="registers_inner" id="V6">V6: 0x00</div>
-                <div class="registers_inner" id="V7">V7: 0x00</div>
-                <div class="registers_inner" id="V8">V8: 0x00</div>
-                <div class="registers_inner" id="V9">V9: 0x00</div>
-                <div class="registers_inner" id="VA">VA: 0x00</div>
-                <div class="registers_inner" id="VB">VB: 0x00</div>
-                <div class="registers_inner" id="VC">VC: 0x00</div>
-                <div class="registers_inner" id="VD">VD: 0x00</div>
-                <div class="registers_inner" id="VE">VE: 0x00</div>
-                <div class="registers_inner" id="VF">VF: 0x00</div>
-        </div>
-    </div>
-
 	<!-- Test Output Area -->
     <p>Test Outputs: <button onclick="runAllTests()">Start Test</button></p>
     <div class="tests-scroll">
@@ -192,5 +188,3 @@
 
 </html>
 
-<!--  adding comment-->
-<!--  added another comment-->

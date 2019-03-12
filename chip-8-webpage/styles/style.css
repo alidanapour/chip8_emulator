@@ -20,15 +20,11 @@ p, li {
 body {
     width: 80%;
     margin: 0 auto;
+    /* border: 5px solid; */
 }
 
-.display, .options {
+.options {
     text-align: center;
-}
-
-#screen-area {
-    background-color: lightslategray;
-    border: 5px solid;
 }
 
 div.tests-scroll {
@@ -46,24 +42,37 @@ div.tests-scroll {
 }
 
 .visualizer{
-    overflow: hidden; /* prevent instructions and registers outside of body*/
-	padding-top: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    /* align-items: flex-start; */
+    align-items: stretch;
+    /* border: 5px solid red; */
+}
+
+.display{ 
+    text-align: center;
+}
+
+#screen-area {
+    background-color: lightslategray;
+    border: 5px solid;
+    display: inline;
 }
 
 .instructions{
     border: 5px solid;
-    float:left;
-    width: 80%;
     font-family: 'Karla', sans-serif;
     font-size: 15px;
     padding: 0.5% 0.5% 0.5% 0.5%;
+    width: 200px;
 }
 
 .registers{
     border: 5px solid;
-    float:right;
-    width: 15%;
     padding: 0.5% 0.5% 0.5% 0.5%;
+    width: 100px;
 }
 
 .registers_inner{
