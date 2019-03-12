@@ -1,6 +1,6 @@
 # **Jumpy Rabbit**
 
-![Jumpy Rabbit](/images/jr1.png)
+![Jumpy Rabbit](/games/game2/images/jr1.png)
 ___
 ## Introduction
 Welcome to Jumpy Rabbit, a game developed by team 10 which is based on the T-Rex Run by Google. This game was developed using the open source high-level assembler called [Octo by John Earnest](https://github.com/JohnEarnest/Octo)
@@ -19,7 +19,7 @@ _Note: This game is played best at 40 frames per cycle._
 - If you win, congratulations and enjoy seeing Jumpy McRabbit make his way home. If you lose, no worries, just hold 'E' to try again.
 
 ## Meet the dangerous animals!
-![Enemy1](/images/enemy1.png) ![Enemy2](/images/enemy2.png) ![Enemy3](/images/enemy3.png)
+![Enemy1](/games/game2/images/enemy1.png) ![Enemy2](/games/game2/images/enemy2.png) ![Enemy3](/games/game2/images/enemy3.png)
 
 ## Latest Update
 - Randomized enemies appearing based on difficulty level selected
@@ -28,7 +28,7 @@ _Note: This game is played best at 40 frames per cycle._
 - Fixed score bugs
 
 ## Screenshots
-![Jumpy Rabbit](/images/jr2.png)
-![Jumpy Rabbit](/images/jr4.png)
-![Jumpy Rabbit](/images/jr3.png)
+![Jumpy Rabbit](/games/game2/images/jr2.png)
+![Jumpy Rabbit](/games/game2/images/jr4.png)
+![Jumpy Rabbit](/games/game2/images/jr3.png)
 
