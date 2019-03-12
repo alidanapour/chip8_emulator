@@ -8,7 +8,7 @@ Welcome to Jumpy Rabbit, a game developed by team 10 which is based on the T-Rex
 The fate of Jumpy McRabbit lies in your hands. Do everything you can do to avoid the hungry animals and find your way home to the happy tree!
 
 ## How to play
- To play this game simply download the chip-8 file (JumpyRabbit.ch8) and load it onto our emulator! Alternatively, the octo file (.8o) and use the [Octo emulator](http://johnearnest.github.io/Octo/) may be used to play.
+ To play this game simply download the chip-8 file (JumpyRabbit.ch8) and load it onto our emulator! Alternatively, the octo file (.8o) and the [Octo emulator](http://johnearnest.github.io/Octo/) may be used to play.
 
 _Note: This game is played best at 40 frames per cycle._
 
