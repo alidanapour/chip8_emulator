@@ -1,29 +1,34 @@
 # **Jumpy Rabbit**
+
+![Jumpy Rabbit](/images/jr1.png)
 ___
 ## Introduction
 Welcome to Jumpy Rabbit, a game developed by team 10 which is based on the T-Rex Run by Google. This game was developed using the open source high-level assembler called [Octo by John Earnest](https://github.com/JohnEarnest/Octo)
 
-The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score!
+The fate of Jumpy McRabbit lies in your hands. Do everything you can do to avoid the hungry animals and find your way home to the happy tree!
 
 ## How to play
-Jumpy Rabbit is currently in the prototype stage, there may still be bugs present in the game. To play this game simply download the octo file (.8o) and use the [Octo emulator](http://johnearnest.github.io/Octo/): (1) open the `JumpyRabbit.8o` file from the emulator (2) click "Run" (3) Start playing!
+ To play this game simply download the chip-8 file (JumpyRabbit.ch8) and load it onto our emulator! Alternatively, the octo file (.8o) and use the [Octo emulator](http://johnearnest.github.io/Octo/) may be used to play.
 
-Note: This game is played best at 30-40 Frames per cycle.
+_Note: This game is played best at 40 frames per cycle._
 
 **Controls are as follows**:
 - At the title screen, select the level difficulty by pressing W (up) or D (down) and then **press and hold** 'E' on your keyboard to start. 
 - The 'W' key makes your rabbit jump.
 - Make sure to avoid all obstacles! 
+- If you win, congratulations and enjoy seeing Jumpy McRabbit make his way home. If you lose, no worries, just hold 'E' to try again.
 
-## Known Bugs
-- Some artifacts may appear when jumping (very rare)
-- Game ends prematurely due to said artifacts
-- Score count is incorrect after first point (wrapping issue, will be fixed when enemies properly implemented)
-- Game ends with a blank screen when you lose
+## Meet the dangerous animals!
+![Enemy1](/images/enemy1.png) ![Enemy2](/images/enemy2.png) ![Enemy3](/images/enemy3.png)
 
-## Upcomming features
+## Latest Update
 - Randomized enemies appearing based on difficulty level selected
 - Visual improvements (Animation, etc).
 - Game over/Play again screen
- 
-![Jumpy Rabbit](jumpyrabbit.png)
+- Fixed score bugs
+
+## Screenshots
+![Jumpy Rabbit](/images/jr2.png)
+![Jumpy Rabbit](/images/jr4.png)
+![Jumpy Rabbit](/images/jr3.png)
+
