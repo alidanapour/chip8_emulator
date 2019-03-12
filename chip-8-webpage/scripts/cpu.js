@@ -20,10 +20,8 @@ class CPU {
         this.drawFlag = false;                  // Tells whether to draw
 
         this.keys = new Uint8Array(16);         // Stores the status of the keys
-        // this.keyPressed = null;                 // Value of the most recent key pressed
 
         this.isRunning = false;                 // CPU run status
-        // this.programLoaded = false;		        // True when the program has been loaded into memory
 
         this.newShiftQuirk = true;              // Use new shift definitions (affects 8XY6 & 8XYE) by default
         this.newLoadStoreQuirk = true;          // Use new load/store definitions (affects FX55 & FX65) by default
@@ -66,14 +64,13 @@ class CPU {
 	    this.display.fill(0);		                    // Clear memory
 	    this.loadFonts();			                    // Load font set
 	    this.I = 0;				                        // Clear register I
-	    this.PC = 0x200;			                    // PC starts at 0x200 (512)
+        this.PC = 0x200;			                    // PC starts at 0x200 (512)
 	    this.stack.fill(0);	                            // Clear program stack
 	    this.stackPointer = 0;		                    // Clear stack pointer
 	    this.delayTimer = 0;		                    // Clear delay timer
 	    this.soundTimer = 0;		                    // Clear sound timer
 	    this.isRunning = false;	                        // Set CPU run status to false
         this.keys.fill(0);			                    // Clear keys
-        // this.keyPressed = null;                         // No key pressed
         this.drawFlag = false;		                    // Don't draw anything
 
     } // End of reset()
@@ -117,7 +114,7 @@ class CPU {
         this.keys[key] = false;
     }   // End of setKeyUp(key)
 
-    loadProgram(rom){
+    loadProgram(rom) {
 
         let reader = new FileReader();
 

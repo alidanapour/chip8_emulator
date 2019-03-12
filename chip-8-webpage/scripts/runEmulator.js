@@ -28,13 +28,39 @@ let romList = {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-let runProcess = null;          // Tracks the main run cycle
-let timerProcess = null;        // Tracks the D/S timer cycle
+let runProcess = null;              // Tracks the main run cycle
+let timerProcess = null;            // Tracks the D/S timer cycle
 
 let notPaused = true;
-let emulatorSpeed = 8;          // Default speed is 8 cycles/frame
+let emulatorSpeed = 8;              // Default speed is 8 cycles/frame
 let CHIP8 = new CPU();
-let lastPC = 0;                 // To update instruction list
+let prevCachedPC = 0;               // To update instruction list
+
+let cpuCacheStack = new Array();    // Stack for storing CPU states (step backward)
+
+function pushCpuStateToStack(x) {
+    let tempState = {
+        V_cache: x.V.slice(),
+        I_cache: x.I,
+        memory_cache: x.memory.slice(),
+        PC_cache: x.PC,
+        stack_cache: x.stack.slice(),
+        stackPointer_cache: x.stackPointer,
+        delayTimer_cache: x.delayTimer,
+        soundTimer_cache: x.soundTimer,
+        display_cache: x.display.slice(),
+    }
+
+    if (cpuCacheStack.length < 200)
+        cpuCacheStack.push(tempState);
+    else {
+        cpuCacheStack.push(tempState);
+        cpuCacheStack.shift();
+    }
+} // End of pushCpuStateToStack()
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 /////////////////////////
 //                     //
@@ -50,13 +76,18 @@ let keyMap = {
     'z': 0xA, 'x': 0x0, 'c': 0xB, 'v': 0xF,
 };
 
+
 document.addEventListener("keydown", function(event) {
     CHIP8.setKeyDown(keyMap[event.key]);
 });
 
+
 document.addEventListener("keyup", function(event) {
     CHIP8.setKeyUp(keyMap[event.key]);
 });
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////
@@ -64,6 +95,7 @@ document.addEventListener("keyup", function(event) {
 //  Webpage Controls   //
 //                     //
 /////////////////////////
+
 
 function resetVisualizer() {
 
@@ -89,13 +121,15 @@ function resetVisualizer() {
     el.innerHTML = 'Instructions';
     instructionsDiv.appendChild(el);
 
-    // Reset lastPC
-    lastPC = 0;
+    // Reset prevCachedPC
+    prevCachedPC = 0;
 }
+
 
 function hex_display(value, displayLength) {
     return (value.toString(16).padStart(displayLength, '0').toUpperCase());
 }
+
 
 function runEmulator(menu) {
 
@@ -117,25 +151,83 @@ function runEmulator(menu) {
     }
 
     document.getElementById('rom').value = "";
+
 }
+
 
 function setEmulatorSpeed(menu) {
     emulatorSpeed = menu.value;
 }
 
+
 function pausePressed() {
     CHIP8.isRunning = false;
 }
+
 
 function continuePressed() {
     CHIP8.isRunning = true;
 }
 
+
 function stepForwardPressed() {
+
+    // Ignore
+    console.log("Previous: " +  hex_display(cpuCacheStack[cpuCacheStack.length - 1].PC_cache, 4));
+
+    pushCpuStateToStack(CHIP8);
+
     let opcode = CHIP8.memory[CHIP8.PC] << 8 | CHIP8.memory[CHIP8.PC + 1];
     CHIP8.emulateOpcode(opcode);
     CHIP8.renderScreen();
-}
+
+    ///////////////////////////////////////////////////////////////////////
+
+    if (CHIP8.soundTimer > 0)
+        beepSound.play();
+    CHIP8.setTimer();           // 1:1 ratio when manually stepping through instructions
+
+    updateVisualizerRegisters();
+    updateVisualizerInstructions();
+
+    // Ignore
+    console.log("Now pushed: " + hex_display(cpuCacheStack[cpuCacheStack.length - 1].PC_cache, 4));
+
+} // End of stepForwardPressed()
+
+
+function stepBackwardPressed() {
+
+    let x = cpuCacheStack.pop();
+
+    CHIP8.V = x.V_cache.slice();
+    CHIP8.I = x.I_cache;
+    CHIP8.memory = x.memory_cache.slice();
+    CHIP8.PC = x.PC_cache;
+    CHIP8.stack = x.stack_cache.slice();
+    CHIP8.stackPointer = x.stackPointer_cache;
+    CHIP8.delayTimer = x.delayTimer_cache;
+    CHIP8.soundTimer = x.soundTimer_cache;
+    CHIP8.display = x.display_cache.slice();
+    
+    CHIP8.drawFlag = true;
+
+    updateVisualizerInstructions();
+    updateVisualizerRegisters();
+
+    CHIP8.renderScreen();
+
+    ///////////////////////////////////////////////////////////////////////
+
+    if (CHIP8.soundTimer > 0)
+        beepSound.play();
+    CHIP8.setTimer();           // 1:1 ratio when manually stepping through instructions
+
+    // Ignore
+    console.log("Step back to: " + hex_display(cpuCacheStack[cpuCacheStack.length - 1].PC_cache, 4));
+
+} // End of stepBackwardPressed()
+
 
 function resetPressed() {
     CHIP8.emulateOpcode(0x00E0);
@@ -145,8 +237,10 @@ function resetPressed() {
     document.getElementById('games').value = "";
     document.getElementById('speed').value = 8;
     emulatorSpeed = 8;
+    cpuCacheStack = new Array();
     resetVisualizer();
 }
+
 
 function checkShiftQuirks() {
     resetPressed();
@@ -154,12 +248,88 @@ function checkShiftQuirks() {
     CHIP8.newShiftQuirk = checkbox1.checked ? true : false;
 }
 
+
 function checkLoadStoreQuirks() {
     resetPressed();
     let checkbox2 = document.getElementById('lsquirk');
     CHIP8.newLoadStoreQuirk = checkbox2.checked ? true : false;
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////
+//                     //
+//  Update Visualizer  //
+//                     //
+/////////////////////////
+
+
+function updateVisualizerRegisters() {
+
+    let registers = document.getElementsByClassName('registers_inner');
+    let specialRegisters = [CHIP8.PC, CHIP8.I, CHIP8.stackPointer,
+                            CHIP8.delayTimer, CHIP8.soundTimer];
+    let numSpecialRegisters = specialRegisters.length;
+
+    // 5 special registers
+    for (let i = 0; i < numSpecialRegisters; i++) {
+        
+        let displayValue = hex_display(specialRegisters[i], 4);
+
+        if (i >= 2)
+            displayValue = hex_display(specialRegisters[i], 2);
+        
+        registers[i].innerHTML = registers[i].id + ": 0x" + displayValue;
+
+    }
+
+    // V0 to VF
+    let lengthVRegisters = CHIP8.V.length;
+    for (let i = 0; i < lengthVRegisters; i++) {
+        let j = i + numSpecialRegisters;        // Skip 5 special registers
+        registers[j].innerHTML = registers[j].id + ": 0x" + hex_display(CHIP8.V[i], 2);
+    }
+
+}
+
+
+function updateVisualizerInstructions() {
+
+    let instructionsDiv = document.querySelector('.instructions');
+
+    // Remove old instruction list
+    while (instructionsDiv.firstChild)
+        instructionsDiv.removeChild(instructionsDiv.firstChild);
+
+    let currentPC = CHIP8.PC;
+    let PC_difference = currentPC - prevCachedPC;
+
+    // If currentPC is 19 opcodes away or currentPC is behind prevCachedPC
+    // ---> then update prevCachedPC
+    if (PC_difference > 19 * 2 || PC_difference < 0)
+        prevCachedPC = currentPC;
+
+    let _pc_ = Math.max((prevCachedPC - 2), 0);
+
+    for (let i = 0; i < 21; i++) {
+
+        const el = document.createElement('div');
+        let opcode = (CHIP8.memory[_pc_] << 8) | CHIP8.memory[_pc_ + 1];
+        opcode = opcode.toString(16).padStart(4, '0');
+
+        el.innerHTML = hex_display(_pc_, 4) + " | " + disassembleOpcode(opcode);
+
+        if (_pc_ === CHIP8.PC)
+            el.classList.add('current-instruction');
+
+        instructionsDiv.appendChild(el);
+        _pc_ += 2;
+        
+    }
+
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -175,13 +345,16 @@ function checkLoadStoreQuirks() {
 // Load ROM into memory
 window.onload = function() {
 
-    // File Reader ///////////////////////////////////////////
+
+    // File Reader //////////////////////////////////////////////////////////////////////////
 
     var fileInput = document.getElementById('rom');
 
     fileInput.addEventListener('change', function(e) {   
+
         // load new ROM if user select a file 
-        if(fileInput.files.length === 1) { 
+        if (fileInput.files.length === 1) { 
+
             var file = fileInput.files[0];
 
             CHIP8.reset();
@@ -190,9 +363,11 @@ window.onload = function() {
 
             document.getElementById('games').value = "";
         }
+
     });
 
-    // Run Processes //////////////////////////////////////////
+
+    // Run Processes ////////////////////////////////////////////////////////////////////////
 
     if (runProcess != null)                 // Clear previous program process (required when changing ROMs)
         clearInterval(runProcess);
@@ -208,9 +383,11 @@ window.onload = function() {
                 let opcode = CHIP8.memory[CHIP8.PC] << 8 | CHIP8.memory[CHIP8.PC + 1];
                 CHIP8.emulateOpcode(opcode);
                 CHIP8.renderScreen();
+                pushCpuStateToStack(CHIP8);
             }
         }
     }, 1000/60);
+
 
     timerProcess = setInterval(function() {
         for (let i = 0; i < emulatorSpeed/parseFloat(8); i++) {
@@ -222,70 +399,24 @@ window.onload = function() {
         }
     }, 1000/60);
 
-    // Visualizer ////////////////////////////////////////////
+
+    // Visualizer ///////////////////////////////////////////////////////////////////////////
+
     
     displayRegister = setInterval(function() {
-        if (CHIP8.isRunning) {
-                let registers = document.getElementsByClassName('registers_inner');
-                let specialRegisters = [CHIP8.PC, CHIP8.I, CHIP8.stackPointer,
-                                        CHIP8.delayTimer, CHIP8.soundTimer];
-                let numSpecialRegisters = specialRegisters.length;
 
-                // 5 special registers
-                for (let i = 0; i < numSpecialRegisters; i++) {
+        if (CHIP8.isRunning)
+            updateVisualizerRegisters();
 
-                    let displayValue = hex_display(specialRegisters[i], 4);
+    }, 1000/60)
 
-                    if (i >= 2)
-                        displayValue = hex_display(specialRegisters[i], 2);
-                    
-                    registers[i].innerHTML = registers[i].id + ": 0x" + displayValue;
-                
-                }
-
-                // V0 to VF
-                let lengthVRegisters = CHIP8.V.length;
-                for (let i = 0; i < lengthVRegisters; i++) {
-                    let j = i + numSpecialRegisters;        // Skip 5 special registers
-                    registers[j].innerHTML = registers[j].id + ": 0x" + hex_display(CHIP8.V[i], 2);
-                }
-        }
-    }, 1000/60)     // End of displayRegister
 
     displayInstructions = setInterval(function() {
-        if (CHIP8.isRunning) {                
-                let instructionsDiv = document.querySelector('.instructions');
 
-                // Remove old instruction list
-                while (instructionsDiv.firstChild)
-                    instructionsDiv.removeChild(instructionsDiv.firstChild);
+        if (CHIP8.isRunning)
+            updateVisualizerInstructions();
 
-                let currentPC = CHIP8.PC;
-                let lastPCDiff = currentPC - lastPC;
+    }, 1000/60)
 
-                // If currentPC is 19 opcodes away or lastPCDiff is behind lastPC
-                // ---> then update lastPC
-                if (lastPCDiff > 19 * 2 || lastPCDiff < 0)
-                    lastPC = currentPC;
-
-                let pc = Math.max( (lastPC-2) , 0);
-
-                for (let i = 0; i < 21; i++) {
-
-                    const el = document.createElement('div');
-                    let opcode = (CHIP8.memory[pc] << 8) | CHIP8.memory[pc + 1];
-                    opcode = opcode.toString(16).padStart(4, '0');
-
-                    el.innerHTML = hex_display(pc, 4) + " | " + disassembleOpcode(opcode);
-
-                    if (pc === currentPC)
-                        el.classList.add('current-instruction');
-
-                    instructionsDiv.appendChild(el);
-                    pc += 2;
-
-                }
-        }
-    }, 1000/60)     // End of displayInstructions()
 
 } // End of window.onload function
