@@ -99,3 +99,12 @@ div.tests-scroll {
 	font-family: 'Karla', sans-serif;
 	font-size: 15px;
 }
+
+#controlsTable{
+  border: 1px solid black;
+  float: left;
+}
+#controlsDescription{
+  float: left;
+  padding-left: 2%;
+}
