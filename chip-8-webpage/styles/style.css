@@ -102,4 +102,9 @@ div.tests-scroll {
 
 #controlsTable{
   border: 1px solid black;
+  float: left;
+}
+#controlsDescription{
+  float: left;
+  padding-left: 2%;
 }
