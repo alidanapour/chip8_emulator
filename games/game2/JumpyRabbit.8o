@@ -2,12 +2,6 @@
 #Developed by Team 10, CMPT 276, SFU Spring 2019
 
 
-##TODO:
-# Vary speed (FPS LOCK) depending on difficulty
-# Make game over, play again screen
-
-
-
 #### S P R I T E S ####
 #Title Sprites
 : JR1 0xF8 0x22 0x22 0xA2 0xE2 0x01
@@ -184,6 +178,7 @@
 #This also checks if the game is over by win condition (score 255) and calls gameWin if required
 : keepScore
 
+	#Enemy 1
 	if enemy1XPos == 4 
   begin
   	displayScore
@@ -192,21 +187,29 @@
     checkWin
   end
   
+  #Enemy 2 (snake)
   if enemy2XPos == 4
   begin
   	displayScore
-  	scoreCount += 1
+    
+    if scoreCount == 254 begin  #award 1 point only if score is 254 (255 being max)
+    	scoreCount += 1
+      displayScore
+      jump gameWin
+    end
+    
+  	scoreCount += 2
     displayScore
     checkWin
   end
   
-  #Since the flying enemy gives two points normally, a condition is made to 
-  #award 1 point only if score is 254 (255 being max)
+  
+ 	#Enemy 3 (air)
   if enemy3XPos == 4
     begin
   	displayScore
     
-    if scoreCount == 254 begin
+    if scoreCount == 254 begin  #award 1 point only if score is 254 (255 being max)
     	scoreCount += 1
       displayScore
       jump gameWin
@@ -223,11 +226,11 @@
 	if scoreCount == 255 then jump gameWin
   
   if levelSelected == 1 begin
-  	if scoreCount == 30 then jump gameWin
+  	if scoreCount >= 20 then jump gameWin
   end
   
   if levelSelected == 2 begin
-  	if scoreCount == 100 then jump gameWin
+  	if scoreCount >= 100 then jump gameWin
   end
 
 ;
@@ -530,14 +533,7 @@
   
   #Redraw sprite by deleting old one and redrawing in new position
   i := playerSprite
-  
-  #If the player is on the ground then delete nonjumping sprite, set i to next frame
-  if playerYPos == 24 
-  begin
-  	sprite v2 playerYPos 6
-  	i := playerSpriteJump
-  end
-  
+   
   #If the player is not on the ground set sprite to jump sprite and delete old sprite.
   if playerYPos != 24
   begin
@@ -545,9 +541,20 @@
     sprite v2 playerYPos 6
   end
   
+  #If the player is on the ground then delete nonjumping sprite, set i to next frame
+  #Also sound the buzzer
+  if playerYPos == 24 
+  begin
+  	sprite v2 playerYPos 6
+  	i := playerSpriteJump
+    v0 := 10
+    buzzer := v0
+  end
+  
   #Draw the sprite in the new position
   playerYPos := v1
   sprite v2 playerYPos 6
+    
 ;
 
 
