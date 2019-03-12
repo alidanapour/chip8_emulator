@@ -20,7 +20,6 @@ p, li {
 body {
     width: 80%;
     margin: 0 auto;
-    /* border: 5px solid; */
 }
 
 .options {
@@ -46,9 +45,7 @@ div.tests-scroll {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    /* align-items: flex-start; */
     align-items: stretch;
-    /* border: 5px solid red; */
 }
 
 .display{ 
@@ -106,7 +103,7 @@ div.tests-scroll {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 	font-family: 'Karla', sans-serif;
-	font-size: 15px;
+    font-size: 15px;
 }
 
 #controlsTable{
