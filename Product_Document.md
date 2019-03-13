@@ -6,7 +6,7 @@
 
 1. Chip8 **Emulator** can run any Chip8 program.
 2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It lets users pause and step-forward/step-backward one instruction at a time.
-3. One Chip8 **Tool**: *to be announced*. The goal is to build a Chip8 program that is useful to the intended users of the Chip8 emulator.  
+3. One Chip8 **Tool**: `Sprite Editor` provides a visual interface to create sprites.  
 4. Two Chip8 **Games**:  Game 1: `Space War`; Game 2: `Jumpy Rabbit`. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
 
 ## Project organization
@@ -69,13 +69,22 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Added user case for chip8 tool prototype.
     - Added user case for game 2 complete.
     - Migrated to [Jest](https://jestjs.io/) for automated test.
-    - Added program descriptions and instructions on how to play games to the visualizer.   
-    
+    - Added program descriptions and instructions on how to play games to the visualizer.
+
+**UPDATED March 13, 2019**:
+- Release 0:
+    - Updated interface mockup.  
+- Release 3: 
+    - Updated user case for chip8 tool prototype.
+    - Updated user case for game 2 complete.
+- Release 4: 
+    - Added user case for chip8 tool complete.
+
 **Release 0**:
 
 - Interface Mockup
 
-![WBS example](product_document_imgs/interface_mockup.JPG)
+![Interface Mockup](product_document_imgs/interface_mockup.JPG)
 
 - Interface Implementation: implemented the interface based on the mockup version. **We will be working with a simpler interface in release 1 and 2, and integrate this interface into existing source code in release 3**. 
 
@@ -169,6 +178,19 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Automated test with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
 
+**Release 4** **TODO**
+- Interface complete:
+
+- Emulator complete:
+
+- Visualizer complete:
+
+- Chip8 Tool complete:
+
+- Game 1 complete:
+
+- Game 2 complete:
+
 ## Risk analysis
 
 |   Description	|   Likelihood	|   Impact | Risk Management Strategy|
@@ -218,7 +240,13 @@ For Release 2, we are making good progress, the Emulator and Game 1 is essential
 
 As our code base expands, we have attempted to improve our code quality. For example, we have experienced with loading rom directly from file, however since the file is on a local machine we must either (1) turn the local machine into a Web server  (2) change security for local files in a browser (access local file as `file:///example`). Both options require user to perform initial set-up on their machine to run our code so we decided to convert roms (in binary) into hex values for loading into memory later. For roms that are actively developed (game 1, game 2), user must use `load rom` rather than `dropdown menu` so that we don't have to update the `dropdown menu` 
 every time a new version comes out more on this topic, please visit: [link1](https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally)
-or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local). We will continue to improve our code quality based on our own judgments and the TA's feedbacks. We will continue updating this Work Breakdown for upcoming releases. 
+or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local). We will continue to improve our code quality based on our own judgments and the TA's feedbacks. We will continue updating this Work Breakdown for upcoming releases.
+
+**UPDATED**: **March 13, 2019**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on March 13, 2019.
+
+![WBS example](product_document_imgs/WBS_R3.PNG)
+
+**TODO**
 
 ## Project schedule
 
@@ -231,6 +259,10 @@ The due dates of major deliverables are shown in the table above. Detailed sched
 **UPDATED February 27, 2019**: An example for release 2 is shown below:
 
 ![Trello example](product_document_imgs/trello_example_R2.PNG)
+
+**UPDATED**: **March 13, 2019**: An example for release 3 is shown below:
+
+![Trello example](product_document_imgs/trello_example_R3.PNG)
 
 ## Monitoring and reporting mechanisms
 
