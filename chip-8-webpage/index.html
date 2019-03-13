@@ -20,7 +20,7 @@
 <body>
 
     <h1>Chip-8 Emulator</h1>
-    
+
     <img src="images/chip-8-logo.png" alt="Chip-8 Logo" class="center"><br/>
 
     <p>
@@ -42,14 +42,6 @@
         This is a semester long project and we will have 4 different releases. We aim to have the project completed by
         the third release.
     </p>
-
-    <!-- Decode Opcode Feature (For Testing) -->
-    <!-- <p>
-        Decode opcode: <input type="text" id="type-opcode-here" maxlength="4" placeholder="XXXX"/>
-        <input type="button" value="Submit" onclick="disassembleOpcode(document.getElementById('type-opcode-here').value);"/>
-        <button onclick="document.getElementById('decode-opcode-here').textContent = ''">Clear Opcodes</button>
-    </p> -->
-    <!-- <ul id="decode-opcode-here"></ul><br/> -->
 
     <div class="options">
 
@@ -107,54 +99,24 @@
 
     </div></br>
 
-    <!-- Emulator Screen -->
-    <div class="display">
-        <canvas id="screen-area" width="640" height="320"></canvas>
-    </div></br>
-
-	<!-- Select ROM Button -->
-    <p>Select a ROM: <input type="file" id="rom"/></p><br/>
-	
-	<!-- Descriptions and How To Play -->
-    <button type="button" class="descriptionButton">Description and How To Play</button>
-    <div id="description">
-        <div id="tempDescHolder">
-            Choose a game from the drop-down menu to see its description!
-        </div>
-        </br>
-        <table id="controlsTable">
-            <tr>
-                <th id="controlButton1">1</th>
-                <th id="controlButton2">2</th>
-                <th id="controlButton3">3</th>
-                <th id="controlButton4">4</th>
-            </tr>
-            <tr>
-                <th id="controlButtonQ">Q</th>
-                <th id="controlButtonW">W</th>
-                <th id="controlButtonE">E</th>
-                <th id="controlButtonR">R</th>
-            </tr>
-            <tr>
-                <th id="controlButtonA">A</th>
-                <th id="controlButtonS">S</th>
-                <th id="controlButtonD">D</th>
-                <th id="controlButtonF">F</th>
-            </tr>
-            <tr>
-                <th id="controlButtonZ">Z</th>
-                <th id="controlButtonX">X</th>
-                <th id="controlButtonC">C</th>
-                <th id="controlButtonV">V</th>
-            </tr>
-        </table>
-        <div id="controlsDescription"></div>
-    </div>
-
-	<!-- Visualizer Area -->
+    <!-- Visualizer Area -->
     <div class="visualizer">
+
+        <!-- Instruction Area -->
         <div class="instructions">Instructions</div>
-        <div class="registers">  
+
+        <div class="display">
+
+            <!-- Emulator Screen -->
+            <canvas id="screen-area" width="640" height="320"></canvas>
+
+            <!-- Load ROM buttom -->
+            <p>Select a ROM: <input type="file" id="rom"/></p><br/>
+        
+        </div>
+
+        <!-- Register Area -->
+        <div class="registers">
                 <div class="registers_inner" id="PC">PC: 0x0000</div>
                 <div class="registers_inner" id="I">  I: 0x0000</div>
                 <div class="registers_inner" id="SP">SP: 0x00</div>
@@ -177,14 +139,54 @@
                 <div class="registers_inner" id="VE">VE: 0x00</div>
                 <div class="registers_inner" id="VF">VF: 0x00</div>
         </div>
+
+    </div><br/>
+
+	<!-- Descriptions and How To Play -->
+    <button type="button" class="descriptionButton">Description and How To Play</button>
+    <div id="description">
+
+            <div id="tempDescHolder">
+                Choose a game from the drop-down menu to see its description!
+            </div>
+
+            <table id="controlsTable">
+                <tr>
+                    <th id="controlButton1">1</th>
+                    <th id="controlButton2">2</th>
+                    <th id="controlButton3">3</th>
+                    <th id="controlButton4">4</th>
+                </tr>
+                <tr>
+                    <th id="controlButtonQ">Q</th>
+                    <th id="controlButtonW">W</th>
+                    <th id="controlButtonE">E</th>
+                    <th id="controlButtonR">R</th>
+                </tr>
+                <tr>
+                    <th id="controlButtonA">A</th>
+                    <th id="controlButtonS">S</th>
+                    <th id="controlButtonD">D</th>
+                    <th id="controlButtonF">F</th>
+                </tr>
+                <tr>
+                    <th id="controlButtonZ">Z</th>
+                    <th id="controlButtonX">X</th>
+                    <th id="controlButtonC">C</th>
+                    <th id="controlButtonV">V</th>
+                </tr>
+            </table>
+
+            <div id="controlsDescription"></div>
+
     </div>
 
 	<!-- Test Output Area -->
-    <p>Test Outputs: <button onclick="runAllTests()">Start Test</button></p>
+    <!-- <p>Test Outputs: <button onclick="runAllTests()">Start Test</button></p>
     <div class="tests-scroll">
         <ul id="test-results"></ul>
-    </div>
-    
+    </div> -->
+
 </body>
 
 <!-- Description File To Be Loaded At The End -->
