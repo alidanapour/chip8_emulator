@@ -82,6 +82,7 @@
             <option value="15">15 cycles/frame</option>
             <option value="20">20 cycles/frame</option>
             <option value="30">30 cycles/frame</option>
+            <option value="40">40 cycles/frame</option>
         </select>
 
         <!-- Buttons -->
@@ -94,24 +95,40 @@
         <!-- Quirk Checkboxes -->
         Use new shift opcodes? <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
         Use new load/store opcodes? <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
+        Fix timer speed? <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" checked/>
 
     </div></br>
 
     <!-- Visualizer Area -->
     <div class="visualizer">
 
+<<<<<<< HEAD
         <!-- Instruction area -->
         <div class="instructions">Instructions</div>
 
         <div class="display">
+=======
+        <!-- Instruction Area -->
+        <div class="instructions">Instructions</div>
+
+        <div class="display">
+
+>>>>>>> karan
             <!-- Emulator Screen -->
             <canvas id="screen-area" width="640" height="320"></canvas>
 
             <!-- Load ROM buttom -->
             <p>Select a ROM: <input type="file" id="rom"/></p><br/>
+<<<<<<< HEAD
         </div>
 
         <!-- Register area -->
+=======
+        
+        </div>
+
+        <!-- Register Area -->
+>>>>>>> karan
         <div class="registers">
                 <div class="registers_inner" id="PC">PC: 0x0000</div>
                 <div class="registers_inner" id="I">  I: 0x0000</div>
@@ -139,39 +156,40 @@
 
 	<!-- Descriptions and How To Play -->
     <button type="button" class="descriptionButton">Description and How To Play</button>
-    <div id="description" >
+    <div id="description">
+
             <div id="tempDescHolder">
-              Choose a game from the drop-down menu to see its description!
+                Choose a game from the drop-down menu to see its description!
             </div>
+
             <table id="controlsTable">
-              <tr>
-                <th id="controlButton1">1</th>
-                <th id="controlButton2">2</th>
-                <th id="controlButton3">3</th>
-                <th id="controlButton4">4</th>
-              </tr>
-              <tr>
-                <th id="controlButtonQ">Q</th>
-                <th id="controlButtonW">W</th>
-                <th id="controlButtonE">E</th>
-                <th id="controlButtonR">R</th>
-              </tr>
-              <tr>
-                <th id="controlButtonA">A</th>
-                <th id="controlButtonS">S</th>
-                <th id="controlButtonD">D</th>
-                <th id="controlButtonF">F</th>
-              </tr>
-              <tr>
-                <th id="controlButtonZ">Z</th>
-                <th id="controlButtonX">X</th>
-                <th id="controlButtonC">C</th>
-                <th id="controlButtonV">V</th>
-              </tr>
+                <tr>
+                    <th id="controlButton1">1</th>
+                    <th id="controlButton2">2</th>
+                    <th id="controlButton3">3</th>
+                    <th id="controlButton4">4</th>
+                </tr>
+                <tr>
+                    <th id="controlButtonQ">Q</th>
+                    <th id="controlButtonW">W</th>
+                    <th id="controlButtonE">E</th>
+                    <th id="controlButtonR">R</th>
+                </tr>
+                <tr>
+                    <th id="controlButtonA">A</th>
+                    <th id="controlButtonS">S</th>
+                    <th id="controlButtonD">D</th>
+                    <th id="controlButtonF">F</th>
+                </tr>
+                <tr>
+                    <th id="controlButtonZ">Z</th>
+                    <th id="controlButtonX">X</th>
+                    <th id="controlButtonC">C</th>
+                    <th id="controlButtonV">V</th>
+                </tr>
             </table>
-            <div id="controlsDescription">
-              
-            </div>
+
+            <div id="controlsDescription"></div>
 
     </div>
 
@@ -187,4 +205,3 @@
 <script type="text/javascript" src="scripts/description.js"></script>
 
 </html>
-

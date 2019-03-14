@@ -3,6 +3,7 @@ html {
     font-size: 10px;
     background-color: #F1EEEE;
     padding-bottom: 50px;
+    scroll-behavior: smooth;
 }
 
 h1 {
@@ -106,11 +107,12 @@ div.tests-scroll {
     font-size: 15px;
 }
 
-#controlsTable{
-  border: 1px solid black;
-  float: left;
+#controlsTable {
+    border: 1px solid black;
+    float: left;
 }
-#controlsDescription{
-  float: left;
-  padding-left: 2%;
+
+#controlsDescription {
+    float: left;
+    padding-left: 2%;
 }
