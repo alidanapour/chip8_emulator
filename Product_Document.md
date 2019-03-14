@@ -136,10 +136,9 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Alternate Flow:
         - i1. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system or to load another program.
 
-- Game 2 Prototype: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. 
+- Game 2 Prototype: `Jumpy Rabbit`is a game inspired by Google's *T-Rex Run*. 
     - Known bugs to be fixed in the next release:
-        - Undesired sprites may appear when jumping (very rare)
-        - Game ends prematurely due to said artifacts
+        - Undesired sprites may appear when jumping (very rare) and game ends prematurely due to said artifacts
         - Score count is incorrect after first point (wrapping issue, will be fixed when enemies properly implemented)
         - Game ends with a blank screen when you lose
 
@@ -149,12 +148,13 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Visualizer: User can step forward or step backward one instruction at a time.
 
-- Game 2 Complete: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score! 
+- Game 2 Complete: `Jumpy Rabbit` is a game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score! 
     - Updates made to prototype:
         - Fixed existing bugs
         - Randomized enemies appearing based on difficulty level selected
         - Aded visual improvements (Animation, etc)
         - Added Game over/Play again/Winning screen
+        - Undesired sprites may appear when jumping (very rare) and doesn't stop the prematurely.  
 
     - Actors:
         - User
