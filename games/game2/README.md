@@ -16,6 +16,7 @@ _Note: This game is played best at 40 frames per cycle._
 - At the title screen, select the level difficulty by pressing W (up) or D (down) and then **press and hold** 'E' on your keyboard to start. 
 - The 'W' key makes your rabbit jump.
 - Make sure to avoid all obstacles! 
+- To win reach 20 points at level 1, 100 at level 2, and 255 at level 3!
 - If you win, congratulations and enjoy seeing Jumpy McRabbit make his way home. If you lose, no worries, just hold 'E' to try again.
 
 ## Meet the dangerous animals!
