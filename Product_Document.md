@@ -78,7 +78,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Updated user case for game 2 complete.
 - Release 4: 
     - Added new interface mockup for emulator and visualizer. 
-    - Added user case for chip8 tool complete.
+    - Added user case for emulator, visualizer, chip8 tool, game 1 and game 2 complete. 
 
 **Release 0**:
 
@@ -136,7 +136,26 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Alternate Flow:
         - i1. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system or to load another program.
 
-- Game 2 Prototype: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score!
+- Game 2 Prototype: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. 
+    - Known bugs to be fixed in the next release:
+        - Undesired sprites may appear when jumping (very rare)
+        - Game ends prematurely due to said artifacts
+        - Score count is incorrect after first point (wrapping issue, will be fixed when enemies properly implemented)
+        - Game ends with a blank screen when you lose
+
+**Release 3**
+
+- Emulator: Perform more rigorous automated testings.
+
+- Visualizer: User can step forward or step backward one instruction at a time.
+
+- Game 2 Complete: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score! 
+    - Updates made to prototype:
+        - Fixed existing bugs
+        - Randomized enemies appearing based on difficulty level selected
+        - Aded visual improvements (Animation, etc)
+        - Added Game over/Play again/Winning screen
+
     - Actors:
         - User
         - Input/Output interface 
@@ -154,25 +173,10 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
         6. Throughout the duration of the game, the system will spawn random enemies based on difficulty level.
         7. Throughout the duration of the game, the system will move the enemies to the left each frame.
         8. Throughout the duration of the game, the system will draw the rabbit in the appropriate place depending on if the rabbit is falling or jumping (via user input for the latter).
-        9. Throughout the duration of the game, the system will update the score (+1 each time an enemy is avoided).
-        10. The game will terminate once the player fails to avoid an enemy displaying a blank screen due to prototype phase.
-    - Known bugs to be fixed in the next release:
-        - Some artifacts may appear when jumping (very rare)
-        - Game ends prematurely due to said artifacts
-        - Score count is incorrect after first point (wrapping issue, will be fixed when enemies properly implemented)
-        - Game ends with a blank screen when you lose
-
-**Release 3**
-
-- Emulator: Perform more rigorous automated testings.
-
-- Visualizer: User can step forward or step backward one instruction at a time.
-
-- Game 2 Complete:
-    - Fixed existing bugs
-    - Randomized enemies appearing based on difficulty level selected
-    - Aded visual improvements (Animation, etc)
-    - Added Game over/Play again/Winning screen
+        9. -Throughout the duration of the game, the system will update the score (+1 when level 1 enemy avoided. +2 for level 2/3 enemies avoided).
+        10. If the player touches an enemy, the game will terminate display a game over screen with the score displayed.
+        11. If the player reaches max score (20 - level 1, 100 - level 2, 255 - level 3), the game ends and displays a game win animation. The score of the player is also displayed.
+        12. If the player chooses to play again via input, the game reinitialized and game flow resumes at point 'b'
 
 - Chip8 Tool: `Sprite Editor` provide a visual interface to create sprites. Chip8 developers can turn pixels on/off in the editor and it will produce the corresponding hexcode for that sprites, thus making it easier to create sprites by letting developer visualize them. 
 
@@ -200,9 +204,9 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Chip8 Tool complete: **TODO**
 
-- Game 1 complete: 
+- Game 1 complete: fully completed game with polished interface and no bug.
 
-- Game 2 complete: **TODO**
+- Game 2 complete: fully completed game with polished interface and no bug.
 
 ## Risk analysis
 
@@ -259,7 +263,7 @@ or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-ar
 
 ![WBS example](product_document_imgs/WBS_R3.PNG)
 
-**TODO**
+The majority of the tasks have been completed by Release 3, the only major component left are the chip8 tool (`Sprite Editor`). After Release 3, we mainly focus on polishing components that has been completed such as improving the user interface, further testing to ensure no major bugs still exist. We will continue updating this Work Breakdown for upcoming releases.
 
 ## Project schedule
 
@@ -285,7 +289,7 @@ We will use Git and GitHub for version control. To minimize merging conflicts, m
 2. At most 3 members work off the same branch.
 3. Instead of handling multiple feature branches, use feature flags.
 
-Critical information is included in the project documentation and this documentation will be updated when more information is available. For detailed release planning and progress tracking, we will use Trello instead. For each task, the member who is responsible for the task must track the number of hours he/she spends on it to improve effort estimation of tasks in the next release. With Trello, members can add notes to thier tasks. 
+Critical information is included in the project documentation and this documentation will be updated when more information is available. For detailed release planning and progress tracking, we will use Trello instead. For each task, the member who is responsible for the task must track the number of hours he/she spends on it to improve effort estimation of tasks in the next release. With Trello, members can add notes to their tasks. 
 
 In the case of re-planning, if the re-planning results in delay of critical features, an in-person meeting must be held as soon as possible to discuss the following points:
 
