@@ -179,18 +179,22 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 - Automated test with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
 
 **Release 4** **TODO**
-- Interface complete: The interface for the emulator and visualizer are shown below:
+- Interface complete: The new interface for the emulator and visualizer are shown below:
 ![Interface Mockup](product_document_imgs/interface_mockup_new.png)
 
 - Emulator complete:
+    - User can select a pre-loaded rom from the drop-down menu or load any a Chip-8 ROM by clicking the select ROM button below the screen. 
+    - The Emulator proceeds to execute the program selected by the user. 
+    - The Emulator can run a program at different speed (default speed is 8 cycles/frame), user can select the speed before a program starts running or dynamically change the speed while a program is running. 
+    - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
 
 - Visualizer complete:
+    - While a program is running, the Visualizer 
+- Chip8 Tool complete: **TODO**
 
-- Chip8 Tool complete:
+- Game 1 complete: 
 
-- Game 1 complete:
-
-- Game 2 complete:
+- Game 2 complete: **TODO**
 
 ## Risk analysis
 
