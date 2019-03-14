@@ -72,12 +72,12 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Added program descriptions and instructions on how to play games to the visualizer.
 
 **UPDATED March 13, 2019**:
-- Release 0:
-    - Updated interface mockup.  
+  
 - Release 3: 
     - Updated user case for chip8 tool prototype.
     - Updated user case for game 2 complete.
 - Release 4: 
+    - Added new interface mockup for emulator and visualizer. 
     - Added user case for chip8 tool complete.
 
 **Release 0**:
@@ -86,7 +86,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 ![Interface Mockup](product_document_imgs/interface_mockup.JPG)
 
-- Interface Implementation: implemented the interface based on the mockup version. **We will be working with a simpler interface in release 1 and 2, and integrate this interface into existing source code in release 3**. 
+- Interface Implementation: implemented the interface based on the mockup version. 
 
 **Release 1**
 
@@ -169,17 +169,19 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 - Visualizer: User can step forward or step backward one instruction at a time.
 
 - Game 2 Complete:
-    - Fix existing bugs
+    - Fixed existing bugs
     - Randomized enemies appearing based on difficulty level selected
-    - Visual improvements (Animation, etc).
-    - Game over/Play again screen
+    - Aded visual improvements (Animation, etc)
+    - Added Game over/Play again/Winning screen
 
 - Chip8 Tool: `Sprite Editor` provide a visual interface to create sprites. Chip8 developers can turn pixels on/off in the editor and it will produce the corresponding hexcode for that sprites, thus making it easier to create sprites by letting developer visualize them. 
 
 - Automated test with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
 
 **Release 4** **TODO**
-- Interface complete:
+- Interface complete: The interface for the emulator and visualizer are shown below:
+
+![Interface Mockup](product_document_imgs/interface_mockup_new.PNG)
 
 - Emulator complete:
 
