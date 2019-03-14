@@ -178,7 +178,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
         11. If the player reaches max score (20 - level 1, 100 - level 2, 255 - level 3), the game ends and displays a game win animation. The score of the player is also displayed.
         12. If the player chooses to play again via input, the game reinitialized and game flow resumes at point 'b'
 
-- Chip8 Tool: `Sprite Editor` provide a visual interface to create sprites. Chip8 developers can turn pixels on/off in the editor and it will produce the corresponding hexcode for that sprites, thus making it easier to create sprites by letting developer visualize them. 
+- Chip8 Tool: `Sprite Editor` provide a visual interface to create sprites. Chip8 developers can turn pixels on in the editor and it will produce the corresponding hexcode for that sprites, thus making it easier to create sprites by letting developer visualize them. 
 
 - Automated test with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
 
@@ -191,7 +191,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - The Emulator proceeds to execute the program selected by the user. 
     - The Emulator can run a program at different speed (default speed is 8 cycles/frame), user can select the speed before a program starts running or dynamically change the speed while a program is running. 
     - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
-    - `Fix timer speed?`are selected by default to **KARAN TODO**
+    - `Fix timer speed?` are selected by default to only changes the opcode execution speed.
 
 - Visualizer complete:
     - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted. 
@@ -202,7 +202,17 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
         - `Reset` to set the Emulator to its default state. 
         - `How to Play` to see a pop-up screen with description of the program selected from the drop-down menu and instructions on how to play the game.  
 
-- Chip8 Tool complete: **KARAN + MINH TODO**
+- Chip8 Tool complete: `Sprite Editor` provide a visual interface to create sprites, inspired by [Octo toolbox](http://johnearnest.github.io/Octo/), the interface mockup is shown below:
+
+    ![chip8_mockup](product_document_imgs/chip8_tool.png)
+
+    - User can click on the screen area to highlight the pixels that they want, the `Sprite Editor` will produce the corresponding hex values. 
+    - Use the can click:
+        - `Clear` to restart the `Sprite Editor` 
+        - `^` to move the sprites to up 
+        - `⌄` to move the sprites to down
+        - `>>1` to move the sprites to the left
+        - `1<<` to move the sprites to the right
 
 - Game 1 complete: fully completed game with polished interface and no bug.
 
