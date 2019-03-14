@@ -191,7 +191,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - The Emulator proceeds to execute the program selected by the user. 
     - The Emulator can run a program at different speed (default speed is 8 cycles/frame), user can select the speed before a program starts running or dynamically change the speed while a program is running. 
     - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
-    - `Fix timer speed?`are selected by default to **TODO**
+    - `Fix timer speed?`are selected by default to **KARAN TODO**
 
 - Visualizer complete:
     - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted. 
@@ -202,7 +202,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
         - `Reset` to set the Emulator to its default state. 
         - `How to Play` to see a pop-up screen with description of the program selected from the drop-down menu and instructions on how to play the game.  
 
-- Chip8 Tool complete: **TODO**
+- Chip8 Tool complete: **KARAN + MINH TODO**
 
 - Game 1 complete: fully completed game with polished interface and no bug.
 
@@ -263,7 +263,7 @@ or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-ar
 
 ![WBS example](product_document_imgs/WBS_R3.PNG)
 
-The majority of the tasks have been completed by Release 3, the only major component left are the chip8 tool (`Sprite Editor`). After Release 3, we mainly focus on polishing components that has been completed such as improving the user interface, further testing to ensure no major bugs still exist. We will continue updating this Work Breakdown for upcoming releases.
+The majority of the tasks have been completed by Release 3, the only major component left is the chip8 tool (`Sprite Editor`). After Release 3, we mainly focus on polishing components that has been completed (e.g., improving the user interface, further testing to ensure no major bugs still exist) and finish implementing + tesing the tool. We will continue updating this Work Breakdown for upcoming releases.
 
 ## Project schedule
 
