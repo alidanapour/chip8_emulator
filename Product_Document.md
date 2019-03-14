@@ -209,8 +209,8 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - User can click on the screen area to highlight the pixels that they want, the `Sprite Editor` will produce the corresponding hex values. 
     - Use the can click:
         - `Clear` to restart the `Sprite Editor` 
-        - `^` to move the sprites to up 
-        - `⌄` to move the sprites to down
+        - `^` to move the sprites up 
+        - `⌄` to move the sprites down
         - `>>1` to move the sprites to the left
         - `1<<` to move the sprites to the right
 
