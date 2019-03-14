@@ -33,8 +33,10 @@ function clickableGrid( rows, cols, callback ){
 }
 
 // create grid element 
-var grid = clickableGrid(30, 16, function(el){
-    el.className='clicked';
+var grid = clickableGrid(15, 8, function(el){
+    
+    el.className = 'clicked';
+
 });
 
 // add grid inside the div with id sprite-draw-area
