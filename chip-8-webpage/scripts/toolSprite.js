@@ -1,7 +1,6 @@
 
 function clickableGrid( rows, cols, callback ){
 
-    var i=0;
     var grid = document.createElement('table');
     grid.className = 'grid';
 
@@ -16,15 +15,15 @@ function clickableGrid( rows, cols, callback ){
             var cell = tr.appendChild(document.createElement('td'));
 
             // add event listener to each cell 
-            cell.addEventListener('click', (function(el, r, c, i){
+            cell.addEventListener('click', (function(el){
 
                 return function(){
 
-                    callback(el, r, c, i);
+                    callback(el);
 
                 }
 
-            })(cell, r, c, i),false);
+            })(cell), false);
         
         }
 
