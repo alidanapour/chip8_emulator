@@ -37,4 +37,4 @@ To run the webpage:
 To run our game (Space Wars): Please refer to the `README.md` in the `games\game1` folder.
 
 To run our game (Jumpy Rabbit): Please refer to the `README.md` in the `games\game2` folder.
- - Important for Jumpy Rabbit: please set the speed to **30 cycles/second** before loading the rom. The game is still a prototype so some bugs still exists. 
+ - Important for Jumpy Rabbit: please set the speed to **30 cycles/second** before loading the rom.
