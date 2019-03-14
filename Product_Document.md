@@ -178,7 +178,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Automated test with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
 
-**Release 4** **TODO**
+**Release 4** 
 - Interface complete: The new interface for the emulator and visualizer are shown below:
 ![Interface Mockup](product_document_imgs/interface_mockup_new.png)
 
@@ -187,9 +187,17 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - The Emulator proceeds to execute the program selected by the user. 
     - The Emulator can run a program at different speed (default speed is 8 cycles/frame), user can select the speed before a program starts running or dynamically change the speed while a program is running. 
     - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
+    - `Fix timer speed?`are selected by default to **TODO**
 
 - Visualizer complete:
-    - While a program is running, the Visualizer 
+    - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted. 
+    - User can click: 
+        - `Pause` to stop a program 
+        - `Step Forward` or `Step Backward` move one instruction forward or backward at a time 
+        - `Start` to resume the program
+        - `Reset` to set the Emulator to its default state. 
+        - `How to Play` to see a pop-up screen with description of the program selected from the drop-down menu and instructions on how to play the game.  
+
 - Chip8 Tool complete: **TODO**
 
 - Game 1 complete: 
