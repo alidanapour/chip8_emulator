@@ -94,6 +94,7 @@ class CPU {
 
         const canvas = document.getElementById("screen-area");
         const screen = canvas.getContext("2d");
+        screen.fillStyle = "black";
         screen.clearRect(0, 0, this.screenWidth * 10, this.screenHeight * 10);
 
         for (let y = 0; y < this.screenHeight; y++) {

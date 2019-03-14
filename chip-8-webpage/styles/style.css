@@ -108,11 +108,22 @@ div.tests-scroll {
 }
 
 #controlsTable {
-    border: 1px solid black;
+    border: 2px solid black;
     float: left;
 }
 
 #controlsDescription {
     float: left;
     padding-left: 2%;
+}
+
+#sprite-draw {
+    height: 300px;
+    width: 160px;
+    border: 2px solid black;
+}
+
+#sprite-output {
+    width: 156px;
+    border: 2px solid black;
 }
