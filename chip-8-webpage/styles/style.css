@@ -125,12 +125,7 @@ div.tests-scroll {
     border: 2px solid black;
 } */
 
-/* #tool-sprite{
-    border: 2px solid red;
-} */
-
 #sprite-draw-area{
-    /* border: 2px solid green; */
     overflow: hidden;
 }
 
@@ -153,5 +148,5 @@ div.tests-scroll {
 }
 
 .grid td.clicked {
-    background-color:yellow;
+    background-color:greenyellow;
 }
