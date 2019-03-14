@@ -39,4 +39,4 @@ To run our game (Space Wars): Please refer to the `README.md` in the `games\game
 To run our game (Jumpy Rabbit): Please refer to the `README.md` in the `games\game2` folder.
  - Important for Jumpy Rabbit: please set the speed to **30 cycles/second** before loading the rom.
 
- Chip 8 Tool: The tool is still a the prototype, user can highlight the grid area for now.  
+ Chip 8 Tool: The tool is still a prototype, user can highlight the grid area for now.  
