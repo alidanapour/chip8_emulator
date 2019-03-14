@@ -117,13 +117,41 @@ div.tests-scroll {
     padding-left: 2%;
 }
 
-#sprite-draw {
+/* tool */
+
+/* #sprite-draw {
     height: 300px;
     width: 160px;
     border: 2px solid black;
+} */
+
+/* #tool-sprite{
+    border: 2px solid red;
+} */
+
+#sprite-draw-area{
+    /* border: 2px solid green; */
+    overflow: hidden;
 }
 
 #sprite-output {
-    width: 156px;
+    width: 199px;
     border: 2px solid black;
+    margin:1em auto;
+}
+
+.grid { 
+    border-collapse:collapse;
+    border: 2px solid black;
+    float: left;
+}
+
+.grid td {
+    cursor:pointer;
+    width:10px; height:10px;
+    border:1px solid #ccc;
+}
+
+.grid td.clicked {
+    background-color:yellow;
 }
