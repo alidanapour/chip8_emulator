@@ -181,7 +181,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 **Release 4** **TODO**
 - Interface complete: The interface for the emulator and visualizer are shown below:
 
-![Interface Mockup](product_document_imgs/interface_mockup_new.PNG)
+![Interface Mockup](product_document_imgs/interface_mockup_new.png)
 
 - Emulator complete:
 
