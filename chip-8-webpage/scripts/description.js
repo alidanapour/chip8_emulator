@@ -37,34 +37,6 @@ let gameArray = ["15PUZZLE", "BLINKY", "BLITZ", "BRIX", "CGG", "CONNECT4", "GUES
 
 // Controls /////////////////////////////////////////////////////////////////////////
 
-<<<<<<< HEAD
-let con15PUZZLE = "<br/> Use all the buttons for moving the puzzle pieces!"
-let conBLINKY = "<br/> 1: reset<br/>3: up<br/>E: down<br/>A: left<br/>S: right"
-let conBLITZ = "<br/> W: Drop bomb"
-let conBRIX = "<br/> Q: move paddle left<br/>E: Move paddle right"
-let conCGG = "<br/> No controls, just enjoy the amazing visuals!"
-let conCONNECT4 = "<br/> Q: left<br/>W: place piece<br/>E: right"
-let conGUESS = "<br/> Q: no<br/>W: yes"
-let conHIDDEN = "<br/> 2: up<br/>Q: left<br/>W: pick<br/>E: right<br/>S: down"
-let conINVADERS = "<br/>Q: left<br/>W: fire<br/>E: right"
-let conKALEID = "<br/>X: finish<br/>2: up<br/>Q: left<br/>E: right<br/>S: down"
-let conMAZE = "<br/> No controls, just enjoy the amazing visuals!"
-let conMERLIN = "<br/> Q: left<br/>E: right"
-let conMISSILE = "<br/> S: fire"
-let conPONG = "<br/> 1: move left paddle Q: move left paddle down<br/>4: move right paddle up R: move right paddle down"
-let conPONG2 = "<br/> 1: move left paddle Q: move left paddle down<br/>4: move right paddle up R: move right paddle down"
-let conPUZZLE = "<br/> Use all the buttons for moving the puzzle pieces!"
-let conSFACES = "<br/> No controls, just enjoy the amazing visuals!>"
-let conSPACEWARS = "<br/> W: move up<br/>A: move left<br/>S: move down<br/>D: move right<br/>E: start"
-let conSYZYGY = "<br/> 3: up<br/>E: down<br/>A: left<br/>S: right<br/>C: show score<br/>F: no border<br/>V: border"
-let conTANK = "<br/> 2: up<br/>Q: left<br/>W: fire<br/>E: right<br/>S: down"
-let conTETRIS = "<br/> Q: rotate<br/>W: left<br/>E: right<br/>A: drop piece"
-let conTICTAC = "<br/> 1-D: select corresponding square"
-let conUFO = "<br/> Q: shoot left<br/>W: shoot up<br/>E: shoot right"
-let conVBRIX = "<br/> Q: move paddle left<br/>E: Move paddle right"
-let conVERS = "<br/> 1: player1 left 2: player1 right A player1 up Z: player1 down<br/>C: player2 left 4: player2 up R: player 2 down V: player 2 right"
-let conWIPEOFF = "<br/> Q: move paddle left<br/>E: move paddle right"
-=======
 let con15PUZZLE = "Use all the buttons for moving the puzzle pieces!"
 let conBLINKY = "1: reset<br/>3: up<br/>E: down<br/>A: left<br/>S: right"
 let conBLITZ = "W: Drop bomb"
@@ -91,141 +63,11 @@ let conUFO = "Q: shoot left<br/>W: shoot up<br/>E: shoot right"
 let conVBRIX = "Q: move paddle left<br/>E: Move paddle right"
 let conVERS = "1: player1 left 2: player1 right A player1 up Z: player1 down<br/>C: player2 left 4: player2 up R: player 2 down V: player 2 right"
 let conWIPEOFF = "Q: move paddle left<br/>E: move paddle right"
->>>>>>> karan
 
 let conArray = [con15PUZZLE, conBLINKY, conBLITZ, conBRIX, conCGG, conCONNECT4, conGUESS, conHIDDEN, conINVADERS,
                 conKALEID, conMAZE, conMERLIN, conMISSILE, conPONG, conPONG2, conPUZZLE, conSFACES, conSPACEWARS,
                 conSYZYGY, conTANK, conTETRIS, conTICTAC, conUFO, conVBRIX, conVERS, conWIPEOFF];
 
-<<<<<<< HEAD
-let con15PUZZLEArray =[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-let conBLINKYArray = [1,0,1,0,0,0,1,0,1,1,0,0,0,0,0,0]
-let conBLITZArray = [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0]
-let conBRIXArray = [0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0]
-let conCGGArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-let conCONNECT4Array = [0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0]
-let conGUESSArray = [0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0]
-let conHIDDENArray = [0,1,0,0,1,1,1,0,0,1,0,0,0,0,0,0]
-let conINVADERSArray = [0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0]
-let conKALEIDArray = [0,1,0,0,1,0,1,0,0,1,0,0,0,1,0,0]
-let conMAZEArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-let conMERLINArray = [0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0]
-let conMISSILEArray = [0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]
-let conPONGArray = [1,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0]
-let conPONG2Array = [1,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0]
-let conPUZZLEArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-let conSFACESArray = [0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0]
-let conSPACEWARSArray = [0,0,0,0,0,1,1,0,1,1,1,0,0,0,0,0]
-let conSYZYGYArray = [0,0,1,0,0,0,1,0,1,1,0,1,0,0,1,1]
-let conTANKArray = [0,1,0,0,1,1,1,0,0,1,0,0,0,0,0,0]
-let conTETRISArray = [0,0,0,0,1,1,1,0,1,0,0,0,0,0,0,0]
-let conTICTACArray = [1,1,1,0,1,1,1,0,1,1,1,0,0,0,0,0]
-let conUFOArray = [0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0]
-let conVBRIXArray = [0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0]
-let conVERSArray = [1,1,0,1,0,0,0,1,1,0,0,0,1,0,1,1]
-let conWIPEOFFArray = [0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0]
-
-let conArrayArray = [con15PUZZLEArray, conBLINKYArray, conBLITZArray, conBRIXArray, conCGGArray, conCONNECT4Array, conGUESSArray, conHIDDENArray, conINVADERSArray,
-                conKALEIDArray, conMAZEArray, conMERLINArray, conMISSILEArray, conPONGArray, conPONG2Array, conPUZZLEArray, conSFACESArray, conSPACEWARSArray,
-                conSYZYGYArray, conTANKArray, conTETRISArray, conTICTACArray, conUFOArray, conVBRIXArray, conVERSArray, conWIPEOFFArray];
-
-function highlightControls(controlHighlightArray){
-  if (controlHighlightArray[0]==1){
-    document.getElementById("controlButton1").style.backgroundColor = "yellow";
-  }else if (controlHighlightArray[0]==0){
-      document.getElementById("controlButton1").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[1]==1){
-      document.getElementById("controlButton2").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[1]==0){
-      document.getElementById("controlButton2").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[2]==1){
-      document.getElementById("controlButton3").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[2]==0){
-      document.getElementById("controlButton3").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[3]==1){
-      document.getElementById("controlButton4").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[3]==0){
-      document.getElementById("controlButton4").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[4]==1){
-      document.getElementById("controlButtonQ").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[4]==0){
-      document.getElementById("controlButtonQ").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[5]==1){
-      document.getElementById("controlButtonW").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[5]==0){
-      document.getElementById("controlButtonW").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[6]==1){
-      document.getElementById("controlButtonE").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[6]==0){
-      document.getElementById("controlButtonE").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[7]==1){
-      document.getElementById("controlButtonR").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[7]==0){
-      document.getElementById("controlButtonR").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[8]==1){
-      document.getElementById("controlButtonA").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[8]==0){
-      document.getElementById("controlButtonA").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[9]==1){
-      document.getElementById("controlButtonS").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[9]==0){
-      document.getElementById("controlButtonS").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[10]==1){
-      document.getElementById("controlButtonD").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[10]==0){
-      document.getElementById("controlButtonD").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[11]==1){
-      document.getElementById("controlButtonF").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[11]==0){
-      document.getElementById("controlButtonF").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[12]==1){
-      document.getElementById("controlButtonZ").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[12]==0){
-      document.getElementById("controlButtonZ").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[13]==1){
-      document.getElementById("controlButtonX").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[13]==0){
-      document.getElementById("controlButtonX").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[14]==1){
-      document.getElementById("controlButtonC").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[14]==0){
-      document.getElementById("controlButtonC").style.backgroundColor = "transparent";
-    }
-
-    if (controlHighlightArray[15]==1){
-      document.getElementById("controlButtonV").style.backgroundColor = "yellow";
-    }else if (controlHighlightArray[15]==0){
-      document.getElementById("controlButtonV").style.backgroundColor = "transparent";
-    }
-=======
 let con15PUZZLEArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 let conBLINKYArray = [1,0,1,0,0,0,1,0,1,1,0,0,0,0,0,0];
 let conBLITZArray = [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0];
@@ -267,7 +109,6 @@ let controlHighlightingMap = [
 function highlightControls(controlHighlightArray) {
     for (let i = 0; i < controlHighlightArray.length; i++)
         document.getElementById(controlHighlightingMap[i]).style.backgroundColor = controlHighlightArray[i] ? "greenyellow" : "transparent";
->>>>>>> karan
 }
 
 // For the description
@@ -283,18 +124,9 @@ for (let i = 0; i < coll.length; i++) {
 }
 
 function description(game) {
-<<<<<<< HEAD
-	let gameIndex = gameArray.indexOf(game);
-  highlightControls(conArrayArray[gameIndex]);
-  console.log(conArrayArray[gameIndex]);
-	document.getElementById("tempDescHolder").innerHTML = decArray[gameIndex] + "<br/>";
-  document.getElementById("controlsDescription").innerHTML= "<br/>" + conArray[gameIndex];
-
-=======
     let gameIndex = gameArray.indexOf(game);
     highlightControls(conArrayArray[gameIndex]);
     console.log(conArrayArray[gameIndex]);
 	document.getElementById("tempDescHolder").innerHTML = decArray[gameIndex] + "<br/>";
     document.getElementById("controlsDescription").innerHTML = "<br/>" + conArray[gameIndex];
->>>>>>> karan
 }
