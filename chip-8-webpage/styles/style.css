@@ -98,6 +98,7 @@ div.tests-scroll {
     transition: max-height 0.2s ease-out;
 	font-family: 'Karla', sans-serif;
 	font-size: 15px;
+  height:400%;
 }
 
 #controlsTable{

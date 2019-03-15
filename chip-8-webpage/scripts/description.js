@@ -209,11 +209,21 @@ for (let i = 0; i < coll.length; i++) {
             content.style.maxHeight = content.scrollHeight + "px"; });
 }
 
+
+
+//function lineChecker(descriptLines){
+//  let lines=(descriptLines.length)/170
+//  return lines
+//}
+
 function description(game) {
 	let gameIndex = gameArray.indexOf(game);
   highlightControls(conArrayArray[gameIndex]);
   console.log(conArrayArray[gameIndex]);
 	document.getElementById("tempDescHolder").innerHTML = decArray[gameIndex] + "<br/>";
   document.getElementById("controlsDescription").innerHTML= "<br/>" + conArray[gameIndex];
-
+  //let lines=11-lineChecker(decArray[gameIndex]);
+  //document.getElementById("descriptionPadding").innerHTML="<br/>"*lines;
+  document.getElementById("descriptionButtonClick").click();
+  document.getElementById("descriptionButtonClick").click();
 }
