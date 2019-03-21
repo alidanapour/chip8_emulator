@@ -62,20 +62,22 @@ div.tests-scroll {
 .instructions{
     border: 5px solid;
     font-family: 'Karla', sans-serif;
-    font-size: 15px;
+    font-size: 12.5px;
     padding: 0.5% 0.5% 0.5% 0.5%;
     width: 200px;
+    height: 310px;
 }
 
 .registers{
     border: 5px solid;
     padding: 0.5% 0.5% 0.5% 0.5%;
     width: 100px;
+    height: 310px;
 }
 
 .registers_inner{
     font-family: 'Karla', sans-serif;
-    font-size: 15px;
+    font-size: 12.5px;
 }
 
 .current-instruction {
