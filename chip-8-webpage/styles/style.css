@@ -27,13 +27,38 @@ body {
     text-align: center;
 }
 
-div.tests-scroll {
+#quirk{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding-top: 1%;
+}
+
+#quirk div {
+    padding-left: 30px;
+}
+
+.quirk-label{
+    font-size: 13px;
+}
+
+/* making the checkboxs bigger */
+input[type=checkbox] {
+    -ms-transform: scale(1.5); 
+    -moz-transform: scale(1.5); 
+    -webkit-transform: scale(1.5); 
+    -o-transform: scale(1.5); 
+    transform: scale(1.5); 
+}
+
+/* div.tests-scroll {
     background-color:lightslategray;
     height: 400px;
     padding: 1%;
     border: 5px solid;
     overflow: scroll;
-}
+} */
 
 .center {
     display: block;

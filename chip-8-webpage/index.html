@@ -92,9 +92,24 @@
         <button id="reset" onclick="resetPressed()">Reset</button> </br>
 
         <!-- Quirk Checkboxes -->
-        Use new shift opcodes? <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
-        Use new load/store opcodes? <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
-        Fix timer speed? <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" checked/>
+        <div id="quirk">
+            
+            <div>
+                <span class="quirk-label"> Use new shift opcodes?</span> 
+                <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
+            </div>
+
+            <div>
+                <span class="quirk-label"> Use new load/store opcodes?</span> 
+                <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
+            </div>
+
+            <div>
+                <span class="quirk-label"> Fix timer speed? </span> 
+                <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" checked/>
+            </div>
+
+        </div>
 
     </div></br>
 
@@ -113,27 +128,27 @@
 
         <!-- Register Area -->
         <div class="registers">
-                <div class="registers_inner" id="PC">PC: 0x0000</div>
-                <div class="registers_inner" id="I">  I: 0x0000</div>
-                <div class="registers_inner" id="SP">SP: 0x00</div>
-                <div class="registers_inner" id="DT">DT: 0x00</div>
-                <div class="registers_inner" id="ST">ST: 0x00</div>
-                <div class="registers_inner" id="V0">V0: 0x00</div>
-                <div class="registers_inner" id="V1">V1: 0x00</div>
-                <div class="registers_inner" id="V2">V2: 0x00</div>
-                <div class="registers_inner" id="V3">V3: 0x00</div>
-                <div class="registers_inner" id="V4">V4: 0x00</div>
-                <div class="registers_inner" id="V5">V5: 0x00</div>
-                <div class="registers_inner" id="V6">V6: 0x00</div>
-                <div class="registers_inner" id="V7">V7: 0x00</div>
-                <div class="registers_inner" id="V8">V8: 0x00</div>
-                <div class="registers_inner" id="V9">V9: 0x00</div>
-                <div class="registers_inner" id="VA">VA: 0x00</div>
-                <div class="registers_inner" id="VB">VB: 0x00</div>
-                <div class="registers_inner" id="VC">VC: 0x00</div>
-                <div class="registers_inner" id="VD">VD: 0x00</div>
-                <div class="registers_inner" id="VE">VE: 0x00</div>
-                <div class="registers_inner" id="VF">VF: 0x00</div>
+            <div class="registers_inner" id="PC">PC: 0x0000</div>
+            <div class="registers_inner" id="I">  I: 0x0000</div>
+            <div class="registers_inner" id="SP">SP: 0x00</div>
+            <div class="registers_inner" id="DT">DT: 0x00</div>
+            <div class="registers_inner" id="ST">ST: 0x00</div>
+            <div class="registers_inner" id="V0">V0: 0x00</div>
+            <div class="registers_inner" id="V1">V1: 0x00</div>
+            <div class="registers_inner" id="V2">V2: 0x00</div>
+            <div class="registers_inner" id="V3">V3: 0x00</div>
+            <div class="registers_inner" id="V4">V4: 0x00</div>
+            <div class="registers_inner" id="V5">V5: 0x00</div>
+            <div class="registers_inner" id="V6">V6: 0x00</div>
+            <div class="registers_inner" id="V7">V7: 0x00</div>
+            <div class="registers_inner" id="V8">V8: 0x00</div>
+            <div class="registers_inner" id="V9">V9: 0x00</div>
+            <div class="registers_inner" id="VA">VA: 0x00</div>
+            <div class="registers_inner" id="VB">VB: 0x00</div>
+            <div class="registers_inner" id="VC">VC: 0x00</div>
+            <div class="registers_inner" id="VD">VD: 0x00</div>
+            <div class="registers_inner" id="VE">VE: 0x00</div>
+            <div class="registers_inner" id="VF">VF: 0x00</div>
         </div>
     </div><br/>
 
