@@ -117,13 +117,15 @@ div.tests-scroll {
     padding-left: 2%;
 }
 
-#sprite-draw {
-    height: 300px;
-    width: 160px;
+#tool-sprite{
     border: 2px solid black;
+    height: 300px; 
+    width: 160px;
+    overflow: hidden;
 }
 
-#sprite-output {
-    width: 156px;
+#sprite-draw {
+    height: 300px; 
+    width: 160px;
     border: 2px solid black;
 }
