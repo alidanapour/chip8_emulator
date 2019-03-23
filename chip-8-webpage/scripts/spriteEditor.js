@@ -18,7 +18,7 @@ function clearSpriteArea() {
 }
 
 function updateSpriteArea(e) {
-    if (e.buttons == 1) {
+    if (e.buttons == 1) {                       // If left click is pressed
         const ctx = spriteEditorArea.getContext('2d');
         ctx.fillStyle = 'black';
         ctx.fillRect(Math.floor(e.offsetX / scalingFactor) * scalingFactor,
@@ -27,7 +27,7 @@ function updateSpriteArea(e) {
                     scalingFactor);
     }
 
-    else if (e.buttons == 2) {
+    else if (e.buttons == 2) {                  // If right click is pressed
         const ctx = spriteEditorArea.getContext('2d');
         ctx.fillStyle = 'lightslategrey';
         ctx.fillRect(Math.floor(e.offsetX / scalingFactor) * scalingFactor,
