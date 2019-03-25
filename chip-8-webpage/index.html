@@ -14,33 +14,12 @@
     <script type="text/javascript" src="scripts/tests.js"></script>
     <script type="text/javascript" src="scripts/preloadRoms.js"></script>
     <script type="text/javascript" src="scripts/runEmulator.js"></script>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 
 <body>
 
-    <h1>Chip-8 Emulator</h1>
 
-    <img src="images/chip-8-logo.png" alt="Chip-8 Logo" class="center"><br/>
-
-    <p>
-        This is a <a href="https://en.wikipedia.org/wiki/Chip-8">Chip-8</a> emulator created entirely in JavaScript
-        (TypeScript) by 6 students at Simon Fraser University for their project for CMPT 276 - Introduction to Software Engineering.
-    </p>
-
-    <p>
-        This project consists of 4 main components:
-        <ol>
-            <li>Emulator</li>
-            <li>Visualizer</li>
-            <li>Tool</li>
-            <li>Games</li>
-        </ol>
-    </p>
-
-    <p>
-        This is a semester long project and we will have 4 different releases. We aim to have the project completed by
-        the third release.
-    </p>
 
     <div class="options">
 
@@ -93,19 +72,19 @@
 
         <!-- Quirk Checkboxes -->
         <div id="quirk">
-            
+
             <div>
-                <span class="quirk-label"> Use new shift opcodes?</span> 
+                <span class="quirk-label"> Use new shift opcodes?</span>
                 <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
             </div>
 
             <div>
-                <span class="quirk-label"> Use new load/store opcodes?</span> 
+                <span class="quirk-label"> Use new load/store opcodes?</span>
                 <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
             </div>
 
             <div>
-                <span class="quirk-label"> Fix timer speed? </span> 
+                <span class="quirk-label"> Fix timer speed? </span>
                 <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" checked/>
             </div>
 
@@ -156,41 +135,43 @@
     <p>Select a ROM: <input type="file" id="rom"/></p><br/>
 
 	<!-- Descriptions and How To Play -->
-    <button type="button" class="descriptionButton">Description and How To Play</button>
+    <button type="button" class="descriptionButton" id="clickMe">Description and How To Play</button>
     <div id="description">
 
             <div id="tempDescHolder">
                 Choose a game from the drop-down menu to see its description!
             </div>
+            <div id="controlsFlex">
+              <table id="controlsTable">
+                  <tr>
+                      <th id="controlButton1">1</th>
+                      <th id="controlButton2">2</th>
+                      <th id="controlButton3">3</th>
+                      <th id="controlButton4">4</th>
+                  </tr>
+                  <tr>
+                      <th id="controlButtonQ">Q</th>
+                      <th id="controlButtonW">W</th>
+                      <th id="controlButtonE">E</th>
+                      <th id="controlButtonR">R</th>
+                  </tr>
+                  <tr>
+                      <th id="controlButtonA">A</th>
+                      <th id="controlButtonS">S</th>
+                      <th id="controlButtonD">D</th>
+                      <th id="controlButtonF">F</th>
+                  </tr>
+                  <tr>
+                      <th id="controlButtonZ">Z</th>
+                      <th id="controlButtonX">X</th>
+                      <th id="controlButtonC">C</th>
+                      <th id="controlButtonV">V</th>
+                  </tr>
+              </table>
 
-            <table id="controlsTable">
-                <tr>
-                    <th id="controlButton1">1</th>
-                    <th id="controlButton2">2</th>
-                    <th id="controlButton3">3</th>
-                    <th id="controlButton4">4</th>
-                </tr>
-                <tr>
-                    <th id="controlButtonQ">Q</th>
-                    <th id="controlButtonW">W</th>
-                    <th id="controlButtonE">E</th>
-                    <th id="controlButtonR">R</th>
-                </tr>
-                <tr>
-                    <th id="controlButtonA">A</th>
-                    <th id="controlButtonS">S</th>
-                    <th id="controlButtonD">D</th>
-                    <th id="controlButtonF">F</th>
-                </tr>
-                <tr>
-                    <th id="controlButtonZ">Z</th>
-                    <th id="controlButtonX">X</th>
-                    <th id="controlButtonC">C</th>
-                    <th id="controlButtonV">V</th>
-                </tr>
-            </table>
+              <div id="controlsDescription"></div>
+            </div>
 
-            <div id="controlsDescription"></div>
 
     </div></br>
 
@@ -208,7 +189,7 @@
         <textarea id="sprite-output" maxlength="89" cols="49"></textarea>
 
         <button onclick="clearSpriteArea()">Clear</button>
-        
+
     </div>
 
 </body>
