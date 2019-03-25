@@ -25,7 +25,7 @@ function toHexString(byteArray) {
 
 function clearSpriteArea() {
     const ctx = spriteEditorArea.getContext('2d');
-    ctx.fillStyle = 'lightslategrey';
+    ctx.fillStyle = '#c4c4c4';
     ctx.fillRect(0, 0, spriteEditorArea.width, spriteEditorArea.height);
     spriteText.value = "0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00";
     pixelArray = [0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -46,7 +46,7 @@ function updateSpriteArea(e) {
 
     else if (e.buttons == 2) {                  // If right click is pressed
         const ctx = spriteEditorArea.getContext('2d');
-        ctx.fillStyle = 'lightslategrey';
+        ctx.fillStyle = '#c4c4c4';
         ctx.fillRect(Math.floor(e.offsetX / scalingFactor) * scalingFactor,
                     Math.floor(e.offsetY / scalingFactor) * scalingFactor,
                     scalingFactor,
@@ -65,7 +65,7 @@ function renderSpriteScreenFromText() {
     }
     
     const ctx = spriteEditorArea.getContext("2d");
-    ctx.fillStyle = "lightslategrey";
+    ctx.fillStyle = "#c4c4c4";
     ctx.clearRect(0, 0, spriteEditorArea.width, spriteEditorArea.height);
 
     for (let y = 0; y < valueToConvert.length; y++) {
