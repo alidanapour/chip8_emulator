@@ -14,7 +14,6 @@
     <script type="text/javascript" src="scripts/tests.js"></script>
     <script type="text/javascript" src="scripts/preloadRoms.js"></script>
     <script type="text/javascript" src="scripts/runEmulator.js"></script>
-
 </head>
 
 <body>
@@ -42,14 +41,6 @@
         This is a semester long project and we will have 4 different releases. We aim to have the project completed by
         the third release.
     </p>
-
-    <!-- Decode Opcode Feature (For Testing) -->
-    <!-- <p>
-        Decode opcode: <input type="text" id="type-opcode-here" maxlength="4" placeholder="XXXX"/>
-        <input type="button" value="Submit" onclick="disassembleOpcode(document.getElementById('type-opcode-here').value);"/>
-        <button onclick="document.getElementById('decode-opcode-here').textContent = ''">Clear Opcodes</button>
-    </p> -->
-    <!-- <ul id="decode-opcode-here"></ul><br/> -->
 
     <div class="options">
 
@@ -90,6 +81,7 @@
             <option value="15">15 cycles/frame</option>
             <option value="20">20 cycles/frame</option>
             <option value="30">30 cycles/frame</option>
+            <option value="40">40 cycles/frame</option>
         </select>
 
         <!-- Buttons -->
@@ -100,99 +92,134 @@
         <button id="reset" onclick="resetPressed()">Reset</button> </br>
 
         <!-- Quirk Checkboxes -->
-        Use new shift opcodes? <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
-        Use new load/store opcodes? <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
+        <div id="quirk">
+            
+            <div>
+                <span class="quirk-label"> Use new shift opcodes?</span> 
+                <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
+            </div>
+
+            <div>
+                <span class="quirk-label"> Use new load/store opcodes?</span> 
+                <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
+            </div>
+
+            <div>
+                <span class="quirk-label"> Fix timer speed? </span> 
+                <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" checked/>
+            </div>
+
+        </div>
 
     </div></br>
 
-    <!-- Emulator Screen -->
-    <div class="display">
-        <canvas id="screen-area" width="640" height="320"></canvas>
-    </div></br>
+    <!-- Visualizer Area -->
+    <div class="visualizer">
 
-	<!-- Select ROM Button -->
+        <!-- Instruction Area -->
+        <div class="instructions">Instructions</div>
+
+        <div class="display">
+
+            <!-- Emulator Screen -->
+            <canvas id="screen-area" width="640" height="320"></canvas>
+
+        </div>
+
+        <!-- Register Area -->
+        <div class="registers">
+            <div class="registers_inner" id="PC">PC: 0x0000</div>
+            <div class="registers_inner" id="I">  I: 0x0000</div>
+            <div class="registers_inner" id="SP">SP: 0x00</div>
+            <div class="registers_inner" id="DT">DT: 0x00</div>
+            <div class="registers_inner" id="ST">ST: 0x00</div>
+            <div class="registers_inner" id="V0">V0: 0x00</div>
+            <div class="registers_inner" id="V1">V1: 0x00</div>
+            <div class="registers_inner" id="V2">V2: 0x00</div>
+            <div class="registers_inner" id="V3">V3: 0x00</div>
+            <div class="registers_inner" id="V4">V4: 0x00</div>
+            <div class="registers_inner" id="V5">V5: 0x00</div>
+            <div class="registers_inner" id="V6">V6: 0x00</div>
+            <div class="registers_inner" id="V7">V7: 0x00</div>
+            <div class="registers_inner" id="V8">V8: 0x00</div>
+            <div class="registers_inner" id="V9">V9: 0x00</div>
+            <div class="registers_inner" id="VA">VA: 0x00</div>
+            <div class="registers_inner" id="VB">VB: 0x00</div>
+            <div class="registers_inner" id="VC">VC: 0x00</div>
+            <div class="registers_inner" id="VD">VD: 0x00</div>
+            <div class="registers_inner" id="VE">VE: 0x00</div>
+            <div class="registers_inner" id="VF">VF: 0x00</div>
+        </div>
+    </div><br/>
+
+    <!-- Load ROM buttom -->
     <p>Select a ROM: <input type="file" id="rom"/></p><br/>
 
 	<!-- Descriptions and How To Play -->
+<<<<<<< HEAD
     <button type="button" class="descriptionButton" id="descriptionButtonClick">Description and How To Play</button>
     <div id="description" >
+=======
+    <button type="button" class="descriptionButton">Description and How To Play</button>
+    <div id="description">
+
+>>>>>>> dev
             <div id="tempDescHolder">
-              Choose a game from the drop-down menu to see its description!
+                Choose a game from the drop-down menu to see its description!
             </div>
+
             <table id="controlsTable">
-              <tr>
-                <th id="controlButton1">1</th>
-                <th id="controlButton2">2</th>
-                <th id="controlButton3">3</th>
-                <th id="controlButton4">4</th>
-              </tr>
-              <tr>
-                <th id="controlButtonQ">Q</th>
-                <th id="controlButtonW">W</th>
-                <th id="controlButtonE">E</th>
-                <th id="controlButtonR">R</th>
-              </tr>
-              <tr>
-                <th id="controlButtonA">A</th>
-                <th id="controlButtonS">S</th>
-                <th id="controlButtonD">D</th>
-                <th id="controlButtonF">F</th>
-              </tr>
-              <tr>
-                <th id="controlButtonZ">Z</th>
-                <th id="controlButtonX">X</th>
-                <th id="controlButtonC">C</th>
-                <th id="controlButtonV">V</th>
-              </tr>
+                <tr>
+                    <th id="controlButton1">1</th>
+                    <th id="controlButton2">2</th>
+                    <th id="controlButton3">3</th>
+                    <th id="controlButton4">4</th>
+                </tr>
+                <tr>
+                    <th id="controlButtonQ">Q</th>
+                    <th id="controlButtonW">W</th>
+                    <th id="controlButtonE">E</th>
+                    <th id="controlButtonR">R</th>
+                </tr>
+                <tr>
+                    <th id="controlButtonA">A</th>
+                    <th id="controlButtonS">S</th>
+                    <th id="controlButtonD">D</th>
+                    <th id="controlButtonF">F</th>
+                </tr>
+                <tr>
+                    <th id="controlButtonZ">Z</th>
+                    <th id="controlButtonX">X</th>
+                    <th id="controlButtonC">C</th>
+                    <th id="controlButtonV">V</th>
+                </tr>
             </table>
-            <div id="controlsDescription">
 
-            </div>
+            <div id="controlsDescription"></div>
 
-
-
-    </div>
-
-	<!-- Visualizer Area -->
-    <div class="visualizer">
-        <div class="instructions">Instructions</div>
-        <div class="registers">
-                <div class="registers_inner" id="PC">PC: 0x0000</div>
-                <div class="registers_inner" id="I">  I: 0x0000</div>
-                <div class="registers_inner" id="SP">SP: 0x00</div>
-                <div class="registers_inner" id="DT">DT: 0x00</div>
-                <div class="registers_inner" id="ST">ST: 0x00</div>
-                <div class="registers_inner" id="V0">V0: 0x00</div>
-                <div class="registers_inner" id="V1">V1: 0x00</div>
-                <div class="registers_inner" id="V2">V2: 0x00</div>
-                <div class="registers_inner" id="V3">V3: 0x00</div>
-                <div class="registers_inner" id="V4">V4: 0x00</div>
-                <div class="registers_inner" id="V5">V5: 0x00</div>
-                <div class="registers_inner" id="V6">V6: 0x00</div>
-                <div class="registers_inner" id="V7">V7: 0x00</div>
-                <div class="registers_inner" id="V8">V8: 0x00</div>
-                <div class="registers_inner" id="V9">V9: 0x00</div>
-                <div class="registers_inner" id="VA">VA: 0x00</div>
-                <div class="registers_inner" id="VB">VB: 0x00</div>
-                <div class="registers_inner" id="VC">VC: 0x00</div>
-                <div class="registers_inner" id="VD">VD: 0x00</div>
-                <div class="registers_inner" id="VE">VE: 0x00</div>
-                <div class="registers_inner" id="VF">VF: 0x00</div>
-        </div>
-    </div>
+    </div></br>
 
 	<!-- Test Output Area -->
-    <p>Test Outputs: <button onclick="runAllTests()">Start Test</button></p>
+    <!-- <p>Test Outputs: <button onclick="runAllTests()">Start Test</button></p>
     <div class="tests-scroll">
         <ul id="test-results"></ul>
+    </div> -->
+
+    <!-- Sprite Editor Tool -->
+    <div id="tool-sprite">
+
+        <canvas id="sprite-draw" width=160 height=300></canvas>
+
+        <textarea id="sprite-output" maxlength="89" cols="49"></textarea>
+
+        <button onclick="clearSpriteArea()">Clear</button>
+        
     </div>
 
 </body>
 
-<!-- Description File To Be Loaded At The End -->
+<!-- Files To Be Loaded At The End -->
 <script type="text/javascript" src="scripts/description.js"></script>
+<script type="text/javascript" src="scripts/spriteEditor.js"></script>
 
 </html>
-
-<!--  adding comment-->
-<!--  added another comment-->

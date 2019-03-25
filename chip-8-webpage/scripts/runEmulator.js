@@ -30,10 +30,13 @@ let romList = {
 
 let runProcess = null;              // Tracks the main run cycle
 let timerProcess = null;            // Tracks the D/S timer cycle
+let displayRegisters = null;        // Tracks the registers visualizer
+let displayInstructions = null;     // Tracks the instructions visualizer
 
 let notPaused = true;
 let emulatorSpeed = 8;              // Default speed is 8 cycles/frame
-let CHIP8 = new CPU();
+let isTimerFixed = false;           // Fix the delay timer to 1 cycle/frame
+let CHIP8 = new CPU();              // Initialize a CHIP8 CPU object
 let prevCachedPC = 0;               // To update instruction list
 
 let cpuCacheStack = new Array();    // Stack for storing CPU states (step backward)
@@ -51,7 +54,7 @@ function pushCpuStateToStack(x) {
         display_cache: x.display.slice(),
     }
 
-    if (cpuCacheStack.length < 200)
+    if (cpuCacheStack.length < 1000)
         cpuCacheStack.push(tempState);
     else {
         cpuCacheStack.push(tempState);
@@ -172,9 +175,6 @@ function continuePressed() {
 
 function stepForwardPressed() {
 
-    // Ignore
-    console.log("Previous: " +  hex_display(cpuCacheStack[cpuCacheStack.length - 1].PC_cache, 4));
-
     pushCpuStateToStack(CHIP8);
 
     let opcode = CHIP8.memory[CHIP8.PC] << 8 | CHIP8.memory[CHIP8.PC + 1];
@@ -189,9 +189,6 @@ function stepForwardPressed() {
 
     updateVisualizerRegisters();
     updateVisualizerInstructions();
-
-    // Ignore
-    console.log("Now pushed: " + hex_display(cpuCacheStack[cpuCacheStack.length - 1].PC_cache, 4));
 
 } // End of stepForwardPressed()
 
@@ -223,9 +220,6 @@ function stepBackwardPressed() {
         beepSound.play();
     CHIP8.setTimer();           // 1:1 ratio when manually stepping through instructions
 
-    // Ignore
-    console.log("Step back to: " + hex_display(cpuCacheStack[cpuCacheStack.length - 1].PC_cache, 4));
-
 } // End of stepBackwardPressed()
 
 
@@ -253,6 +247,12 @@ function checkLoadStoreQuirks() {
     resetPressed();
     let checkbox2 = document.getElementById('lsquirk');
     CHIP8.newLoadStoreQuirk = checkbox2.checked ? true : false;
+}
+
+
+function checkTimerQuirk() {
+    let checkbox3 = document.getElementById('fixtimer');
+    isTimerFixed = checkbox3.checked ? true : false;
 }
 
 
@@ -352,7 +352,7 @@ window.onload = function() {
 
     fileInput.addEventListener('change', function(e) {   
 
-        // load new ROM if user select a file 
+        // Load new ROM if user selects a file 
         if (fileInput.files.length === 1) { 
 
             var file = fileInput.files[0];
@@ -369,28 +369,29 @@ window.onload = function() {
 
     // Run Processes ////////////////////////////////////////////////////////////////////////
 
-    if (runProcess != null)                 // Clear previous program process (required when changing ROMs)
+    if (runProcess != null || timerProcess != null) {       // Clear previous program processes (required when switching b/w ROMs)
         clearInterval(runProcess);
-
-    if (timerProcess != null)
         clearInterval(timerProcess);
+    }
 
-    let beepSound = new Audio ("beep.wav"); // Buffer beep sound
+    let beepSound = new Audio ("beep.wav");     // Buffer beep sound
 
     runProcess = setInterval (function() {
         if (CHIP8.isRunning) {
-            for (let i = 0; i < emulatorSpeed; i++) {      // Emulator speed = cycles per frame
+            for (let i = 0; i < emulatorSpeed; i++) {       // Emulator speed = cycles per frame
                 let opcode = CHIP8.memory[CHIP8.PC] << 8 | CHIP8.memory[CHIP8.PC + 1];
                 CHIP8.emulateOpcode(opcode);
                 CHIP8.renderScreen();
                 pushCpuStateToStack(CHIP8);
             }
+            updateVisualizerRegisters();        // Update the registers
+            updateVisualizerInstructions();     // Update the instructions
         }
     }, 1000/60);
 
-
     timerProcess = setInterval(function() {
-        for (let i = 0; i < emulatorSpeed/parseFloat(8); i++) {
+        let k = isTimerFixed ? 1 : emulatorSpeed/parseFloat(8);
+        for (let i = 0; i < k; i++) {
             if (CHIP8.isRunning) {
                 if (CHIP8.soundTimer > 0)
                     beepSound.play();
@@ -398,25 +399,5 @@ window.onload = function() {
             }
         }
     }, 1000/60);
-
-
-    // Visualizer ///////////////////////////////////////////////////////////////////////////
-
-    
-    displayRegister = setInterval(function() {
-
-        if (CHIP8.isRunning)
-            updateVisualizerRegisters();
-
-    }, 1000/60)
-
-
-    displayInstructions = setInterval(function() {
-
-        if (CHIP8.isRunning)
-            updateVisualizerInstructions();
-
-    }, 1000/60)
-
 
 } // End of window.onload function
