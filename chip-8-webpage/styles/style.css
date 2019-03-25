@@ -85,7 +85,7 @@ input[type=checkbox] {
     display: inline;
     border-radius: 5px;
     box-shadow: 5px 7px #dbdbdb;
-    padding: 0 5% 0 5%;
+
 }
 
 .instructions{
@@ -93,8 +93,8 @@ input[type=checkbox] {
     font-family: 'Karla', sans-serif;
     font-size: 12.5px;
     padding: 0.5% 0.5% 0.5% 0.5%;
-    width: 20%;
-    min-width: 200px;
+    width: 200px;
+
     height: 310px;
     border-radius: 10px;
     box-shadow: 5px 7px #dbdbdb;
@@ -103,8 +103,7 @@ input[type=checkbox] {
 .registers{
     border: 3px solid black;
     padding: 0.5% 0.5% 0.5% 0.5%;
-    width: 15%;
-    min-width: 100px;
+    width: 100px;
     height: 310px;
     border-radius: 10px;
     box-shadow: 5px 7px #dbdbdb;
@@ -118,6 +117,12 @@ input[type=checkbox] {
 .current-instruction {
     background-color: greenyellow;
 }
+
+.flexBoxPadding{
+  width: 10%;
+}
+
+
 
 .descriptionButton{
 	background-color: #D9D9D9;
