@@ -200,24 +200,21 @@
         <ul id="test-results"></ul>
     </div> -->
 
+    <!-- Sprite Editor Tool -->
     <div id="tool-sprite">
 
-        <p>Sprite Editor (prototype) </p>
+        <canvas id="sprite-draw" width=160 height=300></canvas>
 
-        <div id="sprite-draw-area">
-            <!-- <canvas id="sprite-draw"></canvas> -->
-        </div>
+        <textarea id="sprite-output" maxlength="89" cols="49"></textarea>
 
-        <div id="sprite-output-area">
-            <textarea id="sprite-output"></textarea>
-        </div>
-
+        <button onclick="clearSpriteArea()">Clear</button>
+        
     </div>
 
 </body>
 
-<!-- Description File To Be Loaded At The End -->
+<!-- Files To Be Loaded At The End -->
 <script type="text/javascript" src="scripts/description.js"></script>
-<script type="text/javascript" src="scripts/toolSprite.js"></script>
+<script type="text/javascript" src="scripts/spriteEditor.js"></script>
 
 </html>

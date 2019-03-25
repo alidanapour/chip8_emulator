@@ -54,7 +54,7 @@ function pushCpuStateToStack(x) {
         display_cache: x.display.slice(),
     }
 
-    if (cpuCacheStack.length < 200)
+    if (cpuCacheStack.length < 1000)
         cpuCacheStack.push(tempState);
     else {
         cpuCacheStack.push(tempState);
