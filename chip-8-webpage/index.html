@@ -17,13 +17,16 @@
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 
-<body>
-
 
 
     <div class="options">
         <!-- Drop-down Games Menu -->
-        <select id="games" onchange="runEmulator(this)">
+				<div id="topBar">
+					<video autoplay muted loop id="logoAnimation">
+						<source src="images/logoAnimation.mp4" type="video/mp4"/>
+					</video>
+
+				<select id="games" onchange="runEmulator(this)">
             <option value="" selected disabled hidden>Choose a ROM</option>
             <option value="15PUZZLE">15PUZZLE</option>
             <option value="BLINKY">BLINKY</option>
@@ -52,45 +55,56 @@
             <option value="WIPEOFF">WIPEOFF</option>
         </select>
 
-        <!-- Speed Controls -->
-        <select id="speed" onchange="setEmulatorSpeed(this)">
-            <option value="8">8 cycles/frame</option>
-            <option value="10">10 cycles/frame</option>
-            <option value="15">15 cycles/frame</option>
-            <option value="20">20 cycles/frame</option>
-            <option value="30">30 cycles/frame</option>
-            <option value="40">40 cycles/frame</option>
-        </select>
 
-        <!-- Buttons -->
-        <button id="continue" onclick="continuePressed()">Continue</button>
-        <button id="pause" onclick="pausePressed()">Pause</button>
-        <button id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
-        <button id="step-backward" onclick="stepBackwardPressed()">Step Backward</button>
-        <button id="reset" onclick="resetPressed()">Reset</button> </br>
+
+	        <!-- Speed Controls -->
+	        <select id="speed" onchange="setEmulatorSpeed(this)">
+	            <option value="8">8 cycles/frame</option>
+	            <option value="10">10 cycles/frame</option>
+	            <option value="15">15 cycles/frame</option>
+	            <option value="20">20 cycles/frame</option>
+	            <option value="30">30 cycles/frame</option>
+	            <option value="40">40 cycles/frame</option>
+	        </select>
+
+	        <!-- Buttons -->
+	        <button id="continue" onclick="continuePressed()">Continue</button>
+	        <button id="pause" onclick="pausePressed()">Pause</button>
+	        <button id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
+	        <button id="step-backward" onclick="stepBackwardPressed()">Step Backward</button>
+	        <button id="reset" onclick="resetPressed()">Reset</button> </br>
+
+
+				</div>
+
 
         <!-- Quirk Checkboxes -->
         <div id="quirk">
+						<p class="quirk-label"> Use new <br />shift opcodes?</p>
+            <div id="cb1">
 
-            <div>
-                <span class="quirk-label"> Use new shift opcodes?</span>
                 <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
+								<label for="squirk"></label>
             </div>
 
-            <div>
-                <span class="quirk-label"> Use new load/store opcodes?</span>
+						<p class="quirk-label"> Use new <br />load/store opcodes?</p>
+            <div id="cb2">
                 <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
+								<label for="lsquirk"></label>
             </div>
 
-            <div>
-                <span class="quirk-label"> Fix timer speed? </span>
+						<p class="quirk-label"> Fix timer speed? </p>
+            <div id="cb3">
                 <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" checked/>
+								<label id="fixtimer"></label>
             </div>
 
         </div>
 
     </div></br>
 
+
+<body>
     <!-- Visualizer Area -->
     <div class="visualizer">
 
@@ -193,6 +207,7 @@
     </div>
 
 </body>
+
 
 <!-- Files To Be Loaded At The End -->
 <script type="text/javascript" src="scripts/description.js"></script>
