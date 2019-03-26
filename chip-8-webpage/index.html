@@ -81,19 +81,19 @@
         <!-- Quirk Checkboxes -->
         <div id="quirk">
 						<p class="quirk-label"> Use new <br />shift opcodes?</p>
-            <div id="cb1">
+            <div id="cb1" onclick=cb1checkBox()>
                 <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
 								<label for="squirk"></label>
             </div>
 
 						<p class="quirk-label"> Use new <br />load/store opcodes?</p>
-            <div id="cb2">
+            <div id="cb2" onclick=cb2checkBox()>
                 <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
 								<label for="lsquirk"></label>
             </div>
 
 						<p class="quirk-label"> Fix timer speed? </p>
-            <div id="cb3">
+            <div id="cb3" onclick=cb3checkBox()>
                 <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" checked/>
 								<label for="fixtimer"></label>
             </div>

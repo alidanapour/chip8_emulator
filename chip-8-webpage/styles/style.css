@@ -167,6 +167,8 @@ body {
 	margin: 20px ;
 	position: relative;
   border-radius: 3px;
+}#cb1:hover{
+	cursor:pointer;
 }#cb1 label{
 	display: block;
     width: 16px;
@@ -192,6 +194,8 @@ body {
 	margin: 20px ;
 	position: relative;
   border-radius: 3px;
+}#cb2:hover{
+	cursor:pointer;
 }#cb2 label{
 	display: block;
     width: 16px;
@@ -217,6 +221,8 @@ body {
 	margin: 20px ;
 	position: relative;
   border-radius: 3px;
+}#cb3:hover{
+	cursor:pointer;
 }#cb3 label{
 	display: block;
     width: 16px;

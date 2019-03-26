@@ -139,3 +139,28 @@ function description(game) {
     document.getElementById("clickMe").click();
     document.getElementById("clickMe").click();
 }
+
+function cb1checkBox(){
+	if (document.getElementById("squirk").checked == true){
+		document.getElementById("squirk").checked = false;
+	}
+	else if (document.getElementById("squirk").checked == false){
+		document.getElementById("squirk").checked = true;
+	}
+}
+function cb2checkBox(){
+	if (document.getElementById("lsquirk").checked == true){
+		document.getElementById("lsquirk").checked = false;
+	}
+	else if (document.getElementById("lsquirk").checked == false){
+		document.getElementById("lsquirk").checked = true;
+	}
+}
+function cb3checkBox(){
+	if (document.getElementById("fixtimer").checked == true){
+		document.getElementById("fixtimer").checked = false;
+	}
+	else if (document.getElementById("fixtimer").checked == false){
+		document.getElementById("fixtimer").checked = true;
+	}
+}
