@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>CHIP-8 JavaScript</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Karla|Merriweather" rel="stylesheet">   <!--Load fonts from Google-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <!--Load jQuery from Google-->
+    <script type="text/javascript" src="scripts/disassembleOpcode.js"></script>
+    <script type="text/javascript" src="scripts/cpu.js"></script>
+    <script type="text/javascript" src="scripts/tests.js"></script>
+    <script type="text/javascript" src="scripts/preloadRoms.js"></script>
+    <script type="text/javascript" src="scripts/runEmulator.js"></script>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+
+
+<div class="options">
+
+    <!-- Drop-down Games Menu -->
+	<div id="topBar">
+		<video autoplay muted loop id="logoAnimation">
+			<source src="images/logoAnimation.mp4" type="video/mp4"/>
+	    </video>
+
+		<select id="games" onchange="runEmulator(this)">
+            <option value="" selected disabled hidden>Choose a ROM</option>
+            <option value="15PUZZLE">15PUZZLE</option>
+            <option value="BLINKY">BLINKY</option>
+            <option value="BLITZ">BLITZ</option>
+            <option value="BRIX">BRIX</option>
+            <option value="CGG">COMPUTER GRENADE GRAPHIC</option>
+            <option value="CONNECT4">CONNECT4</option>
+            <option value="GUESS">GUESS</option>
+            <option value="HIDDEN">HIDDEN</option>
+            <option value="INVADERS">INVADERS</option>
+            <option value="KALEID">KALEIDOSCOPE</option>
+            <option value="MAZE">MAZE</option>
+            <option value="MERLIN">MERLIN</option>
+            <option value="MISSILE">MISSILE</option>
+            <option value="PONG">PONG</option>
+            <option value="PONG2">PONG2</option>
+            <option value="PUZZLE">PUZZLE</option>
+            <option value="SFACES">SMILEY FACES</option>
+            <option value="SYZYGY">SYZYGY</option>
+            <option value="TANK">TANK</option>
+            <option value="TETRIS">TETRIS</option>
+            <option value="TICTAC">TICTAC</option>
+            <option value="UFO">UFO</option>
+            <option value="VBRIX">VBRIX</option>
+            <option value="VERS">VERS</option>
+            <option value="WIPEOFF">WIPEOFF</option>
+        </select>
+
+
+
+	    <!-- Speed Controls -->
+	    <select id="speed" onchange="setEmulatorSpeed(this)">
+	        <option value="8">8 cycles/frame</option>
+	        <option value="10">10 cycles/frame</option>
+	        <option value="15">15 cycles/frame</option>
+	        <option value="20">20 cycles/frame</option>
+	        <option value="30">30 cycles/frame</option>
+	        <option value="40">40 cycles/frame</option>
+	    </select>
+
+	    <!-- Buttons -->
+	    <button id="continue" onclick="continuePressed()">Continue</button>
+	    <button id="pause" onclick="pausePressed()">Pause</button>
+	    <button id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
+	    <button id="step-backward" onclick="stepBackwardPressed()">Step Backward</button>
+	    <button id="reset" onclick="resetPressed()">Reset</button> </br>
+
+
+	</div>
+
+
+    <!-- Quirk Checkboxes -->
+    <div id="quirk">
+		<p class="quirk-label"> Use new <br />shift opcodes?</p>
+        <div id="cb1" onclick=cb1checkBox()>
+            <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
+			<label for="squirk"></label>
+        </div>
+
+		<p class="quirk-label"> Use new <br />load/store opcodes?</p>
+        <div id="cb2" onclick=cb2checkBox()>
+            <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
+			<label for="lsquirk"></label>
+        </div>
+
+		<p class="quirk-label"> Fix timer speed? </p>
+        <div id="cb3" onclick=cb3checkBox()>
+            <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" checked/>
+			<label for="fixtimer"></label>
+        </div>
+
+    </div>
+
+</div></br>
+
+
+<body>
+    <!-- Visualizer Area -->
+    <div class="visualizer">
+
+        <!-- Instruction Area -->
+        <div class="instructions">Instructions</div>
+        <div class="flexBoxPadding"></div>
+
+        <div class="display">
+
+            <!-- Emulator Screen -->
+            <canvas id="screen-area" width="640" height="320"></canvas>
+
+        </div>
+        <div class="flexBoxPadding"></div>
+        <!-- Register Area -->
+        <div class="registers">
+            <div class="registers_inner" id="PC">PC: 0x0000</div>
+            <div class="registers_inner" id="I">  I: 0x0000</div>
+            <div class="registers_inner" id="SP">SP: 0x00</div>
+            <div class="registers_inner" id="DT">DT: 0x00</div>
+            <div class="registers_inner" id="ST">ST: 0x00</div>
+            <div class="registers_inner" id="V0">V0: 0x00</div>
+            <div class="registers_inner" id="V1">V1: 0x00</div>
+            <div class="registers_inner" id="V2">V2: 0x00</div>
+            <div class="registers_inner" id="V3">V3: 0x00</div>
+            <div class="registers_inner" id="V4">V4: 0x00</div>
+            <div class="registers_inner" id="V5">V5: 0x00</div>
+            <div class="registers_inner" id="V6">V6: 0x00</div>
+            <div class="registers_inner" id="V7">V7: 0x00</div>
+            <div class="registers_inner" id="V8">V8: 0x00</div>
+            <div class="registers_inner" id="V9">V9: 0x00</div>
+            <div class="registers_inner" id="VA">VA: 0x00</div>
+            <div class="registers_inner" id="VB">VB: 0x00</div>
+            <div class="registers_inner" id="VC">VC: 0x00</div>
+            <div class="registers_inner" id="VD">VD: 0x00</div>
+            <div class="registers_inner" id="VE">VE: 0x00</div>
+            <div class="registers_inner" id="VF">VF: 0x00</div>
+        </div>
+    </div><br/>
+
+    <!-- Load ROM buttom -->
+    <p>Select a ROM: <input type="file" id="rom"/></p><br/>
+
+	<!-- Descriptions and How To Play -->
+    <button type="button" class="descriptionButton" id="clickMe">Description and How To Play</button>
+    <div id="description">
+
+            <div id="tempDescHolder">
+                Choose a game from the drop-down menu to see its description!
+            </div>
+            <div id="controlsFlex">
+              <table id="controlsTable">
+                  <tr>
+                      <th id="controlButton1">1</th>
+                      <th id="controlButton2">2</th>
+                      <th id="controlButton3">3</th>
+                      <th id="controlButton4">4</th>
+                  </tr>
+                  <tr>
+                      <th id="controlButtonQ">Q</th>
+                      <th id="controlButtonW">W</th>
+                      <th id="controlButtonE">E</th>
+                      <th id="controlButtonR">R</th>
+                  </tr>
+                  <tr>
+                      <th id="controlButtonA">A</th>
+                      <th id="controlButtonS">S</th>
+                      <th id="controlButtonD">D</th>
+                      <th id="controlButtonF">F</th>
+                  </tr>
+                  <tr>
+                      <th id="controlButtonZ">Z</th>
+                      <th id="controlButtonX">X</th>
+                      <th id="controlButtonC">C</th>
+                      <th id="controlButtonV">V</th>
+                  </tr>
+              </table>
+
+              <div id="controlsDescription"></div>
+            </div>
+
+
+    </div></br>
+
+	<!-- Test Output Area -->
+    <!-- <p>Test Outputs: <button onclick="runAllTests()">Start Test</button></p>
+    <div class="tests-scroll">
+        <ul id="test-results"></ul>
+    </div> -->
+
+    <!-- Sprite Editor Tool -->
+    <div id="tool-sprite">
+
+        <canvas id="sprite-draw" width=160 height=300></canvas>
+
+        <textarea id="sprite-output" maxlength="89" cols="49"></textarea>
+
+        <button onclick="clearSpriteArea()">Clear</button>
+
+    </div>
+
+</body>
+
+
+<!-- Files To Be Loaded At The End -->
+<script type="text/javascript" src="scripts/description.js"></script>
+<script type="text/javascript" src="scripts/spriteEditor.js"></script>
+
+</html>
