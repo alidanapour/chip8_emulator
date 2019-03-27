@@ -79,7 +79,7 @@
 
     <!-- Quirk Checkboxes -->
     <div id="quirk">
-        
+
         <div>
             <span class="quirk-label"> Use new shift opcodes?</span>
             <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
@@ -141,8 +141,11 @@
     </div><br/>
 
     <!-- Load ROM buttom -->
-    <p>Select a ROM: <input type="file" id="rom"/></p><br/>
+    <div id="romChoose">
+      <p>Select a ROM: <input type="file" id="rom"/></p><br/>
+    </div>
 
+  <div id="paddingDiv"></div>
 	<!-- Descriptions and How To Play -->
     <button type="button" class="descriptionButton" id="clickMe">Description and How To Play</button>
     <div id="description">
@@ -192,15 +195,15 @@
 
     <!-- Sprite Editor Tool -->
     <div id="tool-sprite">
-        
+
         <div id = "tool-buttons">
-            <button onclick="clearSpriteArea()">Clear</button>
-            <button onclick="clearSpriteArea()">Move Up</button>
-            <button onclick="clearSpriteArea()">Move Down</button>
-            <button onclick="clearSpriteArea()">Move Left</button>
-            <button onclick="clearSpriteArea()">Move Right</button>
+            <button onclick="clearSpriteArea()" class="newButton">Clear</button>
+            <button onclick="clearSpriteArea()" class="newButton">Move Up</button>
+            <button onclick="clearSpriteArea()" class="newButton">Move Down</button>
+            <button onclick="clearSpriteArea()" class="newButton">Move Left</button>
+            <button onclick="clearSpriteArea()" class="newButton">Move Right</button>
         </div>
-        
+
         <div id="tool-screen">
             <canvas id="sprite-draw" width=160 height=300></canvas>
         </div>
