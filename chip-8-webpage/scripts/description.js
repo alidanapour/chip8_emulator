@@ -138,6 +138,7 @@ function description(game) {
     document.getElementById("controlsDescription").innerHTML = conArray[gameIndex]+"<br/>";
     document.getElementById("clickMe").click();
     document.getElementById("clickMe").click();
+    videoControl();
 }
 
 function cb1checkBox(){
@@ -163,4 +164,9 @@ function cb3checkBox(){
 	else if (document.getElementById("fixtimer").checked == false){
 		document.getElementById("fixtimer").checked = true;
 	}
+}
+
+function videoControl(){
+  var video=document.getElementById("logoAnimation");
+  video.currentTime=0;//restarts the vid
 }
