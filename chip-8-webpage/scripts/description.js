@@ -6,7 +6,7 @@ let desBLITZ = "This game is a BOMBER clone. You are in a plane, and you must de
 let desBRIX = "This is a version of the classic game of knock out the bricks. Moved the platform to keep the ball up. Once the ball hits a brick it disappears. Goal is to destory all bricks"
 let desCGG = "Not really a game... Just some cool animations!"
 let desCONNECT4 = "This game is for two players. The goal is to align 4 coins in the game area. Each player’s coins are colored. When you drop a coin, it is paced on the latest dropped coin in the same column, or at the bottom if the column is empty. Once the column is full, you cannot place any more coins in it."
-let desGUESS = "Think to a number between 1 and 63. CHIP8 shows you several boards and you have to tell if you see your number in them. Press 5 if so, or another key if not. CHIP8 gives you the number."
+let desGUESS = "Think to a number between 1 and 63. CHIP8 shows you several boards and you have to tell if you see your number in them. Press W if so, or another key if not. CHIP8 gives you the number."
 let desHIDDEN = "This is a version of the classic memory game. You are asked to find pairs of cards."
 let desINVADERS = "The well known game. Destroy the invaders with your ship."
 let desKALEID = "Make cool looking pictures!"
@@ -37,36 +37,79 @@ let gameArray = ["15PUZZLE", "BLINKY", "BLITZ", "BRIX", "CGG", "CONNECT4", "GUES
 
 // Controls /////////////////////////////////////////////////////////////////////////
 
-let con15PUZZLE = "<br/>1234<br/>QWER<br/>ASDF<br/>ZXCV<br/> Use all the buttons for moving the puzzle pieces!"
-let conBLINKY = "<br/>1-3-<br/>--E-<br/>AS--<br/>----<br/> 1: reset<br/>3: up<br/>E: down<br/>A: left<br/>S: right"
-let conBLITZ = "<br/>----<br/>-W--<br/>----<br/>----<br/> W: Drop bomb"
-let conBRIX = "<br/>----<br/>-W--<br/>----<br/>----<br/> Q: move paddle left<br/>E: Move paddle right"
-let conCGG = "<br/>----<br/>Q-E-<br/>-----<br/>----<br/> No controls, just enjoy the amazing visuals!"
-let conCONNECT4 = "<br/>----<br/>QWE-<br/>----<br/>----<br/> Q: left<br/>W: place piece<br/>E: right"
-let conGUESS = "<br/>----<br/>QW--<br/>----<br/>----<br/> Q: no<br/>W: yes"
-let conHIDDEN = "<br/>-2--<br/>QWE-<br/>-S--<br/>----<br/> 2: up<br/>Q: left<br/>W: pick<br/>E: right<br/>S: down"
-let conINVADERS = "<br/>----<br/>QWE-<br/>----<br/>-----<br/>Q: left<br/>W: fire<br/>E: right"
-let conKALEID = "<br/>-2--<br/>Q-E-<br/>-S--<br/>-X--<br/>X: finish<br/>2: up<br/>Q: left<br/>E: right<br/>S: down"
-let conMAZE = "<br/>----<br/>----<br/>----<br/>----<br/> No controls, just enjoy the amazing visuals!"
-let conMERLIN = "<br/>----<br/>Q-E-<br/>----<br/>----<br/> Q: left<br/>E: right"
-let conMISSILE = "<br/>----<br/>----<br/>-S--<br/>----<br/> S: fire"
-let conPONG = "<br/>1--4<br/>Q--R<br/>----<br/>----<br/> 1: move left paddle Q: move left paddle down<br/>4: move right paddle up R: move right paddle down"
-let conPONG2 = "<br/>1--4<br/>Q--R<br/>----<br/>----<br/> 1: move left paddle Q: move left paddle down<br/>4: move right paddle up R: move right paddle down"
-let conPUZZLE = "<br/>1234<br/>QWER<br/>ASDF<br/>ZXCV<br/> Use all the buttons for moving the puzzle pieces!"
-let conSFACES = "<br/>----<br/>Q-E-<br/>-----<br/>----<br/> No controls, just enjoy the amazing visuals!>"
-let conSPACEWARS = "<br/>-----<br/>-WE-<br/>ASD-<br/>----<br/> W: move up<br/>A: move left<br/>S: move down<br/>D: move right<br/>E: start"
-let conSYZYGY = "<br/>--3-<br/>--E-<br/>AS-F<br/>--CV<br/> 3: up<br/>E: down<br/>A: left<br/>S: right<br/>C: show score<br/>F: no border<br/>V: border"
-let conTANK = "<br/>-2--<br/>QWE-<br/>-S--<br/>----<br/> 2: up<br/>Q: left<br/>W: fire<br/>E: right<br/>S: down"
-let conTETRIS = "<br/>----<br/>QWE-<br/>A---<br/>----<br/> Q: rotate<br/>W: left<br/>E: right<br/>A: drop piece"
-let conTICTAC = "<br/>123-<br/>QWE-<br/>ASD-<br/>----<br/> 1-D: select corresponding square"
-let conUFO = "<br/>----<br/>QWE-<br/>----<br/>-----<br/> Q: shoot left<br/>W: shoot up<br/>E: shoot right"
-let conVBRIX = "<br/>----<br/>-W--<br/>----<br/>----<br/> Q: move paddle left<br/>E: Move paddle right"
-let conVERS = "<br/>12-4<br/>---R<br/>A---<br/>Z-CV<br/> 1: player1 left 2: player1 right A player1 up Z: player1 down<br/>C: player2 left 4: player2 up R: player 2 down V: player 2 right"
-let conWIPEOFF = "<br/>----<br/>Q-E-<br/>----<br/>----<br/> Q: move paddle left<br/>E: move paddle right"
+let con15PUZZLE = "Use all the buttons for moving the puzzle pieces!"
+let conBLINKY = "1: reset<br/>3: up<br/>E: down<br/>A: left<br/>S: right"
+let conBLITZ = "W: Drop bomb"
+let conBRIX = "Q: move paddle left<br/>E: Move paddle right"
+let conCGG = "No controls, just enjoy the amazing visuals!"
+let conCONNECT4 = "Q: left<br/>W: place piece<br/>E: right"
+let conGUESS = "Q: no<br/>W: yes"
+let conHIDDEN = "2: up<br/>Q: left<br/>W: pick<br/>E: right<br/>S: down"
+let conINVADERS = "Q: left<br/>W: fire<br/>E: right"
+let conKALEID = "X: finish<br/>2: up<br/>Q: left<br/>E: right<br/>S: down"
+let conMAZE = "No controls, just enjoy the amazing visuals!"
+let conMERLIN = "Q: left<br/>E: right"
+let conMISSILE = "S: fire"
+let conPONG = "1: move left paddle Q: move left paddle down<br/>4: move right paddle up R: move right paddle down"
+let conPONG2 = "1: move left paddle Q: move left paddle down<br/>4: move right paddle up R: move right paddle down"
+let conPUZZLE = "Use all the buttons for moving the puzzle pieces!"
+let conSFACES = "No controls, just enjoy the amazing visuals!>"
+let conSPACEWARS = "W: move up<br/>A: move left<br/>S: move down<br/>D: move right<br/>E: start"
+let conSYZYGY = "3: up<br/>E: down<br/>A: left<br/>S: right<br/>C: show score<br/>F: no border<br/>V: border"
+let conTANK = "2: up<br/>Q: left<br/>W: fire<br/>E: right<br/>S: down"
+let conTETRIS = "Q: rotate<br/>W: left<br/>E: right<br/>A: drop piece"
+let conTICTAC = "1-D: select corresponding square"
+let conUFO = "Q: shoot left<br/>W: shoot up<br/>E: shoot right"
+let conVBRIX = "Q: move paddle left<br/>E: Move paddle right"
+let conVERS = "1: player1 left 2: player1 right A player1 up Z: player1 down<br/>C: player2 left 4: player2 up R: player 2 down V: player 2 right"
+let conWIPEOFF = "Q: move paddle left<br/>E: move paddle right"
 
 let conArray = [con15PUZZLE, conBLINKY, conBLITZ, conBRIX, conCGG, conCONNECT4, conGUESS, conHIDDEN, conINVADERS,
                 conKALEID, conMAZE, conMERLIN, conMISSILE, conPONG, conPONG2, conPUZZLE, conSFACES, conSPACEWARS,
                 conSYZYGY, conTANK, conTETRIS, conTICTAC, conUFO, conVBRIX, conVERS, conWIPEOFF];
+
+let con15PUZZLEArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+let conBLINKYArray = [1,0,1,0,0,0,1,0,1,1,0,0,0,0,0,0];
+let conBLITZArray = [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0];
+let conBRIXArray = [0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0];
+let conCGGArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let conCONNECT4Array = [0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0];
+let conGUESSArray = [0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0];
+let conHIDDENArray = [0,1,0,0,1,1,1,0,0,1,0,0,0,0,0,0];
+let conINVADERSArray = [0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0];
+let conKALEIDArray = [0,1,0,0,1,0,1,0,0,1,0,0,0,1,0,0];
+let conMAZEArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let conMERLINArray = [0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0];
+let conMISSILEArray = [0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0];
+let conPONGArray = [1,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0];
+let conPONG2Array = [1,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0];
+let conPUZZLEArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+let conSFACESArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let conSPACEWARSArray = [0,0,0,0,0,1,1,0,1,1,1,0,0,0,0,0];
+let conSYZYGYArray = [0,0,1,0,0,0,1,0,1,1,0,1,0,0,1,1];
+let conTANKArray = [0,1,0,0,1,1,1,0,0,1,0,0,0,0,0,0];
+let conTETRISArray = [0,0,0,0,1,1,1,0,1,0,0,0,0,0,0,0];
+let conTICTACArray = [1,1,1,0,1,1,1,0,1,1,1,0,0,0,0,0];
+let conUFOArray = [0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0];
+let conVBRIXArray = [0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0];
+let conVERSArray = [1,1,0,1,0,0,0,1,1,0,0,0,1,0,1,1];
+let conWIPEOFFArray = [0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0];
+
+let conArrayArray = [con15PUZZLEArray, conBLINKYArray, conBLITZArray, conBRIXArray, conCGGArray, conCONNECT4Array, conGUESSArray, conHIDDENArray, conINVADERSArray,
+                    conKALEIDArray, conMAZEArray, conMERLINArray, conMISSILEArray, conPONGArray, conPONG2Array, conPUZZLEArray, conSFACESArray, conSPACEWARSArray,
+                    conSYZYGYArray, conTANKArray, conTETRISArray, conTICTACArray, conUFOArray, conVBRIXArray, conVERSArray, conWIPEOFFArray];
+
+let controlHighlightingMap = [
+    "controlButton1", "controlButton2", "controlButton3", "controlButton4",
+    "controlButtonQ", "controlButtonW", "controlButtonE", "controlButtonR",
+    "controlButtonA", "controlButtonS", "controlButtonD", "controlButtonF",
+    "controlButtonZ", "controlButtonX", "controlButtonC", "controlButtonV"
+];
+
+function highlightControls(controlHighlightArray) {
+    for (let i = 0; i < controlHighlightArray.length; i++)
+        document.getElementById(controlHighlightingMap[i]).style.backgroundColor = controlHighlightArray[i] ? "greenyellow" : "transparent";
+}
 
 // For the description
 let coll = document.getElementsByClassName("descriptionButton");
@@ -80,7 +123,50 @@ for (let i = 0; i < coll.length; i++) {
             content.style.maxHeight = content.scrollHeight + "px"; });
 }
 
+
+
+//function lineChecker(descriptLines){
+//  let lines=(descriptLines.length)/170
+//  return lines
+//}
+
 function description(game) {
-	let gameIndex = gameArray.indexOf(game);
-	document.getElementById("description").innerHTML = decArray[gameIndex] + "<br/>" + conArray[gameIndex];
+    let gameIndex = gameArray.indexOf(game);
+    highlightControls(conArrayArray[gameIndex]);
+    console.log(conArrayArray[gameIndex]);
+	document.getElementById("tempDescHolder").innerHTML = decArray[gameIndex] + "<br/>";
+    document.getElementById("controlsDescription").innerHTML = conArray[gameIndex]+"<br/>";
+    document.getElementById("clickMe").click();
+    document.getElementById("clickMe").click();
+    videoControl();
+}
+
+function cb1checkBox(){
+	if (document.getElementById("squirk").checked == true){
+		document.getElementById("squirk").checked = false;
+	}
+	else if (document.getElementById("squirk").checked == false){
+		document.getElementById("squirk").checked = true;
+	}
+}
+function cb2checkBox(){
+	if (document.getElementById("lsquirk").checked == true){
+		document.getElementById("lsquirk").checked = false;
+	}
+	else if (document.getElementById("lsquirk").checked == false){
+		document.getElementById("lsquirk").checked = true;
+	}
+}
+function cb3checkBox(){
+	if (document.getElementById("fixtimer").checked == true){
+		document.getElementById("fixtimer").checked = false;
+	}
+	else if (document.getElementById("fixtimer").checked == false){
+		document.getElementById("fixtimer").checked = true;
+	}
+}
+
+function videoControl(){
+  var video=document.getElementById("logoAnimation");
+  video.currentTime=0;//restarts the vid
 }

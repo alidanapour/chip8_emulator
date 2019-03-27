@@ -1,89 +1,374 @@
 html {
-    font-family: 'Merriweather', serif;
-    font-size: 10px;
-    background-color: #F1EEEE;
-    padding-bottom: 50px;
+  font-family: 'Avenir', sans-serif;
+  font-size: 10px;
+  background-color: white;
+  padding-bottom: 50px;
+  scroll-behavior: smooth;
 }
 
 h1 {
-    font-family: 'Karla', sans-serif;
-    font-size: 60px;
-    text-align: center;
+  font-family: 'Karla', sans-serif;
+  font-size: 60px;
+  text-align: center;
 }
 
 p, li {
-    font-size: 15px;
-    line-height: 1.5;
-    letter-spacing: 1px;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 
 body {
-    width: 80%;
-    margin: 0 auto;
+	width: 80%;
+	margin: 0 auto;
 }
 
-.display, .options {
-    text-align: center;
+.options {
+	text-align: center;
 }
 
-#screen-area {
-    background-color: lightslategray;
-    border: 5px solid;
+#logoAnimation{
+	width: 15%;
+	vertical-align: middle;
+	padding-top: 0;
+	z-index: -1;
+	position:relative;
 }
 
-div.tests-scroll {
+#topBar{
+	max-height: 80px;
+}
+
+#games select {
+	background-color: white;
+
+}#games {
+	border-radius: 5px;
+	background-color: white;
+	border-width: 2px;
+	border-color: black;
+	box-shadow: 2px 2px #dbdbdb;
+
+}
+
+#games:hover{
+	cursor: pointer;
+}
+
+#speed select {
+	background-color: white;
+
+}
+
+#speed {
+	border-radius: 5px;
+	background-color: white;
+	border-width: 2px;
+	border-color: black;
+	box-shadow: 2px 2px #dbdbdb;
+
+}
+
+#speed:hover{
+	cursor: pointer;
+}
+
+/* buttons*/
+#continue{
+	background-color: white;
+	border-width: 2px;
+	border-color: black;
+	box-shadow: 2px 2px #dbdbdb;
+	font-weight: bold;
+	opacity: 0.6;
+  transition: 0.3s;
+	font-family: 'Karla', sans-serif;
+}
+
+#continue:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+#pause{
+	background-color: white;
+	border-width: 2px;
+	border-color: black;
+	box-shadow: 2px 2px #dbdbdb;
+	font-weight: bold;
+	opacity: 0.6;
+  transition: 0.3s;
+	font-family: 'Karla', sans-serif;
+}
+
+#pause:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+#step-forward{
+	background-color: white;
+	border-width: 2px;
+	border-color: black;
+	box-shadow: 2px 2px #dbdbdb;
+	font-weight: bold;
+	opacity: 0.6;
+  transition: 0.3s;
+	font-family: 'Karla', sans-serif;
+}
+
+#step-forward:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+#step-backward{
+	background-color: white;
+	border-width: 2px;
+	border-color: black;
+	box-shadow: 2px 2px #dbdbdb;
+	font-weight: bold;
+	opacity: 0.6;
+  transition: 0.3s;
+	font-family: 'Karla', sans-serif;
+}
+
+#step-backward:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+#reset{
+	background-color: white;
+	border-width: 2px;
+	border-color: black;
+	box-shadow: 2px 2px #dbdbdb;
+	font-weight: bold;
+	opacity: 0.6;
+  transition: 0.3s;
+	font-family: 'Karla', sans-serif;
+}
+
+#reset:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+#quirk{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+	z-index: 1;
+	position:relative;
+
+}
+
+#quirk div {
+  padding-left: 30px;
+}
+
+.quirk-label{
+  font-size: 13px;
+	font-family: 'Karla', sans-serif;
+
+}
+
+#cb1{
+	width: 15px;
+  height: 10px;
+  background: #555;
+	margin: 20px ;
+	position: relative;
+  border-radius: 3px;
+}
+
+#cb1:hover{
+	cursor:pointer;
+}
+
+#cb1 label{
+	display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: all .5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  background: #ccc;
+}
+
+#cb1 input[type=checkbox]:checked + label {
+  left: 31px;
+	background-color: limegreen;
+}
+
+#squirk{
+	display: none;
+}
+
+#cb2{
+	width: 15px;
+  height: 10px;
+  background: #555;
+	margin: 20px ;
+	position: relative;
+  border-radius: 3px;
+}
+
+#cb2:hover{
+	cursor:pointer;
+}
+
+#cb2 label{
+	display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: all .5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  background: #ccc;
+}
+
+#cb2 input[type=checkbox]:checked + label {
+  left: 31px;
+	background-color: limegreen;
+}
+
+#lsquirk{
+	display: none;
+}
+
+#cb3{
+	width: 15px;
+  height: 10px;
+  background: #555;
+	margin: 20px ;
+	position: relative;
+  border-radius: 3px;
+}
+
+#cb3:hover{
+	cursor:pointer;
+}
+
+#cb3 label{
+	display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: all .5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  background: #ccc;
+}
+
+#cb3 input[type=checkbox]:checked + label {
+  left: 31px;
+	background-color: limegreen;
+}
+
+#fixtimer{
+	display: none;
+}
+
+/* making the checkboxs bigger */
+input[type=checkbox] {
+  -ms-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+/* div.tests-scroll {
     background-color:lightslategray;
     height: 400px;
     padding: 1%;
     border: 5px solid;
     overflow: scroll;
-}
+} */
 
 .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .visualizer{
-    overflow: hidden; /* prevent instructions and registers outside of body*/
-	padding-top: 1%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+
+}
+
+.display{
+  text-align: center;
+}
+
+#screen-area {
+    background-color: #c4c4c4;
+    border: 3px solid;
+    display: inline;
+    box-shadow: 5px 7px #dbdbdb;
+
 }
 
 .instructions{
-    border: 5px solid;
-    float:left;
-    width: 80%;
-    font-family: 'Karla', sans-serif;
-    font-size: 15px;
-    padding: 0.5% 0.5% 0.5% 0.5%;
+  border: 3px solid black;
+  font-family: 'Karla', sans-serif;
+  font-size: 12.5px;
+  padding: 0.5% 0.5% 0.5% 0.5%;
+  width: 20%;
+  min-width: 200px;
+  height: 310px;
+  border-radius: 10px;
+  box-shadow: 5px 7px #dbdbdb;
 }
 
 .registers{
-    border: 5px solid;
-    float:right;
-    width: 15%;
-    padding: 0.5% 0.5% 0.5% 0.5%;
+  border: 3px solid black;
+  padding: 0.5% 0.5% 0.5% 0.5%;
+  width: 10%;
+  min-width: 100px;
+  height: 310px;
+  border-radius: 10px;
+  box-shadow: 5px 7px #dbdbdb;
 }
 
 .registers_inner{
-    font-family: 'Karla', sans-serif;
-    font-size: 15px;
+  font-family: 'Karla', sans-serif;
+  font-size: 12.5px;
 }
 
 .current-instruction {
-    background-color: greenyellow;
+  background-color: greenyellow;
 }
+
+.flexBoxPadding{
+  width: 3%;
+}
+
+
 
 .descriptionButton{
 	background-color: #D9D9D9;
-    color: black;
-    cursor: pointer;
-    padding: 5px;
-    border: solid;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
+  color: black;
+  cursor: pointer;
+  padding: 5px;
+  border: solid;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
 }
 
 .active, #descriptionButton:hover {
@@ -91,11 +376,48 @@ div.tests-scroll {
 }
 
 #description {
-    padding: 0 10px;
-    background-color: whitesmoke;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
+  padding: 0 10px;
+  background-color: whitesmoke;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 	font-family: 'Karla', sans-serif;
-	font-size: 15px;
+  font-size: 15px;
+}
+
+#controlsTable {
+  border: 2px solid black;
+  float: left;
+}
+
+#controlsDescription {
+  float: left;
+  padding: 0 0 0 2%;
+}
+
+/* #tool-sprite{
+    border: 2px solid black;
+    height: 300px;
+    width: 160px;
+    overflow: hidden;
+} */
+
+#sprite-draw {
+    border: 3px solid black;
+    background-color: #c4c4c4;
+}
+
+#controlsFlex{
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+}
+
+.games{
+  border: 3px solid black;
+  font-family: 'Karla', sans-serif;
+  font-size: 12.5px;
+  padding: 0.5% 0.5% 0.5% 0.5%;
+  border-radius: 10px;
+  box-shadow: 5px 7px #dbdbdb;
 }

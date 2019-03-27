@@ -6,7 +6,7 @@
 
 1. Chip8 **Emulator** can run any Chip8 program.
 2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It lets users pause and step-forward/step-backward one instruction at a time.
-3. One Chip8 **Tool**: *to be announced*. The goal is to build a Chip8 program that is useful to the intended users of the Chip8 emulator.  
+3. One Chip8 **Tool**: `Sprite Editor` provides a visual interface to create sprites.  
 4. Two Chip8 **Games**:  Game 1: `Space War`; Game 2: `Jumpy Rabbit`. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
 
 ## Project organization
@@ -69,15 +69,24 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Added user case for chip8 tool prototype.
     - Added user case for game 2 complete.
     - Migrated to [Jest](https://jestjs.io/) for automated test.
-    - Added program descriptions and instructions on how to play games to the visualizer.   
-    
+    - Added program descriptions and instructions on how to play games to the visualizer.
+
+**UPDATED March 13, 2019**:
+  
+- Release 3: 
+    - Updated user case for chip8 tool prototype.
+    - Updated user case for game 2 complete.
+- Release 4: 
+    - Added new interface mockup for emulator and visualizer. 
+    - Added user case for emulator, visualizer, chip8 tool, game 1 and game 2 complete. 
+
 **Release 0**:
 
 - Interface Mockup
 
-![WBS example](product_document_imgs/interface_mockup.JPG)
+![Interface Mockup](product_document_imgs/interface_mockup.JPG)
 
-- Interface Implementation: implemented the interface based on the mockup version. **We will be working with a simpler interface in release 1 and 2, and integrate this interface into existing source code in release 3**. 
+- Interface Implementation: implemented the interface based on the mockup version. 
 
 **Release 1**
 
@@ -127,7 +136,26 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
     - Alternate Flow:
         - i1. If user chooses not to replay game, system will display win/loss screen indefinitely. It will be up to the user to close the system or to load another program.
 
-- Game 2 Prototype: `Jumpy Rabbit` : A game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score!
+- Game 2 Prototype: `Jumpy Rabbit`is a game inspired by Google's *T-Rex Run*. 
+    - Known bugs to be fixed in the next release:
+        - Undesired sprites may appear when jumping (very rare) and game ends prematurely due to said artifacts
+        - Score count is incorrect after first point (wrapping issue, will be fixed when enemies properly implemented)
+        - Game ends with a blank screen when you lose
+
+**Release 3**
+
+- Emulator: Perform more rigorous automated testings.
+
+- Visualizer: User can step forward or step backward one instruction at a time.
+
+- Game 2 Complete: `Jumpy Rabbit` is a game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score! 
+    - Updates made to prototype:
+        - Fixed existing bugs
+        - Randomized enemies appearing based on difficulty level selected
+        - Aded visual improvements (Animation, etc)
+        - Added Game over/Play again/Winning screen
+        - Undesired sprites may appear when jumping (very rare) and doesn't stop the prematurely.  
+
     - Actors:
         - User
         - Input/Output interface 
@@ -145,29 +173,50 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
         6. Throughout the duration of the game, the system will spawn random enemies based on difficulty level.
         7. Throughout the duration of the game, the system will move the enemies to the left each frame.
         8. Throughout the duration of the game, the system will draw the rabbit in the appropriate place depending on if the rabbit is falling or jumping (via user input for the latter).
-        9. Throughout the duration of the game, the system will update the score (+1 each time an enemy is avoided).
-        10. The game will terminate once the player fails to avoid an enemy displaying a blank screen due to prototype phase.
-    - Known bugs to be fixed in the next release:
-        - Some artifacts may appear when jumping (very rare)
-        - Game ends prematurely due to said artifacts
-        - Score count is incorrect after first point (wrapping issue, will be fixed when enemies properly implemented)
-        - Game ends with a blank screen when you lose
+        9. -Throughout the duration of the game, the system will update the score (+1 when level 1 enemy avoided. +2 for level 2/3 enemies avoided).
+        10. If the player touches an enemy, the game will terminate display a game over screen with the score displayed.
+        11. If the player reaches max score (20 - level 1, 100 - level 2, 255 - level 3), the game ends and displays a game win animation. The score of the player is also displayed.
+        12. If the player chooses to play again via input, the game reinitialized and game flow resumes at point 'b'
 
-**Release 3**
-
-- Emulator: Perform more rigorous automated testings.
-
-- Visualizer: User can step forward or step backward one instruction at a time.
-
-- Game 2 Complete:
-    - Fix existing bugs
-    - Randomized enemies appearing based on difficulty level selected
-    - Visual improvements (Animation, etc).
-    - Game over/Play again screen
-
-- Chip8 Tool: `Sprite Editor` provide a visual interface to create sprites. Chip8 developers can turn pixels on/off in the editor and it will produce the corresponding hexcode for that sprites, thus making it easier to create sprites by letting developer visualize them. 
+- Chip8 Tool: `Sprite Editor` provide a visual interface to create sprites. Chip8 developers can turn pixels on in the editor and it will produce the corresponding hexcode for that sprites, thus making it easier to create sprites by letting developer visualize them. 
 
 - Automated test with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
+
+**Release 4** 
+- Interface complete: The new interface for the emulator and visualizer are shown below:
+![Interface Mockup](product_document_imgs/interface_mockup_new.png)
+
+- Emulator complete:
+    - User can select a pre-loaded rom from the drop-down menu or load any a Chip-8 ROM by clicking the select ROM button below the screen. 
+    - The Emulator proceeds to execute the program selected by the user. 
+    - The Emulator can run a program at different speed (default speed is 8 cycles/frame), user can select the speed before a program starts running or dynamically change the speed while a program is running. 
+    - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
+    - `Fix timer speed?` are selected by default to only changes the opcode execution speed.
+
+- Visualizer complete:
+    - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted. 
+    - User can click: 
+        - `Pause` to stop a program 
+        - `Step Forward` or `Step Backward` move one instruction forward or backward at a time 
+        - `Start` to resume the program
+        - `Reset` to set the Emulator to its default state. 
+        - `How to Play` to see a pop-up screen with description of the program selected from the drop-down menu and instructions on how to play the game.  
+
+- Chip8 Tool complete: `Sprite Editor` provide a visual interface to create sprites, inspired by [Octo toolbox](http://johnearnest.github.io/Octo/), the interface mockup is shown below:
+
+    ![chip8_mockup](product_document_imgs/chip8_tool.png)
+
+    - User can click on the screen area to highlight the pixels that they want, the `Sprite Editor` will produce the corresponding hex values. 
+    - Use the can click:
+        - `Clear` to restart the `Sprite Editor` 
+        - `^` to move the sprites up 
+        - `⌄` to move the sprites down
+        - `>>1` to move the sprites to the left
+        - `1<<` to move the sprites to the right
+
+- Game 1 complete: fully completed game with polished interface and no bug.
+
+- Game 2 complete: fully completed game with polished interface and no bug.
 
 ## Risk analysis
 
@@ -218,7 +267,13 @@ For Release 2, we are making good progress, the Emulator and Game 1 is essential
 
 As our code base expands, we have attempted to improve our code quality. For example, we have experienced with loading rom directly from file, however since the file is on a local machine we must either (1) turn the local machine into a Web server  (2) change security for local files in a browser (access local file as `file:///example`). Both options require user to perform initial set-up on their machine to run our code so we decided to convert roms (in binary) into hex values for loading into memory later. For roms that are actively developed (game 1, game 2), user must use `load rom` rather than `dropdown menu` so that we don't have to update the `dropdown menu` 
 every time a new version comes out more on this topic, please visit: [link1](https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally)
-or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local). We will continue to improve our code quality based on our own judgments and the TA's feedbacks. We will continue updating this Work Breakdown for upcoming releases. 
+or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local). We will continue to improve our code quality based on our own judgments and the TA's feedbacks. We will continue updating this Work Breakdown for upcoming releases.
+
+**UPDATED**: **March 13, 2019**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on March 13, 2019.
+
+![WBS example](product_document_imgs/WBS_R3.PNG)
+
+The majority of the tasks have been completed by Release 3, the only major component left is the chip8 tool (`Sprite Editor`). After Release 3, we mainly focus on polishing components that has been completed (e.g., improving the user interface, further testing to ensure no major bugs still exist) and finish implementing + tesing the tool. We will continue updating this Work Breakdown for upcoming releases.
 
 ## Project schedule
 
@@ -232,6 +287,10 @@ The due dates of major deliverables are shown in the table above. Detailed sched
 
 ![Trello example](product_document_imgs/trello_example_R2.PNG)
 
+**UPDATED**: **March 13, 2019**: An example for release 3 is shown below:
+
+![Trello example](product_document_imgs/trello_example_R3.PNG)
+
 ## Monitoring and reporting mechanisms
 
 We will use Git and GitHub for version control. To minimize merging conflicts, members follow the following rules:
@@ -240,7 +299,7 @@ We will use Git and GitHub for version control. To minimize merging conflicts, m
 2. At most 3 members work off the same branch.
 3. Instead of handling multiple feature branches, use feature flags.
 
-Critical information is included in the project documentation and this documentation will be updated when more information is available. For detailed release planning and progress tracking, we will use Trello instead. For each task, the member who is responsible for the task must track the number of hours he/she spends on it to improve effort estimation of tasks in the next release. With Trello, members can add notes to thier tasks. 
+Critical information is included in the project documentation and this documentation will be updated when more information is available. For detailed release planning and progress tracking, we will use Trello instead. For each task, the member who is responsible for the task must track the number of hours he/she spends on it to improve effort estimation of tasks in the next release. With Trello, members can add notes to their tasks. 
 
 In the case of re-planning, if the re-planning results in delay of critical features, an in-person meeting must be held as soon as possible to discuss the following points:
 
