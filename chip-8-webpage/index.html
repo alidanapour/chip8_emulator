@@ -192,12 +192,22 @@
 
     <!-- Sprite Editor Tool -->
     <div id="tool-sprite">
+        
+        <div id = "tool-buttons">
+            <button onclick="clearSpriteArea()">Clear</button>
+            <button onclick="clearSpriteArea()">Move Up</button>
+            <button onclick="clearSpriteArea()">Move Down</button>
+            <button onclick="clearSpriteArea()">Move Left</button>
+            <button onclick="clearSpriteArea()">Move Right</button>
+        </div>
+        
+        <div id="tool-screen">
+            <canvas id="sprite-draw" width=160 height=300></canvas>
+        </div>
 
-        <canvas id="sprite-draw" width=160 height=300></canvas>
-
-        <textarea id="sprite-output" maxlength="89" cols="49"></textarea>
-
-        <button onclick="clearSpriteArea()">Clear</button>
+        <div id="tool-text">
+            <textarea id="sprite-output" maxlength="89" cols="49"></textarea>
+        </div>
 
     </div>
 
