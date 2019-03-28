@@ -138,7 +138,6 @@ function description(game) {
     document.getElementById("controlsDescription").innerHTML = conArray[gameIndex]+"<br/>";
     document.getElementById("clickMe").click();
     document.getElementById("clickMe").click();
-    videoControl();
 }
 
 function cb1checkBox(){
