@@ -3,7 +3,6 @@
 <html>
 
 <head>
-
     <meta charset="utf-8">
     <title>CHIP-8 JavaScript</title>
     <link href="styles/style.css" rel="stylesheet" type="text/css">
@@ -20,12 +19,14 @@
 
 <div class="options">
 
-    <!-- Drop-down Games Menu -->
 	<div id="topBar">
+
+        <!-- Chip8 Logo Animation -->
 		<video autoplay muted id="logoAnimation">
 			<source src="images/logoAnimation.mp4" type="video/mp4"/>
 	    </video>
 
+        <!-- Drop-Down Games Menu -->
 		<select id="games" onchange="runEmulator(this)">
             <option value="" selected disabled hidden>Choose a ROM</option>
             <option value="15PUZZLE">15PUZZLE</option>
@@ -65,7 +66,7 @@
 	        <option value="40">40 cycles/frame</option>
 	    </select>
 
-	    <!-- Control Buttons -->
+	    <!-- Emulator Flow-Control Buttons -->
 	    <button id="continue" onclick="continuePressed()">Continue</button>
 	    <button id="pause" onclick="pausePressed()">Pause</button>
 	    <button id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
@@ -73,12 +74,12 @@
         <button id="reset" onclick="resetPressed()">Reset</button> 
         
         <!-- Trigger/Open The Description -->
-        <button id="descriptionButton">How to play</button>
+        <button id="descriptionButton">How To Play</button>
         
         <!-- The Description -->
         <div id="description" class="pop-up">
 
-            <!-- Description content -->
+            <!-- Description Content -->
             <div class="description-content">
                 
                 <div class="description-header">
@@ -87,9 +88,7 @@
 
                 <div id="description-body">
 
-                    <div id="tempDescHolder">
-                        Choose a game from the drop-down menu to see its description!
-                    </div>
+                    <div id="tempDescHolder">Choose a game from the drop-down menu to see its description!</div>
 
                     <div id="table-button-col">
 
@@ -122,15 +121,15 @@
             
                         <div id="controlsDescription"></div>
 
-                    </div>
+                    </div> <!-- End of Table Buttons Column -->
                 
-                </div>
+                </div> <!-- End of Description Body -->
                 
-            </div>
+            </div> <!-- End of Description Content-->
         
-        </div>
+        </div> <!-- End of Description -->
 
-	</div> <!-- End topBar -->
+	</div> <!-- End of topBar -->
 
     <!-- Quirk Checkboxes -->
     <div id="quirk">
@@ -150,9 +149,9 @@
             <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" unchecked/>
         </div>
 
-    </div> <!-- End quirk -->
+    </div> <!-- End of Quirk Checkboxes -->
 
-</div></br> <!-- End options -->
+</div></br> <!-- End of Options -->
 
 <body>
     <!-- Visualizer Area -->
@@ -162,13 +161,13 @@
         <div class="instructions">Instructions</div>
         <div class="flexBoxPadding"></div>
 
+        <!-- Emulator Screen -->
         <div class="display">
-
-            <!-- Emulator Screen -->
             <canvas id="screen-area" width="640" height="320"></canvas>
-
         </div>
+
         <div class="flexBoxPadding"></div>
+
         <!-- Register Area -->
         <div class="registers">
             <div class="registers_inner" id="PC">PC: 0x0000</div>
@@ -193,7 +192,8 @@
             <div class="registers_inner" id="VE">VE: 0x00</div>
             <div class="registers_inner" id="VF">VF: 0x00</div>
         </div>
-    </div><br/>
+
+    </div><br/> <!-- End of Visualizer Area-->
 
     <!-- Load ROM buttom -->
     <p>Load your ROM: <input type="file" id="rom"/></p>
