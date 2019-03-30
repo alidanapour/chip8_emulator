@@ -128,5 +128,12 @@ function description(game) {
     highlightControls(conArrayArray[gameIndex]);
     console.log(conArrayArray[gameIndex]);
 	document.getElementById("tempDescHolder").innerHTML = decArray[gameIndex] + "<br/>";
-    document.getElementById("controlsDescription").innerHTML = "<br/>" + conArray[gameIndex];
+    document.getElementById("controlsDescription").innerHTML = conArray[gameIndex]+"<br/>";
+    document.getElementById("clickMe").click();
+    document.getElementById("clickMe").click();
+}
+
+function videoControl(){
+  var video=document.getElementById("logoAnimation");
+  video.currentTime=0;//restarts the vid
 }
