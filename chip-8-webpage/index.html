@@ -55,8 +55,6 @@
             <option value="WIPEOFF">WIPEOFF</option>
         </select>
 
-
-
 	    <!-- Speed Controls -->
 	    <select id="speed" onchange="setEmulatorSpeed(this)">
 	        <option value="8">8 cycles/frame</option>
@@ -67,7 +65,7 @@
 	        <option value="40">40 cycles/frame</option>
 	    </select>
 
-	    <!-- Buttons -->
+	    <!-- Control Buttons -->
 	    <button id="continue" onclick="continuePressed()">Continue</button>
 	    <button id="pause" onclick="pausePressed()">Pause</button>
 	    <button id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
@@ -82,41 +80,50 @@
 
             <!-- Description content -->
             <div class="description-content">
-                <span class="close">&times;</span>
-                <div id="tempDescHolder">
-                    Choose a game from the drop-down menu to see its description!
+                
+                <div class="description-header">
+                    <span class="close">&times;</span>
                 </div>
 
-                <div id="controlsFlex">
+                <div id="description-body">
+
+                    <div id="tempDescHolder">
+                        Choose a game from the drop-down menu to see its description!
+                    </div>
+
+                    <div id="table-button-col">
+
+                        <table id="controlsTable">
+                                <tr>
+                                    <th id="controlButton1">1</th>
+                                    <th id="controlButton2">2</th>
+                                    <th id="controlButton3">3</th>
+                                    <th id="controlButton4">4</th>
+                                </tr>
+                                <tr>
+                                    <th id="controlButtonQ">Q</th>
+                                    <th id="controlButtonW">W</th>
+                                    <th id="controlButtonE">E</th>
+                                    <th id="controlButtonR">R</th>
+                                </tr>
+                                <tr>
+                                    <th id="controlButtonA">A</th>
+                                    <th id="controlButtonS">S</th>
+                                    <th id="controlButtonD">D</th>
+                                    <th id="controlButtonF">F</th>
+                                </tr>
+                                <tr>
+                                    <th id="controlButtonZ">Z</th>
+                                    <th id="controlButtonX">X</th>
+                                    <th id="controlButtonC">C</th>
+                                    <th id="controlButtonV">V</th>
+                                </tr>
+                        </table>
+            
+                        <div id="controlsDescription"></div>
+
+                    </div>
                 
-                    <table id="controlsTable">
-                            <tr>
-                                <th id="controlButton1">1</th>
-                                <th id="controlButton2">2</th>
-                                <th id="controlButton3">3</th>
-                                <th id="controlButton4">4</th>
-                            </tr>
-                            <tr>
-                                <th id="controlButtonQ">Q</th>
-                                <th id="controlButtonW">W</th>
-                                <th id="controlButtonE">E</th>
-                                <th id="controlButtonR">R</th>
-                            </tr>
-                            <tr>
-                                <th id="controlButtonA">A</th>
-                                <th id="controlButtonS">S</th>
-                                <th id="controlButtonD">D</th>
-                                <th id="controlButtonF">F</th>
-                            </tr>
-                            <tr>
-                                <th id="controlButtonZ">Z</th>
-                                <th id="controlButtonX">X</th>
-                                <th id="controlButtonC">C</th>
-                                <th id="controlButtonV">V</th>
-                            </tr>
-                    </table>
-        
-                    <div id="controlsDescription"></div>
                 </div>
                 
             </div>
