@@ -17,13 +17,16 @@
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 
-<body>
 
+<div class="options">
 
+    <!-- Drop-down Games Menu -->
+	<div id="topBar">
+		<video autoplay muted id="logoAnimation">
+			<source src="images/logoAnimation.mp4" type="video/mp4"/>
+	    </video>
 
-    <div class="options">
-        <!-- Drop-down Games Menu -->
-        <select id="games" onchange="runEmulator(this)">
+		<select id="games" onchange="runEmulator(this)">
             <option value="" selected disabled hidden>Choose a ROM</option>
             <option value="15PUZZLE">15PUZZLE</option>
             <option value="BLINKY">BLINKY</option>
@@ -52,45 +55,51 @@
             <option value="WIPEOFF">WIPEOFF</option>
         </select>
 
-        <!-- Speed Controls -->
-        <select id="speed" onchange="setEmulatorSpeed(this)">
-            <option value="8">8 cycles/frame</option>
-            <option value="10">10 cycles/frame</option>
-            <option value="15">15 cycles/frame</option>
-            <option value="20">20 cycles/frame</option>
-            <option value="30">30 cycles/frame</option>
-            <option value="40">40 cycles/frame</option>
-        </select>
 
-        <!-- Buttons -->
-        <button id="continue" onclick="continuePressed()">Continue</button>
-        <button id="pause" onclick="pausePressed()">Pause</button>
-        <button id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
-        <button id="step-backward" onclick="stepBackwardPressed()">Step Backward</button>
-        <button id="reset" onclick="resetPressed()">Reset</button> </br>
 
-        <!-- Quirk Checkboxes -->
-        <div id="quirk">
+	    <!-- Speed Controls -->
+	    <select id="speed" onchange="setEmulatorSpeed(this)">
+	        <option value="8">8 cycles/frame</option>
+	        <option value="10">10 cycles/frame</option>
+	        <option value="15">15 cycles/frame</option>
+	        <option value="20">20 cycles/frame</option>
+	        <option value="30">30 cycles/frame</option>
+	        <option value="40">40 cycles/frame</option>
+	    </select>
 
-            <div>
-                <span class="quirk-label"> Use new shift opcodes?</span>
-                <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
-            </div>
+	    <!-- Buttons -->
+	    <button id="continue" onclick="continuePressed()">Continue</button>
+	    <button id="pause" onclick="pausePressed()">Pause</button>
+	    <button id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
+	    <button id="step-backward" onclick="stepBackwardPressed()">Step Backward</button>
+	    <button id="reset" onclick="resetPressed()">Reset</button> </br>
 
-            <div>
-                <span class="quirk-label"> Use new load/store opcodes?</span>
-                <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
-            </div>
 
-            <div>
-                <span class="quirk-label"> Fix timer speed? </span>
-                <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" unchecked/>
-            </div>
+	</div>
 
+    <!-- Quirk Checkboxes -->
+    <div id="quirk">
+
+        <div>
+            <span class="quirk-label"> Use new shift opcodes?</span>
+            <input type="checkbox" id="squirk" onclick="checkShiftQuirks()" checked/>
         </div>
 
-    </div></br>
+        <div>
+            <span class="quirk-label"> Use new load/store opcodes?</span>
+            <input type="checkbox" id="lsquirk" onclick="checkLoadStoreQuirks()" checked/>
+        </div>
 
+        <div>
+            <span class="quirk-label"> Fix timer speed? </span>
+            <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" unchecked/>
+        </div>
+
+    </div>
+
+</div></br>
+
+<body>
     <!-- Visualizer Area -->
     <div class="visualizer">
 
@@ -132,8 +141,11 @@
     </div><br/>
 
     <!-- Load ROM buttom -->
-    <p>Select a ROM: <input type="file" id="rom"/></p><br/>
+    <div id="romChoose">
+      <p>Select a ROM: <input type="file" id="rom"/></p><br/>
+    </div>
 
+  <div id="paddingDiv"></div>
 	<!-- Descriptions and How To Play -->
     <button type="button" class="descriptionButton" id="clickMe">Description and How To Play</button>
     <div id="description">
@@ -184,15 +196,26 @@
     <!-- Sprite Editor Tool -->
     <div id="tool-sprite">
 
-        <canvas id="sprite-draw" width=160 height=300></canvas>
+        <div id = "tool-buttons">
+            <button onclick="clearSpriteArea()" class="newButton">Clear</button>
+            <button onclick="moveSpriteUp()" class="newButton">Move Up</button>
+            <button onclick="moveSpriteDown()" class="newButton">Move Down</button>
+            <button onclick="moveSpriteLeft()" class="newButton">Move Left</button>
+            <button onclick="moveSpriteRight()" class="newButton">Move Right</button>
+        </div>
 
-        <textarea id="sprite-output" maxlength="89" cols="49"></textarea>
+        <div id="tool-screen">
+            <canvas id="sprite-draw" width=160 height=300></canvas>
+        </div>
 
-        <button onclick="clearSpriteArea()">Clear</button>
+        <div id="tool-text">
+            <textarea id="sprite-output" maxlength="89" cols="49"></textarea>
+        </div>
 
     </div>
 
 </body>
+
 
 <!-- Files To Be Loaded At The End -->
 <script type="text/javascript" src="scripts/description.js"></script>
