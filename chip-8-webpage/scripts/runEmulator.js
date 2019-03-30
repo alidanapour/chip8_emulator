@@ -33,13 +33,13 @@ let timerProcess = null;            // Tracks the D/S timer cycle
 let displayRegisters = null;        // Tracks the registers visualizer
 let displayInstructions = null;     // Tracks the instructions visualizer
 
-let notPaused = true;
+let notPaused = true;               // Game is running
 let emulatorSpeed = 8;              // Default speed is 8 cycles/frame
 let isTimerFixed = false;           // Fix the delay timer to 1 cycle/frame
 let CHIP8 = new CPU();              // Initialize a CHIP8 CPU object
 let prevCachedPC = 0;               // To update instruction list
 
-let cpuCacheStack = new Array();    // Stack for storing CPU states (step backward)
+let cpuCacheStack = new Array();    // Stack for storing CPU states (for stepping backward)
 
 function pushCpuStateToStack(x) {
     let tempState = {
@@ -53,7 +53,7 @@ function pushCpuStateToStack(x) {
         soundTimer_cache: x.soundTimer,
         display_cache: x.display.slice(),
     }
-
+    
     if (cpuCacheStack.length < 1000)
         cpuCacheStack.push(tempState);
     else {
@@ -389,9 +389,9 @@ window.onload = function() {
         }
     }, 1000/60);
 
-    timerProcess = setInterval(function() {
-        let k = isTimerFixed ? 1 : emulatorSpeed/parseFloat(8);
-        for (let i = 0; i < k; i++) {
+    timerProcess = setInterval (function() {
+        let timerRatio = isTimerFixed ? 1 : emulatorSpeed/parseFloat(8);
+        for (let i = 0; i < timerRatio; i++) {
             if (CHIP8.isRunning) {
                 if (CHIP8.soundTimer > 0)
                     beepSound.play();
