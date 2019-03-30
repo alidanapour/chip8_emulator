@@ -172,15 +172,6 @@ body {
 	font-family: 'Karla', sans-serif;
 }
 
-#cb3 input[type=checkbox]:checked + label {
-  left: 31px;
-	background-color: limegreen;
-}
-
-#fixtimer{
-	display: none;
-} */
-
 /* making the checkboxs bigger */
 input[type=checkbox] {
   -ms-transform: scale(1.5);
