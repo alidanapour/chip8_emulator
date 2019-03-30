@@ -14,12 +14,12 @@ class CPU {
         this.delayTimer = 0;                    // Delay timer initialized to 0
         this.soundTimer = 0;                    // Sound timer initialized to 0
 
-        this.screenWidth = 64;
-        this.screenHeight = 32;
+        this.screenWidth = 64;                  // Screen is 64 pixels wide
+        this.screenHeight = 32;                 // Screen is 32 pixels high
         this.display = new Uint8Array(this.screenWidth * this.screenHeight); // Video memory, used to draw frames
         this.drawFlag = false;                  // Tells whether to draw
 
-        this.keys = new Uint8Array(16);         // Stores the status of the keys
+        this.keys = new Uint8Array(16);         // Stores the status of the 16 keys
 
         this.isRunning = false;                 // CPU run status
 
@@ -60,8 +60,8 @@ class CPU {
     reset() {
 
         this.V.fill(0);			                        // Clear registers
-	    this.memory.fill(0);		                    // Clear RAM
-	    this.display.fill(0);		                    // Clear memory
+	    this.memory.fill(0);		                    // Clear RAM/memory
+	    this.display.fill(0);		                    // Clear video memory
 	    this.loadFonts();			                    // Load font set
 	    this.I = 0;				                        // Clear register I
         this.PC = 0x200;			                    // PC starts at 0x200 (512)
@@ -70,7 +70,7 @@ class CPU {
 	    this.delayTimer = 0;		                    // Clear delay timer
 	    this.soundTimer = 0;		                    // Clear sound timer
 	    this.isRunning = false;	                        // Set CPU run status to false
-        this.keys.fill(0);			                    // Clear keys
+        this.keys.fill(0);			                    // Clear key statuses
         this.drawFlag = false;		                    // Don't draw anything
 
     } // End of reset()
@@ -97,6 +97,7 @@ class CPU {
         screen.fillStyle = "black";
         screen.clearRect(0, 0, this.screenWidth * 10, this.screenHeight * 10);
 
+        // Read video memory and render corresponding pixels onto the screen
         for (let y = 0; y < this.screenHeight; y++) {
             for (let x = 0; x < this.screenWidth; x++) {
                 if (this.display[x + (y * this.screenWidth)])
@@ -109,23 +110,21 @@ class CPU {
 
     setKeyDown(key) {
         this.keys[key] = true;
-    }   // End of setKeyDown(key)
+    }
 
     setKeyUp(key) {
         this.keys[key] = false;
-    }   // End of setKeyUp(key)
+    }
 
     loadProgram(rom) {
 
         let reader = new FileReader();
 
-        reader.addEventListener("loadend", function(){
+        reader.addEventListener("loadend", function() {
             let buffer = new Uint8Array(reader.result);
-            
-            for (let i = 0; i < buffer.length; i++) {
+            // Copy the file to the emulator's memory
+            for (let i = 0; i < buffer.length; i++)
                 CHIP8.memory[CHIP8.PC + i] = buffer[i];
-            }
-
         });
 
         reader.readAsArrayBuffer(rom);
@@ -163,7 +162,6 @@ class CPU {
                         break;
 
                 }
-                
                 break;
 
             case 0x1000:
@@ -496,9 +494,7 @@ class CPU {
                         break;
 
                 }
-
                 break;
-            // no default case (is it needed?)
         }
 
     } // End of  emulateOpcode(opcode)
