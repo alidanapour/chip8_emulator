@@ -55,8 +55,6 @@
             <option value="WIPEOFF">WIPEOFF</option>
         </select>
 
-
-
 	    <!-- Speed Controls -->
 	    <select id="speed" onchange="setEmulatorSpeed(this)">
 	        <option value="8">8 cycles/frame</option>
@@ -75,7 +73,7 @@
 	    <button id="reset" onclick="resetPressed()">Reset</button> </br>
 
 
-	</div>
+	</div> <!-- End topBar -->
 
     <!-- Quirk Checkboxes -->
     <div id="quirk">
@@ -95,9 +93,9 @@
             <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" unchecked/>
         </div>
 
-    </div>
+    </div> <!-- End quirk -->
 
-</div></br>
+</div></br> <!-- End options -->
 
 <body>
     <!-- Visualizer Area -->
@@ -183,7 +181,6 @@
               <div id="controlsDescription"></div>
             </div>
 
-
     </div></br>
 
     <!-- Sprite Editor Tool -->
@@ -210,7 +207,6 @@
     </div>
 
 </body>
-
 
 <!-- Files To Be Loaded At The End -->
 <script type="text/javascript" src="scripts/description.js"></script>
