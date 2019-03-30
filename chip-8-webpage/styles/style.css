@@ -243,7 +243,7 @@ input[type=checkbox] {
   width: 3%;
 }
 
-.descriptionButton{
+/* .descriptionButton{
 	background-color: #D9D9D9;
   color: black;
   cursor: pointer;
@@ -276,13 +276,13 @@ input[type=checkbox] {
 #controlsDescription {
   float: left;
   padding: 0 0 0 2%;
-}
+} */
 
-#controlsFlex{
+/* #controlsFlex{
   padding: 1%;
   display: flex;
   flex-direction: row;
-}
+} */
 
 .games{
   border: 3px solid black;
@@ -346,4 +346,65 @@ input[type=checkbox] {
   font-family: 'Karla', sans-serif;
   font-size: 12.5px;
   box-shadow: 3px 3px #dbdbdb;
+}
+
+/* Styling the pop-up description */
+
+#descriptionButton{
+	background-color: white;
+	border-width: 2px;
+	border-color: black;
+	box-shadow: 2px 2px #dbdbdb;
+	font-weight: bold;
+	opacity: 0.6;
+  transition: 0.3s;
+	font-family: 'Karla', sans-serif;
+}
+
+#descriptionButton:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+/* The Modal (background) */
+.pop-up {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.description-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  font-size: 15px;
+}
+
+#controlsTable {
+  border: 2px solid black;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
