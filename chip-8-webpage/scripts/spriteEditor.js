@@ -1,22 +1,21 @@
 const scalingFactor = 20;         		// Scale pixels by this factor
 
 const spriteEditorArea = document.getElementById('sprite-draw');
-const spriteLength = 15;
-const spriteWidth = 8;
-let numberOfPixels = spriteLength * spriteWidth;
-
 const spriteTextBox = document.getElementById('sprite-output');
+
 spriteTextBox.value = "0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00";
 
+let pixelArray = [0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 
+    0x00, 0x00, 0x00, 0x00, 0x00];      // Array to store sprite pixels
+
+// Add corresponding events to the webpage
 spriteEditorArea.onmousedown = updateSpriteArea;
 spriteEditorArea.onmousemove = updateSpriteArea;
 spriteEditorArea.oncontextmenu = () => false;       // Disable right click within the sprite editor area
 spriteTextBox.oninput = renderSpriteScreenFromText;
 
-let pixelArray = [0x00, 0x00, 0x00, 0x00, 0x00,
-                  0x00, 0x00, 0x00, 0x00, 0x00, 
-                  0x00, 0x00, 0x00, 0x00, 0x00];    // Array to store sprite pixels
-
+// Function to convert the pixelArray to a string in hex format
 function toHexString(byteArray) {
     let str = [];
     for (let i = 0; i < byteArray.length; i++)
@@ -24,6 +23,13 @@ function toHexString(byteArray) {
     return str.join(', ');
 }
 
+/////////////////////////
+//                     //
+//  Movement Controls  //
+//                     //
+/////////////////////////
+
+// 'Clear' pressed
 function clearSpriteArea() {
     const ctx = spriteEditorArea.getContext('2d');
     ctx.fillStyle = '#c4c4c4';
@@ -34,21 +40,24 @@ function clearSpriteArea() {
                   0x00, 0x00, 0x00, 0x00, 0x00];
 }
 
+// '∧' Pressed
 function moveSpriteUp() {
-    const tempTopByte = pixelArray[0];                // Store the top most line
+    const tempTopByte = pixelArray[0];              // Store the top most line
     pixelArray.shift();                             // Remove the top most line
-    pixelArray.push(tempTopByte);                   // Push the line stored to the end
+    pixelArray.push(tempTopByte);                   // Push the top most line stored, to the bottom
     spriteTextBox.value = toHexString(pixelArray);
     renderSpriteScreenFromText();
 }
 
+// '∨' Pressed
 function moveSpriteDown() {
-    const tempBottomByte = pixelArray.pop();          // Remove and store the bottom line
-    pixelArray.unshift(tempBottomByte);             // Push the line stored to the front
+    const tempBottomByte = pixelArray.pop();        // Remove and store the bottom line
+    pixelArray.unshift(tempBottomByte);             // Push the bottom line stored, to the top
     spriteTextBox.value = toHexString(pixelArray);
     renderSpriteScreenFromText();
 }
 
+// '<' Pressed
 function moveSpriteLeft() {
     for (let i = 0; i < pixelArray.length; i++) {
         let currentByte = pixelArray[i];
@@ -59,6 +68,7 @@ function moveSpriteLeft() {
     renderSpriteScreenFromText();
 }
 
+// '>' Pressed
 function moveSpriteRight() {
     for (let i = 0; i < pixelArray.length; i++) {
         let currentByte = pixelArray[i];
@@ -68,6 +78,13 @@ function moveSpriteRight() {
     spriteTextBox.value = toHexString(pixelArray);
     renderSpriteScreenFromText();
 }
+
+/////////////////////////
+//                     //
+//    Rendering and    //
+//   updating textbox  //
+//                     //
+/////////////////////////
 
 function updateSpriteArea(e) {
     if (e.buttons == 1) {                       // If left click is pressed
@@ -93,7 +110,7 @@ function updateSpriteArea(e) {
     }
 
     spriteTextBox.value = toHexString(pixelArray);
-}
+} // End of updateSpriteArea()
 
 function renderSpriteScreenFromText() {
     if (spriteTextBox.value == "") {
@@ -119,4 +136,4 @@ function renderSpriteScreenFromText() {
             }
         }
     }
-}
+} // End of renderSpriteScreenFromText()
