@@ -63,7 +63,7 @@ function moveSpriteRight() {
     for (let i = 0; i < pixelArray.length; i++) {
         let currentByte = pixelArray[i];
         let lastBit = (currentByte & 1) ? 1 : 0;
-        pixelArray[i] = (currentByte >>> 1) | (lastBit << 8);
+        pixelArray[i] = (currentByte >>> 1) | (lastBit << 7);
     }
     spriteTextBox.value = toHexString(pixelArray);
     renderSpriteScreenFromText();
