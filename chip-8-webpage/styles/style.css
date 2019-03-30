@@ -27,7 +27,7 @@ body {
 	text-align: center;
 }
 
-#logoAnimation{
+#logoAnimation {
 	width: 15%;
 	vertical-align: middle;
 	padding-top: 0;
@@ -35,7 +35,7 @@ body {
 	position:relative;
 }
 
-#topBar{
+#topBar {
 	max-height: 80px;
 }
 
@@ -53,7 +53,7 @@ body {
 
 }
 
-#games:hover{
+#games:hover {
 	cursor: pointer;
 }
 
@@ -71,12 +71,12 @@ body {
 
 }
 
-#speed:hover{
+#speed:hover {
 	cursor: pointer;
 }
 
 /* buttons*/
-#continue{
+#continue {
 	background-color: white;
 	border-width: 2px;
 	border-color: black;
@@ -87,12 +87,12 @@ body {
 	font-family: 'Karla', sans-serif;
 }
 
-#continue:hover{
+#continue:hover {
 	cursor: pointer;
 	opacity: 1;
 }
 
-#pause{
+#pause {
 	background-color: white;
 	border-width: 2px;
 	border-color: black;
@@ -103,12 +103,12 @@ body {
 	font-family: 'Karla', sans-serif;
 }
 
-#pause:hover{
+#pause:hover {
 	cursor: pointer;
 	opacity: 1;
 }
 
-#step-forward{
+#step-forward {
 	background-color: white;
 	border-width: 2px;
 	border-color: black;
@@ -119,12 +119,12 @@ body {
 	font-family: 'Karla', sans-serif;
 }
 
-#step-forward:hover{
+#step-forward:hover {
 	cursor: pointer;
 	opacity: 1;
 }
 
-#step-backward{
+#step-backward {
 	background-color: white;
 	border-width: 2px;
 	border-color: black;
@@ -135,12 +135,12 @@ body {
 	font-family: 'Karla', sans-serif;
 }
 
-#step-backward:hover{
+#step-backward:hover {
 	cursor: pointer;
 	opacity: 1;
 }
 
-#reset{
+#reset {
 	background-color: white;
 	border-width: 2px;
 	border-color: black;
@@ -151,12 +151,12 @@ body {
 	font-family: 'Karla', sans-serif;
 }
 
-#reset:hover{
+#reset:hover {
 	cursor: pointer;
 	opacity: 1;
 }
 
-#quirk{
+#quirk {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -167,12 +167,12 @@ body {
   padding-left: 30px;
 }
 
-.quirk-label{
+.quirk-label {
   font-size: 13px;
 	font-family: 'Karla', sans-serif;
 }
 
-/* making the checkboxs bigger */
+/* Making the checkboxs bigger */
 input[type=checkbox] {
   -ms-transform: scale(1.5);
   -moz-transform: scale(1.5);
@@ -187,7 +187,7 @@ input[type=checkbox] {
   margin-right: auto;
 }
 
-.visualizer{
+.visualizer {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -196,7 +196,7 @@ input[type=checkbox] {
 
 }
 
-.display{
+.display {
   text-align: center;
 }
 
@@ -208,7 +208,7 @@ input[type=checkbox] {
 
 }
 
-.instructions{
+.instructions {
   border: 3px solid black;
   font-family: 'Karla', sans-serif;
   font-size: 12.5px;
@@ -220,7 +220,7 @@ input[type=checkbox] {
   box-shadow: 5px 7px #dbdbdb;
 }
 
-.registers{
+.registers {
   border: 3px solid black;
   padding: 0.5% 0.5% 0.5% 0.5%;
   width: 10%;
@@ -230,7 +230,7 @@ input[type=checkbox] {
   box-shadow: 5px 7px #dbdbdb;
 }
 
-.registers_inner{
+.registers_inner {
   font-family: 'Karla', sans-serif;
   font-size: 12.5px;
 }
@@ -239,11 +239,11 @@ input[type=checkbox] {
   background-color: greenyellow;
 }
 
-.flexBoxPadding{
+.flexBoxPadding {
   width: 3%;
 }
 
-.games{
+.games {
   border: 3px solid black;
   font-family: 'Karla', sans-serif;
   font-size: 12.5px;
@@ -254,7 +254,7 @@ input[type=checkbox] {
 
 /* tool styling */
 
-#tool-buttons{
+#tool-buttons {
   padding-bottom: 1%;
 }
 
@@ -268,11 +268,11 @@ input[type=checkbox] {
   padding-top: 1%;
 }
 
-#paddingDiv{
+#paddingDiv {
   padding: 0.5%;
 }
 
-#clickMe{
+#clickMe {
   border: 3px solid black;
   font-family: 'Karla', sans-serif;
   font-size: 12.5px;
@@ -280,7 +280,7 @@ input[type=checkbox] {
   box-shadow: 3px 3px #dbdbdb;
 }
 
-.newButton{
+.newButton {
 	background-color: white;
 	border-width: 2px;
 	border-color:black;
@@ -291,16 +291,16 @@ input[type=checkbox] {
 	font-family: 'Karla', sans-serif;
 }
 
-.newButton:hover{
+.newButton:hover {
 	cursor: pointer;
 	opacity: 1;
 }
 
-#sprite-draw:hover{
+#sprite-draw:hover {
   cursor: crosshair;
 }
 
-#sprite-output{
+#sprite-output {
   border: 3px solid black;
   font-family: 'Karla', sans-serif;
   font-size: 12.5px;
@@ -309,7 +309,7 @@ input[type=checkbox] {
 
 /* Styling the pop-up description */
 
-#descriptionButton{
+#descriptionButton {
 	background-color: white;
 	border-width: 2px;
 	border-color: black;
@@ -320,7 +320,7 @@ input[type=checkbox] {
 	font-family: 'Karla', sans-serif;
 }
 
-#descriptionButton:hover{
+#descriptionButton:hover {
 	cursor: pointer;
 	opacity: 1;
 }
@@ -361,19 +361,19 @@ input[type=checkbox] {
   overflow: hidden;
 }
 
-#description-body{
+#description-body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
 
-#tempDescHolder{
+#tempDescHolder {
   width: 70%;
   padding-right: 5%;
   text-align: left;
 }
 
-#table-button-col{
+#table-button-col {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -385,7 +385,7 @@ input[type=checkbox] {
   padding: 1%;
 }
 
-#controlsDescription{
+#controlsDescription {
   padding: 1%;
 }
 
