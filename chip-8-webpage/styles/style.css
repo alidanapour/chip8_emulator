@@ -243,47 +243,6 @@ input[type=checkbox] {
   width: 3%;
 }
 
-.descriptionButton{
-	background-color: #D9D9D9;
-  color: black;
-  cursor: pointer;
-  padding: 5px;
-  border: solid;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-.active, #descriptionButton:hover {
-	background-color: gray;
-}
-
-#description {
-  padding: 0 10px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-	font-family: 'Karla', sans-serif;
-  font-size: 15px;
-}
-
-#controlsTable {
-  border: 2px solid black;
-  float: left;
-}
-
-#controlsDescription {
-  float: left;
-  padding: 0 0 0 2%;
-}
-
-#controlsFlex{
-  padding: 1%;
-  display: flex;
-  flex-direction: row;
-}
-
 .games{
   border: 3px solid black;
   font-family: 'Karla', sans-serif;
@@ -347,3 +306,101 @@ input[type=checkbox] {
   font-size: 12.5px;
   box-shadow: 3px 3px #dbdbdb;
 }
+
+/* Styling the pop-up description */
+
+#descriptionButton{
+	background-color: white;
+	border-width: 2px;
+	border-color: black;
+	box-shadow: 2px 2px #dbdbdb;
+	font-weight: bold;
+	opacity: 0.6;
+  transition: 0.3s;
+	font-family: 'Karla', sans-serif;
+}
+
+#descriptionButton:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+/* The pop-up */
+.pop-up {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* description Content */
+.description-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 1%;
+  width: 80%; /* Could be more or less, depending on screen size */
+  font-size: 15px;
+  animation-name: animatetop;
+  animation-duration: 0.5s;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+/* description Header */
+.description-header {
+  overflow: hidden;
+}
+
+#description-body{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#tempDescHolder{
+  width: 70%;
+  padding-right: 5%;
+  text-align: left;
+}
+
+#table-button-col{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 30%;
+}
+
+#controlsTable {
+  border: 2px solid black;
+  padding: 1%;
+}
+
+#controlsDescription{
+  padding: 1%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+

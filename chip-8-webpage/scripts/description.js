@@ -50,8 +50,8 @@ let conKALEID = "X: finish<br/>2: up<br/>Q: left<br/>E: right<br/>S: down"
 let conMAZE = "No controls, just enjoy the amazing visuals!"
 let conMERLIN = "Q: left<br/>E: right"
 let conMISSILE = "S: fire"
-let conPONG = "1: move left paddle Q: move left paddle down<br/>4: move right paddle up R: move right paddle down"
-let conPONG2 = "1: move left paddle Q: move left paddle down<br/>4: move right paddle up R: move right paddle down"
+let conPONG = "1: move left paddle <br/> Q: move left paddle down<br/>4: move right paddle up <br/>R: move right paddle down"
+let conPONG2 = "1: move left paddle <br/> Q: move left paddle down<br/>4: move right paddle up <br/>R: move right paddle down"
 let conPUZZLE = "Use all the buttons for moving the puzzle pieces!"
 let conSFACES = "No controls, just enjoy the amazing visuals!>"
 let conSPACEWARS = "W: move up<br/>A: move left<br/>S: move down<br/>D: move right<br/>E: start"
@@ -111,29 +111,43 @@ function highlightControls(controlHighlightArray) {
         document.getElementById(controlHighlightingMap[i]).style.backgroundColor = controlHighlightArray[i] ? "greenyellow" : "transparent";
 }
 
-// For the description
-let coll = document.getElementsByClassName("descriptionButton");
-for (let i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight)
-            content.style.maxHeight = null;
-        else
-            content.style.maxHeight = content.scrollHeight + "px"; });
-}
-
-function description(game) {
-    let gameIndex = gameArray.indexOf(game);
-    highlightControls(conArrayArray[gameIndex]);
-    console.log(conArrayArray[gameIndex]);
-	document.getElementById("tempDescHolder").innerHTML = decArray[gameIndex] + "<br/>";
-    document.getElementById("controlsDescription").innerHTML = conArray[gameIndex]+"<br/>";
-    document.getElementById("clickMe").click();
-    document.getElementById("clickMe").click();
-}
-
 function videoControl(){
   var video=document.getElementById("logoAnimation");
-  video.currentTime=0;//restarts the vid
+  video.currentTime = 0; //restarts the vid
 }
+
+// pop-op
+
+// Get the description
+var des = document.getElementById('description');
+
+// Get the button that opens the description
+var btn = document.getElementById("descriptionButton");
+
+// Get the <span> element that closes the description
+var span = document.getElementsByClassName("close")[0];
+
+// get the game drop-down element
+var game = document.getElementById("games")
+
+// When the user clicks on the button, open the description 
+btn.onclick = function() {
+    des.style.display = "block";
+    let gameIndex = gameArray.indexOf(game.options[game.selectedIndex].value);
+    highlightControls(conArrayArray[gameIndex]);
+	document.getElementById("tempDescHolder").innerHTML = decArray[gameIndex] + "<br/>";
+    document.getElementById("controlsDescription").innerHTML = conArray[gameIndex] +"<br/>";
+}
+
+// When the user clicks on <span> (x), close the description
+span.onclick = function() {
+    des.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the description, close it
+window.onclick = function(event) {
+  if (event.target == des) {
+        des.style.display = "none";
+    }
+}
+

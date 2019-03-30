@@ -150,7 +150,7 @@ function runEmulator(menu) {
         for (let i = 0; i < len; i++)
             CHIP8.memory[CHIP8.PC + i] = romChosen[i];
 		
-		description(menu.value);			// For updating description based on ROM selected
+		// description(menu.value);			// For updating description based on ROM selected
     }
 
     document.getElementById('rom').value = "";
