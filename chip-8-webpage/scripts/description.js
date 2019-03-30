@@ -123,13 +123,6 @@ for (let i = 0; i < coll.length; i++) {
             content.style.maxHeight = content.scrollHeight + "px"; });
 }
 
-
-
-//function lineChecker(descriptLines){
-//  let lines=(descriptLines.length)/170
-//  return lines
-//}
-
 function description(game) {
     let gameIndex = gameArray.indexOf(game);
     highlightControls(conArrayArray[gameIndex]);
