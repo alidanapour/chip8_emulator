@@ -32,52 +32,31 @@ body {
 	vertical-align: middle;
 	padding-top: 0;
 	z-index: -1;
-	position:relative;
+	position: relative;
 }
 
 #topBar {
 	max-height: 80px;
 }
 
-#games select {
-	background-color: white;
-
-}
-
-#games {
+/* Drop-Down Menus */
+/* Games and Speeds */
+.drop-down {
 	border-radius: 5px;
 	background-color: white;
 	border-width: 2px;
 	border-color: black;
 	box-shadow: 2px 2px #dbdbdb;
-
 }
 
-#games:hover {
+.drop-down:hover {
 	cursor: pointer;
 }
 
-#speed select {
-	background-color: white;
-
-}
-
-#speed {
-	border-radius: 5px;
-	background-color: white;
-	border-width: 2px;
-	border-color: black;
-	box-shadow: 2px 2px #dbdbdb;
-
-}
-
-#speed:hover {
-	cursor: pointer;
-}
-
-/* buttons*/
-#continue {
-	background-color: white;
+/* Flow-control Buttons */
+/* Continue, Pause, Step-Forwards, Step-Backward, Reset */
+.flow-control-buttons {
+  background-color: white;
 	border-width: 2px;
 	border-color: black;
 	box-shadow: 2px 2px #dbdbdb;
@@ -87,75 +66,12 @@ body {
 	font-family: 'Karla', sans-serif;
 }
 
-#continue:hover {
-	cursor: pointer;
+.flow-control-buttons:hover {
+  cursor: pointer;
 	opacity: 1;
 }
 
-#pause {
-	background-color: white;
-	border-width: 2px;
-	border-color: black;
-	box-shadow: 2px 2px #dbdbdb;
-	font-weight: bold;
-	opacity: 0.6;
-  transition: 0.3s;
-	font-family: 'Karla', sans-serif;
-}
-
-#pause:hover {
-	cursor: pointer;
-	opacity: 1;
-}
-
-#step-forward {
-	background-color: white;
-	border-width: 2px;
-	border-color: black;
-	box-shadow: 2px 2px #dbdbdb;
-	font-weight: bold;
-	opacity: 0.6;
-  transition: 0.3s;
-	font-family: 'Karla', sans-serif;
-}
-
-#step-forward:hover {
-	cursor: pointer;
-	opacity: 1;
-}
-
-#step-backward {
-	background-color: white;
-	border-width: 2px;
-	border-color: black;
-	box-shadow: 2px 2px #dbdbdb;
-	font-weight: bold;
-	opacity: 0.6;
-  transition: 0.3s;
-	font-family: 'Karla', sans-serif;
-}
-
-#step-backward:hover {
-	cursor: pointer;
-	opacity: 1;
-}
-
-#reset {
-	background-color: white;
-	border-width: 2px;
-	border-color: black;
-	box-shadow: 2px 2px #dbdbdb;
-	font-weight: bold;
-	opacity: 0.6;
-  transition: 0.3s;
-	font-family: 'Karla', sans-serif;
-}
-
-#reset:hover {
-	cursor: pointer;
-	opacity: 1;
-}
-
+/* Quirk Checkboxes */
 #quirk {
   display: flex;
   flex-direction: row;
@@ -164,7 +80,7 @@ body {
 }
 
 #quirk div {
-  padding-left: 30px;
+  padding-left: 15px;
 }
 
 .quirk-label {
@@ -308,7 +224,6 @@ input[type=checkbox] {
 }
 
 /* Styling the pop-up description */
-
 #descriptionButton {
 	background-color: white;
 	border-width: 2px;

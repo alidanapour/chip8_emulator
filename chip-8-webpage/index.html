@@ -27,7 +27,7 @@
 	    </video>
 
         <!-- Drop-Down Games Menu -->
-		<select id="games" onchange="runEmulator(this)">
+		<select class="drop-down" id="games" onchange="runEmulator(this)">
             <option value="" selected disabled hidden>Choose a ROM</option>
             <option value="15PUZZLE">15PUZZLE</option>
             <option value="BLINKY">BLINKY</option>
@@ -57,7 +57,7 @@
         </select>
 
 	    <!-- Speed Controls -->
-	    <select id="speed" onchange="setEmulatorSpeed(this)">
+	    <select class="drop-down" id="speed" onchange="setEmulatorSpeed(this)">
 	        <option value="8">8 cycles/frame</option>
 	        <option value="10">10 cycles/frame</option>
 	        <option value="15">15 cycles/frame</option>
@@ -67,11 +67,11 @@
 	    </select>
 
 	    <!-- Emulator Flow-Control Buttons -->
-	    <button id="continue" onclick="continuePressed()">Continue</button>
-	    <button id="pause" onclick="pausePressed()">Pause</button>
-	    <button id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
-	    <button id="step-backward" onclick="stepBackwardPressed()">Step Backward</button>
-        <button id="reset" onclick="resetPressed()">Reset</button> 
+	    <button class="flow-control-buttons" id="continue" onclick="continuePressed()">Continue</button>
+	    <button class="flow-control-buttons" id="pause" onclick="pausePressed()">Pause</button>
+	    <button class="flow-control-buttons" id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
+	    <button class="flow-control-buttons" id="step-backward" onclick="stepBackwardPressed()">Step Backward</button>
+        <button class="flow-control-buttons" id="reset" onclick="resetPressed()">Reset</button> 
         
         <!-- Trigger/Open The Description -->
         <button id="descriptionButton">How To Play</button>
