@@ -261,10 +261,13 @@ input[type=checkbox] {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 1%;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 60%; /* Could be more or less, depending on screen size */
   font-size: 15px;
   animation-name: animatetop;
   animation-duration: 0.5s;
+  border: 3px solid black;
+  box-shadow: 3px 3px #dbdbdb;
+  border-radius: 10px;
 }
 
 /* Add Animation */
@@ -304,6 +307,7 @@ input[type=checkbox] {
 
 #controlsDescription {
   padding: 1%;
+  text-align: left;
 }
 
 /* The Close Button */

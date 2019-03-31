@@ -61,7 +61,7 @@ let conTETRIS = "Q: rotate<br/>W: left<br/>E: right<br/>A: drop piece";
 let conTICTAC = "1-D: select corresponding square";
 let conUFO = "Q: shoot left<br/>W: shoot up<br/>E: shoot right";
 let conVBRIX = "Q: move paddle left<br/>E: Move paddle right";
-let conVERS = "1: player1 left 2: player1 right A player1 up Z: player1 down<br/>C: player2 left 4: player2 up R: player 2 down V: player 2 right";
+let conVERS = "1: player-1 left <br/> 2: player-1 right <br/> A player-1 up <br/> Z: player-1 down <br/> C: player-2 left <br/> 4: player-2 up <br/> R: player-2 down <br/> V: player-2 right";
 let conWIPEOFF = "Q: move paddle left<br/>E: move paddle right";
 
 let conArray = [con15PUZZLE, conBLINKY, conBLITZ, conBRIX, conCGG, conCONNECT4, conGUESS, conHIDDEN, conINVADERS,
@@ -129,14 +129,22 @@ let span = document.getElementsByClassName("close")[0];
 
 // Get the game drop-down element
 let game = document.getElementById("games");
+let DescHolder = document.getElementById("tempDescHolder");
+let controls = document.getElementById("controlsDescription");
 
 // When the user clicks the button, open the description
 btn.onclick = function() {
     des.style.display = "block";
     let gameIndex = gameArray.indexOf(game.options[game.selectedIndex].value);
-    highlightControls(conArrayArray[gameIndex]);
-	document.getElementById("tempDescHolder").innerHTML = decArray[gameIndex] + "<br/>";
-    document.getElementById("controlsDescription").innerHTML = conArray[gameIndex] +"<br/>";
+    if (gameIndex !== -1) {
+        highlightControls(conArrayArray[gameIndex]);
+	    DescHolder.innerHTML = decArray[gameIndex] + "<br/>";
+        controls.innerHTML = conArray[gameIndex] + "<br/>";
+    } else {
+        highlightControls([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+        DescHolder.innerHTML = "Choose a game from the drop-down menu to see its description! <br/>";
+        controls.innerHTML = "";
+    }
 }
 
 // When the user clicks on <span> (x), close the description
