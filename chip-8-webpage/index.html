@@ -6,17 +6,15 @@
     <meta charset="utf-8">
     <title>CHIP-8 JavaScript</title>
     <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="aos/aos.css" rel="stylesheet"> <!--Load ASO library-->
     <link href="https://fonts.googleapis.com/css?family=Karla|Merriweather" rel="stylesheet">   <!--Load fonts from Google-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">      <!--Load Google icons-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <!--Load jQuery from Google-->
     <script type="text/javascript" src="scripts/disassembleOpcode.js"></script>
     <script type="text/javascript" src="scripts/cpu.js"></script>
     <script type="text/javascript" src="scripts/tests.js"></script>
     <script type="text/javascript" src="scripts/preloadRoms.js"></script>
     <script type="text/javascript" src="scripts/runEmulator.js"></script>
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <div class="options">
@@ -166,9 +164,9 @@
     <!-- somehow using a separate script won't work -->
     <!-- <script type="text/javascript" src="scripts/scroll.js"></script> -->
     <!-- must put in body -->
-    <script>
+    <!-- <script>
         AOS.init();
-    </script>
+    </script> -->
 
     <!-- Visualizer Area -->
     <div class="visualizer">
@@ -242,6 +240,10 @@
         </div>
 
     </div>
+
+    <!-- Files To Be Loaded At The End of body -->
+    <script type="text/javascript" src="aos/aos.js"></script> <!--Load ASO library-->
+    <script type="text/javascript" src="scripts/scroll.js"></script> <!-- Init ASO library-->
 
 </body>
 

@@ -176,6 +176,20 @@ input[type=checkbox] {
 
 /* tool styling */
 
+#tool-sprite{
+	text-align: center;
+	border: 3px solid black;
+	font-family: 'Karla', sans-serif;
+	font-size: 12.5px;
+	border-radius: 10px;
+	box-shadow: 5px 7px #dbdbdb;
+	padding: 0 0 2%;
+	width: 30%;
+	min-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #tool-buttons {
   padding-bottom: 1%;
 }
@@ -325,16 +339,3 @@ input[type=checkbox] {
   cursor: pointer;
 }
 
-#tool-sprite{
-	text-align: center;
-	border: 3px solid black;
-	font-family: 'Karla', sans-serif;
-	font-size: 12.5px;
-	border-radius: 10px;
-	box-shadow: 5px 7px #dbdbdb;
-	padding: 0 0 2%;
-	width: 30%;
-	min-width: 350px;
-	margin-left: auto;
-	margin-right: auto;
-}
