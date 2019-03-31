@@ -185,7 +185,7 @@ input[type=checkbox] {
 }
 
 #sprite-draw {
-  border: 3px solid black;
+  border: 3px solid gray;
   background-color: #c4c4c4;
   box-shadow: 3px 3px #dbdbdb;
 }
@@ -219,7 +219,6 @@ input[type=checkbox] {
 }
 
 #sprite-output {
-  border: 3px solid black;
   font-family: 'Karla', sans-serif;
   font-size: 12.5px;
   box-shadow: 3px 3px #dbdbdb;
@@ -320,4 +319,17 @@ input[type=checkbox] {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+#tool-sprite{
+	text-align: center;
+	border: 3px solid black;
+	font-family: 'Karla', sans-serif;
+	font-size: 12.5px;
+	border-radius: 10px;
+	box-shadow: 5px 7px #dbdbdb;
+	padding: 0 0 2%;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
 }
