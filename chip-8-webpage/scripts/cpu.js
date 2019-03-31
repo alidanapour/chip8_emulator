@@ -125,6 +125,7 @@ class CPU {
             // Copy the file to the emulator's memory
             for (let i = 0; i < buffer.length; i++)
                 CHIP8.memory[CHIP8.PC + i] = buffer[i];
+            currentRom = CHIP8.memory.slice();
         });
 
         reader.readAsArrayBuffer(rom);
