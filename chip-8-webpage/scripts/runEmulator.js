@@ -33,13 +33,14 @@ let timerProcess = null;            // Tracks the D/S timer cycle
 let displayRegisters = null;        // Tracks the registers visualizer
 let displayInstructions = null;     // Tracks the instructions visualizer
 
-let notPaused = true;
+let notPaused = true;               // Game is running
 let emulatorSpeed = 8;              // Default speed is 8 cycles/frame
 let isTimerFixed = false;           // Fix the delay timer to 1 cycle/frame
 let CHIP8 = new CPU();              // Initialize a CHIP8 CPU object
 let prevCachedPC = 0;               // To update instruction list
 
-let cpuCacheStack = new Array();    // Stack for storing CPU states (step backward)
+let cpuCacheStack = new Array();    // Stack for storing CPU states (for stepping backward)
+let currentRom = new Array();       // Store the current ROM for restarting later
 
 function pushCpuStateToStack(x) {
     let tempState = {
@@ -53,7 +54,7 @@ function pushCpuStateToStack(x) {
         soundTimer_cache: x.soundTimer,
         display_cache: x.display.slice(),
     }
-
+    
     if (cpuCacheStack.length < 1000)
         cpuCacheStack.push(tempState);
     else {
@@ -149,8 +150,8 @@ function runEmulator(menu) {
         let len = romChosen.length;
         for (let i = 0; i < len; i++)
             CHIP8.memory[CHIP8.PC + i] = romChosen[i];
-		
-		description(menu.value);			// For updating description based on ROM selected
+		currentRom = CHIP8.memory.slice();  // Update current ROM
+		// description(menu.value);			// For updating description based on ROM selected
     }
 
     document.getElementById('rom').value = "";
@@ -233,6 +234,16 @@ function resetPressed() {
     emulatorSpeed = 8;
     cpuCacheStack = new Array();
     resetVisualizer();
+    currentRom = new Array();
+}
+
+
+function restartRomPressed() {
+    CHIP8.reset();
+    CHIP8.memory = currentRom.slice();
+    cpuCacheStack = new Array();
+    resetVisualizer();
+    CHIP8.isRunning = true;
 }
 
 
@@ -389,9 +400,9 @@ window.onload = function() {
         }
     }, 1000/60);
 
-    timerProcess = setInterval(function() {
-        let k = isTimerFixed ? 1 : emulatorSpeed/parseFloat(8);
-        for (let i = 0; i < k; i++) {
+    timerProcess = setInterval (function() {
+        let timerRatio = isTimerFixed ? 1 : emulatorSpeed/parseFloat(8);
+        for (let i = 0; i < timerRatio; i++) {
             if (CHIP8.isRunning) {
                 if (CHIP8.soundTimer > 0)
                     beepSound.play();

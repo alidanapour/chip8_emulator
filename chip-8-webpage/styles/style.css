@@ -23,61 +23,46 @@ body {
 	margin: 0 auto;
 }
 
+button:focus {
+  outline:0;
+}
+
 .options {
 	text-align: center;
 }
 
-#logoAnimation{
+#logoAnimation {
 	width: 15%;
 	vertical-align: middle;
 	padding-top: 0;
 	z-index: -1;
-	position:relative;
+	position: relative;
 }
 
-#topBar{
+#topBar {
 	max-height: 80px;
 }
 
-#games select {
-	background-color: white;
+/* Drop-Down Menus */
+/* Games and Speeds */
 
-}
-
-#games {
+.drop-down {
 	border-radius: 5px;
 	background-color: white;
 	border-width: 2px;
 	border-color: black;
 	box-shadow: 2px 2px #dbdbdb;
-
 }
 
-#games:hover{
+.drop-down:hover {
 	cursor: pointer;
 }
 
-#speed select {
-	background-color: white;
+/* Flow-control Buttons */
+/* Continue, Pause, Step-Forwards, Step-Backward, Reset */
 
-}
-
-#speed {
-	border-radius: 5px;
-	background-color: white;
-	border-width: 2px;
-	border-color: black;
-	box-shadow: 2px 2px #dbdbdb;
-
-}
-
-#speed:hover{
-	cursor: pointer;
-}
-
-/* buttons*/
-#continue{
-	background-color: white;
+.flow-control-buttons {
+  background-color: white;
 	border-width: 2px;
 	border-color: black;
 	box-shadow: 2px 2px #dbdbdb;
@@ -87,76 +72,17 @@ body {
 	font-family: 'Karla', sans-serif;
 }
 
-#continue:hover{
-	cursor: pointer;
+.flow-control-buttons:hover {
+  cursor: pointer;
 	opacity: 1;
 }
 
-#pause{
-	background-color: white;
-	border-width: 2px;
-	border-color: black;
-	box-shadow: 2px 2px #dbdbdb;
-	font-weight: bold;
-	opacity: 0.6;
-  transition: 0.3s;
-	font-family: 'Karla', sans-serif;
+.flow-control-buttons .material-icons {
+  font-size: 14px;
 }
 
-#pause:hover{
-	cursor: pointer;
-	opacity: 1;
-}
-
-#step-forward{
-	background-color: white;
-	border-width: 2px;
-	border-color: black;
-	box-shadow: 2px 2px #dbdbdb;
-	font-weight: bold;
-	opacity: 0.6;
-  transition: 0.3s;
-	font-family: 'Karla', sans-serif;
-}
-
-#step-forward:hover{
-	cursor: pointer;
-	opacity: 1;
-}
-
-#step-backward{
-	background-color: white;
-	border-width: 2px;
-	border-color: black;
-	box-shadow: 2px 2px #dbdbdb;
-	font-weight: bold;
-	opacity: 0.6;
-  transition: 0.3s;
-	font-family: 'Karla', sans-serif;
-}
-
-#step-backward:hover{
-	cursor: pointer;
-	opacity: 1;
-}
-
-#reset{
-	background-color: white;
-	border-width: 2px;
-	border-color: black;
-	box-shadow: 2px 2px #dbdbdb;
-	font-weight: bold;
-	opacity: 0.6;
-  transition: 0.3s;
-	font-family: 'Karla', sans-serif;
-}
-
-#reset:hover{
-	cursor: pointer;
-	opacity: 1;
-}
-
-#quirk{
+/* Quirk Checkboxes */
+#quirk {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -164,15 +90,15 @@ body {
 }
 
 #quirk div {
-  padding-left: 30px;
+  padding-left: 15px;
 }
 
-.quirk-label{
+.quirk-label {
   font-size: 13px;
 	font-family: 'Karla', sans-serif;
 }
 
-/* making the checkboxs bigger */
+/* Making the checkboxs bigger */
 input[type=checkbox] {
   -ms-transform: scale(1.5);
   -moz-transform: scale(1.5);
@@ -187,7 +113,7 @@ input[type=checkbox] {
   margin-right: auto;
 }
 
-.visualizer{
+.visualizer {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -196,7 +122,7 @@ input[type=checkbox] {
 
 }
 
-.display{
+.display {
   text-align: center;
 }
 
@@ -208,7 +134,7 @@ input[type=checkbox] {
 
 }
 
-.instructions{
+.instructions {
   border: 3px solid black;
   font-family: 'Karla', sans-serif;
   font-size: 12.5px;
@@ -220,7 +146,7 @@ input[type=checkbox] {
   box-shadow: 5px 7px #dbdbdb;
 }
 
-.registers{
+.registers {
   border: 3px solid black;
   padding: 0.5% 0.5% 0.5% 0.5%;
   width: 10%;
@@ -230,7 +156,7 @@ input[type=checkbox] {
   box-shadow: 5px 7px #dbdbdb;
 }
 
-.registers_inner{
+.registers_inner {
   font-family: 'Karla', sans-serif;
   font-size: 12.5px;
 }
@@ -239,52 +165,11 @@ input[type=checkbox] {
   background-color: greenyellow;
 }
 
-.flexBoxPadding{
+.flexBoxPadding {
   width: 3%;
 }
 
-.descriptionButton{
-	background-color: #D9D9D9;
-  color: black;
-  cursor: pointer;
-  padding: 5px;
-  border: solid;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-.active, #descriptionButton:hover {
-	background-color: gray;
-}
-
-#description {
-  padding: 0 10px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-	font-family: 'Karla', sans-serif;
-  font-size: 15px;
-}
-
-#controlsTable {
-  border: 2px solid black;
-  float: left;
-}
-
-#controlsDescription {
-  float: left;
-  padding: 0 0 0 2%;
-}
-
-#controlsFlex{
-  padding: 1%;
-  display: flex;
-  flex-direction: row;
-}
-
-.games{
+.games {
   border: 3px solid black;
   font-family: 'Karla', sans-serif;
   font-size: 12.5px;
@@ -295,33 +180,43 @@ input[type=checkbox] {
 
 /* tool styling */
 
-#tool-buttons{
-  padding-bottom: 1%;
+#tool-sprite{
+	text-align: center;
+	border: 3px solid black;
+	font-family: 'Karla', sans-serif;
+	font-size: 12.5px;
+	border-radius: 10px;
+	box-shadow: 5px 7px #dbdbdb;
+	padding: 0 0 2%;
+	width: 30%;
+	min-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#tool-buttons {
+  padding-bottom: 2%;
+}
+
+#tool-buttons .newButton .material-icons{
+  font-size: 15px;
 }
 
 #sprite-draw {
-  border: 3px solid black;
+  border: 3px solid gray;
   background-color: #c4c4c4;
   box-shadow: 3px 3px #dbdbdb;
 }
 
 #tool-text{
-  padding-top: 1%;
+  padding-top: 2%;
 }
 
-#paddingDiv{
+#paddingDiv {
   padding: 0.5%;
 }
 
-#clickMe{
-  border: 3px solid black;
-  font-family: 'Karla', sans-serif;
-  font-size: 12.5px;
-  border-radius: 10px;
-  box-shadow: 3px 3px #dbdbdb;
-}
-
-.newButton{
+.newButton {
 	background-color: white;
 	border-width: 2px;
 	border-color:black;
@@ -332,18 +227,177 @@ input[type=checkbox] {
 	font-family: 'Karla', sans-serif;
 }
 
-.newButton:hover{
+.newButton:hover {
 	cursor: pointer;
 	opacity: 1;
 }
 
-#sprite-draw:hover{
+#sprite-draw:hover {
   cursor: crosshair;
 }
 
-#sprite-output{
-  border: 3px solid black;
+#sprite-output {
   font-family: 'Karla', sans-serif;
-  font-size: 12.5px;
+  font-size: 13px;
   box-shadow: 3px 3px #dbdbdb;
+  border-color: black;
 }
+
+.tool-popup-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.tool-popup-button .tool-popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.tool-popup-button .tool-popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.tool-popup-button .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+/* Styling the pop-up description */
+#descriptionButton {
+	background-color: white;
+	border-width: 2px;
+	border-color: black;
+	box-shadow: 2px 2px #dbdbdb;
+	font-weight: bold;
+	opacity: 0.6;
+  transition: 0.3s;
+  font-family: 'Karla', sans-serif;
+  font-size: 15px;
+}
+
+#descriptionButton:hover {
+	cursor: pointer;
+	opacity: 1;
+}
+
+/* The pop-up */
+.pop-up {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* Description Content */
+.description-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 1%;
+  width: 80%; /* Could be more or less, depending on screen size */
+  font-family: 'Karla', sans-serif;
+  font-size: 15px;
+  animation-name: animatetop;
+  animation-duration: 0.5s;
+  border: 3px solid black;
+  box-shadow: 3px 3px #dbdbdb;
+  border-radius: 10px;
+}
+
+/* Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+/* Description Header */
+.description-header {
+  overflow: hidden;
+}
+
+#description-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#tempDescHolder {
+  width: 70%;
+  padding-right: 5%;
+  text-align: left;
+}
+
+#table-button-col {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 30%;
+}
+
+#controlsTable {
+  border: 2px solid black;
+  padding: 1%;
+}
+
+#controlsDescription {
+  padding: 1%;
+  text-align: left;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+

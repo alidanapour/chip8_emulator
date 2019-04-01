@@ -1,5 +1,5 @@
-
 const CPU = require('./cpu');
+
 let CHIP8_TEST = new CPU();
 
 module.exports = {};
@@ -67,7 +67,7 @@ module.exports.cpuLoadFonts = function cpuLoadFonts() {
     return true;
 }
 
-//OPCODES
+//OPCODE TESTS
 module.exports.cpuOpcode_00E0 = function cpuOpcode_00E0() {
     CHIP8_TEST.reset();
     CHIP8_TEST.emulateOpcode(0x00E0);
@@ -262,13 +262,13 @@ module.exports.cpuOpcode_8XY7 = function cpuOpcode_8XY7() {
 
 module.exports.cpuOpcode_8XYE = function cpuOpcode_8XYE() {
     CHIP8_TEST.reset();
-    CHIP8_TEST.V[1] = 2; // 0000-0010
+    CHIP8_TEST.V[1] = 2;    // 0000-0010
     CHIP8_TEST.emulateOpcode(0x810E);
     if ((CHIP8_TEST.V[0xF] == 1) || (CHIP8_TEST.V[1] != ((2 << 1) & 0xFF)))
         return false;
 
     CHIP8_TEST.reset();
-    CHIP8_TEST.V[1] = 128; // 1000-0000
+    CHIP8_TEST.V[1] = 128;  // 1000-0000
     CHIP8_TEST.emulateOpcode(0x810E);
     if ((CHIP8_TEST.V[0xF] == 0) || (CHIP8_TEST.V[1] != ((128 << 1) & 0xFF)))
         return false;

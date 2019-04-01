@@ -3,12 +3,13 @@
 <html>
 
 <head>
-
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CHIP-8 JavaScript</title>
     <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="aos/aos.css" rel="stylesheet"> <!--Load ASO library-->
     <link href="https://fonts.googleapis.com/css?family=Karla|Merriweather" rel="stylesheet">   <!--Load fonts from Google-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <!--Load jQuery from Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">      <!--Load Google icons-->
     <script type="text/javascript" src="scripts/disassembleOpcode.js"></script>
     <script type="text/javascript" src="scripts/cpu.js"></script>
     <script type="text/javascript" src="scripts/tests.js"></script>
@@ -17,16 +18,17 @@
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 
-
 <div class="options">
 
-    <!-- Drop-down Games Menu -->
 	<div id="topBar">
+
+        <!-- Chip8 Logo Animation -->
 		<video autoplay muted id="logoAnimation">
 			<source src="images/logoAnimation.mp4" type="video/mp4"/>
 	    </video>
 
-		<select id="games" onchange="runEmulator(this)">
+        <!-- Drop-Down Games Menu -->
+		<select class="drop-down" id="games" onchange="runEmulator(this)" title="Choose a ROM to play">
             <option value="" selected disabled hidden>Choose a ROM</option>
             <option value="15PUZZLE">15PUZZLE</option>
             <option value="BLINKY">BLINKY</option>
@@ -56,7 +58,7 @@
         </select>
 
 	    <!-- Speed Controls -->
-	    <select id="speed" onchange="setEmulatorSpeed(this)">
+	    <select class="drop-down" id="speed" onchange="setEmulatorSpeed(this)" title="Set emulator speed">
 	        <option value="8">8 cycles/frame</option>
 	        <option value="10">10 cycles/frame</option>
 	        <option value="15">15 cycles/frame</option>
@@ -65,15 +67,77 @@
 	        <option value="40">40 cycles/frame</option>
 	    </select>
 
-	    <!-- Buttons -->
-	    <button id="continue" onclick="continuePressed()">Continue</button>
-	    <button id="pause" onclick="pausePressed()">Pause</button>
-	    <button id="step-forward" onclick="stepForwardPressed()">Step Forward</button>
-	    <button id="step-backward" onclick="stepBackwardPressed()">Step Backward</button>
-	    <button id="reset" onclick="resetPressed()">Reset</button> </br>
+        <!-- Emulator Flow-Control Buttons -->
+        <button class="flow-control-buttons" id="step-backward" onclick="stepBackwardPressed()" title="Step backward">
+            <i class="material-icons">skip_previous</i></button>
+        <button class="flow-control-buttons" id="continue" onclick="continuePressed()" title="Continue">
+            <i class="material-icons">play_arrow</i></button>
+        <button class="flow-control-buttons" id="pause" onclick="pausePressed()" title="Pause">
+            <i class="material-icons">pause</i></button>
+        <button class="flow-control-buttons" id="step-forward" onclick="stepForwardPressed()" title="Step forward">
+            <i class="material-icons">skip_next</i></button>
+        <button class="flow-control-buttons" id="restart-rom" onclick="restartRomPressed()" title="Restart current ROM">
+            <i class="material-icons">replay</i></button>
+        <button class="flow-control-buttons" id="reset" onclick="resetPressed()" title="Reset emulator">
+            <i class="material-icons">stop</i></button> 
+        
+        <!-- Trigger/Open The Description -->
+        <button id="descriptionButton" title="Open game description and controls">How To Play</button>
+        
+        <!-- The Description -->
+        <div id="description" class="pop-up">
 
+            <!-- Description Content -->
+            <div class="description-content">
+                
+                <div class="description-header">
+                    <span class="close">&times;</span>
+                </div>
 
-	</div> <!-- End topBar -->
+                <div id="description-body">
+
+                    <div id="tempDescHolder"></div>
+
+                    <div id="table-button-col">
+
+                        <table id="controlsTable">
+                                <tr>
+                                    <th id="controlButton1">1</th>
+                                    <th id="controlButton2">2</th>
+                                    <th id="controlButton3">3</th>
+                                    <th id="controlButton4">4</th>
+                                </tr>
+                                <tr>
+                                    <th id="controlButtonQ">Q</th>
+                                    <th id="controlButtonW">W</th>
+                                    <th id="controlButtonE">E</th>
+                                    <th id="controlButtonR">R</th>
+                                </tr>
+                                <tr>
+                                    <th id="controlButtonA">A</th>
+                                    <th id="controlButtonS">S</th>
+                                    <th id="controlButtonD">D</th>
+                                    <th id="controlButtonF">F</th>
+                                </tr>
+                                <tr>
+                                    <th id="controlButtonZ">Z</th>
+                                    <th id="controlButtonX">X</th>
+                                    <th id="controlButtonC">C</th>
+                                    <th id="controlButtonV">V</th>
+                                </tr>
+                        </table>
+            
+                        <div id="controlsDescription"></div>
+
+                    </div> <!-- End of Table Buttons Column -->
+                
+                </div> <!-- End of Description Body -->
+                
+            </div> <!-- End of Description Content-->
+        
+        </div> <!-- End of Description -->
+
+	</div> <!-- End of topBar -->
 
     <!-- Quirk Checkboxes -->
     <div id="quirk">
@@ -93,11 +157,12 @@
             <input type="checkbox" id="fixtimer" onclick="checkTimerQuirk()" unchecked/>
         </div>
 
-    </div> <!-- End quirk -->
+    </div> <!-- End of Quirk Checkboxes -->
 
-</div></br> <!-- End options -->
+</div></br> <!-- End of Options -->
 
 <body>
+   
     <!-- Visualizer Area -->
     <div class="visualizer">
 
@@ -105,13 +170,13 @@
         <div class="instructions">Instructions</div>
         <div class="flexBoxPadding"></div>
 
+        <!-- Emulator Screen -->
         <div class="display">
-
-            <!-- Emulator Screen -->
             <canvas id="screen-area" width="640" height="320"></canvas>
-
         </div>
+
         <div class="flexBoxPadding"></div>
+
         <!-- Register Area -->
         <div class="registers">
             <div class="registers_inner" id="PC">PC: 0x0000</div>
@@ -136,64 +201,33 @@
             <div class="registers_inner" id="VE">VE: 0x00</div>
             <div class="registers_inner" id="VF">VF: 0x00</div>
         </div>
-    </div><br/>
+
+    </div><br/> <!-- End of Visualizer Area-->
 
     <!-- Load ROM buttom -->
-    <p>Load your ROM: <input type="file" id="rom"/></p><br/>
+    <p>Load your ROM: <input type="file" id="rom"/></p>
     
-    <div id="paddingDiv"></div>
-    
-	<!-- Descriptions and How To Play -->
-    <button type="button" class="descriptionButton" id="clickMe">Description and How To Play</button>
-    <div id="description">
-
-            <div id="tempDescHolder">
-                Choose a game from the drop-down menu to see its description!
-            </div>
-            <div id="controlsFlex">
-              <table id="controlsTable">
-                  <tr>
-                      <th id="controlButton1">1</th>
-                      <th id="controlButton2">2</th>
-                      <th id="controlButton3">3</th>
-                      <th id="controlButton4">4</th>
-                  </tr>
-                  <tr>
-                      <th id="controlButtonQ">Q</th>
-                      <th id="controlButtonW">W</th>
-                      <th id="controlButtonE">E</th>
-                      <th id="controlButtonR">R</th>
-                  </tr>
-                  <tr>
-                      <th id="controlButtonA">A</th>
-                      <th id="controlButtonS">S</th>
-                      <th id="controlButtonD">D</th>
-                      <th id="controlButtonF">F</th>
-                  </tr>
-                  <tr>
-                      <th id="controlButtonZ">Z</th>
-                      <th id="controlButtonX">X</th>
-                      <th id="controlButtonC">C</th>
-                      <th id="controlButtonV">V</th>
-                  </tr>
-              </table>
-
-              <div id="controlsDescription"></div>
-            </div>
-
-    </div></br>
-
     <!-- Sprite Editor Tool -->
-    <div id="tool-sprite">
+    <div id="tool-sprite" data-aos="fade-up">
 
-        <p> Sprite Editor </p>
-
-        <div id = "tool-buttons">
-            <button onclick="clearSpriteArea()" class="newButton">Clear</button>
-            <button onclick="moveSpriteUp()" class="newButton">&and;</button>
-            <button onclick="moveSpriteDown()" class="newButton">&or;</button>
-            <button onclick="moveSpriteLeft()" class="newButton">&lt;</button>
-            <button onclick="moveSpriteRight()" class="newButton">&gt;</button>
+        <h2> Sprite Editor <h2>
+        
+        <div id="tool-buttons">
+            <button onclick="moveSpriteUp()" class="newButton" title="Move sprite up">
+                <i class="material-icons">expand_less</i></button>
+            <button onclick="moveSpriteDown()" class="newButton" title="Move sprite down">
+                <i class="material-icons">expand_more</i></button>
+            <button onclick="moveSpriteLeft()" class="newButton" title="Move sprite left">
+                <i class="material-icons">chevron_left</i></button>
+            <button onclick="moveSpriteRight()" class="newButton" title="Move sprite right">
+                <i class="material-icons">chevron_right</i></button>
+            <button onclick="clearSpriteArea()" class="newButton" title="Clear sprite area">
+                <i class="material-icons">delete</i></button>
+            <button onclick="showHelp()" class="newButton tool-popup-button" title="How to use">
+                <i class="material-icons">help</i>
+                <span class="tool-popuptext" id="tool-popup">Left click to draw. Right click to erase.</span>
+            </button>
+            
         </div>
 
         <div id="tool-screen">
@@ -201,10 +235,14 @@
         </div>
 
         <div id="tool-text">
-            <textarea id="sprite-output" maxlength="89" cols="49"></textarea>
+            <textarea id="sprite-output" maxlength="89" cols="43"></textarea>
         </div>
 
     </div>
+
+    <!-- Files To Be Loaded At The End of body -->
+    <script type="text/javascript" src="aos/aos.js"></script> <!--Load ASO library-->
+    <script type="text/javascript" src="scripts/scroll.js"></script> <!-- Init ASO library-->
 
 </body>
 
