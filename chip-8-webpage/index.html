@@ -211,8 +211,7 @@
     <div id="tool-sprite" data-aos="fade-up">
 
         <h2> Sprite Editor <h2>
-        <p> Left click to draw. Right click to erase. </p>
-
+        
         <div id="tool-buttons">
             <button onclick="moveSpriteUp()" class="newButton" title="Move sprite up">
                 <i class="material-icons">expand_less</i></button>
@@ -224,8 +223,10 @@
                 <i class="material-icons">chevron_right</i></button>
             <button onclick="clearSpriteArea()" class="newButton" title="Clear sprite area">
                 <i class="material-icons">delete</i></button>
-            <button class="newButton" title="How to use">
-                <i class="material-icons">help</i></button>
+            <button onclick="showHelp()" class="newButton tool-popup-button" title="How to use">
+                <i class="material-icons">help</i>
+                <span class="tool-popuptext" id="tool-popup">Left click to draw. Right click to erase.</span>
+            </button>
             
         </div>
 

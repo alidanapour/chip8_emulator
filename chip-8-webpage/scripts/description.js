@@ -159,3 +159,8 @@ window.onclick = function(event) {
     }
 }
 
+// Pop-up button to the tool
+function showHelp() {
+    var popup = document.getElementById("tool-popup");
+    popup.classList.toggle("show");
+}
