@@ -10,7 +10,7 @@ The fate of Jumpy McRabbit lies in your hands. Do everything you can do to avoid
 ## How to play
  To play this game simply download the chip-8 file (JumpyRabbit.ch8) and load it onto our emulator! Alternatively, the octo file (.8o) and the [Octo emulator](http://johnearnest.github.io/Octo/) may be used to play.
 
-_Note: This game is played best at 40 frames per cycle._
+_Note: This game is played best at 40 frames per cycle. Also make sure to check 'Fix Timer Speed' box._
 
 **Controls are as follows**:
 - At the title screen, select the level difficulty by pressing W (up) or D (down) and then **press and hold** 'E' on your keyboard to start. 
