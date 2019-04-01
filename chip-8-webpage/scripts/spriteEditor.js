@@ -46,6 +46,7 @@ function moveSpriteUp() {
     pixelArray.shift();                             // Remove the top most line
     pixelArray.push(tempTopByte);                   // Push the top most line stored, to the bottom
     spriteTextBox.value = toHexString(pixelArray);
+    pixelArray = pixelArray.slice(0, 15);
     renderSpriteScreenFromText();
 }
 
@@ -54,6 +55,7 @@ function moveSpriteDown() {
     const tempBottomByte = pixelArray.pop();        // Remove and store the bottom line
     pixelArray.unshift(tempBottomByte);             // Push the bottom line stored, to the top
     spriteTextBox.value = toHexString(pixelArray);
+    pixelArray = pixelArray.slice(0, 15);
     renderSpriteScreenFromText();
 }
 
@@ -64,6 +66,7 @@ function moveSpriteLeft() {
         let firstBit = (currentByte & 0b10000000) ? 1 : 0;
         pixelArray[i] = ((currentByte << 1) & 0xFF) | firstBit;
     }
+    pixelArray = pixelArray.slice(0, 15);
     spriteTextBox.value = toHexString(pixelArray);
     renderSpriteScreenFromText();
 }
@@ -75,6 +78,7 @@ function moveSpriteRight() {
         let lastBit = (currentByte & 1) ? 1 : 0;
         pixelArray[i] = (currentByte >>> 1) | (lastBit << 7);
     }
+    pixelArray = pixelArray.slice(0, 15);
     spriteTextBox.value = toHexString(pixelArray);
     renderSpriteScreenFromText();
 }
@@ -109,7 +113,7 @@ function updateSpriteArea(e) {
         pixelArray[Math.floor(e.offsetY / scalingFactor)] &= ~(0b10000000 >> Math.floor(e.offsetX / scalingFactor));
     }
 
-    spriteTextBox.value = toHexString(pixelArray);
+    spriteTextBox.value = toHexString(pixelArray.slice(0, 15));
 } // End of updateSpriteArea()
 
 function renderSpriteScreenFromText() {
