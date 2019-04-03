@@ -11,14 +11,14 @@
 
 ## What has changed since the last Release:
 
-###Changes in Release 1:
+### Changes in Release 1:
 - Added  Emulator prototype
     - Implemented the screen and 35 opcodes
 - Added use case for the decode opcode
 - Added  Game 1 prototype
 - Added automated test output area
 
-###Changes in Release 2:
+### Changes in Release 2:
 - The Emulator is now fully functional
     - Added [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9) via the `Use new shift opcodes?` and `Use new load/store opcodes?` checkboxes
     - Added keyboard input, sound and delay timer
@@ -30,7 +30,7 @@
 - Remove unneeded decode opcode input field 
 - Added test cases for old ROMs support
 
-###Changes in Release 3:
+### Changes in Release 3:
 - Added `Fix timer speed?` checkbox to support Game 2's usage of the delay timer
 - `Step forward` and `Step backward` is now fully functional
 - Visualizer's instruction box and register box are now fully functional
@@ -44,8 +44,7 @@ Migrated to [Jest](https://jestjs.io/) for automated test
 
 ###Changes in Release 4 (the last Release):
 - The `Sprite Editor` is now fully functional
-- Added reload current ROM option (`⟳`) so user can restart a ROM without having to reload it
-- Added reload current ROM option (so user can restart a ROM without having to reload it
+- Added reload current ROM option so user can restart a ROM without having to reload it
 - The "Fixed timer speed?" checkbox is now unchecked by default
 - Changes to the webpage interface: 
     - Removed texts at the top of the webpage since they're no longer needed
@@ -165,17 +164,15 @@ Migrated to [Jest](https://jestjs.io/) for automated test
 - Automated test with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
 
 **Release 4** 
-- Interface complete: The new interface for the emulator and visualizer are shown below:
-![Interface Mockup](product_document_imgs/interface_mockup_new.png)
 
-- Emulator complete:
+- Emulator complete and polish:
     - User can select a pre-loaded rom from the drop-down menu or load any a Chip-8 ROM by clicking the load ROM button below the screen. 
     - The Emulator proceeds to execute the program selected by the user. 
     - The Emulator can run a program at different speed (default speed is 8 cycles/frame), user can select the speed before a program starts running or dynamically change the speed while a program is running. 
     - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
     - `Fix timer speed?` are un-checked by default, it provided to add support from Game 2. 
 
-- Visualizer complete:
+- Visualizer complete and polish:
     - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted. 
     - While a program is running user can: 
         - Pause the program 
