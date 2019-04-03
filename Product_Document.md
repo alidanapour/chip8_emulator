@@ -42,7 +42,7 @@
     - Moved the Load ROM button to the middle of the page
 Migrated to [Jest](https://jestjs.io/) for automated test
 
-###Changes in Release 4 (the last Release):
+### Changes in Release 4 (the last Release):
 - The `Sprite Editor` is now fully functional
 - Added reload current ROM option so user can restart a ROM without having to reload it
 - The "Fixed timer speed?" checkbox is now unchecked by default
