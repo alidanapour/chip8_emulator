@@ -6,79 +6,59 @@
 
 1. Chip8 **Emulator** can run any Chip8 program.
 2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It lets users pause and step-forward/step-backward one instruction at a time.
-3. One Chip8 **Tool**: `Sprite Editor` provides a visual interface to create sprites.  
+3. One Chip8 **Tool**: `Sprite Editor` provides a visual interface to create sprites. 
 4. Two Chip8 **Games**:  Game 1: `Space War`; Game 2: `Jumpy Rabbit`. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
 
-## Project organization
+## What has changed since the last Release:
 
-### Software methodology 
+###Changes in Release 1:
+- Added  Emulator prototype
+    - Implemented the screen and 35 opcodes
+- Added use case for the decode opcode
+- Added  Game 1 prototype
+- Added automated test output area
 
-We follow Extreme Programming methodologies for this project. The project startup plan (release 0 product documentation) includes limited information about the work breakdown and project schedule. During development, for each release, an informal project plan and effort estimates are created with involvement from all team members (Sommerville, Software Engineering, 9th Edition). 
+###Changes in Release 2:
+- The Emulator is now fully functional
+    - Added [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9) via the `Use new shift opcodes?` and `Use new load/store opcodes?` checkboxes
+    - Added keyboard input, sound and delay timer
+- Game 1 is now fully functional
+- Added load rom functionality where user can load any Chip 8 ROM to the Emulator and run it
+- Added the `Description and How to Play` drop-down button prototype, when user clicks the button,the description and instruction on how to use the current pre-load ROM are displayed, when user clicks the button again, the drop-down text area is closed 
+- Added Visualizer's prototype
+    - `Stop`, `Continue` and `Reset` buttons are now fully functional
+- Remove unneeded decode opcode input field 
+- Added test cases for old ROMs support
 
-The team will meet weekly to create user stories. The stories are ranked by importance and each story is assigned some effort points to indicate how much effort it will take, relative to other stories. At the beginning of each release, the team decide what user stories to implement and more detailed tasks are created for those stories. After each release, team velocity (i.e., how many effort-points per working day the team got done) and use as input for planning of the next release. Members chose what stories they want to work on rather than being assigned some stories to ensure personal accountability and create motivation. 
+###Changes in Release 3:
+- Added `Fix timer speed?` checkbox to support Game 2's usage of the delay timer
+- `Step forward` and `Step backward` is now fully functional
+- Visualizer's instruction box and register box are now fully functional
+- The Visualizer is now fully functional
+- Game 2 is now fully functional
+- Added `Sprite Editor` prototype 
+- Changes to the webpage interface: 
+    - Moved the Visualizer's instruction box and register box next the Emulator's screen 
+    - Moved the Load ROM button to the middle of the page
+Migrated to [Jest](https://jestjs.io/) for automated test
 
-### Members' roles
-
-**UPDATED January 20, 2019**: Add Xinyue Ma as a front-end programmer. 
-
-The team has 6 Computer Science undergrads with the following roles:
-
-1. Project manager: Minh Bui is responsible for scheduling team meetings, booking rooms and producing meeting memos. 
-2. Front-end programmers: Kyle and Jong Joon Lee and Xinyue Ma work on the interface of the application, after they are done, they will join the back-end team. 
-3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualizer, the games and one tool. 
-4. Testers: For unit testing, members are responsible for testing their own code. Once unit testing is done, integration testing requires collaboration between all members.
-
-Note: The 6th member, Xinyue Ma has been recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18.
-
-### Communication Plan 
-
-#### Semester meeting Schedule with communication tools and techniques
-
-|   MODE	|   TIME	|   TOOL|
-|:-:	|:-:	|:-:	|
-| In Person 	|  Weekly Monday/Friday, 12:30PM-2:30PM	|   Book room if needs whiteboard	|
-|  Voice Call 	|   Tentative (mostly weekends)	|   Discord	|
-|  Messages 	|   Daily	|   Slack	|
-|  Urgent 	|   When needed	|   Phone call	|
-
-NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a member anticipates that he/she will show up late or cannot show up at all, a notification must be posted in the #meetings channel in the Slack workspace at least 15 minutes in advance. If no notification is sent, members will wait for the missing member(s) for 10 minute before starting the meeting. 
+###Changes in Release 4 (the last Release):
+- The `Sprite Editor` is now fully functional
+- Added reload current ROM option (`⟳`) so user can restart a ROM without having to reload it
+- Added reload current ROM option (so user can restart a ROM without having to reload it
+- The "Fixed timer speed?" checkbox is now unchecked by default
+- Changes to the webpage interface: 
+    - Removed texts at the top of the webpage since they're no longer needed
+    - Added animation to the CHIP 8 logo  
+    - Added favicon
+    - Changed the colour of the webpage background, the Emulator's screen and the `Sprite Editor`'s screen
+    - Changed the height of the Visualizer's instruction box and register box to the same height as the Emulator's screen
+    - Renamed `Select a ROM` button to `Load your ROM`, moved it to the left of the page
+    - Renamed Emulator, Visualizer and Tool buttons' texts to symbols with a short explanation of what a button does displayed when the user hovers over it
+    - Renamed the `Description and How to Play` button to `How to Play` and when user clicks it, instead of a drop-down text box, a pop-pop will show up
+    - The tool is hidden by default, when the user scrolls down, the tool is revealed, when the user scrolls up the tool is hided again, the current state of the tool is fully preserved
 
 ## Use Cases For Major Features
-
-**UPDATED February 6, 2019**: 
-- Release 1: 
-    - Added more detailed use case for game 1 prototype.
-    - Implemented all 35 opcodes instead of splitting them between release 1 and 2.
-    - Added use case for the screen.
-    - Added use case for the decode opcode.
-    - Moved keyboard/sound/delay implementation to release 2 due to underestimation of time needed to implement the screen and game 1 prototype. 
-- Release 2:
-    - Added use cases for remaining features of the emulator: Keyboard, Sound & Delay timer, ROM loading.
-    - Added use cases to the visualizer.
-    - Added use cases to the game 2 prototype and game 1 completed.
-    - Moved chip8 tool prototype to release 3.
-
-**UPDATED February 26, 2019**:
-- Release 2:
-    - Added [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
-    - Updated user case for game 1 complete.
-    - Added user case for game 2 prototype.  
-    - Moved visualizer step forward and step backward to release 3.
-    - Added test cases to `test.js`.  
-- Release 3:
-    - Added user case for chip8 tool prototype.
-    - Added user case for game 2 complete.
-    - Migrated to [Jest](https://jestjs.io/) for automated test.
-    - Added program descriptions and instructions on how to play games to the visualizer.
-
-**UPDATED March 13, 2019**:
-  
-- Release 3: 
-    - Updated user case for chip8 tool prototype.
-    - Updated user case for game 2 complete.
-- Release 4: 
-    - Added new interface mockup for emulator and visualizer. 
-    - Added user case for emulator, visualizer, chip8 tool, game 1 and game 2 complete. 
 
 **Release 0**:
 
@@ -91,7 +71,9 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 **Release 1**
 
 - CPU set-up: At the beginning or when the emulator resets, the memory, stack, registers will have some default values. 
+
 - 35 Opcodes: Correctly implement 35 opcodes based on the specifications in [Cowgod's chip8 reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM), according to Cowgod, opcode `0nnn` is only used on old computers and is ignored by modern interpreters so we don't implement it.
+
 - Decode opcode: This feature is a part of the visualizer's instruction display deliverable and has been developed ahead of time. For now, users can simply enter any opcode (say 00E0) and click `Submit` which will print the corresponding instruction onto the page.
 
 - Screen: The screen is 640x320 pixels and each pixel is rendered by a factor of 10. Only the welcome screen is shown for programs that require user interactions via the keyboard.
@@ -173,7 +155,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
         6. Throughout the duration of the game, the system will spawn random enemies based on difficulty level.
         7. Throughout the duration of the game, the system will move the enemies to the left each frame.
         8. Throughout the duration of the game, the system will draw the rabbit in the appropriate place depending on if the rabbit is falling or jumping (via user input for the latter).
-        9. -Throughout the duration of the game, the system will update the score (+1 when level 1 enemy avoided. +2 for level 2/3 enemies avoided).
+        9. Throughout the duration of the game, the system will update the score (+1 when level 1 enemy avoided. +2 for level 2/3 enemies avoided).
         10. If the player touches an enemy, the game will terminate display a game over screen with the score displayed.
         11. If the player reaches max score (20 - level 1, 100 - level 2, 255 - level 3), the game ends and displays a game win animation. The score of the player is also displayed.
         12. If the player chooses to play again via input, the game reinitialized and game flow resumes at point 'b'
@@ -187,36 +169,81 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 ![Interface Mockup](product_document_imgs/interface_mockup_new.png)
 
 - Emulator complete:
-    - User can select a pre-loaded rom from the drop-down menu or load any a Chip-8 ROM by clicking the select ROM button below the screen. 
+    - User can select a pre-loaded rom from the drop-down menu or load any a Chip-8 ROM by clicking the load ROM button below the screen. 
     - The Emulator proceeds to execute the program selected by the user. 
     - The Emulator can run a program at different speed (default speed is 8 cycles/frame), user can select the speed before a program starts running or dynamically change the speed while a program is running. 
     - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
-    - `Fix timer speed?` are selected by default to only changes the opcode execution speed.
+    - `Fix timer speed?` are un-checked by default, it provided to add support from Game 2. 
 
 - Visualizer complete:
     - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted. 
-    - User can click: 
-        - `Pause` to stop a program 
-        - `Step Forward` or `Step Backward` move one instruction forward or backward at a time 
-        - `Start` to resume the program
-        - `Reset` to set the Emulator to its default state. 
-        - `How to Play` to see a pop-up screen with description of the program selected from the drop-down menu and instructions on how to play the game.  
+    - While a program is running user can: 
+        - Pause the program 
+        - Resume the program 
+        - Step forward or backward one instruction at a time 
+        - Reset the Emulator to its default state
+        - Restart the current ROM (i.e., user doesn't have to reload their ROM or re-select a pre-load ROM from the drop-down menu to restart from ROM) 
+        - Display the pop-up screen with description of the pre-load program selected from the drop-down menu and instructions on how to play the game.  
 
-- Chip8 Tool complete: `Sprite Editor` provide a visual interface to create sprites, inspired by [Octo toolbox](http://johnearnest.github.io/Octo/), the interface mockup is shown below:
+- Chip8 Tool complete: `Sprite Editor` provide a visual interface to create sprites, inspired by [Octo toolbox](http://johnearnest.github.io/Octo/):
 
-    ![chip8_mockup](product_document_imgs/chip8_tool.png)
+    - User left-click on the screen area add a sprite or right-click on the screen area to remove an existing sprite, the `Sprite Editor` will produce the corresponding hex values. To add or remove multiple sprites, hold and drag the cursor. 
+    - User can edit the hex values displayed in the text box area and the corresponding sprite(s) will be display on the screen
+    - Use can:
+        - Reset the `Sprite Editor` (clear the screen and set the hex values to 0)
+        - Move the existing sprites up (wrap around)
+        - Move the existing sprites down (wrap around)
+        - Move the existing sprites left (wrap around)
+        - Move the existing sprites right (wrap around)
 
-    - User can click on the screen area to highlight the pixels that they want, the `Sprite Editor` will produce the corresponding hex values. 
-    - Use the can click:
-        - `Clear` to restart the `Sprite Editor` 
-        - `^` to move the sprites up 
-        - `⌄` to move the sprites down
-        - `>>1` to move the sprites to the left
-        - `1<<` to move the sprites to the right
+- Game 1 `Space War` complete: fully completed game with polished interface and no bug.
 
-- Game 1 complete: fully completed game with polished interface and no bug.
+- Game 2 `Jumpy Rabbit` complete: fully completed game with polished interface and no bug.
 
-- Game 2 complete: fully completed game with polished interface and no bug.
+**Release 5** **TODO: CONFIRM WITH TA/PROF**
+- Release 4 is the last release of the JS-Chip 8 web application, our team don't have any plan for another release since members will move on to other projects. However, assuming we actually have a Release 5, these are what we would add:
+    - Launch the JS-Chip 8 web application so that we can collect more users' feedback to improve the web app (UX, UI)
+    - Make the web page responsive for mobile users 
+    - Test for performance and security issues 
+    - Refactor the existing back-end code from JavaScript to TypeScript for long-run maintenance
+    - Add more tools to support Chip 8 developers  
+
+## Project Post Mortem 
+- **TODO**
+
+## Project organization
+
+### Software methodology 
+
+We follow Extreme Programming methodologies for this project. The project startup plan (release 0 product documentation) includes limited information about the work breakdown and project schedule. During development, for each release, an informal project plan and effort estimates are created with involvement from all team members (Sommerville, Software Engineering, 9th Edition). 
+
+The team will meet weekly to create user stories. The stories are ranked by importance and each story is assigned some effort points to indicate how much effort it will take, relative to other stories. At the beginning of each release, the team decide what user stories to implement and more detailed tasks are created for those stories. After each release, team velocity (i.e., how many effort-points per working day the team got done) and use as input for planning of the next release. Members chose what stories they want to work on rather than being assigned some stories to ensure personal accountability and create motivation. 
+
+### Members' roles
+
+**UPDATED January 20, 2019**: Add Xinyue Ma as a front-end programmer. 
+
+The team has 6 Computer Science undergrads with the following roles:
+
+1. Project manager: Minh Bui is responsible for scheduling team meetings, booking rooms and producing meeting memos. 
+2. Front-end programmers: Kyle and Jong Joon Lee and Xinyue Ma work on the interface of the application, after they are done, they will join the back-end team. 
+3. Back-end programmers: Minh Bui, Karan Pathania, and Ali Danapour are in charge of implementing the emulator, visualizer, the games and one tool. 
+4. Testers: For unit testing, members are responsible for testing their own code. Once unit testing is done, integration testing requires collaboration between all members.
+
+Note: The 6th member, Xinyue Ma has been recently added to the team on January 17, Minh has reached out to him/her on the same day and just got a response on January 18.
+
+### Communication Plan 
+
+#### Semester meeting Schedule with communication tools and techniques
+
+|   MODE	|   TIME	|   TOOL|
+|:-:	|:-:	|:-:	|
+| In Person 	|  Weekly Monday/Friday, 12:30PM-2:30PM	|   Book room if needs whiteboard	|
+|  Voice Call 	|   Tentative (mostly weekends)	|   Discord	|
+|  Messages 	|   Daily	|   Slack	|
+|  Urgent 	|   When needed	|   Phone call	|
+
+NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a member anticipates that he/she will show up late or cannot show up at all, a notification must be posted in the #meetings channel in the Slack workspace at least 15 minutes in advance. If no notification is sent, members will wait for the missing member(s) for 10 minute before starting the meeting. 
 
 ## Risk analysis
 
@@ -273,6 +300,8 @@ or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-ar
 
 ![WBS example](product_document_imgs/WBS_R3.PNG)
 
+**UPDATED**: **April 8, 2019**: **TODO**
+
 The majority of the tasks have been completed by Release 3, the only major component left is the chip8 tool (`Sprite Editor`). After Release 3, we mainly focus on polishing components that has been completed (e.g., improving the user interface, further testing to ensure no major bugs still exist) and finish implementing + tesing the tool. We will continue updating this Work Breakdown for upcoming releases.
 
 ## Project schedule
@@ -290,6 +319,8 @@ The due dates of major deliverables are shown in the table above. Detailed sched
 **UPDATED**: **March 13, 2019**: An example for release 3 is shown below:
 
 ![Trello example](product_document_imgs/trello_example_R3.PNG)
+
+**UPDATED**: **April 8, 2019**: **TODO**
 
 ## Monitoring and reporting mechanisms
 
