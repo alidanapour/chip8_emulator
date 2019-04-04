@@ -7,7 +7,7 @@
 1. Chip8 **Emulator** can run any Chip8 program.
 2. Chip8 **Visualizer** shows a Chip8 program in action. It displays memory, registers and instructions being executed. It lets users pause and step-forward/step-backward one instruction at a time.
 3. One Chip8 **Tool**: `Sprite Editor` provides a visual interface to create sprites. 
-4. Two Chip8 **Games**:  Game 1: `Space War`; Game 2: `Jumpy Rabbit`. The games are written in Chip8 language. They should be polished. Code reuse with proper citation are allowed but the majority (90% of code lines) should be written by the team.
+4. Two Chip8 **Games**:  Game 1: `Space War`; Game 2: `Jumpy Rabbit`. The games are written in Chip8 language. 
 
 ## What has changed since the last Release:
 
@@ -353,7 +353,7 @@ or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-ar
 
 The majority of the tasks have been completed by Release 3, the only major component left is the chip8 tool (`Sprite Editor`). After Release 3, we mainly focus on polishing components that has been completed (e.g., improving the user interface, further testing to ensure no major bugs still exist) and finish implementing + tesing the tool. We will continue updating this Work Breakdown for upcoming releases.
 
-**UPDATED**: **April 8, 2019**: **TODO**
+**UPDATED**: **April 5, 2019**: **TODO**
 
 ## Project schedule
 
@@ -371,7 +371,9 @@ The due dates of major deliverables are shown in the table above. Detailed sched
 
 ![Trello example](product_document_imgs/trello_example_R3.PNG)
 
-**UPDATED**: **April 8, 2019**: **TODO**
+**UPDATED**: **April 5, 2019**:
+
+![Trello example](product_document_imgs/trello_example_R4.PNG)
 
 ## Monitoring and reporting mechanisms
 
