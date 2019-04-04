@@ -206,7 +206,6 @@ Migrated to [Jest](https://jestjs.io/) for automated test
     - Add more tools to support Chip 8 developers  
 
 ## Project Post Mortem 
-- **TODO**: Adapt info from the presentation
 
 ### Was this a suitable project for our team?
 - Yes
@@ -352,9 +351,9 @@ or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-ar
 
 ![WBS example](product_document_imgs/WBS_R3.PNG)
 
-**UPDATED**: **April 8, 2019**: **TODO**
-
 The majority of the tasks have been completed by Release 3, the only major component left is the chip8 tool (`Sprite Editor`). After Release 3, we mainly focus on polishing components that has been completed (e.g., improving the user interface, further testing to ensure no major bugs still exist) and finish implementing + tesing the tool. We will continue updating this Work Breakdown for upcoming releases.
+
+**UPDATED**: **April 8, 2019**: **TODO**
 
 ## Project schedule
 
