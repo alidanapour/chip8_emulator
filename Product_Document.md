@@ -28,14 +28,14 @@
 - Added Visualizer's prototype
     - `Stop`, `Continue` and `Reset` buttons are now fully functional
 - Remove unneeded decode opcode input field 
-- Added test cases for old ROMs support
+- Added test cases for old ROMs support, created separate CPU object for the automate test output area
 
 ### Changes in Release 3:
-- Added `Fix timer speed?` checkbox to support Game 2's usage of the delay timer
-- `Step forward` and `Step backward` is now fully functional
-- Visualizer's instruction box and register box are now fully functional
 - The Visualizer is now fully functional
+    - `Step forward` and `Step backward` is now fully functional
+    - Visualizer's instruction box and register box are now fully functional
 - Game 2 is now fully functional
+- Added `Fix timer speed?` checkbox to support Game 2's usage of the delay timer
 - Added `Sprite Editor` prototype 
 - Changes to the webpage interface: 
     - Moved the Visualizer's instruction box and register box next the Emulator's screen 
@@ -165,14 +165,14 @@ Migrated to [Jest](https://jestjs.io/) for automated test
 
 **Release 4** 
 
-- Emulator complete and polish:
+- Emulator complete and interface polish:
     - User can select a pre-loaded rom from the drop-down menu or load any a Chip-8 ROM by clicking the load ROM button below the screen. 
     - The Emulator proceeds to execute the program selected by the user. 
     - The Emulator can run a program at different speed (default speed is 8 cycles/frame), user can select the speed before a program starts running or dynamically change the speed while a program is running. 
     - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
     - `Fix timer speed?` are un-checked by default, it provided to add support from Game 2. 
 
-- Visualizer complete and polish:
+- Visualizer complete and interface polish:
     - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted. 
     - While a program is running user can: 
         - Pause the program 
@@ -193,21 +193,43 @@ Migrated to [Jest](https://jestjs.io/) for automated test
         - Move the existing sprites left (wrap around)
         - Move the existing sprites right (wrap around)
 
-- Game 1 `Space War` complete: fully completed game with polished interface and no bug.
+- Game 1 `Space War` complete: fully completed game with polished interface and no bug
 
-- Game 2 `Jumpy Rabbit` complete: fully completed game with polished interface and no bug.
+- Game 2 `Jumpy Rabbit` complete: fully completed game with polished interface and no bug
 
-**Release 5** **TODO: CONFIRM WITH TA/PROF**
-- Release 4 is the last release of the JS-Chip 8 web application, our team don't have any plan for another release since members will move on to other projects. However, assuming we actually have a Release 5, these are what we would add:
-    - Launch the JS-Chip 8 web application so that we can collect more users' feedback to improve the web app (UX, UI)
+**Release 5**
+- Release 4 is the last release of the JS-Chip 8 web application, our team don't have any plan for another release since members will move on to other projects. However, assuming we actually have a Release 5, these are the features we would add:
+    - Launch the JS-Chip 8 web application so that we can collect more user feedbacks to improve the web app UX, UI
     - Make the web page responsive for mobile users 
     - Test for performance and security issues 
     - Refactor the existing back-end code from JavaScript to TypeScript for long-run maintenance
     - Add more tools to support Chip 8 developers  
 
 ## Project Post Mortem 
-- **TODO**
+- **TODO**: Adapt info from the presentation
 
+### Was this a suitable project for our team?
+- Yes
+    - Prior experience of some members using required technologies (JavaScript, Assembly and Git) so the learning curves is not too steep
+    - Hands-on experience using JavaScript - the most popular programming language (Octoverse, 2018) 
+    - Emulator development is new and exciting for all team members so our team were highly motivated to tackle this project
+- No
+    - Relatively small project for a team of six members making it harder to modularize the project and divide tasks among members, we would have preferred a smaller team
+    - Conflicting information about the emulator led to implementation dilemma 
+    - No real client to interact which caused some design dilemma. In retrospective, we could have overcome this by pick a concrete target users early on (e.g., high school students learning to code)
+
+### Which tools did we find useful?
+
+
+|   TASKS	|   USEFUL TOOLS	|   COMMENTS|
+|:-:	|:-:	|:-:	|
+|Communication	| Slack and In person meeting	|:-:	|
+|Planning and Scheduling	|:-:	|:-:	|
+|Version Control	|:-:	|:-:	|
+|Test	|:-:	|:-:	|
+|Front-End	|:-:	|:-:	|
+|Back-End	|:-:	|:-:	|
+|Chip 8 Development	|:-:	|:-:	|
 ## Project organization
 
 ### Software methodology 
