@@ -249,9 +249,8 @@ Migrated to [Jest](https://jestjs.io/) for automated test
 ### Major issues faced and how we adapted
 |   ISSUES	|   DETAILS	| SOLUTIONS|
 |:-:	|:-:	|:-:	|
-|Conflicting Opcode Definitions	|Old and new Chip-8 games use different definitions for some opcodes (8XY6/8XYE and FX55/FX65)	|Added the option to switch (quirks) 
-between both definitions |
-|Design Dilemmas	|Caught in a dilemma whether to use a drop-down menu or modal box for the ‘How to Play’ button|Implemented both design and made decision to use pop-up window according to personal experience using both designs|
+| Conflicting Opcode Definitions	| Old and new Chip-8 games use different definitions for some opcodes (8XY6/8XYE and FX55/FX65)	| Added the option to switch (quirks)  between both definitions |
+|Design Dilemmas	| Caught in a dilemma whether to use a drop-down menu or modal box for the ‘How to Play’ button | Implemented both design and made decision to use pop-up window according to personal experience using both designs |
 |:-:	|:-:	|:-:	|
 
 
