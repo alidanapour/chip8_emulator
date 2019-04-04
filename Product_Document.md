@@ -227,8 +227,26 @@ Migrated to [Jest](https://jestjs.io/) for automated test
 |Version Control	|Git and GitHub	|at the beginning, we used to merge members' code manually, however, as the code base become more complex, we migrate to use Git and GitHub to save time and reduce frustrations	|
 |Test	|Google Console, JavaScript, Jest	|We used Google Console for live/interactive test, we have the member developed and implemented tests cases using JavaScript and another members translates those tests to Jest|
 |Front-End	|HTML/CSS	|We thought that we could refactor the interface with Bootstrap at the end but it turned out to be trickier than expected. We should have used Bootstrap since the beginning|
-|Back-End	|JavaScript	|We originally want to use TypeScript, but it added complexity to learning curve, so we sticked with JavaScript, for larger and complex project, we recommend using TypeScript	|
+|Back-End	|JavaScript	|We originally want to use TypeScript, but it added complexity to the learning curve, so we decided to use JavaScript, for larger and complex project, we recommend using TypeScript	|
 |Chip 8 Development	|Octo	|Using Octo to develop Chip 8 programs save time and effort, the online Octo IDE provides various useful tools such as complier, sprite and audio editor |
+
+### Did our decisions help or hurt?
+
+|   TASKS	|   DECISIONS	| COMMENTS |
+|:-:	|:-:	|:-:	|
+|Project Management	|Assigned one team member to be the project manager	|HELP: the project manager perform important but tedious "bookkeeping" tasks such as: set up communication channels, booked rooms for meeting, maintained project documentation 	|
+|Role Assignment	|Let members take on multiple roles	|HELP: members freely moved between different roles so when issues occurred, members could quickly help each other|
+|Software development	|Followed Agile Development, combined sequential and parallel development	|HELP: Multiple releases reduced procrastination, developed the Emulator and Visualizer at the same time as the two Chip 8 games helped us get more tasks done at a time|
+|Test	|Develop test in JavaScript then migrate to Jest	|HELP: Using JavaScript to before Jest helped use test our implementation faster 	|
+|Refactor Interface	|Refactor with Bootstrap once we were done with everything	|HURT: The code base has dependencies between various components, adding a library introduced weird bugs which are difficult to fix, we should have used Bootstrap since the beginning|
+|Tasks Allocation	|Only one member worked on the two Chip 8 games	|HURT: if the member who as in charge of developing the two games left, we would have been in bug trouble. We recommend future students to avoid having bus factor of 1 on crucial component|
+
+### How useful was planning & estimation?
+
+- We planned just enough at the beginning and added changes as we progressed. It's important not to over plan before getting our hands dirty. As we started designing various project's components and implement our ideas, we got better estimations of how long each tasks would take, and re-planned as necessary.  
+- Since this is the first time we got involved with emulator developments, our estimations were not always accurate, some tasks took longer than expected (e.g., emulator display bug-fixes, manually testing both games UX/UI) while other tasks took less time (flow controls (esp. step forward, backward), Sprite editor tool development). 
+
+### Issues faced and how we adapted
 
 
 ## Project organization
