@@ -224,7 +224,7 @@ Migrated to [Jest](https://jestjs.io/) for automated test
 |:-:	|:-:	|:-:	|
 |Communication	| Slack and In Person meeting	| Slack provides integration with Git so members is notified of all commits, in person meeting is important to ensure everyone is on the same page, do pair programing and resolve technical issues |
 |Planning and Scheduling	|Google Sheets and Trello	|both have smooth learning curve and easy to use, we used Google Sheets for high-level work breakdown and Trello for more create smaller subtasks|
-|Version Control	|Git and GitHub	|at the beginning, we used to merge members's code manually, however, as the code base become more complex, we migate to use Git and GitHub to save time and reduce frustrations	|
+|Version Control	|Git and GitHub	|at the beginning, we used to merge members' code manually, however, as the code base become more complex, we migrate to use Git and GitHub to save time and reduce frustrations	|
 |Test	|Google Console, JavaScript, Jest	|We used Google Console for live/interactive test, we have the member developed and implemented tests cases using JavaScript and another members translates those tests to Jest|
 |Front-End	|HTML/CSS	|We thought that we could refactor the interface with Bootstrap at the end but it turned out to be trickier than expected. We should have used Bootstrap since the beginning|
 |Back-End	|JavaScript	|We originally want to use TypeScript, but it added complexity to learning curve, so we sticked with JavaScript, for larger and complex project, we recommend using TypeScript	|
