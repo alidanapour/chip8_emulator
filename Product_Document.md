@@ -244,9 +244,16 @@ Migrated to [Jest](https://jestjs.io/) for automated test
 ### How useful was planning & estimation?
 
 - We planned just enough at the beginning and added changes as we progressed. It's important not to over plan before getting our hands dirty. As we started designing various project's components and implement our ideas, we got better estimations of how long each tasks would take, and re-planned as necessary.  
-- Since this is the first time we got involved with emulator developments, our estimations were not always accurate, some tasks took longer than expected (e.g., emulator display bug-fixes, manually testing both games UX/UI) while other tasks took less time (flow controls (esp. step forward, backward), Sprite editor tool development). 
+- Since this is the first time we got involved with emulator developments, our estimations were not always accurate, some tasks took longer than expected (e.g., emulator display bug-fixes, manually testing both games UX/UI) while other tasks took less time (flow controls (esp. step forward, backward), Sprite editor tool development). Nevertheless, having an estimation of how much time each task may take allowed members to proactively organize their personal schedules to meet releases' deadlines.
 
-### Issues faced and how we adapted
+### Major issues faced and how we adapted
+|   ISSUES	|   DETAILS	| SOLUTIONS|
+|:-:	|:-:	|:-:	|
+|Conflicting Opcode Definitions	|Old and new Chip-8 games use different definitions for some opcodes (8XY6/8XYE and FX55/FX65)	|Added the option to switch (quirks) 
+between both definitions |
+|Design Dilemmas	|Caught in a dilemma whether to use a drop-down menu or modal box for the ‘How to Play’ button|Implemented both design and made decision to use pop-up window according to personal experience using both designs|
+|:-:	|:-:	|:-:	|
+
 
 
 ## Project organization
