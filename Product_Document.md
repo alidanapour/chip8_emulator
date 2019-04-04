@@ -251,9 +251,17 @@ Migrated to [Jest](https://jestjs.io/) for automated test
 |:-:	|:-:	|:-:	|
 | Conflicting Opcode Definitions	| Old and new Chip-8 games use different definitions for some opcodes (8XY6/8XYE and FX55/FX65)	| Added the option to switch (quirks)  between both definitions |
 |Design Dilemmas	| Caught in a dilemma whether to use a drop-down menu or modal box for the ‘How to Play’ button | Implemented both design and made decision to use pop-up window according to personal experience using both designs |
-|:-:	|:-:	|:-:	|
+|Lack of Time	|Lack of time towards the end of the semester as well as during midterms. Hard to find common ground	|Parallel development and completed time consuming tasks early on|
 
-
+### Advices we would give to future students
+- Don’t stress out if the goals and objectives are not clear in the beginning
+- Keep things simple but don’t be afraid to try out new tools and technologies
+- Go AGILE and modularize to discover chances of parallel development
+- Plan to end things early and keep your plans very flexible
+- Never add major changes close to release because it's very likely that you will not enough time to test them
+- Have specific target users in mind at the beginning is very helpful latter on when you face design/implementation dilemma
+- In-person meetings are extremely important to minimize miscommunication and resolve technical issues
+- Relax and have fun!
 
 ## Project organization
 
