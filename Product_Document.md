@@ -220,7 +220,6 @@ Migrated to [Jest](https://jestjs.io/) for automated test
 
 ### Which tools did we find useful?
 
-
 |   TASKS	|   USEFUL TOOLS	|   COMMENTS|
 |:-:	|:-:	|:-:	|
 |Communication	| Slack and In person meeting	|:-:	|
