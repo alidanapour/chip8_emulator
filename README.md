@@ -44,7 +44,7 @@
 
 ### To run our game (`Jumpy Rabbit`)
 - Please refer to the `README.md` in the `games\game2` folder.
-- Important for Jumpy Rabbit: Please set the speed to **40 cycles/second** and **CHECK the `Fix timer speed?` checkbox** before loading the rom.
+- Important for Jumpy Rabbit: Please set the speed to **40 cycles/frame** and **CHECK the `Fix timer speed?` checkbox** before loading the rom.
 
 ### Chip 8 Tool (`Sprite Editor`)
 - User scrolls down to reveal the Sprite Editor, scrolls up to hide it, the current state of the Sprite Editor will be fully preserved.
