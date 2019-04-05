@@ -17,7 +17,7 @@ To run the webpage:
     - Display the pop-up screen with description of the pre-load program selected from the drop-down menu and instructions on how to play the game.  
 6. User can change the Emulator speed via the second drop-down, the default speed is 8 cycles/frames before or while the program runs. 
 7. The `Use new shift opcodes` and `Use new load/store opcodes?` are added to support old ROMs. Please refer to the [list of known CHIP-8 programs that require special settings to run properly](https://github.com/tomdaley92/Kiwi8/issues/9) for more details. 
-8. The `Fix timer speed?` checkbox are un-checked by default, user needs to check it to support the `Jumpy Rabbit` game. 
+8. The `Fix timer speed?` checkbox is un-checked by default, user needs to check it to support the `Jumpy Rabbit` game. 
 
 For Jest Automated testing:
 
