@@ -353,7 +353,7 @@ or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-ar
 
 The majority of the tasks have been completed by Release 3, the only major component left is the chip8 tool (`Sprite Editor`). After Release 3, we mainly focus on polishing components that has been completed (e.g., improving the user interface, further testing to ensure no major bugs still exist) and finish implementing + tesing the tool. We will continue updating this Work Breakdown for upcoming releases.
 
-**UPDATED**: **April 5, 2019**: 
+**UPDATED**: **April 5, 2019**: Bellow is a snapshot of out current Work Breakdown Spreadsheet, taken on April 5, 2019. 
 
 ![WBS example](product_document_imgs/WBS_R4.PNG)
 
@@ -375,7 +375,7 @@ The due dates of major deliverables are shown in the table above. Detailed sched
 
 ![Trello example](product_document_imgs/trello_example_R3.PNG)
 
-**UPDATED**: **April 5, 2019**:
+**UPDATED**: **April 5, 2019**: An example for release 4 is shown below:
 
 ![Trello example](product_document_imgs/trello_example_R4.PNG)
 
