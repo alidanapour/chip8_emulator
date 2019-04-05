@@ -1,34 +1,30 @@
-# Project: A JavaScript Chip8 System (JS-Chip8)
+# Project: A JavaScript Chip-8 System (JS-Chip8)
 
 ## Introduction 
 
 **JS-Chip8** is a single-page JavaScript web application. It supports two browsers (Google Chrome and Mozilla Firefox) running on desktop only. **JS-Chip8** has the following components:
 
-1. Chip-8 **Emulator**: Can run any compatible Chip-8 program.
-2. Chip-8 **Visualizer**: Shows a Chip-8 program in action. It displays memory, registers, timers, and instructions being executed. It lets users play/pause and step-forward/step-backward one instruction at a time. Users can also restart the current ROM and reset the emulator.
+1. Chip-8 **Emulator**: Run any compatible Chip-8 program.
+2. Chip-8 **Visualizer**: View a Chip-8 program in action, displays memory, registers, timers, and instructions being executed. Also allows you to play/pause, step-forward/step-backward one instruction at a time, restart a current ROM or even reset the emulator.
 3. One Chip-8 **Tool**: `Sprite Editor` provides a visual interface to create, view, and edit 8x15 sprites.
 4. Two Chip-8 **Games**:  Game 1: `Space Wars`, based on the Atari classic game 'Outlaw'; Game 2: `Jumpy Rabbit`, based on the T-Rex Run by Google.
 
-## What has changed since the last Release:
+## What has changed since the last release:
 
-### Changes in Release 1:
-- Added  Emulator prototype
-    - Implemented the screen and 35 opcodes
-- Added use cases for the decode opcode
-- Added Game 1 prototype
-- Added automated test output area
-
-### Changes in Release 2:
-- The Emulator is now fully functional
-    - Added [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9) via the `Use new shift opcodes?` and `Use new load/store opcodes?` checkboxes for opcodes 8XY6/8XYE and FX55/FX65.
-    - Added keyboard input, sound and delay timer
-- Game 1 is now fully functional
-- Added `Load ROM` functionality where user can load any Chip-8 ROM to the Emulator and run it
-- Added `Description and How to Play` drop-down button prototype for preloaded ROMs. When a user clicks the button, the description and instructions on how to use the current preloaded ROM are displayed; when the user clicks the button again, the drop-down text area is closed
-- Added Visualizer's prototype
-    - `Stop`, `Continue` and `Reset` buttons are now fully functional
-- Removed unneeded decode opcode input field
-- Added test cases for old ROMs support, created separate CPU object for the automated test output area
+### Changes in Release 4 (the last release):
+- The `Sprite Editor` is now fully functional
+- Added reload current ROM option so user can restart a ROM without having to reload it
+- The `Fix timer speed?` checkbox is now unchecked by default
+- Changes to the webpage interface: 
+    - Removed text at the top of the webpage since it's no longer needed
+    - Added animation to the CHIP8 logo  
+    - Added favicon
+    - Changed the colour of the webpage background, the Emulator's screen and the `Sprite Editor`'s screen
+    - Changed the height of the Visualizer's instruction box and register box to match the height of the Emulator's screen
+    - Renamed `Load ROM` button to `Load your ROM` and moved it to the left of the page
+    - Renamed Emulator, Visualizer and Tool buttons' text to symbols with a short explanation of what a button does, displayed when user hovers over them
+    - Renamed the `Description and How to Play` button to `How to Play`. On clicking, a pop-up box (instead of a drop-down text box in earlier releases) shows up
+    - The tool is hidden by default (if the screen size is small enough to allow) and revealed only on scrolling down; when user scrolls up, the tool is hidden again, and the current state of the tool is fully preserved
 
 ### Changes in Release 3:
 - The Visualizer is now fully functional
@@ -42,20 +38,24 @@
     - Moved the `Load ROM` button to the middle of the page
 Migrated to [Jest](https://jestjs.io/) for automated testing
 
-### Changes in Release 4 (the last Release):
-- The `Sprite Editor` is now fully functional
-- Added reload current ROM option so users can restart a ROM without having to reload it
-- The `Fix timer speed?` checkbox is now unchecked by default
-- Changes to the webpage interface: 
-    - Removed text at the top of the webpage since it's no longer needed
-    - Added animation to the CHIP8 logo  
-    - Added favicon
-    - Changed the colour of the webpage background, the Emulator's screen and the `Sprite Editor`'s screen
-    - Changed the height of the Visualizer's instruction box and register box to the same height as the Emulator's screen
-    - Renamed `Select a ROM` button to `Load your ROM`, moved it to the left of the page
-    - Renamed Emulator, Visualizer and Tool buttons' texts to symbols with a short explanation of what a button does displayed when the user hovers over them
-    - Renamed the `Description and How to Play` button to `How to Play`. When a user clicks it, instead of a drop-down text box, a pop-up will show up
-    - The tool is hidden by default, when the user scrolls down, the tool is revealed; when the user scrolls up, the tool is hid again, the current state of the tool is fully preserved
+### Changes in Release 2:
+- The Emulator is now fully functional
+    - Added [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9) via the `Use new shift opcodes?` and `Use new load/store opcodes?` checkboxes for opcodes 8XY6/8XYE and FX55/FX65
+    - Added keyboard input, sound and delay timers
+- Game 1 is now fully functional
+- Added `Load ROM` functionality where user can load any Chip-8 ROM to the Emulator and run it
+- Added `Description and How to Play` drop-down button prototype for preloaded ROMs. On clicking the button, a description and instructions on how to use the current preloaded ROM are displayed; when user clicks the button again, the drop-down text area is closed
+- Added Visualizer's prototype
+    - `Stop`, `Continue` and `Reset` buttons are now fully functional
+- Removed unneeded decode opcode input field
+- Added test cases for old ROMs support and created a separate CPU object for automated testing
+
+### Changes in Release 1:
+- Added  Emulator prototype
+    - Implemented the screen and 35 opcodes
+- Added use cases for the decode opcode feature
+- Added Game 1 prototype
+- Added automated testing, results shown in the tests output area
 
 ## Use Cases For Major Features
 
@@ -71,7 +71,7 @@ Migrated to [Jest](https://jestjs.io/) for automated testing
 
 - CPU set-up: At the beginning or when the emulator resets, the memory, stack, and registers will have suitable default values. 
 
-- 35 Opcodes: Correctly implemented 35/36 opcodes based on the specifications in [Cowgod's Chip-8 Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM). According to Cowgod's and other references, the opcode `0nnn - SYS addr` is only used on the old computers and is ignored by modern interpreters, so we did not implement it and it has been confirmed not to interefere with any ROMs tested so far.
+- 35 Opcodes: Correctly implemented 35/36 opcodes based on the specifications in [Cowgod's Chip-8 Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM). According to Cowgod's and other references, the opcode `0nnn - SYS addr` is only used on old computers and is ignored by modern interpreters, so we did not implement it and it has been confirmed not to interefere with any ROMs tested so far.
 
 - Decode Opcode: This feature is a part of the visualizer's instruction display deliverable and has been developed ahead of time. For now, users can simply enter any opcode (say `00E0`) and click `Submit` which will print the corresponding instruction onto the page.
 
@@ -82,7 +82,7 @@ Migrated to [Jest](https://jestjs.io/) for automated testing
 **Release 2**
 
 - Emulator 
-    - ROM Loading: In Release 1, the ROMs are preloaded into the memory. We will allow users to load any valid Chip-8 ROM into the memory in Release 2. 
+    - ROM Loading: In Release 1, the ROMs are preloaded into the memory. We will allow user to load any valid Chip-8 ROM into the memory in Release 2. 
     - Keyboard Input: The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
 
         1	2	3	C  ------>		1	2	3	4 <br>
@@ -90,9 +90,9 @@ Migrated to [Jest](https://jestjs.io/) for automated testing
         7	8	9	E  ------>		A	S	D	F <br>
         A	0	B	F  ------>		Z	X	C	V <br>
         
-    - Sound/Delay Timer: The `CHIP8` object already contains `delayTimer` and `soundTimer`. We will add sound (played when the sound timer reaches 0) in this release and calibrate the delay timer with our emulator's frame rate.
+    - Sound/Delay Timer: The `CHIP8` object already contains `delayTimer` and `soundTimer` variables which represent the two timers. We will add sound (played when the sound timer reaches 0) in this release and calibrate the delay timer with our emulator's frame rate.
 
-- Visualizer: While a Chip-8 program is being executed, the program will show all current values being stored in memory and in each register. The current running instruction is highlighted. User can also stop the program, and continue running the program. User can click the `Description and How To Play` button for more details on any program from the drop-down menu. 
+- Visualizer: While a Chip-8 program is being executed, all current values being stored in memory and in each register will be displayed. The current running instruction is highlighted. The `Pause` and `Continue` buttons can be used for flow control - to play or pause programs. The `Description and How To Play` button can be used for more details on any program chosen from the drop-down menu. 
 
 - Game 1 Complete: User plays against a computer AI. Two spaceships shoot at each other with a destroyable barrier in the middle. This game will have levels and points, and can be played through multiple rounds against the AI. The game is based on the famous arcade game ‘Outlaw’, with tweaks made to it, such as levels, and points. 
     - Actors:
@@ -135,7 +135,7 @@ Migrated to [Jest](https://jestjs.io/) for automated testing
         - Fixed existing bugs
         - Randomized enemies appearing based on difficulty level selected
         - Aded visual improvements (Animation, etc)
-        - Added Game over/Play again/Winning screen
+        - Added game over/Play again/Winning screen
         - Undesired sprites may appear when jumping (very rare) and doesn't stop the prematurely 
 
     - Actors:
@@ -167,26 +167,26 @@ Migrated to [Jest](https://jestjs.io/) for automated testing
 **Release 4** 
 
 - Emulator completed and interface polished:
-    - User can select a preloaded ROM from the drop-down menu or load any compatible Chip-8 ROM by clicking the `Load ROM` button below the screen. 
+    - User can select a preloaded ROM from the drop-down menu or load any compatible Chip-8 ROM by clicking the `Load your ROM` button below the screen. 
     - The Emulator proceeds to execute the program selected by the user. 
     - The Emulator can run a program at different speeds (default speed is set to 8 cycles/frame); user can select the speed before a program starts or dynamically change the speed while a program is running. 
     - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
     - `Fix timer speed?` is unchecked by default to add support for Game 2 and for intuitive use. 
 
 - Visualizer completed and interface polished:
-    - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted. 
+    - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted.
     - While a program is running, the user can: 
         - Pause the program 
         - Resume the program 
         - Step forward or step backward one instruction at a time 
         - Reset the Emulator to its default state
-        - Restart the current ROM (i.e., the user doesn't have to reload their ROM using the `Load ROM` button or reselect a preloaded ROM from the drop-down menu to restart the current ROM which they had to do up until the last release) 
-        - Display a pop-up screen with a description of the preloaded program selected from the drop-down menu and instructions on how to play the game.
+        - Restart the current ROM (i.e., the user doesn't have to reload their ROM using the `Load your ROM` button or reselect a preloaded ROM from the drop-down menu to restart the current ROM which they had to do up until the last release) 
+        - Display a pop-up screen with a description of the preloaded program selected from the drop-down menu and instructions on how to play the game
 
 - Chip-8 Tool complete: `Sprite Editor` provides a visual interface to create, view, and edit 8x15 sprites, inspired by [Octo toolbox](http://johnearnest.github.io/Octo/):
 
-    - User *left-clicks* on the screen area to turn pixels on or *right-clicks* to turn pixels off. The `Sprite Editor` will produce/update the corresponding hex values in the text box. To turn multiple pixels on/off, hold and drag the cursor. *Note*: Right-click-and-drag to turn multiple pixels off would require either a mouse or physical keys on the touchpad of a laptop. A touchpad without left and right keys would not be able to utilize this feature since most machines would recognize it as left-click-and-drag when you put two keys down and drag.
-    - User can edit the hex values displayed in the text box area and the corresponding sprite will be displayed on the screen. Please note that the text box recognized input in 'comma-delimited' hex format with required `0x` prefix.
+    - User *left-clicks* on the screen area to turn pixels on or *right-clicks* to turn pixels off. The `Sprite Editor` will produce/update the corresponding hex values in the text box. To turn multiple pixels on/off, hold and drag the cursor. **Note**: Right-click-and-drag to turn multiple pixels off would require either a mouse or physical keys on the touchpad of a laptop. A touchpad without left and right keys would not be able to utilize this feature since most machines would recognize it as left-click-and-drag when you put two keys down and drag.
+    - User can edit the hex values displayed in the text box area and the corresponding sprite will be displayed on the screen. Please note that the text box recognizes input in 'comma-delimited' hex format with required `0x` prefix.
     - User can also:
         - Reset the `Sprite Editor` (clear the screen and set the hex values to 0x00)
         - Move the existing sprites up (wrap around)
