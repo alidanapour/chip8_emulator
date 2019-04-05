@@ -39,12 +39,23 @@
     e. type: `npm run test`
 
 ### To run our game (`Space Wars`)
-- Please refer to the `README.md` in the `games\game1` folder.
 - Important for Space Wars: Please **UN-check the `Fix timer speed?` checkbox** before loading the rom.
+- Controls:
+    - At the title screen, **press and hold** `E` on your keyboard to start. 
+    - `W` (move up), `S` (move down), `A` (move backward), `D` (move backward) keys are used for movement
+    - `E` is used to shoot from your ship
+    - When the game ends, press and hold `E` to restart the game.
+- For more details, please refer to the `README.md` in the `games\game1` folder.
 
 ### To run our game (`Jumpy Rabbit`)
-- Please refer to the `README.md` in the `games\game2` folder.
 - Important for Jumpy Rabbit: Please set the speed to **40 cycles/frame** and **CHECK the `Fix timer speed?` checkbox** before loading the rom.
+- Controls:
+    - At the title screen, select the level difficulty by pressing `W` (up) or `D` (down) and then **press and hold** `E` on your keyboard to start. 
+    - The `W` key makes your rabbit jump.
+    - Make sure to avoid all obstacles! 
+    - To win reach 20 points at level 1, 100 at level 2, and 255 at level 3!
+    - If you win, congratulations and enjoy seeing Jumpy McRabbit make his way home. If you lose, no worries, just hold `E` to try again.
+- For more details, please refer to the `README.md` in the `games\game2` folder.
 
 ### Chip 8 Tool (`Sprite Editor`)
 - User scrolls down to reveal the Sprite Editor, scrolls up to hide it, the current state of the Sprite Editor will be fully preserved.
