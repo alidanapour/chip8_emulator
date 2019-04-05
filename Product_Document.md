@@ -186,7 +186,7 @@ Migrated to [Jest](https://jestjs.io/) for automated test
 
     - User left-click on the screen area add a sprite or right-click on the screen area to remove an existing sprite, the `Sprite Editor` will produce the corresponding hex values. To add or remove multiple sprites, hold and drag the cursor. 
     - User can edit the hex values displayed in the text box area and the corresponding sprite(s) will be display on the screen
-    - Use can:
+    - User can:
         - Reset the `Sprite Editor` (clear the screen and set the hex values to 0)
         - Move the existing sprites up (wrap around)
         - Move the existing sprites down (wrap around)
@@ -319,7 +319,7 @@ NO-SHOW RULE: For pre-scheduled meetings (either in person or voice call), if a 
 
 - Hardware: Members should bring their personal laptop for group meetings. For remote work, they can either work on laptop or desktop.
 
-- Testing methods: Our team will aim for test-driven development. Developers will write unit testing friendly code and try to eliminate most bugs at early stages of development. Apart from manually testing code at each stage (by individual developers), we will perform a code review on all parts of the product before every release. For unit testing, every developer is encouraged to rigorously unit-test their code at each stage of development and no later than each subsequent release. We plan to use Jest to automate unit testing. For integrated and functional testing, our team will perform integrated testing before every release to make sure no bugs are overlooked and passed on to next releases. When the final product is +75% ready, manual functional testing will be performed using Google Chrome and Mozilla Firefox to ensure cross browser functionalities.
+- Testing methods: Our team will aim for test-driven development. Developers will write unit testing friendly code and try to eliminate most bugs at early stages of development. Apart from manually testing code at each stage (by individual developers, we will perform a code review on all parts of the product before every release. For unit testing, every developer is encouraged to rigorously unit-test their code at each stage of development and no later than each subsequent release. We plan to use Jest to automate unit testing. For integrated and functional testing, our team will perform integrated testing before every release to make sure no bugs are overlooked and passed on to next releases. When the final product is +75% ready, manual functional testing will be performed using Google Chrome and Mozilla Firefox to ensure cross browser functionalities.
 
 ## Work breakdown 
 
