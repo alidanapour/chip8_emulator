@@ -4,8 +4,8 @@
 
 **JS-Chip8** is a single-page JavaScript web application. It supports two browsers (Google Chrome and Mozilla Firefox) running on desktop only. **JS-Chip8** has the following components:
 
-1. Chip-8 **Emulator** can run any compatible Chip-8 program.
-2. Chip-8 **Visualizer** shows a Chip-8 program in action. It displays memory, registers, timers, and instructions being executed. It lets users play/pause and step-forward/step-backward one instruction at a time. Users can also restart the current ROM and reset the emulator.
+1. Chip-8 **Emulator**: Can run any compatible Chip-8 program.
+2. Chip-8 **Visualizer**: Shows a Chip-8 program in action. It displays memory, registers, timers, and instructions being executed. It lets users play/pause and step-forward/step-backward one instruction at a time. Users can also restart the current ROM and reset the emulator.
 3. One Chip-8 **Tool**: `Sprite Editor` provides a visual interface to create, view, and edit 8x15 sprites.
 4. Two Chip-8 **Games**:  Game 1: `Space Wars`, based on the Atari classic game 'Outlaw'; Game 2: `Jumpy Rabbit`, based on the T-Rex Run by Google.
 
@@ -82,7 +82,7 @@ Migrated to [Jest](https://jestjs.io/) for automated testing
 **Release 2**
 
 - Emulator 
-    - ROM Loading: In release 1, the ROMs are preloaded into the memory. We will allow users to load any valid Chip-8 ROM into the memory in release 2. 
+    - ROM Loading: In Release 1, the ROMs are preloaded into the memory. We will allow users to load any valid Chip-8 ROM into the memory in Release 2. 
     - Keyboard Input: The 16-key keyboard used for input will be mapped to the computer keyboard and will also be displayed on the web page according to the following mapping:
 
         1	2	3	C  ------>		1	2	3	4 <br>
@@ -267,7 +267,7 @@ Migrated to [Jest](https://jestjs.io/) for automated testing
 
 ### Software methodology 
 
-We followed Extreme Programming methodologies for this project. The project startup plan (release 0 product documentation) includes limited information about the work breakdown and project schedule. During development, for each release, an informal project plan and effort estimates were created with involvement from all team members (Sommerville, Software Engineering, 9th Edition). 
+We followed Extreme Programming methodologies for this project. The project startup plan (Release 0 product documentation) includes limited information about the work breakdown and project schedule. During development, for each release, an informal project plan and effort estimates were created with involvement from all team members (Sommerville, Software Engineering, 9th Edition). 
 
 The team will meet weekly to create user stories. The stories are ranked by importance and each story is assigned some effort points to indicate how much effort it will take relative to other stories. At the beginning of each release, the team decides what user stories to implement and more detailed tasks are created for those stories. After each release, team velocity (i.e., how many effort-points per working day the team got done) used as input for planning of the next release. Members chose what stories they want to work on rather than being assigned some stories to ensure personal accountability and create motivation. 
 
@@ -336,7 +336,7 @@ The work breakdown and project schedule below are tentative and will be update a
 
 For Release 1, we underestimated the number of hours needed for some deliverables and overestimated the number of hours needed for other deliverables, the net effect is an underestimation of 9.5 hours (6%). We increased the estimated effort hours for all remaining deliverable by 6% and asked members to track their hours more carefully in future releases. 
 
-As we implemented the emulator, we also added new deliverables and modified some existing ones. For example, instead of splitting the implementation of opcodes into 2 releases, we decided to implement all of them in release 1, so that we can test any Chip-8 program on our emulator. We also divided the emulator into more concrete subtasks such as: screen implementation and automating ROM loading. We will continue updating this Work Breakdown for upcoming releases. 
+As we implemented the emulator, we also added new deliverables and modified some existing ones. For example, instead of splitting the implementation of opcodes into 2 releases, we decided to implement all of them in Release 1, so that we can test any Chip-8 program on our emulator. We also divided the emulator into more concrete subtasks such as: screen implementation and automating ROM loading. We will continue updating this Work Breakdown for upcoming releases. 
 
 **UPDATED**: **January 27, 2019**: Below is a snapshot of out current Work Breakdown Spreadsheet, taken on February 27, 2019.
 
@@ -369,19 +369,19 @@ All tasks have been completed!
 
 The due dates of major deliverables are shown in the table above. Detailed scheduling, progress tracking and updates are done using Kanban Board via [Trello](https://trello.com). 
 
-**UPDATED February 5, 2019**: An example for release 1 is shown below:
+**UPDATED February 5, 2019**: An example for Release 1 is shown below:
 
 ![Trello example](product_document_imgs/trello_example.PNG)
 
-**UPDATED February 27, 2019**: An example for release 2 is shown below:
+**UPDATED February 27, 2019**: An example for Release 2 is shown below:
 
 ![Trello example](product_document_imgs/trello_example_R2.PNG)
 
-**UPDATED**: **March 13, 2019**: An example for release 3 is shown below:
+**UPDATED**: **March 13, 2019**: An example for Release 3 is shown below:
 
 ![Trello example](product_document_imgs/trello_example_R3.PNG)
 
-**UPDATED**: **April 5, 2019**:  An example for release 4 is shown below:
+**UPDATED**: **April 5, 2019**:  An example for Release 4 is shown below:
 
 ![Trello example](product_document_imgs/trello_example_R4.PNG)
 
