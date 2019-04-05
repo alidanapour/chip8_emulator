@@ -39,7 +39,7 @@ For Jest Automated testing:
     e. type: `npm run test`
 
 To run our game (`Space Wars`): Please refer to the `README.md` in the `games\game1` folder.
-- - Important for Space Wars: Please **UN-check the `Fix timer speed?` checkbox** before loading the rom.
+- Important for Space Wars: Please **UN-check the `Fix timer speed?` checkbox** before loading the rom.
 
 To run our game (`Jumpy Rabbit`): Please refer to the `README.md` in the `games\game2` folder.
  - Important for Jumpy Rabbit: Please set the speed to **40 cycles/second** and **CHECK the `Fix timer speed?` checkbox** before loading the rom.
