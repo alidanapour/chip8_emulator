@@ -353,7 +353,11 @@ or [link2](https://stackoverflow.com/questions/10752055/cross-origin-requests-ar
 
 The majority of the tasks have been completed by Release 3, the only major component left is the chip8 tool (`Sprite Editor`). After Release 3, we mainly focus on polishing components that has been completed (e.g., improving the user interface, further testing to ensure no major bugs still exist) and finish implementing + tesing the tool. We will continue updating this Work Breakdown for upcoming releases.
 
-**UPDATED**: **April 5, 2019**: **TODO**
+**UPDATED**: **April 5, 2019**: 
+
+![WBS example](product_document_imgs/WBS_R4.PNG)
+
+All tasks has been completed!
 
 ## Project schedule
 
