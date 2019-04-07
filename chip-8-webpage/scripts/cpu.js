@@ -94,7 +94,7 @@ class CPU {
 
         const canvas = document.getElementById("screen-area");
         const screen = canvas.getContext("2d");
-        screen.fillStyle = "black";
+        screen.fillStyle = pixelColour;
         screen.clearRect(0, 0, this.screenWidth * 10, this.screenHeight * 10);
 
         // Read video memory and render corresponding pixels onto the screen

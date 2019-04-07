@@ -42,6 +42,8 @@ let prevCachedPC = 0;               // To update instruction list
 let cpuCacheStack = new Array();    // Stack for storing CPU states (for stepping backward)
 let currentRom = new Array();       // Store the current ROM for restarting later
 
+let pixelColour = 'black';          // Select default pixel colour
+
 function pushCpuStateToStack(x) {
     let tempState = {
         V_cache: x.V.slice(),
@@ -264,6 +266,20 @@ function checkLoadStoreQuirks() {
 function checkTimerQuirk() {
     let checkbox3 = document.getElementById('fixtimer');
     isTimerFixed = checkbox3.checked ? true : false;
+}
+
+
+function changeBackgroundColour(colour) {
+    document.getElementById('screen-area').style.backgroundColor = colour;
+}
+
+
+function changePixelColour(colour) {
+    if (CHIP8) {
+        pixelColour = colour;
+        CHIP8.drawFlag = true;
+        CHIP8.renderScreen();
+    }
 }
 
 

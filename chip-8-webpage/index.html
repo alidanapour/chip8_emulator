@@ -206,6 +206,12 @@
 
     <!-- Load ROM buttom -->
     <p>Load your ROM: <input type="file" id="rom"/></p>
+
+    <!-- Change Emulator Colours -->
+    <div>
+        <input type="color" id="background" value="#c4c4c4" oninput="changeBackgroundColour(this.value)">
+        <input type="color" id="pixels" value="#000000" oninput="changePixelColour(this.value)">
+    </div>
     
     <!-- Sprite Editor Tool -->
     <div id="tool-sprite">
