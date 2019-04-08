@@ -62,7 +62,7 @@
 
 ### Chip 8 Tool (`Sprite Editor`)
 
-![screenshot2](product_document_imgs/screenshot2.PNG)
+<img src="product_document_imgs/screenshot2.PNG" width="200">
 
 - User scrolls down to reveal the Sprite Editor, scrolls up to hide it, the current state of the Sprite Editor will be fully preserved.
 - User *left-clicks* on the screen area to turn pixels on or *right-clicks* to turn pixels off. The `Sprite Editor` will produce/update the corresponding hex values in the text box. To turn multiple pixels on/off, hold and drag the cursor. 
