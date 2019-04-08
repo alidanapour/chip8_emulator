@@ -25,6 +25,7 @@
     - Renamed Emulator, Visualizer and Tool buttons' text to symbols with a short explanation of what a button does, displayed when user hovers over them
     - Renamed the `Description and How to Play` button to `How to Play`. On clicking, a pop-up box (instead of a drop-down text box in earlier releases) shows up
     - The tool is hidden by default (if the screen size is small enough to allow) and revealed only on scrolling down; when user scrolls up, the tool is hidden again, and the current state of the tool is fully preserved
+- Added Jest test cases for the tool
 
 ### Changes in Release 3:
 - The Visualizer is now fully functional
@@ -36,7 +37,7 @@
 - Changes to the webpage interface: 
     - Moved the Visualizer's instruction box and register box next the Emulator's screen 
     - Moved the `Load ROM` button to the middle of the page
-Migrated to [Jest](https://jestjs.io/) for automated testing
+- Migrated to [Jest](https://jestjs.io/) for automated testing
 
 ### Changes in Release 2:
 - The Emulator is now fully functional
@@ -238,7 +239,7 @@ Migrated to [Jest](https://jestjs.io/) for automated testing
 |Role Assignment	| Let members take on multiple roles	| HELP: Members freely moved between different roles, so when issues occurred, members could quickly help each other |
 |Software Development	| Followed Agile Development, combined with sequential and parallel development	| HELP: Multiple releases reduced procrastination, and developing the Emulator and Visualizer at the same time as the two Chip-8 games helped us get more tasks done in lesser time |
 |Test	|Develop tests in JavaScript, then migrate to Jest	| HELP: Using JavaScript to quickly test the initial Chip-8 emulator components before Jest helped use test our implementation faster 	|
-|Refactor Interface	|Refactor using Bootstrap once we were done with everything	| HURT: The code base has dependencies between various components and adding a library/framework introduced weird bugs which are difficult and tricky to fix> In retrospect, we should have used Bootstrap since the beginning |
+|Refactor Interface	|Refactor using Bootstrap once we were done with everything	| HURT: The code base has dependencies between various components and adding a library/framework introduced weird bugs which are difficult and tricky to fix. In retrospect, we should have used Bootstrap since the beginning |
 |Tasks Allocation	| Only one member worked on the two Chip-8 games	| HURT: Had the member who was in charge of developing the two games left, we would have been in big trouble. We would recommend future students to avoid having a low bus factor of 1 on any of the crucial components |
 
 ### How useful was planning & estimation?
