@@ -83,7 +83,7 @@
             <i class="material-icons">stop</i></button> 
         
         <!-- Trigger/Open The Description -->
-        <button id="descriptionButton" title="Open game description and controls">How To Play</button>
+        <button id="descriptionButton" title="Open game description and controls"><i class="material-icons">help</i></button>
         
         <!-- The Description -->
         <div id="description" class="pop-up">
@@ -137,6 +137,10 @@
             </div> <!-- End of Description Content-->
         
         </div> <!-- End of Description -->
+
+        <!-- Change Emulator Colours -->
+        <input type="color" id="background" value="#c4c4c4" title="Change emulator background colour" oninput="changeBackgroundColour(this.value)">
+        <input type="color" id="pixels" value="#000000" title="Change emulator pixel colour" oninput="changePixelColour(this.value)">
 
 	</div> <!-- End of topBar -->
 
@@ -206,12 +210,6 @@
 
     <!-- Load ROM buttom -->
     <p>Load your ROM: <input type="file" id="rom"/></p>
-
-    <!-- Change Emulator Colours -->
-    <div>
-        <input type="color" id="background" value="#c4c4c4" oninput="changeBackgroundColour(this.value)">
-        <input type="color" id="pixels" value="#000000" oninput="changePixelColour(this.value)">
-    </div>
     
     <!-- Sprite Editor Tool -->
     <div id="tool-sprite">
