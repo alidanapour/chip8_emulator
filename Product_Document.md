@@ -23,7 +23,7 @@
     - Changed the height of the Visualizer's instruction box and register box to match the height of the Emulator's screen
     - Renamed `Load ROM` button to `Load your ROM` and moved it to the left of the page
     - Renamed Emulator, Visualizer and Tool buttons' text to symbols with a short explanation of what a button does, displayed when user hovers over them
-    - Renamed the `Description and How to Play` button to `How to Play`. On clicking, a pop-up box (instead of a drop-down text box in earlier releases) shows up
+    - Renamed the `Description and How to Play` button to `?`. On clicking, a pop-up box (instead of a drop-down text box in earlier releases) shows up
     - The tool is hidden by default (if the screen size is small enough to allow) and revealed only on scrolling down; when user scrolls up, the tool is hidden again, and the current state of the tool is fully preserved
 - Added Jest test cases for the tool
 
