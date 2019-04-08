@@ -169,6 +169,8 @@
 **Release 4** 
 
 - Emulator completed and interface polished:
+    ![screenshot1](product_document_imgs/screenshot1.PNG)
+
     - User can select a preloaded ROM from the drop-down menu or load any compatible Chip-8 ROM by clicking the `Load your ROM` button below the screen. 
     - The Emulator proceeds to execute the program selected by the user. 
     - The Emulator can run a program at different speeds (default speed is set to 8 cycles/frame); user can select the speed before a program starts or dynamically change the speed while a program is running. 
@@ -186,6 +188,8 @@
         - Display a pop-up screen with a description of the preloaded program selected from the drop-down menu and instructions on how to play the game
 
 - Chip-8 Tool complete: `Sprite Editor` provides a visual interface to create, view, and edit 8x15 sprites, inspired by [Octo toolbox](http://johnearnest.github.io/Octo/):
+
+    ![screenshot2](product_document_imgs/screenshot2.PNG)
 
     - User *left-clicks* on the screen area to turn pixels on or *right-clicks* to turn pixels off. The `Sprite Editor` will produce/update the corresponding hex values in the text box. To turn multiple pixels on/off, hold and drag the cursor. **Note**: Right-click-and-drag to turn multiple pixels off would require either a mouse or physical keys on the touchpad of a laptop. A touchpad without left and right keys would not be able to utilize this feature since most machines would recognize it as left-click-and-drag when you put two keys down and drag.
     - User can edit the hex values displayed in the text box area and the corresponding sprite will be displayed on the screen. Please note that the text box recognizes input in 'comma-delimited' hex format with required `0x` prefix.
