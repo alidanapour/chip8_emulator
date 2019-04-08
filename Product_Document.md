@@ -263,9 +263,9 @@
 - Testing played a crucial role in this project, and was completely worth it. We spent more time of testing rather than development, especially in the beginning when we were implementing opcodes and flow-control. Although we performed a considerable amount of automated testing, we believe that manual testing was most important and effective for us since our code base was manageable and not too complex to lose track of. We mostly used Google's Developer Console for manual testing of all the components (emulator, visualizer and tool) which helped us fix bugs and develop these components. For games, a lot of manual testing had to be done to fine tune difficulty,fun factor, and to fix bugs.
 
 ### What would you have done differently knowing what you know now? 
-- Allocate more members to works on the games.
-- Create a fictional character as our target audience, and when we face with desgin/implementation dilemma, we will use this character as the anchor for our decisions.
-- Use Bootstrap and TypeScript since the beginning rather than refactoring when everyone is done.
+- Allocate more members (at least 2) to work on the games to have a bigger bus factor and add redundancy.
+- Create a fictional character as our target audience, and when faced with any design/implementation dilemma, use this character as the anchor for our decisions.
+- Use Bootstrap and TypeScript since the beginning rather than refactoring when everything is completed.
 
 ### Advices we would give to future students
 - Don’t stress out if the goals and objectives are not clear in the beginning.
