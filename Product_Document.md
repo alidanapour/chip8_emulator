@@ -15,6 +15,7 @@
 - The `Sprite Editor` is now fully functional
 - Added reload current ROM option so user can restart a ROM without having to reload it
 - The `Fix timer speed?` checkbox is now unchecked by default
+- Added buttons to change the Emulator's screen background and pixels colours
 - Changes to the webpage interface: 
     - Removed text at the top of the webpage since it's no longer needed
     - Added animation to the CHIP8 logo  
