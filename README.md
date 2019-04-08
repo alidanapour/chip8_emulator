@@ -12,7 +12,7 @@
     - Pause the program 
     - Resume the program 
     - Step forward or backward one instruction at a time 
-    - Reset the Emulator to its default state
+    - Reset the Emulator to its default state (screen background and pixel colour, and checkbox values will be preserved)
     - Restart the current ROM (i.e., the user doesn't have to reload their ROM using the `Load your ROM` button or re-select a preloaded ROM from the drop-down menu) 
     - Display the pop-up screen with description of the pre-load program selected from the drop-down menu and instructions on how to play the game.  
     - Change the Emulator's screen background and pixels colours
