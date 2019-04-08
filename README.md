@@ -42,6 +42,9 @@
     e. type: `npm run test`
 
 ### To run our game (`Space Wars`)
+
+![screenshot1](product_document_imgs/space-wars-collage.png)
+
 - Important for Space Wars: Please **UN-check the `Fix timer speed?` checkbox** before loading the rom.
 - Controls:
     - At the title screen, **press and hold** `E` on your keyboard to start. 
@@ -51,6 +54,9 @@
 - For more details, please refer to the `README.md` in the `games\game1` folder.
 
 ### To run our game (`Jumpy Rabbit`)
+
+![screenshot1](product_document_imgs/jumpy-rabbit-collage.png)
+
 - Important for Jumpy Rabbit: Please set the speed to **40 cycles/frame** and **CHECK the `Fix timer speed?` checkbox** before loading the rom.
 - Controls:
     - At the title screen, select the level difficulty by pressing `W` (up) or `D` (down) and then **press and hold** `E` on your keyboard to start. 
