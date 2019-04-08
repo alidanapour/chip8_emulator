@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CHIP-8 JavaScript</title>
     <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="aos/aos.css" rel="stylesheet"> <!--Load ASO library-->
     <link href="https://fonts.googleapis.com/css?family=Karla|Merriweather" rel="stylesheet">   <!--Load fonts from Google-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">      <!--Load Google icons-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <!--Load jQuery from Google-->
     <script type="text/javascript" src="scripts/disassembleOpcode.js"></script>
     <script type="text/javascript" src="scripts/cpu.js"></script>
     <script type="text/javascript" src="scripts/tests.js"></script>
@@ -17,7 +17,6 @@
     <script type="text/javascript" src="scripts/runEmulator.js"></script>
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
-
 
 <div class="options">
 
@@ -97,7 +96,7 @@
 
                 <div id="description-body">
 
-                    <div id="tempDescHolder">Choose a game from the drop-down menu to see its description!</div>
+                    <div id="tempDescHolder"></div>
 
                     <div id="table-button-col">
 
@@ -167,6 +166,7 @@
 </div></br> <!-- End of Options -->
 
 <body>
+   
     <!-- Visualizer Area -->
     <div class="visualizer">
 
@@ -212,10 +212,10 @@
     <p>Load your ROM: <input type="file" id="rom"/></p>
     
     <!-- Sprite Editor Tool -->
-    <div id="tool-sprite">
+    <div id="tool-sprite" data-aos="fade-up">
 
         <h2> Sprite Editor <h2>
-
+        
         <div id="tool-buttons">
             <button onclick="moveSpriteUp()" class="newButton" title="Move sprite up">
                 <i class="material-icons">expand_less</i></button>
@@ -227,8 +227,10 @@
                 <i class="material-icons">chevron_right</i></button>
             <button onclick="clearSpriteArea()" class="newButton" title="Clear sprite area">
                 <i class="material-icons">delete</i></button>
-            <button class="newButton" title="How to use">
-                <i class="material-icons">help</i></button>
+            <button onclick="showHelp()" class="newButton tool-popup-button" title="How to use">
+                <i class="material-icons">help</i>
+                <span class="tool-popuptext" id="tool-popup">Left click to draw. </br> Right click to erase.</span>
+            </button>
             
         </div>
 
@@ -241,6 +243,10 @@
         </div>
 
     </div>
+
+    <!-- Files To Be Loaded At The End of body -->
+    <script type="text/javascript" src="aos/aos.js"></script> <!--Load ASO library-->
+    <script type="text/javascript" src="scripts/scroll.js"></script> <!-- Init ASO library-->
 
 </body>
 
