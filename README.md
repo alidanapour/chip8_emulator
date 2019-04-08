@@ -1,5 +1,7 @@
 # Team 10 JS-Chip 8 Program
 
+![screenshot1](product_document_imgs/screenshot1.PNG)
+
 ## Instructions:
 
 ### To run the webpage: 
