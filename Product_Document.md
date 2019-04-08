@@ -61,26 +61,97 @@
 
 ## Use Cases For Major Features
 
-**Release 0**:
+**Release 5**
 
-- Interface Mockup
+- Release 4 is the final release of the `JS-Chip8` web application. Our team doesn't have any plans for another release since members will move on to other projects. However, assuming we actually have a Release 5, these are the features we would like to add:
+    - Host the JS-Chip8 web application with a dedicated URL, so that we can collect more user feedback to improve the web app UX, UI
+    - Make the web page responsive for mobile users 
+    - Test for performance and security issues 
+    - Refactor the existing back-end code from JavaScript to TypeScript for long-run maintenance
+    - Add more tools to support Chip-8 developers  
 
-![Interface Mockup](product_document_imgs/interface_mockup.JPG)
+**Release 4** 
 
-- Interface Implementation: Implemented the interface based on the mockup version. 
+- Emulator completed and interface polished:
+    ![screenshot1](product_document_imgs/screenshot1.PNG)
 
-**Release 1**
+    - User can select a preloaded ROM from the drop-down menu or load any compatible Chip-8 ROM by clicking the `Load your ROM` button below the screen. 
+    - The Emulator proceeds to execute the program selected by the user. 
+    - The Emulator can run a program at different speeds (default speed is set to 8 cycles/frame); user can select the speed before a program starts or dynamically change the speed while a program is running. 
+    - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
+    - `Fix timer speed?` is unchecked by default to add support for Game 2 and for intuitive use. 
 
-- CPU set-up: At the beginning or when the emulator resets, the memory, stack, and registers will have suitable default values. 
+- Visualizer completed and interface polished:
+    - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted.
+    - While a program is running, the user can: 
+        - Pause the program 
+        - Resume the program 
+        - Step forward or step backward one instruction at a time 
+        - Reset the Emulator to its default state
+        - Restart the current ROM (i.e., the user doesn't have to reload their ROM using the `Load your ROM` button or reselect a preloaded ROM from the drop-down menu to restart the current ROM which they had to do up until the last release) 
+        - Display a pop-up screen with a description of the preloaded program selected from the drop-down menu and instructions on how to play the game
 
-- 35 Opcodes: Correctly implemented 35/36 opcodes based on the specifications in [Cowgod's Chip-8 Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM). According to Cowgod's and other references, the opcode `0nnn - SYS addr` is only used on old computers and is ignored by modern interpreters, so we did not implement it and it has been confirmed not to interefere with any ROMs tested so far.
+- Chip-8 Tool complete: `Sprite Editor` provides a visual interface to create, view, and edit 8x15 sprites, inspired by [Octo toolbox](http://johnearnest.github.io/Octo/):
 
-- Decode Opcode: This feature is a part of the visualizer's instruction display deliverable and has been developed ahead of time. For now, users can simply enter any opcode (say `00E0`) and click `Submit` which will print the corresponding instruction onto the page.
+    ![screenshot2](product_document_imgs/screenshot2.PNG)
 
-- Screen: Chip-8 originally has a 64x32 pixel screen and each pixel in our emulator has been scaled up by a factor of 10, making the screen 640x320 px. Only the welcome screen is shown for programs that require user interaction via the keyboard.
+    - User *left-clicks* on the screen area to turn pixels on or *right-clicks* to turn pixels off. The `Sprite Editor` will produce/update the corresponding hex values in the text box. To turn multiple pixels on/off, hold and drag the cursor. **Note**: Right-click-and-drag to turn multiple pixels off would require either a mouse or physical keys on the touchpad of a laptop. A touchpad without left and right keys would not be able to utilize this feature since most machines would recognize it as left-click-and-drag when you put two keys down and drag.
+    - User can edit the hex values displayed in the text box area and the corresponding sprite will be displayed on the screen. Please note that the text box recognizes input in 'comma-delimited' hex format with required `0x` prefix.
+    - User can also:
+        - Reset the `Sprite Editor` (clear the screen and set the hex values to 0x00)
+        - Move the existing sprites up (wrap around)
+        - Move the existing sprites down (wrap around)
+        - Move the existing sprites left (wrap around)
+        - Move the existing sprites right (wrap around)
 
-- Prototype of Game 1: `Space Wars` - a shooting game based on the classic Atari game ‘Outlaw’.  
+- Game 1 `Space Wars` complete: Fully completed game with polished interface and no known bugs.
+
+![screenshot1](product_document_imgs/space-wars-collage.png)
+
+- Game 2 `Jumpy Rabbit` complete: Fully completed game with polished interface and no known bugs.
+
+![screenshot1](product_document_imgs/jumpy-rabbit-collage.png)
+
+**Release 3**
+
+- Emulator: Perform more rigorous automated testings.
+
+- Visualizer: User can step forward or step backward one instruction at a time.
+
+- Game 2 Complete: `Jumpy Rabbit` is a game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score! 
+    - Updates made to prototype:
+        - Fixed existing bugs
+        - Randomized enemies appearing based on difficulty level selected
+        - Aded visual improvements (Animation, etc)
+        - Added game over/Play again/Winning screen
+        - Undesired sprites may appear when jumping (very rare) and doesn't stop the prematurely 
+
+    - Actors:
+        - User
+        - Input/Output interface 
+        - Chip-8 Emulator 
+    - Preconditions:
+        - User has loaded the game onto a compatible Chip-8 emulator  
+        - User has set the emulator speed to 30-40 cycles per second
+    - Normal Flow:
     
+        1. The system will proceed to execute Jumpy Rabbit code.
+        2. User will select difficulty level and begin game.
+        3. The game will initialize.
+        4. The game will draw level, the player (rabbit), and level/score information.
+        5. Throughout the duration of the game, the user will provide jump instructions for the rabbit using their keyboard.
+        6. Throughout the duration of the game, the system will spawn random enemies based on difficulty level.
+        7. Throughout the duration of the game, the system will move the enemies to the left each frame.
+        8. Throughout the duration of the game, the system will draw the rabbit in the appropriate place depending on if the rabbit is falling or jumping (via user input for the latter).
+        9. Throughout the duration of the game, the system will update the score (+1 when level 1 enemy avoided. +2 for level 2/3 enemies avoided).
+        10. If the player touches an enemy, the game will terminate display a game over screen with the score displayed.
+        11. If the player reaches max score (20 - level 1, 100 - level 2, 255 - level 3), the game ends and displays a game win animation. The score of the player is also displayed.
+        12. If the player chooses to play again via input, the game reinitializes and game flow resumes at point 'b'
+
+- Chip-8 Tool: `Sprite Editor` provide a visual interface to create, view, and edit 8x15 sprites. Chip-8 developers can turn pixels on in the editor and it will produce the corresponding hexcode for that sprites, thus making it easier to create sprites by letting the developer visualize them. 
+
+- Automated testing with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
+
 **Release 2**
 
 - Emulator 
@@ -126,91 +197,26 @@
         - Score count is incorrect after first point (wrapping issue, will be fixed when enemies properly implemented)
         - Game ends with a blank screen when you lose
 
-**Release 3**
+**Release 1**
 
-- Emulator: Perform more rigorous automated testings.
+- CPU set-up: At the beginning or when the emulator resets, the memory, stack, and registers will have suitable default values. 
 
-- Visualizer: User can step forward or step backward one instruction at a time.
+- 35 Opcodes: Correctly implemented 35/36 opcodes based on the specifications in [Cowgod's Chip-8 Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM). According to Cowgod's and other references, the opcode `0nnn - SYS addr` is only used on old computers and is ignored by modern interpreters, so we did not implement it and it has been confirmed not to interefere with any ROMs tested so far.
 
-- Game 2 Complete: `Jumpy Rabbit` is a game inspired by Google's *T-Rex Run*. We replaced the T-Rex with a rabbit. The premise of Jumpy Rabbit is simple, avoid all obstacles and get the highest score! 
-    - Updates made to prototype:
-        - Fixed existing bugs
-        - Randomized enemies appearing based on difficulty level selected
-        - Aded visual improvements (Animation, etc)
-        - Added game over/Play again/Winning screen
-        - Undesired sprites may appear when jumping (very rare) and doesn't stop the prematurely 
+- Decode Opcode: This feature is a part of the visualizer's instruction display deliverable and has been developed ahead of time. For now, users can simply enter any opcode (say `00E0`) and click `Submit` which will print the corresponding instruction onto the page.
 
-    - Actors:
-        - User
-        - Input/Output interface 
-        - Chip-8 Emulator 
-    - Preconditions:
-        - User has loaded the game onto a compatible Chip-8 emulator  
-        - User has set the emulator speed to 30-40 cycles per second
-    - Normal Flow:
-    
-        1. The system will proceed to execute Jumpy Rabbit code.
-        2. User will select difficulty level and begin game.
-        3. The game will initialize.
-        4. The game will draw level, the player (rabbit), and level/score information.
-        5. Throughout the duration of the game, the user will provide jump instructions for the rabbit using their keyboard.
-        6. Throughout the duration of the game, the system will spawn random enemies based on difficulty level.
-        7. Throughout the duration of the game, the system will move the enemies to the left each frame.
-        8. Throughout the duration of the game, the system will draw the rabbit in the appropriate place depending on if the rabbit is falling or jumping (via user input for the latter).
-        9. Throughout the duration of the game, the system will update the score (+1 when level 1 enemy avoided. +2 for level 2/3 enemies avoided).
-        10. If the player touches an enemy, the game will terminate display a game over screen with the score displayed.
-        11. If the player reaches max score (20 - level 1, 100 - level 2, 255 - level 3), the game ends and displays a game win animation. The score of the player is also displayed.
-        12. If the player chooses to play again via input, the game reinitializes and game flow resumes at point 'b'
+- Screen: Chip-8 originally has a 64x32 pixel screen and each pixel in our emulator has been scaled up by a factor of 10, making the screen 640x320 px. Only the welcome screen is shown for programs that require user interaction via the keyboard.
 
-- Chip-8 Tool: `Sprite Editor` provide a visual interface to create, view, and edit 8x15 sprites. Chip-8 developers can turn pixels on in the editor and it will produce the corresponding hexcode for that sprites, thus making it easier to create sprites by letting the developer visualize them. 
+- Prototype of Game 1: `Space Wars` - a shooting game based on the classic Atari game ‘Outlaw’.
 
-- Automated testing with Jest: Implement existing test cases in `test.js` in Jest and add new test cases.
+**Release 0**:
 
-**Release 4** 
+- Interface Mockup
 
-- Emulator completed and interface polished:
-    ![screenshot1](product_document_imgs/screenshot1.PNG)
+![Interface Mockup](product_document_imgs/interface_mockup.JPG)
 
-    - User can select a preloaded ROM from the drop-down menu or load any compatible Chip-8 ROM by clicking the `Load your ROM` button below the screen. 
-    - The Emulator proceeds to execute the program selected by the user. 
-    - The Emulator can run a program at different speeds (default speed is set to 8 cycles/frame); user can select the speed before a program starts or dynamically change the speed while a program is running. 
-    - `Use new shift opcodes?` and `Use new load/store opcodes?` are selected by default to [support for old ROMs](https://github.com/tomdaley92/Kiwi8/issues/9).
-    - `Fix timer speed?` is unchecked by default to add support for Game 2 and for intuitive use. 
+- Interface Implementation: Implemented the interface based on the mockup version. 
 
-- Visualizer completed and interface polished:
-    - While a program is running, the Visualizer will dynamically display the value for all 21 registers, and a list of 21 instructions with the current instruction highlighted.
-    - While a program is running, the user can: 
-        - Pause the program 
-        - Resume the program 
-        - Step forward or step backward one instruction at a time 
-        - Reset the Emulator to its default state
-        - Restart the current ROM (i.e., the user doesn't have to reload their ROM using the `Load your ROM` button or reselect a preloaded ROM from the drop-down menu to restart the current ROM which they had to do up until the last release) 
-        - Display a pop-up screen with a description of the preloaded program selected from the drop-down menu and instructions on how to play the game
-
-- Chip-8 Tool complete: `Sprite Editor` provides a visual interface to create, view, and edit 8x15 sprites, inspired by [Octo toolbox](http://johnearnest.github.io/Octo/):
-
-    ![screenshot2](product_document_imgs/screenshot2.PNG)
-
-    - User *left-clicks* on the screen area to turn pixels on or *right-clicks* to turn pixels off. The `Sprite Editor` will produce/update the corresponding hex values in the text box. To turn multiple pixels on/off, hold and drag the cursor. **Note**: Right-click-and-drag to turn multiple pixels off would require either a mouse or physical keys on the touchpad of a laptop. A touchpad without left and right keys would not be able to utilize this feature since most machines would recognize it as left-click-and-drag when you put two keys down and drag.
-    - User can edit the hex values displayed in the text box area and the corresponding sprite will be displayed on the screen. Please note that the text box recognizes input in 'comma-delimited' hex format with required `0x` prefix.
-    - User can also:
-        - Reset the `Sprite Editor` (clear the screen and set the hex values to 0x00)
-        - Move the existing sprites up (wrap around)
-        - Move the existing sprites down (wrap around)
-        - Move the existing sprites left (wrap around)
-        - Move the existing sprites right (wrap around)
-
-- Game 1 `Space Wars` complete: Fully completed game with polished interface and no known bugs.
-
-- Game 2 `Jumpy Rabbit` complete: Fully completed game with polished interface and no known bugs.
-
-**Release 5**
-- Release 4 is the final release of the `JS-Chip8` web application. Our team doesn't have any plans for another release since members will move on to other projects. However, assuming we actually have a Release 5, these are the features we would like to add:
-    - Host the JS-Chip8 web application with a dedicated URL, so that we can collect more user feedback to improve the web app UX, UI
-    - Make the web page responsive for mobile users 
-    - Test for performance and security issues 
-    - Refactor the existing back-end code from JavaScript to TypeScript for long-run maintenance
-    - Add more tools to support Chip-8 developers  
 
 ## Project Post Mortem 
 
