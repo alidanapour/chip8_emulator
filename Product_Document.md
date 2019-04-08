@@ -232,7 +232,7 @@
 |Back-End	|JavaScript	| We originally wanted to use TypeScript, but it added complexity to the learning curve, so we decided to use JavaScript instead. For larger and complex projects, we would like and recommend to use TypeScript due to type-checking to avoid bugs and problems later on. |
 |Chip-8 Development	|Octo	|We used Octo to develop and test our two Chip-8 games to save time and effort. The online Octo IDE also provides various useful tools such as complier, sprite and audio editors. |
 
-### Did our decisions help or hurt?
+### What worked well in this project, and what didn’t?
 
 |   TASKS	|   DECISIONS	| COMMENTS |
 |:-:	|:-:	|:-:	|
@@ -248,12 +248,20 @@
 - We planned just enough at the beginning and added changes as we progressed. It's important not to over plan before getting our hands dirty. As we started designing various project's components and implementing our ideas, we got better estimations of how long each task would take, and re-planned as necessary.  
 - Since this was the first time with emulation development, our estimates were not always accurate - some tasks took longer than expected (e.g., emulator display bug-fixes, manually testing both games' UX/UI) while other tasks took less time (flow controls, esp. step forward, step backward, sprite editor tool development). Nevertheless, having an estimate of how much time each task may take allowed members to proactively organize their personal schedules to meet releases' deadlines.
 
-### Major issues faced and how we adapted
+### What was the biggest unexpected challenge?
 |   ISSUES	|   DETAILS	| SOLUTIONS|
 |:-:	|:-:	|:-:	|
 | Conflicting Opcode Definitions	| Old and new Chip-8 games use different definitions for some opcodes (8XY6/8XYE and FX55/FX65)	| Added the option to switch (quirks) between both definitions to support both old and new ROMs |
 |Design Dilemmas	| Caught in a dilemma whether to use a drop-down menu or modal box for the ‘How to Play’ button | Implemented both designs and decided to use a pop-up window according to personal experience using both designs |
 |Lack of Time	| Lack of time towards the end of the semester as well as during midterms. Hard to find common ground	|Parallel development and finished time consuming tasks early on |
+
+### Was all the testing worth it? 
+- Testing played a crucial role in this project, and was completely worth it. We spent more time of testing rather than development, especially in the beginning when we were implementing opcodes and flow-control. Although we performed a considerable amount of automated testing, we believe that manual testing was most important and effective for us since our code base was manageable and not too complex to lose track of. We mostly used Google's Developer Console for manual testing of all the components (emulator, visualizer and tool) which helped us fix bugs and develop these components. For games, a lot of manual testing had to be done to fine tune difficulty,fun factor, and to fix bugs.
+
+### What would you have done differently knowing what you know now? 
+- Allocate more members to works on the games.
+- Create a fictional character as our target audience, and when we face with desgin/implementation dilemma, we will use this character as the anchor for our decisions.
+- Use Bootstrap and TypeScript since the beginning rather than refactoring when everyone is done.
 
 ### Advices we would give to future students
 - Don’t stress out if the goals and objectives are not clear in the beginning.
