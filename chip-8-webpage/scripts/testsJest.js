@@ -456,3 +456,68 @@ module.exports.cpuOpcode_FX65 = function cpuOpcode_FX65() {
     else
         return (CHIP8_TEST.I == 0x100 + 3 + 1);
 }
+
+// clears all value to 0x00
+module.exports.toolEditorClear = function toolEditorClear() {
+    pixelArray = [0x00, 0x00, 0x00, 0x00, 0x00, 
+                  0x00, 0x00, 0x00, 0x00, 0x00, 
+                  0x00, 0x00, 0x00, 0x00, 0x00];
+	const spriteEditorArea = 'sprite-draw';
+    const ctx = '2d';
+    ctx.fillStyle = '#c4c4c4';
+    randomN = Math.floor(Math.random()*Math.floor(pixelArray.length));
+    return (pixelArray[randomN]);
+}
+
+// moves 1 space up
+module.exports.toolMoveSpriteUp = function toolMoveSpriteUp(){
+    pixelArray = [0x00, 0x01, 0x02, 0x03, 0x04, 
+                  0x05, 0x06, 0x07, 0x08, 0x09, 
+                  0x10, 0x11, 0x12, 0x13, 0x14];
+    var tempTopByte = pixelArray[0];              // Store the top most line
+    pixelArray.shift();                             // Remove the top most line
+    pixelArray.push(tempTopByte);                   // Push the top most line stored, to the bottom
+    pixelArray = pixelArray.slice(0, 15);
+    // new array should be [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x10, 0x11, 0x12, 0x13, 0x14, 0x00]
+    return pixelArray;
+}
+
+// moves 1 space down
+module.exports.toolMoveSpriteDown = function toolMoveSpriteDown(){
+    pixelArray = [0x00, 0x01, 0x02, 0x03, 0x04, 
+                  0x05, 0x06, 0x07, 0x08, 0x09, 
+                  0x10, 0x11, 0x12, 0x13, 0x14];
+    var tempBottomByte = pixelArray.pop();        // Remove and store the bottom line
+    pixelArray.unshift(tempBottomByte);             // Push the bottom line stored, to the top
+    pixelArray = pixelArray.slice(0, 15);
+    // new array should be [0x14, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x10, 0x11, 0x12, 0x13]
+    return pixelArray;
+}
+
+module.exports.toolMoveSpriteLeft = function toolMoveSpriteLeft(){
+    pixelArray = [0x20, 0x20, 0x20, 0x20, 0x20, 
+                  0x20, 0x20, 0x20, 0x20, 0x20, 
+                  0x20, 0x20, 0x20, 0x20, 0x20];
+    for (let i = 0; i < pixelArray.length; i++) {
+        let currentByte = pixelArray[i];
+        let firstBit = (currentByte & 0b10000000) ? 1 : 0;
+        pixelArray[i] = ((currentByte << 1) & 0xFF) | firstBit;
+    }
+    pixelArray = pixelArray.slice(0, 15);
+    // new array should be [0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40]
+    return pixelArray;
+}
+
+module.exports.toolMoveSpriteRight = function toolMoveSpriteRight(){
+    pixelArray = [0x20, 0x20, 0x20, 0x20, 0x20, 
+                  0x20, 0x20, 0x20, 0x20, 0x20, 
+                  0x20, 0x20, 0x20, 0x20, 0x20];
+    for (let i = 0; i < pixelArray.length; i++) {
+        let currentByte = pixelArray[i];
+        let lastBit = (currentByte & 1) ? 1 : 0;
+        pixelArray[i] = (currentByte >>> 1) | (lastBit << 7);
+    }
+    pixelArray = pixelArray.slice(0, 15);
+    // new array should be [0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10]
+    return pixelArray;
+}
