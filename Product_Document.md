@@ -106,11 +106,11 @@
 
 - Game 1 `Space Wars` complete: Fully completed game with polished interface and no known bugs.
 
-![screenshot1](product_document_imgs/space-wars-collage.png)
+    ![screenshot1](product_document_imgs/space-wars-collage.png)
 
 - Game 2 `Jumpy Rabbit` complete: Fully completed game with polished interface and no known bugs.
 
-![screenshot1](product_document_imgs/jumpy-rabbit-collage.png)
+    ![screenshot1](product_document_imgs/jumpy-rabbit-collage.png)
 
 **Release 3**
 
