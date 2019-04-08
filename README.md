@@ -61,6 +61,9 @@
 - For more details, please refer to the `README.md` in the `games\game2` folder.
 
 ### Chip 8 Tool (`Sprite Editor`)
+
+![screenshot2](product_document_imgs/screenshot2.PNG)
+
 - User scrolls down to reveal the Sprite Editor, scrolls up to hide it, the current state of the Sprite Editor will be fully preserved.
 - User *left-clicks* on the screen area to turn pixels on or *right-clicks* to turn pixels off. The `Sprite Editor` will produce/update the corresponding hex values in the text box. To turn multiple pixels on/off, hold and drag the cursor. 
     - **Note**: Right-click-and-drag to turn multiple pixels off would require either a mouse or physical keys on the touchpad of a laptop. A touchpad without left and right keys would not be able to utilize this feature since most machines would recognize it as left-click-and-drag when you put two keys down and drag.
