@@ -1,3 +1,7 @@
+## Welcome
+Hello and thank you for your interest in my Javascript Chip-8 Emulator. This project was put together by a team of 5 students in Spring 2019 at Simon Fraser University (Surrey).
+
+
 # Team 10 JS-Chip 8 Program
 
 ![screenshot1](product_document_imgs/screenshot1.PNG)
